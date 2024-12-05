@@ -1,0 +1,115 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+</head>
+  <body s:ns="ns_f7b99724a09935b9" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><root id="{{ id }}" type="flowbite-form-item" class="flowbite-form-item w-full {{ class }}" data:color="{{ color }}" data:size="{{ size }}" data:disabled="{{ disabled }}">
+  <div class="{{ labelPositionClass }} w-full ">
+    <label for="{{ labelFor }}" s:if="label != null and label != &#39;&#39;" class="
+        block me-2 font-medium cursor-pointer
+        {{ labelAlignClass }} {{ labelWidthClass }}
+        {{ labelSize }} {{ labelColor }}
+        {{ labelClass }}
+      " label="">
+      <span>{{ label }}</span>
+      <span class="
+          text-danger ms-1 dark:text-dark-danger {{ labelSize }}
+          {{ True(required) ? &#39;&#39; : &#39;hidden&#39;}}
+        ">
+        *
+      </span>
+    </label>
+
+    <div class="w-full">
+      <children></children>
+      <div class="flex items-center ps-1 {{ helperSize }} {{ helperColor }} {{ helperClass }}" helper="">
+        <div class="flex {{ True(error) ? &#39;&#39; : &#39;hidden&#39;}}" slots="" error-slot="">
+          <error></error>
+        </div>
+        <div class="flex {{ True(success) ? &#39;&#39; : &#39;hidden&#39;}}" slots="" success-slot="">
+          <success></success>
+        </div>
+        <div class="flex {{ True(success) or True(error)  ? &#39;hidden&#39; : &#39;&#39;}}" slots="" helper-slot="">
+          <helper></helper>
+        </div>
+      </div>
+    </div>
+  </div>
+</root>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_f7b99724a09935b9" s:cn="comp__flowbite_components_form_item" s:hash="script_606deb70d063a12d" type="text/javascript">
+this.Constants = {"helperSizes":{"sm":"text-sm py-1.5","base":"text-sm py-2","lg":"text-base py-2.5","none":""},"helperColors":{"primary":"text-gray-500 dark:text-gray-500","success":"text-success  dark:text-success ","danger":"text-danger  dark:text-danger","disabled":"text-gray-400 dark:text-gray-500","focus":"text-gray-900 dark:text-gray-200","none":""},"defaults":{"labelPosition":"top","labelAlign":"left","disabled":false,"error":false,"success":false,"size":"base"},"labelWidths":{"left":"w-1/4","right":"w-1/4","top":"w-full","none":""},"labelSizes":{"lg":"text-base py-2.5 mt-1.5","none":"","sm":"text-sm py-1.5 mt-0.5","base":"text-sm py-2 mt-1"},"labelPositions":{"left":"flex flex-row items-start","right":"flex flex-row-reverse items-start","none":"","top":"flex flex-col"},"labelAligns":{"none":"","left":"text-left rtl:text-right","center":"text-center","right":"text-right rtl:text-left"},"labelColors":{"focus":"\n      text-gray-900 dark:text-gray-200 \n    ","none":"","primary":"\n      text-gray-600  dark:text-gray-500\n      hover:text-gray-900 dark:hover:text-gray-200 \n    ","success":"\n      text-success-600  dark:text-dark-success-500\n      hover:text-success-900 dark:hover:text-dark-success-200 \n    ","danger":"\n      text-danger-600  dark:text-dark-danger-500\n      hover:text-danger-900 dark:hover:text-dark-danger-200 \n    ","disabled":"\n      text-gray-400 dark:text-gray-500\n    "}}
+this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,e,o){return new __Render(__self,o).Exec(t,e)},this.emit=function(t,e){const o=new CustomEvent(t,{detail:e});__self.root.dispatchEvent(o)};const self=this;self.watch={disabled:t=>{const e=this;if(e.store.Set("disabled",`${t}`),t){updateColor("disabled");return}updateColor(e.store.Get("color"))},error:t=>{const e=this;if(e.store.Set("danger",`${t}`),t){updateColor("danger"),typeof t=="string"&&showError(t);return}updateColor(e.store.Get("color")),showHelper()},success:t=>{const e=this;if(e.store.Set("success",`${t}`),t){updateColor("success"),typeof t=="string"&&showSuccess(t);return}updateColor(e.store.Get("color")),showHelper()},focus:t=>{if(self.store.Set("focus",`${t}`),t){self.store.Set("color-focus",self.store.Get("current-color")||self.store.Get("color")),updateColor("focus");return}if(self.store.Get("color-focus")=="focus"){updateColor(self.store.Get("color"));return}updateColor(self.store.Get("color-focus")||self.store.Get("color"))}};function updateColor(t){const e=self.store.Get("current-color")||self.store.Get("color");if(e===t)return;const o=self.root.querySelector("[label]"),s=self.root.querySelector("[helper]");$Query(o).removeClass(self.Constants.labelColors[e]).addClass(self.Constants.labelColors[t]),$Query(s).removeClass(self.Constants.helperColors[e]).addClass(self.Constants.helperColors[t]),self.store.Set("current-color",t)}function showError(t){const e=self.root.querySelectorAll("[slots]"),o=self.root.querySelector("[error-slot]");e.forEach(s=>$Query(s).addClass("hidden")),o.innerHTML=t,$Query(o).removeClass("hidden")}function showSuccess(t){const e=self.root.querySelectorAll("[slots]"),o=self.root.querySelector("[success-slot]");e.forEach(s=>$Query(s).addClass("hidden")),o.innerHTML=t,$Query(o).removeClass("hidden")}function showHelper(){const t=self.root.querySelectorAll("[slots]"),e=self.root.querySelector("[helper-slot]");t.forEach(o=>$Query(o).addClass("hidden")),$Query(e).removeClass("hidden")}this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const e=this.getAttribute("s:cn"),o=t.detail.target,s=t.detail.key,r=t.detail.value,n=new window[e](this);new __sui_state(n).Set(s,r,o)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/","title":"","guard":""}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+</body></html>

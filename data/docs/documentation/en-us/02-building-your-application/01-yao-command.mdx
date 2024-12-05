@@ -1,0 +1,35 @@
+---
+title: Yao Command
+description: How to use the Yao command.
+related:
+  title: Next Steps
+  description: How to debug your application.
+  links:
+    - debug-guide
+---
+
+Yao is a standalone executable. You only need one installation per machine or server, even if you have several projects.
+
+This section introduces basic Yao command, which will be used later to build a simple application. A quick glance will suffice.
+
+For more detailed information, see the Yao command references.
+
+👉 **[Yao Command References](../references/yao-command)**
+
+## Overview
+
+Basic usage of the Yao command:
+
+| Command       | Description                            | Example                  |
+| ------------- | -------------------------------------- | ------------------------ |
+| `yao start`   | Start the application server           | `yao start`              |
+| `yao run`     | Run a process                          | `yao run utils.app.Ping` |
+| `yao migrate` | Migrate the database, build the schema | `yao migrate`            |
+| `yao version` | Display the version of Yao             | `yao version --all`      |
+
+SUI Command, for web page building:
+
+| Command         | Description                                           | Example                     |
+| --------------- | ----------------------------------------------------- | --------------------------- |
+| `yao sui build` | Build the SUI page                                    | `yao sui build web default` |
+| `yao sui watch` | Watch the SUI page changes, and rebuild automatically | `yao sui watch web default` |

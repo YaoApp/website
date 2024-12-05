@@ -1,0 +1,291 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+<script s:ns="ns_e819061ee0721401" s:cn="comp__flowbite_components_button" s:hash="script_1eb9da5f2126a2eb" type="text/javascript">
+function comp__flowbite_components_button( component ){
+  this.root=component;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,r,e){return new __Render(__self,e).Exec(t,r)},this.emit=function(t,r){const e=new CustomEvent(t,{detail:r});__self.root.dispatchEvent(e)};const colorStyles={primary:"text-white bg-primary-700 hover:bg-primary-800 dark:bg-dark-primary-600 dark:hover:bg-dark-primary-700",dark:"text-gray-100 bg-gray-900  hover:bg-gray-700 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200",light:"text-gray-900 bg-white box-border border border-gray-200 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-700",danger:"text-white bg-danger-700 hover:bg-danger-800 dark:bg-dark-danger-600 dark:hover:bg-dark-danger-700",success:"text-white bg-success-700 hover:bg-success-800 dark:bg-dark-success-600 dark:hover:bg-dark-success-700",warning:"text-white bg-warning-700 hover:bg-warning-800 dark:bg-dark-warning-600 dark:hover:bg-dark-warning-700",info:"text-white bg-info-700 hover:bg-info-800 dark:bg-dark-info-600 dark:hover:bg-dark-info-700",none:""},disabledStyles={primary:"text-white bg-primary-300 dark:bg-dark-primary-300",dark:"text-gray-300 bg-gray-700 dark:bg-gray-700",light:"text-gray-300 bg-white box-border border border-gray-200 dark:text-gray-700 dark:border-gray-800 dark:bg-gray-900",danger:"text-white bg-danger-300 dark:bg-dark-danger-300",success:"text-white bg-success-300 dark:bg-dark-success-300",warning:"text-white bg-warning-300 dark:bg-dark-warning-300",info:"text-white bg-info-300 dark:bg-dark-info-300",none:""};function removeClass(t,r){r.split(" ").forEach(e=>{e&&t.classList.contains(e)&&t.classList.remove(e)})}function addClass(t,r){r.split(" ").forEach(e=>{e&&!t.classList.contains(e)&&t.classList.add(e)})}this.watch={disabled:t=>{const r=this.root.querySelector("[button]"),e=r.getAttribute("color")||"primary";if(t){removeClass(r,colorStyles[e]),addClass(r,disabledStyles[e]),r.setAttribute("disabled","true");return}removeClass(r,disabledStyles[e]),addClass(r,colorStyles[e]),r.removeAttribute("disabled")},loading:t=>{const r=this.root.querySelector("[icon]"),e=this.root.querySelector("[button]");if(t){r.classList.add("animate-spin"),r.innerHTML="progress_activity",e.setAttribute("disabled","true");return}const i=r.getAttribute("name");r.classList.remove("animate-spin"),r.innerHTML=i,e.removeAttribute("disabled")}},this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const r=this.getAttribute("s:cn"),e=t.detail.target,i=t.detail.key,a=t.detail.value,n=new window[r](this);new __sui_state(n).Set(i,a,e)}),__self.once&&__self.once());
+}
+
+</script>
+</head>
+  <body s:ns="ns_bd44638f5c2b1a51" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><root>
+  <div class="flex flex-col justify-center lg:max-w-[960px] lg:min-w-[360px]">
+    <div class="mb-6 lg:mb-4 text-center hidden">
+      <a href="/download" class="inline-block p-1.5 px-3.5 w-auto text-primary-500 dark:text-primary-300 text-sm font-medium bg-primary-50 dark:bg-primary-950 rounded-full cursor-pointer hover:bg-primary-100 dark:hover:bg-primary-900">
+        <span class="mr-1">Yao v0.10.4-rc.1 is out! </span>
+        <span>🚀</span>
+      </a>
+    </div>
+
+    <h1 class="mt-4 text-3xl lg:text-5xl font-bold text-gray-900 dark:text-gray-50 text-center" s:trans="" s:trans-node="trans__index_hero_intro_2" s:trans-escape="true">
+      All-in-one App Engine
+    </h1>
+
+    <p class="text-base lg:text-xl text-gray-500 dark:text-gray-200 mt-4 lg:mt-6">
+      <span class="text-primary font-medium"> Yao </span>
+      <span s:trans="" s:trans-node="trans__index_hero_intro_3" s:trans-escape="true">
+        is a free, open-source application engine that enables developers to
+        create web apps, REST APIs, business applications, and more, with AI as
+        a development partner.
+      </span>
+    </p>
+  </div>
+
+  <div class="mt-2 flex items-center justify-center lg:justify-center flex-wrap space-y-4">
+    <div namespace="" id="" type="flowbite-button" class="flowbite-button" state-loading="false" state-disabled="false" s:public="/" s:assets="/assets" prop:color="dark" prop:class="me-4 mt-4" prop:href="/docs/documentation/en-us/getting-started" s:ns="ns_e819061ee0721401" s:cn="comp__flowbite_components_button" s:ready="comp__flowbite_components_button()" s:parent="ns_bd44638f5c2b1a51">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value="me-4 mt-4"></s:set>
+  <s:set name="size" value=""></s:set>
+  <s:set name="color" value="dark"></s:set>
+  <s:set name="href" value="/docs/documentation/en-us/getting-started"></s:set>
+  <s:set name="target" value=""></s:set>
+  <s:set name="icon" value=""></s:set>
+  <s:set name="iconClass" value=""></s:set>
+  <s:set name="disabled" value="false"></s:set>
+  <s:set name="loading" value="false"></s:set>
+
+  <s:set name="sizes" value="{{ { 
+        &#39;xs&#39;: &#39;text-xs px-3 py-1.5&#39;, 
+        &#39;sm&#39;: &#39;text-sm px-3 py-1.5&#39;, 
+        &#39;base&#39;: &#39;text-sm px-4 py-2&#39;, 
+        &#39;lg&#39;: &#39;text-base px-5 py-2.5&#39;, 
+        &#39;xl&#39;: &#39;text-lg px-6 py-3&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+  <s:set name="colors" value="{{ {
+        &#39;primary&#39;: &#39;text-white bg-primary-700 hover:bg-primary-800 dark:bg-dark-primary-600 dark:hover:bg-dark-primary-700&#39;,
+        &#39;dark&#39;:   &#39;text-gray-100 bg-gray-900  hover:bg-gray-700 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200&#39;,
+        &#39;light&#39;:  &#39;text-gray-900 bg-white box-border border border-gray-200 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-700&#39;,
+        &#39;danger&#39;: &#39;text-white bg-danger-700 hover:bg-danger-800 dark:bg-dark-danger-600 dark:hover:bg-dark-danger-700&#39;,
+        &#39;success&#39;: &#39;text-white bg-success-700 hover:bg-success-800 dark:bg-dark-success-600 dark:hover:bg-dark-success-700&#39;,
+        &#39;warning&#39;: &#39;text-white bg-warning-700 hover:bg-warning-800 dark:bg-dark-warning-600 dark:hover:bg-dark-warning-700&#39;,
+        &#39;info&#39;: &#39;text-white bg-info-700 hover:bg-info-800 dark:bg-dark-info-600 dark:hover:bg-dark-info-700&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}
+  "></s:set>
+
+  <s:set name="disabledStyles" value="{{ {
+      &#39;primary&#39;: &#39;text-white bg-primary-300 dark:bg-dark-primary-300&#39;,
+      &#39;dark&#39;: &#39;text-gray-300 bg-gray-700 dark:bg-gray-700&#39;,
+      &#39;light&#39;: &#39;text-gray-300 bg-white box-border border border-gray-200 dark:text-gray-700 dark:border-gray-800 dark:bg-gray-900&#39;,
+      &#39;danger&#39;: &#39;text-white bg-danger-300 dark:bg-dark-danger-300&#39;,
+      &#39;success&#39;: &#39;text-white bg-success-300 dark:bg-dark-success-300&#39;,
+      &#39;warning&#39;: &#39;text-white bg-warning-300 dark:bg-dark-warning-300&#39;,
+      &#39;info&#39;: &#39;text-white bg-info-300 dark:bg-dark-info-300&#39;,
+      &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+
+  <a s:if="{{ href != &#39;&#39; }}" id="{{ id }}" class="
+        rounded-lg
+        flex justify-center items-center cursor-pointer
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" s:attr-disabled="True(disabled)" s:attr-loading="True(loading)" color="{{ color }}" button="">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{ icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39; }}  {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+      <span s:trans="" s:trans-node="trans__index_hero_intro_1" s:trans-escape="true"> Getting Started </span>
+      <i class="material outlined ms-1"> arrow_forward </i>
+    
+  </a>
+
+  <button s:else="" name="{{ name }}" type="button" class="
+        rounded-lg    
+        flex justify-center items-center
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " s:attr-disabled="True(disabled) or True(loading)" s:attr-loading="True(loading)" color="{{ color }}" button="">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39;}} {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+      <span s:trans="" s:trans-node="trans__index_hero_intro_1" s:trans-escape="true"> Getting Started </span>
+      <i class="material outlined ms-1"> arrow_forward </i>
+    
+  </button>
+</div>
+
+
+    <!-- Gihub Link  -->
+    <div namespace="" id="" type="flowbite-button" class="flowbite-button" state-loading="false" state-disabled="false" s:public="/" s:assets="/assets" prop:color="light" prop:class="me-2 inline-flex" prop:href="https://github.com/YaoApp/yao" prop:target="_blank" s:ns="ns_e819051ee072124e" s:cn="comp__flowbite_components_button" s:ready="comp__flowbite_components_button()" s:parent="ns_bd44638f5c2b1a51">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value="me-2 inline-flex"></s:set>
+  <s:set name="size" value=""></s:set>
+  <s:set name="color" value="light"></s:set>
+  <s:set name="href" value="https://github.com/YaoApp/yao"></s:set>
+  <s:set name="target" value="_blank"></s:set>
+  <s:set name="icon" value=""></s:set>
+  <s:set name="iconClass" value=""></s:set>
+  <s:set name="disabled" value="false"></s:set>
+  <s:set name="loading" value="false"></s:set>
+
+  <s:set name="sizes" value="{{ { 
+        &#39;xs&#39;: &#39;text-xs px-3 py-1.5&#39;, 
+        &#39;sm&#39;: &#39;text-sm px-3 py-1.5&#39;, 
+        &#39;base&#39;: &#39;text-sm px-4 py-2&#39;, 
+        &#39;lg&#39;: &#39;text-base px-5 py-2.5&#39;, 
+        &#39;xl&#39;: &#39;text-lg px-6 py-3&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+  <s:set name="colors" value="{{ {
+        &#39;primary&#39;: &#39;text-white bg-primary-700 hover:bg-primary-800 dark:bg-dark-primary-600 dark:hover:bg-dark-primary-700&#39;,
+        &#39;dark&#39;:   &#39;text-gray-100 bg-gray-900  hover:bg-gray-700 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200&#39;,
+        &#39;light&#39;:  &#39;text-gray-900 bg-white box-border border border-gray-200 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-700&#39;,
+        &#39;danger&#39;: &#39;text-white bg-danger-700 hover:bg-danger-800 dark:bg-dark-danger-600 dark:hover:bg-dark-danger-700&#39;,
+        &#39;success&#39;: &#39;text-white bg-success-700 hover:bg-success-800 dark:bg-dark-success-600 dark:hover:bg-dark-success-700&#39;,
+        &#39;warning&#39;: &#39;text-white bg-warning-700 hover:bg-warning-800 dark:bg-dark-warning-600 dark:hover:bg-dark-warning-700&#39;,
+        &#39;info&#39;: &#39;text-white bg-info-700 hover:bg-info-800 dark:bg-dark-info-600 dark:hover:bg-dark-info-700&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}
+  "></s:set>
+
+  <s:set name="disabledStyles" value="{{ {
+      &#39;primary&#39;: &#39;text-white bg-primary-300 dark:bg-dark-primary-300&#39;,
+      &#39;dark&#39;: &#39;text-gray-300 bg-gray-700 dark:bg-gray-700&#39;,
+      &#39;light&#39;: &#39;text-gray-300 bg-white box-border border border-gray-200 dark:text-gray-700 dark:border-gray-800 dark:bg-gray-900&#39;,
+      &#39;danger&#39;: &#39;text-white bg-danger-300 dark:bg-dark-danger-300&#39;,
+      &#39;success&#39;: &#39;text-white bg-success-300 dark:bg-dark-success-300&#39;,
+      &#39;warning&#39;: &#39;text-white bg-warning-300 dark:bg-dark-warning-300&#39;,
+      &#39;info&#39;: &#39;text-white bg-info-300 dark:bg-dark-info-300&#39;,
+      &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+
+  <a s:if="{{ href != &#39;&#39; }}" id="{{ id }}" class="
+        rounded-lg
+        flex justify-center items-center cursor-pointer
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" s:attr-disabled="True(disabled)" s:attr-loading="True(loading)" color="{{ color }}" button="">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{ icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39; }}  {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+      <span class="mr-1"> Github </span>
+
+      <div class="bg-gray-50 px-2 text-gray-500 dark:bg-gray-800 dark:text-gray-200 rounded-full text-2xs flex items-center">
+        <i class="material outlined mr-0.5 text-xs font-light"> star </i>
+        <span> {{ github.stars }}k</span>
+      </div>
+    
+  </a>
+
+  <button s:else="" name="{{ name }}" type="button" class="
+        rounded-lg    
+        flex justify-center items-center
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " s:attr-disabled="True(disabled) or True(loading)" s:attr-loading="True(loading)" color="{{ color }}" button="">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39;}} {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+      <span class="mr-1"> Github </span>
+
+      <div class="bg-gray-50 px-2 text-gray-500 dark:bg-gray-800 dark:text-gray-200 rounded-full text-2xs flex items-center">
+        <i class="material outlined mr-0.5 text-xs font-light"> star </i>
+        <span> {{ github.stars }}k</span>
+      </div>
+    
+  </button>
+</div>
+
+
+    <!-- Discord Link  -->
+    <a href="https://discord.gg/BkMR2NUsjU" target="_blank" class="hidden lg:inline-flex items-center justify-center text-gray-500 h-10 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-2">
+      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
+        <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"></path>
+      </svg>
+      <span class="ml-2">Join Community</span>
+    </a>
+  </div>
+</root>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+
+
+<script name="config" type="json">
+{"title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/"}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+
+
+<script name="imports" type="json">
+{"comp__flowbite_components_button":"/flowbite/components/button"}
+</script>
+
+</body></html>

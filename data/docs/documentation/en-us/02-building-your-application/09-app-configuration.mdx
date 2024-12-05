@@ -1,0 +1,218 @@
+---
+title: App configuration
+description:
+---
+
+Your application root directory contains three key configuration files:
+
+| File            | Description                                                           |
+| --------------- | --------------------------------------------------------------------- |
+| `app.yao`       | This file contains the configuration for your application.            |
+| `tsconfig.json` | This file contains the TypeScript configuration for your application. |
+| `.env`          | This file contains the environment variables for your application.    |
+
+## app.yao
+
+The `app.yao` file is the main configuration file for your application. It defines essential details like the application name, version, description, and other settings.
+
+Here’s an example structure of the app.yao file:
+
+```json
+{
+  "name": "Demo Application", // Application name
+  "short": "Demo", // Short name for the application
+  "description": "Another yao application", // Brief description
+  "version": "0.10.4", // Application version
+
+  "adminRoot": "admin", // Admin panel root path (default: "admin")
+
+  /**
+   * Hook: setup
+   * Script to run after installation. Useful for initializing application data.
+   */
+  "setup": "scripts.tests.AppSetup",
+
+  /**
+   * Hook: afterLoad
+   * Introduced in yao v0.10.4
+   * Runs after the application is loaded. Use this to dynamically load DSLs before the HTTP server starts.
+   */
+  "afterLoad": "scripts.tests.AppAfterLoad",
+
+  /**
+   * Hook: afterMigrate
+   * Introduced in yao v0.10.4
+   * Runs after the application is migrated. Ideal for setting up initial data during `yao migrate`.
+   */
+  "afterMigrate": "scripts.tests.AppAfterMigrate",
+
+  /**
+   * Custom menu process for the admin panel.
+   * Default process: "flows.menu". Create your own if needed.
+   * @see /flows/menu.flow.yao
+   */
+  "menu": { "process": "flows.menu", "args": [] },
+
+  /**
+   * Introduced in yao v0.10.4
+   * HTTP Server Root Directory Configuration (Optional)
+   */
+  "public": {
+    /**
+     * Maps public backend script source roots to real paths.
+     * Useful for SUI backend script development in dev mode.
+     */
+    "sourceRoots": { "/public": "/data/templates/default" },
+
+    // Routes for SUI web pages
+    "rewrite": [
+      { "^\\/assets\\/(.*)$": "/assets/$1" }, // SUI assets
+      { "^\\/(.*)$": "/$1.sui" } // File system routes
+    ]
+  },
+
+  "optional": {
+    /**
+     * Enables remote cache to reduce requests (e.g., Select Component options queries)
+     * by caching data in the browser.
+     */
+    "remoteCache": false,
+
+    /**
+     * Introduced in yao v0.10.4
+     * Admin menu configuration:
+     *  - layout: "1-column" (single column), "2-columns" (menu + sub-menu)
+     *  - hide: hides the menu and sub-menu
+     *  - showName: displays menu names
+     */
+    "menu": { "layout": "2-columns", "showName": true },
+
+    /**
+     * Optional AI chatbot service configuration.
+     * If omitted, the Neo service will not be available.
+     */
+    "neo": { "api": "/neo" }
+  },
+
+  /**
+   * Introduced in yao v0.10.4
+   * Moapi service configuration (Optional).
+   * Moapi is not required for the application to function.
+   * Get a secret key from Moapi or use an AI Connector.
+   * @see https://moapi.ai for details.
+   */
+  "moapi": {
+    "channel": "global",
+    "mirrors": ["https://api.moapi.ai"],
+    "secret": "$ENV.MOAPI_SECRET" // Supports environment variables
+  }
+}
+```
+
+## tsconfig.json
+
+The `tsconfig.json` file is the TypeScript configuration file for your application. It defines the TypeScript compiler options and paths for your application.
+
+Here’s an example structure of the tsconfig.json file:
+
+```json
+{
+  "compilerOptions": {
+    "target": "es6", // Do not change
+    "paths": {
+      "@yao/*": ["./.types/*"], // Yao Runtime APIs and types. ( Do not change )
+      "@scripts/*": ["./scripts/*"] // Custom Process Scripts. ( Do not change )
+    },
+    "lib": ["es2017", "dom"] // dom is required for SUI web pages
+  }
+}
+```
+
+## Environment variables
+
+The `.env` file contains the environment variables for your application. It is used to store sensitive information like API keys, database credentials, and other secrets.
+
+You can add custom environment variables to the .env file and access them in your application through the utils.env.\* processes.
+
+Here’s an example structure of the .env file:
+
+```bash
+YAO_DB_DRIVER="sqlite3"  # Database driver (sqlite3, mysql, postgres)
+YAO_DB_PRIMARY="./db/yao.db"  # Primary database file or DSN
+YAO_ENV="development" # Application environment (development, production)
+YAO_HOST="0.0.0.0"   # Application http server listen address (default: 0.0.0.0, all interfaces)
+YAO_PORT=5099        # Application http server listen port (default: 5099)
+YAO_LOG_MODE="TEXT"  # Log mode (TEXT, JSON)
+YAO_LOG="./logs/application.log"  # Log file path
+YAO_SESSION_STORE="file"  # Session store (file, redis)
+YAO_SESSION_FILE="./db/.session" # Session file path | Required for file session store
+```
+
+### 📜 Database Connection Strings
+
+#### For SQLite:
+
+SQLite connection is the file path to the database file:
+
+```json
+"/path/to/database.db"
+```
+
+Example:
+
+```bash
+YAO_DB_DRIVER="sqlite3"
+YAO_DB_PRIMARY="./db/yao.db"
+```
+
+#### For MySQL:
+
+> MySQL support is available starting from version 5.7, with version 8.0 or higher recommended.
+
+MySQL connection strings are in the format:
+
+```json
+"[user]:[password]@tcp([server]:[port])/[database]?charset=utf8mb4&parseTime=True&loc=Local"
+```
+
+Example:
+
+```bash
+YAO_DB_DRIVER="mysql"
+YAO_DB_PRIMARY="webuser:webpass@tcp(127.0.0.1:3306)/website?charset=utf8mb4&parseTime=True&loc=Local"
+```
+
+#### For PostgreSQL:
+
+Support for PostgreSQL is planned for future releases. Stay tuned for updates! 😊
+
+### 📜 Full List of Environment Variables
+
+| Variable               | Description                                        | Default Value            |
+| ---------------------- | -------------------------------------------------- | ------------------------ |
+| `YAO_ENV`              | Application mode: `production` or `development`.   | `production`             |
+| `YAO_LANG`             | Default language setting (e.g., `en-us`, `zh-cn`). | `en-us`                  |
+| `YAO_TIMEZONE`         | Default time zone for the application.             | -                        |
+| `YAO_DATA_ROOT`        | Path for data storage.                             | `./data`                 |
+| `YAO_EXTENSION_ROOT`   | Root path for plugins.                             | `./plugins`              |
+| `YAO_HOST`             | Server host address.                               | `0.0.0.0`                |
+| `YAO_PORT`             | Server port for HTTP requests.                     | `5099`                   |
+| `YAO_LOG`              | Log file path.                                     | `./logs/application.log` |
+| `YAO_LOG_MODE`         | Log format: `TEXT` or `JSON`.                      | `TEXT`                   |
+| `YAO_LOG_MAX_SIZE`     | Maximum log file size in MB.                       | `100`                    |
+| `YAO_LOG_MAX_AGE`      | Maximum age of log files in days.                  | `7`                      |
+| `YAO_LOG_MAX_BACKUPS`  | Number of log backups to retain.                   | `3`                      |
+| `YAO_LOG_LOCAL_TIME`   | Use local time for log timestamps.                 | `true`                   |
+| `YAO_JWT_SECRET`       | Secret key for JWT authentication.                 | -                        |
+| `YAO_DB_DRIVER`        | Database driver (`sqlite3`, `mysql`, `postgres`).  | `sqlite3`                |
+| `YAO_DB_PRIMARY`       | Primary database connection string.                | `./db/yao.db`            |
+| `YAO_DB_SECONDARY`     | Secondary database connection string (optional).   | -                        |
+| `YAO_DB_AESKEY`        | Encryption key for secure data storage.            | -                        |
+| `YAO_ALLOW_FROM`       | List of allowed domains for CORS                   | -                        |
+| `YAO_SESSION_STORE`    | Session storage type: `file` or `redis`.           | `file`                   |
+| `YAO_SESSION_FILE`     | Path for file-based session storage.               | -                        |
+| `YAO_SESSION_HOST`     | Redis host for session storage.                    | `127.0.0.1`              |
+| `YAO_SESSION_PORT`     | Redis port for session storage.                    | `6379`                   |
+| `YAO_SESSION_PASSWORD` | Password for Redis session storage.                | -                        |
+| `YAO_SESSION_USERNAME` | Username for Redis session storage.                | -                        |
+| `YAO_SESSION_DB`       | Redis database index for session storage.          | `1`                      |

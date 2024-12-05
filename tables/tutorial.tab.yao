@@ -1,0 +1,193 @@
+{
+  "name": "Tutorials",
+  "action": {
+    "bind": { "model": "tutorial", "option": { "form": "tutorial" } },
+    "before:search": "scripts.hooks.OrderBySort"
+  },
+  "layout": {
+    "header": {},
+    "primary": "id",
+    "filter": {
+      "columns": [
+        { "name": "Title" },
+        { "name": "Category" },
+        { "name": "Language" }
+      ],
+      "actions": [
+        {
+          "title": "Add Tutorial",
+          "icon": "icon-plus",
+          "style": "primary",
+          "action": [
+            {
+              "name": "openModal",
+              "type": "Common.openModal",
+              "payload": {
+                "byDrawer": { "mask": true },
+                "Form": { "type": "add", "model": "tutorial" }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "table": {
+      "columns": [
+        { "name": "Sort", "width": 60 },
+        { "name": "Language", "width": 120 },
+        { "name": "Icon", "width": 100 },
+        { "name": "Title", "width": 300 },
+        { "name": "Category", "width": 200 },
+        { "name": "Release Date", "width": 160 },
+        { "name": "URL", "width": 255 }
+      ],
+      "operation": {
+        "fold": false,
+        "actions": [
+          {
+            "style": "primary",
+            "title": "Edit",
+            "icon": "icon-edit-2",
+            "action": [
+              {
+                "name": "openModal",
+                "type": "Common.openModal",
+                "payload": {
+                  "byDrawer": { "mask": true },
+                  "Form": {
+                    "type": "edit",
+                    "model": "tutorial",
+                    "params": { "id": "" }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "style": "danger",
+            "title": "Delete",
+            "icon": "icon-trash-2",
+            "action": [
+              {
+                "name": "Confirm",
+                "type": "Common.confirm",
+                "payload": {
+                  "title": "Please confirm to delete [{{ title }}]",
+                  "content": "This action is irreversible! The tutorial will be permanently deleted."
+                }
+              },
+              { "name": "Delete", "type": "Table.delete", "payload": {} }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "fields": {
+    "filter": {
+      "Title": {
+        "bind": "where.title.match",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Title keywords" }
+        }
+      },
+      "Category": {
+        "bind": "where.category.match",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Category",
+            "allowClear": true,
+            "showSearch": true,
+            "xProps": {
+              "$remote": { "process": "scripts.tutorial.CategoryOptions" }
+            }
+          }
+        }
+      },
+      "Language": {
+        "bind": "where.lang.eq",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Language",
+            "options": [
+              { "label": "English", "value": "en-us" },
+              { "label": "Chinese", "value": "zh-cn" },
+              { "label": "Chinese (Traditional)", "value": "zh-hk" },
+              { "label": "Japanese", "value": "ja-jp" }
+            ]
+          }
+        }
+      }
+    },
+    "table": {
+      "Language": {
+        "bind": "lang",
+        "view": {
+          "type": "Tag",
+          "props": {
+            "options": [
+              { "label": "English", "value": "en-us" },
+              { "label": "Chinese", "value": "zh-cn" },
+              { "label": "Chinese (Traditional)", "value": "zh-hk" },
+              { "label": "Japanese", "value": "ja-jp" }
+            ]
+          }
+        },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "options": [
+              { "label": "English", "value": "en-us" },
+              { "label": "Chinese", "value": "zh-cn" },
+              { "label": "Chinese (Traditional)", "value": "zh-hk" },
+              { "label": "Japanese", "value": "ja-jp" }
+            ]
+          }
+        }
+      },
+      "Icon": {
+        "bind": "icon",
+        "view": { "type": "Text", "props": {} },
+        "edit": { "type": "Input", "props": { "placeholder": "Icon URL" } }
+      },
+      "Title": {
+        "bind": "title",
+        "view": { "type": "Text", "props": { "weight": "medium" } },
+        "edit": { "type": "Input", "props": { "placeholder": "Title" } }
+      },
+      "Category": {
+        "bind": "category",
+        "view": { "type": "Tag", "props": {} },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Category",
+            "allowClear": true,
+            "showSearch": true,
+            "xProps": {
+              "$remote": { "process": "scripts.tutorial.CategoryOptions" }
+            }
+          }
+        }
+      },
+      "Release Date": {
+        "bind": "release_date",
+        "view": { "type": "Text", "props": { "format": "DD/MM/YYYY" } },
+        "edit": { "type": "DatePicker", "props": { "showTime": true } }
+      },
+      "Sort": {
+        "bind": "sort",
+        "view": { "type": "Tag" },
+        "edit": { "type": "InputNumber", "props": { "min": 0, "max": 10000 } }
+      },
+      "URL": {
+        "bind": "url",
+        "view": { "type": "Text", "props": { "target": "_blank" } },
+        "edit": { "type": "Input", "props": { "placeholder": "Tutorial URL" } }
+      }
+    }
+  }
+}

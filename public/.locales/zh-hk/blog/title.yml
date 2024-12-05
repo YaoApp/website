@@ -1,0 +1,7 @@
+name: zh-hk
+formatter: scripts.tests.formatter
+keys:
+    trans__blog_title_1: 在Twitter上關注我們/X
+    trans__blog_title_2: 有關Yao的最新消息、更新、提示和技巧。
+direction: ltr
+timezone: "+8:00"

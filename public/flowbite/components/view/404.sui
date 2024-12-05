@@ -1,0 +1,99 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+</head>
+  <body s:ns="ns_1139b5ff976b11b" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><div namespace="[{ $props.namespace }]" type="flowbite-view-404" class="flowbite-view-404">
+  <s:set name="namespace" value="[{ $props.namespace }]"></s:set>
+  <s:set name="key" value="[{ $props.key }]"></s:set>
+  <s:set name="index" value="[{ $props.index }]"></s:set>
+  <s:set name="mode" value="[{ $props.mode }]"></s:set>
+  <s:set name="data" value="[{ $props.data }]"></s:set>
+  <s:set name="props" value="[{ $props.props }]"></s:set>
+  <s:set name="column" value="[{ $props.column }]"></s:set>
+  <s:set name="bind" value="[{ $props.bind }]"></s:set>
+  <s:set name="value" value="[{ $props.value }]"></s:set>
+  <s:set name="type" value="[{ $props.type }]"></s:set>
+  <s:set name="required" value="{{ props.itemProps != null or props.required == 1 }}"></s:set>
+
+  <label s:if="props.hideLabel != 1" for="{{ key }}" class="block mb-2 text-sm font-medium text-gray-900 cursor-pointer hover:text-primary" label="">
+    <span>{{ column.name }}</span>
+    <span s:if="required" class="text-sm text-danger"> * </span>
+  </label>
+
+  <div class="text-sm text-danger h-[42px] flex items-center bg-gray-50 border border-gray-100 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
+    {{ props.hideLabel != 1 ? &#39;&#39; : column.name }} {{ type }} not found
+  </div>
+</div>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+
+
+<script name="config" type="json">
+{"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+</body></html>

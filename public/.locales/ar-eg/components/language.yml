@@ -1,0 +1,6 @@
+name: ar-eg
+formatter: scripts.tests.formatter
+keys:
+    trans__components_language_1: اختر اللغة
+direction: rtl
+timezone: "+2:00"

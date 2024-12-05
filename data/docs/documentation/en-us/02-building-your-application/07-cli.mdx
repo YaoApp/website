@@ -1,0 +1,204 @@
+---
+title: Command Line Interface
+description:
+related:
+  title: Next Steps
+  description: Integrate AI for chatbots, image generation, and enhanced user input.
+  links:
+    - ai-integration
+---
+
+In this section, We’ll create a custom process to generate a daily report of all pets in the store, scheduled to run at 23:59 every day.
+
+- 🟢 Create and manage data in your application. 👉 [Data Model](data-model)
+- 🟢 Develop RESTful APIs to expose data. 👉 [REST API](rest-api)
+- 🟢 Design web pages to display data. 👉 [Web Page](web-page)
+- 🟢 Build an admin panel to help administrators of the pet store manage data. 👉 [Admin Panel](admin-panel)
+- 🟠 **Create backend commands for task scheduling.**
+- ⚪ Integrate AI for chatbots, image generation, and enhanced user input. 👉 [AI Integration](ai-integration)
+
+Ensure you have read the previous documentation, and the previous steps are completed before proceeding.
+
+👉 [Data Model](data-model)
+
+👉 [Building Your Application](../building-your-application)
+
+## Overview
+
+The CLI lets you interact with your application through commands. It can be used to create custom tasks like generating reports, sending emails, and more.
+
+To schedule commands, there are two options:
+
+1. **Schedule Widget** - Define the schedule, specify the process, and set the execution time directly within the widget.
+
+2. **Cron Jobs** - Use system cron jobs to run `yao run <process>` at specified times.
+
+## Create a Process
+
+Develop a process that generates a daily report of all pets in the store. This process will:
+
+1. Query the database for pets created on the specified date.
+2. Group them by category.
+3. Save the report as a CSV file.
+
+This example demonstrates the comprehensive programming capabilities of Yao.
+
+```typescript
+// scripts/schedules/report.ts
+import { FS, Query, log } from "@yao/runtime";
+
+/**
+ * Generate a report for the given date.
+ * Tests:
+ *   yao run scripts.schedules.report.Generate "2024-11-25"
+ *   yao run scripts.schedules.report.Generate "2024-11-18"
+ * @param date The date to generate the report for. If not provided, today's date is used.
+ */
+function Generate(date?: string) {
+  // Parse the date and get the start and end of the day
+  const time = date ? new Date(date) : new Date();
+  const day = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`;
+  const from = `${day} 00:00:00`;
+  const to = `${day} 23:59:59`;
+
+  // Log the date range
+  console.log(`Generating report for ${day}...`);
+  log.Trace("Generating report for %s...", day);
+
+  // Query data from database
+  // For details, please refer to Query DSL reference
+  const qb = new Query("default");
+  const rows = qb.Get({
+    from: "pets",
+    debug: true,
+    select: [
+      "category_id",
+      "category.category_name",
+      ":COUNT(pets.id) as total",
+    ],
+    joins: [
+      {
+        left: true,
+        from: "pet_categories as category",
+        key: "category_id",
+        foreign: "category.id",
+      },
+    ],
+    wheres: [
+      { field: "pets.created_at", ">=": from },
+      { field: "pets.created_at", "<=": to },
+    ],
+    groups: ["category_id"],
+  });
+
+  // Save the report to a file
+  // For details, please refer to Yao Runtime API reference
+  const fs = new FS("data");
+  const file = `/reports/${day}.csv`; // eg /data/reports/2024-11-25.csv
+  const content = rows
+    .map(
+      (row: Record<string, any>) =>
+        `${row.category_id},${row.category_name},${row.total}`
+    )
+    .join("\n");
+
+  fs.WriteFile(file, content);
+
+  console.log(`Report generated at ${file}`);
+  log.Trace("Report generated at %s", file);
+}
+```
+
+## Schedule via Schedule Widget
+
+Create a new schedule widget to run the process at 23:59 every day.
+
+```json
+// schedules/report.sch.yao
+{
+  "name": "Generate Report at 23:59", // The name of the schedule
+
+  // The cron expression to run the process.
+  "schedule": " */1 * * * *", //  */1 * * * * for every minute, test only
+  // "schedule": "0 59 23 * * *", // 23:59 every day
+  "process": "scripts.schedules.report.Generate", // The process to run
+  "args": [] // The arguments to pass to the process
+}
+```
+
+The directory structure should look like this:
+
+```bash
+├── schedules
+│   └── report.sch.yao # Schedule Widget
+├── scripts
+│   ├── ai
+│   │   └── neo.ts
+│   ├── pet.ts
+│   ├── schedules
+│   │   └── report.ts # Custom Process for generating reports
+│   ├── tests.ts
+│   └── utils.ts
+```
+
+When the HTTP server is running, scheduled tasks will execute at their specified times, and the list of schedules will be displayed in the terminal.
+
+```bash
+---------------------------------
+Schedules List (1)
+---------------------------------
+[Schedule]  */1 * * * * report  Generate Report at 23:59      Process: scripts.schedules.report.Generate
+```
+
+## Schedule via Cron Jobs
+
+You can also use system cron jobs to run the process at 23:59 every day.
+
+```bash
+# Open the crontab file
+crontab -e
+
+# Add the following line to the crontab file
+59 23 * * * cd /path/to/your/project && yao run scripts.schedules.report.Generate
+
+# Save and exit the crontab file
+```
+
+**Silent Mode**
+
+if you want use yao run in shell script, you can use silent mode to avoid the output of the command.
+
+```bash
+yao run scripts.schedules.report.Generate --silent
+
+# or
+yao run -s scripts.schedules.report.Generate
+
+```
+
+Example:
+
+```bash
+# Run the command in silent mode
+result=$(yao run scripts.schedules.report.Generate --silent)
+echo $result
+```
+
+## 🎉 Congratulations
+
+You have successfully created a custom process to generate a daily report of all pets in the store, scheduled to run at 23:59 every day.
+
+Next, you can integrate AI for chatbots, image generation, and enhanced user input.
+
+- 🟢 Create and manage data in your application. 👉 [Data Model](data-model)
+- 🟢 Develop RESTful APIs to expose data. 👉 [REST API](rest-api)
+- 🟢 Design web pages to display data. 👉 [Web Page](web-page)
+- 🟢 Build an admin panel to help administrators of the pet store manage data. 👉 [Admin Panel](admin-panel)
+- 🟢 **Create backend commands for task scheduling.**
+- ⚪ Integrate AI for chatbots, image generation, and enhanced user input. 👉 [AI Integration](ai-integration)
+
+**💬 Build App via Chat:**
+
+👉 [Yao Playground](https://github.com/YaoApp/playground)
+
+👉 [Yao Application Generator](https://mopai.ai)

@@ -1,0 +1,13 @@
+keys:
+    trans__index_hero_1: 入門指南
+    trans__index_hero_2: Github存儲庫
+    trans__index_hero_3: 使用Yao構建Web應用程式
+    trans__index_hero_4: 此應用程序展示了Yao應用程序中SUI的使用方式，非常適合開始您的Web應用程式項目。
+messages:
+    Building Web Applications with Yao: 使用Yao構建Web應用程式
+    Getting Started: 入門指南
+    Github Repo: Github存儲庫
+    ? |-
+        This app demonstrates SUI usage within Yao applications, making it perfect
+              for starting your web application project.
+    : 此應用程序展示了Yao應用程序中SUI的使用方式，非常適合開始您的Web應用程式項目。

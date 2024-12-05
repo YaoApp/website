@@ -1,0 +1,92 @@
+@import url("@assets/css/github.min.css");
+@import url("@assets/css/github-dark.min.css");
+
+.code-canvas {
+  border: 1px solid #f0f0f0;
+  background-color: #f6f8fa !important; /* Light background */
+  padding: 1.2rem !important;
+}
+
+.code-canvas code {
+  font-family: "Fira Code", "JetBrains Mono", "SF Mono", "Menlo", "Monaco",
+    "Consolas", "Liberation Mono", "Courier New", "monospace";
+  font-size: 12px;
+  color: rgb(17 24 39);
+  line-height: 1rem;
+}
+
+.code-canvas code:empty {
+  margin-bottom: 0px;
+}
+
+.dark .code-canvas {
+  background-color: #111827 !important; /* Dark background */
+  border: 1px solid #1f2937;
+}
+
+.dark .code-canvas code {
+  color: #d1d5db;
+}
+
+.scrollbar-dark::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+  height: 6px;
+  background: transparent;
+}
+
+.scrollbar-dark::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.scrollbar-dark::-webkit-scrollbar-thumb {
+  background: #e5e7eb; /* gray-200 */
+  border-radius: 4px;
+}
+
+.scrollbar-dark::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af; /* gray-400 */
+  transition: background-color 0.3s;
+}
+
+.dark .scrollbar-dark::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+  height: 6px;
+  background: transparent;
+}
+
+.dark .scrollbar-dark::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.dark .scrollbar-dark::-webkit-scrollbar-thumb {
+  background: #374151; /* gray-700 */
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.dark .scrollbar-dark::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af; /* gray-400 */
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow-y: hidden;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.scrollbar-hidden:hover {
+  scrollbar-width: auto; /* Firefox */
+  overflow-y: auto;
+}
+
+.scrollbar-hidden:hover::-webkit-scrollbar {
+  display: block; /* Safari and Chrome */
+}

@@ -1,0 +1,93 @@
+<div class="bg-white dark:bg-black min-h-[100vh] justify-start flex flex-col">
+  <header is="/header" active="/blog"></header>
+  <section
+    class="container mx-auto min-h-[calc(100vh-300px)] flex flex-col items-center px-8 lg:px-12 py-12 pb-6"
+  >
+    <!-- Unpublished Article warning -->
+    <div s:if="article.status != 'published'">
+      <div class="flex items-center space-x-2">
+        <i class="material outlined text-danger-500"> warning </i>
+        <span class="text-danger-500 font-medium">
+          This article is not published yet
+        </span>
+      </div>
+    </div>
+
+    <div s:if="True(article.message)">
+      <div class="flex items-center space-x-2">
+        <i class="material outlined text-red-500"> error </i>
+        <span class="text-red-500 font-medium"> {{ article.message }} </span>
+        <a href="/blog" class="text-primary-500 dark:text-primary-400">
+          Back to Blog
+        </a>
+      </div>
+    </div>
+    <div
+      s:else
+      class="flex dark:border-gray-800 flex flex-col max-w-[1200px] w-full"
+    >
+      <!-- Breadcumb -->
+      <a
+        href="/blog"
+        class="text-gray-400 hover:text-gray-500 dark:text-gray-400 dark:hover:text-white flex items-center font-light"
+      >
+        <i class="material outlined text-gray-400 mr-1"> arrow_back </i>
+        <span class="text-sm">Back to Blog</span>
+      </a>
+
+      <div
+        class="text-gray-400 dark:text-gray-400 text-sm flex items-center mt-8 justify-between"
+      >
+        <!-- Published Date -->
+        <span class="cursor-default">{{ article.date }}</span>
+
+        <!-- Categories -->
+        <div class="flex items-center space-x-2">
+          <a
+            s:for="article.categories"
+            s:for-item="category"
+            href="/blog?category={{ category }}"
+            class="block px-2 py-1 text-xs text-gray-700 dark:text-gray-300 bg-primary-50 dark:bg-primary-950 rounded-lg font-medium hover:bg-primary-100 dark:hover:bg-primary-900 cursor-pointer"
+          >
+            {{ category}}
+          </a>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-4xl font-bold mt-6 text-gray-900 dark:text-gray-200">
+        {{ article.title }}
+      </h1>
+
+      <!-- Authors -->
+      <div class="text-gray-400 dark:text-gray-400 text-sm mt-8 cursor-default">
+        <div>Posted by</div>
+        <ul class="flex items-center space-x-2 mt-2">
+          <li
+            s:for="article.authors"
+            class="hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg"
+          >
+            <a href="{{ item.link }}" class="flex items-center" target="_blank">
+              <img
+                src="{{ item.avatar }}"
+                alt="{{ item.name }}"
+                class="w-6 h-6 rounded-full"
+              />
+              <span class="ml-2 font-medium text-gray-500 dark:text-gray-400">
+                {{ item.name }}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Content -->
+      <div
+        class="w-full mt-4 border-t border-gray-100 dark:border-gray-900 pt-8"
+      >
+        <article is="/docs/[name]/article" data="{{ article }}"></article>
+      </div>
+    </div>
+  </section>
+  <footer is="/footer"></footer>
+</div>

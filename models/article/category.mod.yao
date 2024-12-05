@@ -1,0 +1,38 @@
+{
+  "name": "Category",
+  "table": {
+    "name": "article_category",
+    "comment": "Article categories",
+    "engine": "InnoDB"
+  },
+  "columns": [
+    { "label": "ID", "name": "id", "type": "ID", "primary": true },
+    {
+      "label": "Language",
+      "name": "lang",
+      "type": "string",
+      "length": 20,
+      "index": true,
+      "default": "en-us"
+    },
+    {
+      "label": "Name",
+      "name": "name",
+      "type": "string",
+      "index": true,
+      "comment": "Category Name"
+    },
+    {
+      "label": "Sort",
+      "name": "sort",
+      "type": "integer",
+      "default": 9999,
+      "index": true,
+      "comment": "Sort Order"
+    }
+  ],
+  "indexes": [
+    { "name": "lang_slug", "columns": ["lang", "name"], "type": "unique" }
+  ],
+  "option": { "timestamps": true, "soft_deletes": true }
+}

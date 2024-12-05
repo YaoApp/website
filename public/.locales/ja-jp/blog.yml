@@ -1,0 +1,32 @@
+formatter: scripts.tests.formatter
+keys:
+    trans__blog_list_1: 次へ
+    trans__blog_title_1: Twitter/Xて私たちに従ってください
+    trans__blog_title_2: Yaoの最新ニュース、アップデート、ヒント、トリック
+    trans__components_theme_1: 切り替える
+    trans__components_theme_2: Switch to Light Mode
+    trans__components_theme_3: Switch to Light Mode
+    trans__footer_1: お問い合わせ
+    trans__footer_social_1: Githubで表示
+    trans__footer_social_2: Githubで表示
+    trans__footer_social_3: Discordコミュニティに参加
+    trans__footer_social_4: Discordコミュニティでコミュニティを伝おう
+    trans__footer_social_5: Twitter/アースで従う
+    trans__footer_social_6: Twitter/アースで従う
+    trans__footer_social_7: YouTubeチャンネルにサプリウィン
+    trans__footer_social_8: YouTubeチャンネルにサプリウィン
+    trans__header_1: 概要
+    trans__header_2: 使用法
+    trans__header_3: ダウンロード
+    trans__header_4: ドキュメント
+    trans__header_5: ブログ
+    trans__header_6: 展開
+    trans__header_7: App Engine
+    trans__header_8: View on Github
+    trans__header_9: View on Github
+    trans__header_10: Discordコミュニティに参加
+    trans__header_11: Discordコミュニティに参加
+    trans__header_12: Moapi Cloudにデプロイ
+    trans__header_13: Discordコミュニティに参加
+direction: ltr
+timezone: "+9:00"

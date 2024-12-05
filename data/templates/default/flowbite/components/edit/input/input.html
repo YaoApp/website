@@ -1,0 +1,60 @@
+<root
+  id="{{ id }}"
+  type="flowbite-edit-input"
+  data:color="{{ color }}"
+  data:size="{{ size }}"
+  data:disabled="{{ disabled }}"
+  data:required="{{ required }}"
+  class="flowbite-edit-input w-full relative {{ class }}"
+>
+  <div
+    class="
+      absolute inset-y-0 start-0 flex items-center pointer-events-none {{ iconSize }} {{ iconWrapperClass }} 
+      {{ True(icon) ? '' : 'hidden' }}
+    "
+  >
+    <i
+      class="material outlined {{iconPosition}} {{ iconColor }} {{ iconClass }} "
+      icon
+    >
+      {{ icon }}
+    </i>
+  </div>
+  <input
+    id="input-{{ id }}"
+    name="{{ name }}"
+    placeholder="{{ placeholder }}"
+    type="{{ type }}"
+    value="{{ value }}"
+    input
+    class="block w-full z-5 {{ inputSize }} {{ inputColor }} {{ inputPosition }} {{ inputClass }}"
+    s:attr-required="{{ True(required) }}"
+    s:attr-disabled="{{ True(disabled) }}"
+    s:on-input="updateValue"
+    s:on-change="updateValue"
+    s:on-keyup="updateValue"
+    s:on-keydown="updateValue"
+    s:on-focus="focus"
+    s:on-blur="blur"
+    input-element
+  />
+  <div
+    class=" 
+      absolute inset-y-0 z-10 flex items-center  
+      {{ buttonPosition }} {{ buttonWrapperClass }}
+      {{ True(button) ? '' : 'hidden' }}
+    "
+  >
+    <button
+      is="/flowbite/components/button"
+      icon="{{ buttonIcon }}"
+      color="{{ buttonColor }}"
+      size="{{ buttonSize }}"
+      class="{{ buttonClass }}"
+      s:on-click="buttonClick"
+      button
+    >
+      {{ button }}
+    </button>
+  </div>
+</root>

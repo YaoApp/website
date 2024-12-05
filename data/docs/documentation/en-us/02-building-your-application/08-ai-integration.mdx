@@ -1,0 +1,487 @@
+---
+title: AI Integration
+description:
+related:
+  title: Next Steps
+  description: Deploying Your Application
+  links:
+    - deploying-your-application
+---
+
+In this section, we’ll integrate AI into our application to enhance user input, generate images, and create chatbots.
+
+- 🟢 Create and manage data in your application. 👉 [Data Model](data-model)
+- 🟢 Develop RESTful APIs to expose data. 👉 [REST API](rest-api)
+- 🟢 Design web pages to display data. 👉 [Web Page](web-page)
+- 🟢 Build an admin panel to help administrators of the pet store manage data.
+- 🟢 Create backend commands for task scheduling. 👉 [CLI](cli)
+- 🟠 **Integrate AI for chatbots, image generation, and enhanced user input.**
+
+Ensure you have read the previous documentation, and the previous steps are completed before proceeding.
+
+👉 [Admin Panel](admin-panel)
+
+👉 [Building Your Application](../building-your-application)
+
+## Overview
+
+Integrating AI into your Yao application enhances user experience, automates tasks, and unlocks valuable insights.
+
+**Key Use Cases:**
+
+- **Chatbots**: A built-in assistant that serves as the user's natural language interface to interact with your application.
+- **AI-Generated Content**: Use prompts as a Process to generate text, images, and other content dynamically with AI.
+- **AI-Powered Input**: Enhance user input with features like auto-complete, spell-check, translation, and image generation.
+- **AI Agents**: Create intelligent agents that automate tasks by accessing application data, Yao Processes, and runtime APIs.
+
+## Connector
+
+Yao supports integration with the OpenAI API. If you're using a different AI API, you can convert its requests and responses to match the OpenAI format.
+
+### 📜 Create Connectors
+
+Use the Connector Widget to configure the API key and other settings
+
+```json
+// connectors/gpt-4o.conn.yao
+{
+  "label": "Model gpt-4o", // The name of the model for display
+  "type": "openai", // The type of the connector, openai only for now
+  "options": {
+    "model": "gpt-4o", // The AI Model name
+    "key": "$ENV.OPENAI_API_KEY", // The API key, supports environment variables
+    "proxy": "http://ip:port" // Optional proxy server, if needed
+  }
+}
+```
+
+```json
+// connectors/text-embedding-ada-002.conn.yao
+{
+  "label": "text-embedding-ada-002",
+  "type": "openai",
+  "options": {
+    "model": "text-embedding-ada-002",
+    "key": "$ENV.OPENAI_API_KEY"
+  }
+}
+```
+
+The directory structure for the connectors is as follows:
+
+```bash
+├── connectors
+│   ├── gpt-4o.conn.yao
+│   └── text-embedding-ada-002.conn.yao
+```
+
+### 📺 Start the Http Server
+
+Use yao start to start the server.
+
+If used the environment variable, you can set it in the .env file in your project root directory. 👉 **[App Configuration](app-configuration)**
+
+```bash
+# ...
+OPENAI_API_KEY=your-api-key
+# ....
+```
+
+After the application started, the connectors are loaded and available for use in your application.
+
+```bash
+---------------------------------
+Connectors List (2)
+---------------------------------
+[Connector] gpt-4o       loaded
+[Connector] text-embedding-ada-002       loaded
+```
+
+## Chatbots
+
+The built-in chatbot, **Neo**, is configured using the file `neo/neo.yml`. Once configured, you can access the chatbot from the bottom-right corner of the admin panel.
+
+Open the `neo/neo.yml` file and configure the chatbot settings, set the connector to `gpt-4o` .
+
+```yaml
+# guard: "scripts.neo.Guard" # Custom guard, you can use it to check if the user is allowed to access the AI model
+
+conversation:
+  connector: default
+  table: yao_neo_conversation
+  max_size: 10
+  ttl: 3600
+
+connector: "gpt-4o" #  Enter the connector widget ID
+prepare: "scripts.ai.neo.Prepare" # Prepare hook, you can use it to modify the input before sending it to the AI model.
+write: "scripts.ai.neo.Write" # Write hook, you can use it to modify the output before sending it to the user
+
+option:
+  temperature: 0.6
+
+# CORS Settings, witch domains are allowed to access the chatbot API
+allows:
+  - "http://127.0.0.1:8000"
+  - "http://127.0.0.1:5099"
+  - "http://localhost:5099"
+  - "http://localhost:8000"
+```
+
+Open browser and navigate to the admin panel, you can see the chatbot in the bottom-right corner.
+
+## AI-Generated Content
+
+Use the AIGC widget make a Process to generate text, images, and other content dynamically with AI.
+
+**_Note: The AIGC widget DSL is in YAML format, used for inputting prompts._**
+
+### 📜 Create a AIGC widget
+
+The AIGC widget uses the `.ai.yml` file extension.
+
+Create a AIGC widget file `aigc/translate.ai.yml` and set connector to `gpt-4o`, and add prompts.
+
+```yaml
+# Translate
+name: Translate
+connector: gpt-4o # Specify the connector widget ID
+prompts:
+  - role: system
+    content: |
+      - Translate the message to French.
+```
+
+### 📺 Execute the Process
+
+The AIGC widget provides the "aigcs.[widget-id]" process to execute the prompts.
+
+Open terminal and run the command `yao run aigcs.translate`.
+
+```bash
+cd /path/to/your/project
+
+yao run aigcs.translate Hello
+```
+
+The output will be displayed in the terminal.
+
+```bash
+Run: aigcs.translate
+args[0]: Hello
+--------------------------------------
+aigcs.translate Response
+--------------------------------------
+Bonjour
+--------------------------------------
+✨DONE✨
+```
+
+## AI-Powered Input
+
+Each component in the Form DSL has an `ai` property. When set, an AI icon will appear in the top-right corner of the input box. Clicking the icon lets you enter a prompt and send it to the Neo chatbot by pressing the "Send" button. This sends a special message, including the context, prompt, and current form data.
+
+In `neo/neo.yml`, you can use the `Prepare` hook to modify the input before sending it to the AI model, and the `Write` hook to modify the output before it's sent to the user.
+
+By default, `Prepare` and `Write` hooks are defined in `scripts/ai/neo.ts` during installation.
+
+```typescript
+// scripts/ai/neo.ts
+import { io, neo } from "@yao/runtime";
+
+/**
+ * Neo Prepare hook
+ */
+function Prepare(ctx: neo.Context, messages: neo.Message[]): neo.Message[] {
+  return messages;
+}
+
+/**
+ * Neo Write hook
+ */
+function Write(
+  ctx: neo.Context,
+  messages: neo.Message[],
+  response: neo.Response,
+  content?: string,
+  writer?: io.ResponseWriter
+): neo.Response[] {
+  return [response];
+}
+```
+
+### Modify the Form DSL
+
+Modify the Form DSL to include the `ai` property for `fields.form.Description`.
+
+```json
+{
+  // ....
+  "fields": {
+    "form" {
+      // ....
+      "Description": {
+        "bind": "description",
+        "edit": {
+          "type": "TextArea",
+          "props": {
+            // Add the ai property here
+            "ai": {
+              "placeholder": "Input the prompt, and I will generate the description for you."
+            },
+            "placeholder": "Input the description of the pet"
+          }
+        }
+      }
+      // ....
+    }
+  }
+  // ....
+}
+```
+
+### 💾 Modify the Prepare and Write Hooks
+
+You can modify the `Prepare` and `Write` hooks to customize the input and output of the chatbot.
+
+**neo/neo.ts**
+
+**Prepare:** Before sending the input to the AI model, add special prompts for the field input
+
+```typescript
+/**
+ * Neo Prepare hook
+ */
+function Prepare(ctx: neo.Context, messages: neo.Message[]): neo.Message[] {
+  // Print the namespace and field to the terminal for debugging
+  console.log(`Prepare: ${ctx.namespace}`);
+  console.log(ctx.namespace);
+  console.log(ctx.field);
+  console.log(ctx.formdata);
+
+  //  the namespace is "Table-Page-pets/Form-Modal-pets" and the field is "description", Field is the current field that the user is interacting with.
+  if (ctx.namespace === "Table-Page-pets/Form-Modal-pets") {
+    switch (ctx.field?.bind) {
+      case "description":
+        // Add a prompt to generate a description for the pet
+        const lastMessage = messages[messages.length - 1];
+        const prompts: neo.Message[] = [
+          {
+            role: "system",
+            content: `FORMDATA: ${JSON.stringify(ctx.formdata || {})}`,
+          },
+          {
+            role: "system",
+            content: `
+              - According to the formdata I provided, generate a description for the pet.
+              - The description should be a short paragraph that describes the pet.
+              - Answer me the description only, do not include any other information.
+            `,
+          },
+          lastMessage,
+        ];
+
+        // For debugging, print the prompts to the terminal
+        console.log("--- Prompts Content---");
+        console.log(prompts);
+        return prompts;
+    }
+  }
+
+  // The default behavior is to return the messages as-is
+  return messages;
+}
+```
+
+**Write:** After receiving the output from the AI model, modify the output add action to update the form data.
+
+```typescript
+/**
+ * Neo Write hook
+ */
+function Write(
+  ctx: neo.Context,
+  messages: neo.Message[],
+  response: neo.Response,
+  content?: string,
+  writer?: io.ResponseWriter
+): neo.Response[] {
+  // Print the namespace and field to the terminal for debugging
+  console.log(ctx.namespace);
+  console.log(ctx.field);
+  console.log(ctx.formdata);
+
+  //  the namespace is "Table-Page-pets/Form-Modal-pets" and the field is "description", Field is the current field that the user is interacting with.
+  if (
+    ctx.namespace === "Table-Page-pets/Form-Modal-pets" &&
+    ctx.field?.bind === "description"
+  ) {
+    const { namespace, field } = ctx;
+    if (content === undefined) {
+      return [response];
+    }
+
+    if (!response.done) {
+      return [response];
+    }
+
+    response.actions = [
+      {
+        name: "Done",
+        type: "Common.emitEvent",
+        payload: { key: `${namespace}/${field.bind}/unloading` },
+      }, // mark the field as done
+      {
+        name: "SetFieldsValue",
+        type: "Common.emitEvent",
+        payload: {
+          key: `${namespace}/setFieldsValue`,
+          value: { description: content },
+        },
+      }, // Update the formdata with the description field
+      {
+        name: "SetNeoVisible",
+        type: "Common.emitEvent",
+        payload: {
+          key: `app/setNeoVisible`,
+          value: { visible: true },
+        },
+      }, // show the chatbot, for editing the output
+    ];
+
+    console.log("--- Response Actions ---");
+    console.log(response.actions);
+    console.log("--- Response ---");
+  }
+
+  // the default behavior is to return the response as-is
+  return [response];
+}
+```
+
+For more information, refer to the 👉 **[AI-powered Input Tutorial](/docs/tutorials/ai-input/getting-started)**
+
+## AI Agents
+
+Through the Prepare and Write hooks, you can create intelligent agents that automate tasks by accessing application data, Yao Processes, and runtime APIs.
+
+> **Note:** The AI Agent feature is still experimental and may change in future versions. For security reasons, some limitations might be added later.
+
+### Organizing Your AI Agents
+
+1. **Directory Structure**: Place all your AI agents in the `agents` directory.
+2. **Interface Definition**: Define the `Agent` interface.
+3. **Implementation**: Implement the logic for each agent.
+
+By following these steps, you can streamline task automation within your application.
+
+```bash
+├── scripts
+│   ├── ai
+│   │   ├── actions.ts
+│   │   ├── agents
+│   │   │   ├── article
+│   │   │   │   ├── content.ts
+│   │   │   │   ├── cover.ts
+│   │   │   │   └── share_message.ts
+│   │   │   ├── defaults.ts
+│   │   │   ├── playground.ts
+│   │   │   └── select.ts
+│   │   ├── aigcs
+│   │   │   └── doc.ts
+│   │   ├── neo.ts
+│   │   └── utils.ts
+```
+
+```typescript
+export interface IAgent {
+  Prepare: (context: Context, messages: Message[]) => Message[];
+  Write: (
+    context: Context,
+    messages: Message[],
+    response: Response,
+    content?: string,
+    writer?: io.ResponseWriter
+  ) => Response[];
+}
+```
+
+To maintain clarity and simplicity, keep the `Prepare` and `Write` hooks in `scripts/ai/neo.ts` straightforward. Delegate the complex logic to the agents.
+
+```typescript
+import { io, neo } from "@yao/runtime";
+import { DefaultChat, DefaultInput } from "./agents/defaults";
+import { SelectAgent } from "./agents/select";
+
+/**
+ * Neo Prepare hook
+ */
+function Prepare(ctx: neo.Context, messages: neo.Message[]): neo.Message[] {
+  const { namespace, field } = ctx;
+
+  const agent = SelectAgent(ctx);
+  if (agent) {
+    return agent.Prepare(ctx, messages);
+  }
+
+  // AI Powered Input
+  if (namespace && field && field.bind) {
+    return DefaultInput.Prepare(ctx, messages);
+  }
+
+  // AI Chatbot
+  return DefaultChat.Prepare(ctx, messages);
+}
+
+/**
+ * Neo Write hook
+ */
+function Write(
+  ctx: neo.Context,
+  messages: neo.Message[],
+  response: neo.Response,
+  content?: string,
+  writer?: io.Writer
+): neo.Response[] {
+  const { namespace, field } = ctx;
+  const agent = SelectAgent(ctx);
+  if (agent) {
+    return agent.Write(ctx, messages, response, content, writer);
+  }
+
+  // AI Powered Input
+  if (namespace && field && field.bind) {
+    return DefaultInput.Write(ctx, messages, response, content, writer);
+  }
+
+  // AI Chatbot
+  return DefaultChat.Write(ctx, messages, response, content);
+}
+```
+
+For more information on creating and managing AI agents, please refer to the following resources:
+
+- 👉 **[AI Agent Tutorial](/docs/tutorials/ai-agent/getting-started)**: A comprehensive guide to help you get started with AI agents.
+- 👉 **[Yao Website Repo](https://github.com/YaoApp/yao-website)**: Explore the Yao Website Repository for more examples of AI agents and best practices.
+
+These resources provide valuable insights and examples to help you enhance your AI agent development.
+
+## 🎉 Congratulations
+
+You have successfully integrated AI into your application to enhance user input and create chatbots.
+
+- 🟢 Create and manage data in your application. 👉 [Data Model](data-model)
+- 🟢 Develop RESTful APIs to expose data. 👉 [REST API](rest-api)
+- 🟢 Design web pages to display data. 👉 [Web Page](web-page)
+- 🟢 Build an admin panel to help administrators of the pet store manage data. 👉 [Admin Panel](admin-panel)
+- 🟢 Create backend commands for task scheduling. 👉 [CLI](cli)
+- 🟢 **Integrate AI for chatbots, image generation, and enhanced user input.**
+
+Next, you can deploy your application to make it accessible to users.
+
+👉 [Deploying Your Application](../deploying-your-application)
+
+**💬 Build App via Chat:**
+
+👉 [Yao Playground](https://github.com/YaoApp/playground)
+
+👉 [Yao Application Generator](https://mopai.ai)

@@ -1,0 +1,67 @@
+<div namespace="{% namespace %}" type="flowbite-link" class="flowbite-link">
+  <s:set name="id" value="{% id %}"></s:set>
+  <s:set name="name" value="{% name %}"></s:set>
+  <s:set name="class" value="{% class %}"></s:set>
+  <s:set name="title" value="{% title %}"></s:set>
+  <s:set name="size" value="{% size %}"></s:set>
+  <s:set name="color" value="{% color %}"></s:set>
+  <s:set name="href" value="{% href %}"></s:set>
+  <s:set name="target" value="{% target %}"></s:set>
+  <s:set name="weight" value="{% weight %}"></s:set>
+  <s:set name="icon" value="{% icon %}"></s:set>
+  <s:set
+    name="sizes"
+    value="{{ { 
+          'xs': 'text-xs', 
+          'sm': 'text-sm', 
+          'base': 'text-base',
+          'lg': 'text-lg', 
+          'xl': 'text-xl',
+          'none': ''
+      } }}"
+  ></s:set>
+  <s:set
+    name="colors"
+    value="{{ {
+          'primary': 'text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300',
+          'dark':   'text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-200',
+          'light':  'text-gray-200 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-500',
+          'success': 'text-success hover:text-success-800 dark:text-success dark:hover:text-dark-success-700',
+          'danger': 'text-danger hover:text-danger-800 dark:text-danger dark:hover:text-dark-danger-700',
+          'warning': 'text-warning hover:text-warning-800 dark:text-warning dark:hover:text-dark-warning-700',
+          'info': 'text-info hover:text-info-800 dark:text-info dark:hover:text-dark-info-700',
+          'none': ''
+      } }}
+    "
+  ></s:set>
+  <s:set
+    name="weights"
+    value="{{ {
+          'normal': 'font-normal',
+          'medium': 'font-medium',
+          'bold': 'font-bold',
+          'semibold': 'font-semibold',
+          'light': 'font-light',
+          'none': ''
+      } }}"
+  ></s:set>
+
+  <a
+    id="{{ id }}"
+    name="{{ name }}"
+    title="{{ title }}"
+    class="cursor-pointer hover:transition hover:duration-200 hover:ease-in-out
+          {{ icon != '' ? 'flex items-center justify-start' : 'inline-block' }}
+          {{ size != '' ? sizes[size] : sizes.base }}
+          {{ color != '' ? colors[color] : colors.primary }}
+          {{ weight != '' ? weights[weight] : weights.normal }}
+          {{ class }}
+      "
+    href="{{ href }}"
+    target="{{ target != '' ? target : '_self' }}"
+    button
+  >
+    <i s:if="icon != ''" class="material outlined me-1"> {{icon}} </i>
+    <children></children>
+  </a>
+</div>

@@ -1,0 +1,35 @@
+<div class="flex flex-col h-[100vh] overflow-hidden">
+  <div class="label">Preview</div>
+  <div class="h-auto h-full">
+    <!-- Placeholder for the preview -->
+    <div
+      s:if="len($query.url) == 0 || $query.url[0] == ''"
+      class="flex items-center justify-center h-full panel"
+    >
+      <div class="text-center p-6">
+        <div class="text-sm text-gray-500">Please enter a URL to preview</div>
+      </div>
+    </div>
+
+    <!-- If the URL is valid, show the preview -->
+    <div s:else class="h-[100vh] panel">
+      <!-- Loading indicator -->
+      <div
+        class="flex items-center justify-center h-full overflow-scroll"
+        id="loading"
+      >
+        <div class="text-center p-6">
+          <div class="text-sm text-gray-500">Loading...</div>
+        </div>
+      </div>
+      <iframe
+        id="preview"
+        class="flex-1 hidden border-0 radius-[6px] overflow-auto"
+        s:on-load="OnPreviewLoaded"
+        height="100%"
+        width="100%"
+        frameborder="0"
+      ></iframe>
+    </div>
+  </div>
+</div>

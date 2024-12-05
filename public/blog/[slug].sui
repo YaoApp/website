@@ -1,0 +1,633 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ article.title }} - {{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="{{ article.seo_keywords }},Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="{{ article.seo_description ?? article.summary  }}"/>
+    <meta property="og:title" content="{{ article.seo_title ?? article.title }} - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+<script s:ns="ns_62cd9e9a9c0549c6" s:cn="comp__components_theme" s:hash="script_d3c38cadcbca4c4d" type="text/javascript" s:trans-script="trans__components_theme_1,trans__components_theme_2">
+function comp__components_theme( component ){
+  this.root=component;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,e,o){return new __Render(__self,o).Exec(t,e)},this.emit=function(t,e){const o=new CustomEvent(t,{detail:e});__self.root.dispatchEvent(o)};const self=this,themeToggle=self.$root.find("#theme-toggle"),lightIcon=self.$root.find("#theme-toggle-light-icon"),darkIcon=self.$root.find("#theme-toggle-dark-icon"),toggleTooltips=self.$root.find("[theme-toggle-tooltip]");self.once=Init;function getMode(){const t=new Yao;return t.Cookie("color-theme")==="dark"||!t.Cookie("color-theme")&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function setMode(t){const e=new Yao;if(setThemeToggleBtn(t),t==="light"){document.documentElement.classList.remove("dark"),e.SetCookie("color-theme","light");return}document.documentElement.classList.add(t),e.SetCookie("color-theme","dark")}function setThemeToggleBtn(t){if(t==="light"){lightIcon.element.setAttribute("style","display: none;"),darkIcon.element.setAttribute("style","display: block;"),toggleTooltips.find(".tips").element.innerHTML=__m("Switch to Dark Mode");return}lightIcon.element.setAttribute("style","display: block;"),darkIcon.element.setAttribute("style","display: none;"),toggleTooltips.find(".tips").element.innerHTML=__m("Switch to Light Mode")}function Init(){themeToggle.on("click",function(){const e=getMode();setMode(e==="dark"?"light":"dark")});const t=getMode();setThemeToggleBtn(t)}this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const e=this.getAttribute("s:cn"),o=t.detail.target,n=t.detail.key,i=t.detail.value,s=new window[e](this);new __sui_state(s).Set(n,i,o)}),__self.once&&__self.once());
+}
+
+</script>
+<script s:ns="ns_e8190a1ee0721acd" s:cn="comp__flowbite_components_button" s:hash="script_1eb9da5f2126a2eb" type="text/javascript">
+function comp__flowbite_components_button( component ){
+  this.root=component;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,r,e){return new __Render(__self,e).Exec(t,r)},this.emit=function(t,r){const e=new CustomEvent(t,{detail:r});__self.root.dispatchEvent(e)};const colorStyles={primary:"text-white bg-primary-700 hover:bg-primary-800 dark:bg-dark-primary-600 dark:hover:bg-dark-primary-700",dark:"text-gray-100 bg-gray-900  hover:bg-gray-700 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200",light:"text-gray-900 bg-white box-border border border-gray-200 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-700",danger:"text-white bg-danger-700 hover:bg-danger-800 dark:bg-dark-danger-600 dark:hover:bg-dark-danger-700",success:"text-white bg-success-700 hover:bg-success-800 dark:bg-dark-success-600 dark:hover:bg-dark-success-700",warning:"text-white bg-warning-700 hover:bg-warning-800 dark:bg-dark-warning-600 dark:hover:bg-dark-warning-700",info:"text-white bg-info-700 hover:bg-info-800 dark:bg-dark-info-600 dark:hover:bg-dark-info-700",none:""},disabledStyles={primary:"text-white bg-primary-300 dark:bg-dark-primary-300",dark:"text-gray-300 bg-gray-700 dark:bg-gray-700",light:"text-gray-300 bg-white box-border border border-gray-200 dark:text-gray-700 dark:border-gray-800 dark:bg-gray-900",danger:"text-white bg-danger-300 dark:bg-dark-danger-300",success:"text-white bg-success-300 dark:bg-dark-success-300",warning:"text-white bg-warning-300 dark:bg-dark-warning-300",info:"text-white bg-info-300 dark:bg-dark-info-300",none:""};function removeClass(t,r){r.split(" ").forEach(e=>{e&&t.classList.contains(e)&&t.classList.remove(e)})}function addClass(t,r){r.split(" ").forEach(e=>{e&&!t.classList.contains(e)&&t.classList.add(e)})}this.watch={disabled:t=>{const r=this.root.querySelector("[button]"),e=r.getAttribute("color")||"primary";if(t){removeClass(r,colorStyles[e]),addClass(r,disabledStyles[e]),r.setAttribute("disabled","true");return}removeClass(r,disabledStyles[e]),addClass(r,colorStyles[e]),r.removeAttribute("disabled")},loading:t=>{const r=this.root.querySelector("[icon]"),e=this.root.querySelector("[button]");if(t){r.classList.add("animate-spin"),r.innerHTML="progress_activity",e.setAttribute("disabled","true");return}const i=r.getAttribute("name");r.classList.remove("animate-spin"),r.innerHTML=i,e.removeAttribute("disabled")}},this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const r=this.getAttribute("s:cn"),e=t.detail.target,i=t.detail.key,a=t.detail.value,n=new window[r](this);new __sui_state(n).Set(i,a,e)}),__self.once&&__self.once());
+}
+
+</script>
+<script s:ns="ns_bab534a523146770" s:cn="comp__header" s:hash="script_21a5bb0d0a97250" type="text/javascript">
+function comp__header( component ){
+  this.root=component;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,o,n){return new __Render(__self,n).Exec(t,o)},this.emit=function(t,o){const n=new CustomEvent(t,{detail:o});__self.root.dispatchEvent(n)},this.OpenDashboard=function(t,o,n){const i="/admin/auth";new Yao().Post("/auth/auto-login").then(e=>{if(e.code&&e.message)throw new Error(e.message);const s=`${i}?data=${e.base64}`;window.location.href=s}).catch(e=>{console.error("login error",e)})},this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const o=this.getAttribute("s:cn"),n=t.detail.target,i=t.detail.key,r=t.detail.value,e=new window[o](this);new __sui_state(e).Set(i,r,n)}),__self.once&&__self.once());
+}
+
+</script>
+<script s:ns="ns_8c66f56c203f9a55" s:cn="comp__docs__name__article" s:hash="script_642008438ada2da5" type="text/javascript">
+function comp__docs__name__article( component ){
+  var __defProp=Object.defineProperty;var __getOwnPropSymbols=Object.getOwnPropertySymbols;var __hasOwnProp=Object.prototype.hasOwnProperty,__propIsEnum=Object.prototype.propertyIsEnumerable;var __defNormalProp=(obj,key,value)=>key in obj?__defProp(obj,key,{enumerable:!0,configurable:!0,writable:!0,value}):obj[key]=value,__spreadValues=(a,b)=>{for(var prop in b||(b={}))__hasOwnProp.call(b,prop)&&__defNormalProp(a,prop,b[prop]);if(__getOwnPropSymbols)for(var prop of __getOwnPropSymbols(b))__propIsEnum.call(b,prop)&&__defNormalProp(a,prop,b[prop]);return a};this.root=component;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(selector){return new __Query(__self.root).find(selector)},this.query=function(selector){return __self.root.querySelector(selector)},this.queryAll=function(selector){return __self.root.querySelectorAll(selector)},this.render=function(name,data,option){return new __Render(__self,option).Exec(name,data)},this.emit=function(name,data){const event=new CustomEvent(name,{detail:data});__self.root.dispatchEvent(event)};const root=$(arguments[0]),content=root.find("[content]"),loading=root.find("[loading]");function Init(){const{Remarkable}=remarkable,raw=(content.find("#markdown").html()||"Not Found").replace(/&nbsp;/g," ").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&").replace(/&quot;/g,'"').replace(/&apos;/g,"'").replace(/&copy;/g,"\xA9").replace(/&reg;/g,"\xAE"),parser=new Remarkable({Remarkable:!0});parser.renderer.rules.component=componentRender,parser.inline.ruler.before("text","component",componentParser),parser.renderer.rules.fence=(tokens,idx,options,env,self)=>{const token=tokens[idx],lang=token.params||"teplaintextxt",languageClass=`language-${lang}`,content2=highlight(token.content,lang);return`<pre class="code-canvas ${languageClass}"><code>${content2}</code></pre>`};const html=parser.render(raw);content.html(html);const outline=outlineParser();$("#outline").trigger("change",[outline]),content.removeClass("hidden"),loading.addClass("hidden")}function outlineParser(){const scrollTo=elm=>{const target=$(elm);if(target.length>0){const top=target.offset().top||!1;top&&(window.scrollTo({top:top-96,behavior:"smooth"}),history.pushState?history.pushState(null,null,elm):location.hash=elm)}},outline=[];return(content.find("h2")||[]).each((index,title)=>{const text=$(title).text(),id=text.toLowerCase().replace(/ /g,"-");$(title).attr("id",id),$(title).addClass("hover:text-blue-500 cursor-pointer"),$(title).on("click",()=>{scrollTo(`#${escapeJQuerySelector(id)}`)}),outline.push({id,title:text,link:`#${id}`})}),(document.querySelectorAll('a[href^="#"]')||[]).forEach(link=>{$(link).on("click",e=>{e.preventDefault();const href=$(link).attr("href");scrollTo(href)})}),outline}function componentParser(state,startLine,endLine,silent){const start=state.pos;if(state.src.charCodeAt(start)!==123||state.src.charCodeAt(start+1)!==123||state.src.charCodeAt(start+2)!==60)return!1;const tagEnd=state.src.indexOf(">}}",start+3);if(tagEnd===-1)return!1;if(silent)return!0;const content2=state.src.slice(start+3,tagEnd).trim(),parts=content2.split(" ");if(parts.length<2)return!1;const name=parts[0].trim(),query=parts.slice(1),params={};return query.forEach(q=>{let[key,value]=q.split("=");key=key.trim(),value=value.trim().replace(/"/g,"").replace(/'/g,""),params[key]=value}),!params.id||params.id.length==""?!1:(state.pos=tagEnd+3,state.tokens.push({type:"component",params:__spreadValues({name},params),content:content2}),!0)}function componentRender(tokens,idx){const name=tokens[idx].params.name,is=tokens[idx].params.id,height=tokens[idx].params.height||"300px",url=`/${name}/${is}`,id=`${name}-${is}`.replace(/\//g,"-");return`
+    <div style="height: ${height};" class="overflow-hidden relative">
+      <div id="${id}" class="flex justify-center items-center h-full animate-spin">
+          <span class="material outlined text-gray-400 text-2xl">autorenew</span>
+      </div>
+      <iframe src="${url}" onload="$('#${id}').hide();$(this).show();" style="width: 100%; height: ${height}; border: none; display:none "></iframe>
+    </div>
+    `}function highlight(str,lang){if(lang&&hljs.getLanguage(lang))try{return hljs.highlight(str,{language:lang,ignoreIllegals:!0}).value}catch(err){}try{return hljs.highlightAuto(str).value}catch(err){}return""}function escapeJQuerySelector(id){return id.replace(/([ ;?%&,.+*~':"!^$[\]()=>|/@])/g,"\\$1")}Init(),this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(event){const name=this.getAttribute("s:cn"),target=event.detail.target,key=event.detail.key,value=event.detail.value,component2=new window[name](this);new __sui_state(component2).Set(key,value,target)}),__self.once&&__self.once());
+}
+
+</script>
+<script s:ns="ns_81a6be93809382bf" s:cn="comp__blog__slug_" s:hash="script_83715a8b2c1b7b77" src="/assets/js/remarkable.min.js" type="text/javascript"></script>
+<script s:ns="ns_81a6be93809382bf" s:cn="comp__blog__slug_" s:hash="script_fd2aeb90da3314c5" src="/assets/js/highlight.min.js" type="text/javascript"></script>
+</head>
+  <body s:ns="ns_81a6be93809382bf" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><div class="bg-white dark:bg-black min-h-[100vh] justify-start flex flex-col">
+  <header class="border-b border-gray-100 dark:border-gray-900 text-gray-700 dark:text-gray-300 bg-white/70 dark:bg-black/10 sticky backdrop-blur-md top-0 z-50" s:public="/" s:assets="/assets" prop:active="/blog" s:ns="ns_bab534a523146770" s:cn="comp__header" s:ready="comp__header()" s:parent="ns_81a6be93809382bf">
+  <s:set name="acvice" value="/blog"></s:set>
+
+  <section class="container px-4 mx-auto flex justify-between items-center h-[64px]">
+    <!-- Navigation -->
+    <div class="flex items-center">
+      <a href="/" class="flex items-center text-black dark:text-white hover:text-primary dark:hover:text-primary-400 transition-colors duration-200 ease-in-out font-medium mr-8 rtl:ml-8">
+        <img src="/assets/images/logos/logo_color.svg" alt="Logo" class="h-[48px] w-[48px] mr-1 rtl:ml-1"/>
+
+        <svg width="203.730522px" height="84.7927014px" fill="currentColor" viewBox="0 0 203.730522 84.7927014" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="h-[24px] mr-2 rtl:ml-1 w-auto" s:public="/" s:assets="/assets" prop:class="h-[24px] mr-2 rtl:ml-1 w-auto" s:ns="ns_e3fa3e590eaeb3c2" s:cn="comp__components_wordmark" s:ready="comp__components_wordmark()" s:parent="ns_bab534a523146770">
+  <title>{{ article.title }} - {{ $global.title }}</title>
+  <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
+    <g id="wordmark" transform="translate(3.6524, 0)" fill-rule="nonzero">
+      <g id="Y" transform="translate(0, 17.574)" stroke-width="2">
+        <path d="M11.7117273,-1 L30.7041414,29.5153895 L49.7421009,-1 L63.2793234,-1 L36.53125,40.8392106 L36.53125,66.2077923 L24.921875,66.2077923 L24.921875,40.8392106 L-1.82619836,-1 L11.7117273,-1 Z" id="Path"></path>
+      </g>
+      <polygon id="Path" points="115.01285 -8.84485529e-16 97.5271287 14.5865172 106.515326 17.5739514 124.136377 2.09137895"></polygon>
+      <g id="o" transform="translate(148.0781, 24.7927)">
+        <path d="M52,48.9014085 C52,50.4413146 51.7082881,51.8873239 51.1248643,53.2394366 C50.5414405,54.5915493 49.7509953,55.7652582 48.7535288,56.7605634 C47.7560623,57.7558685 46.5892146,58.5446009 45.2529859,59.1267606 C43.9167571,59.7089202 42.4770177,60 40.9337676,60 L11.0662324,60 C9.56062251,60 8.13029316,59.7089202 6.7752443,59.1267606 C5.42019544,58.5446009 4.24393775,57.7558685 3.24647123,56.7605634 C2.24900471,55.7652582 1.45855954,54.5915493 0.875135722,53.2394366 C0.291711907,51.8873239 0,50.4413146 0,48.9014085 L0,11.0985915 C0,9.55868545 0.291711907,8.11267606 0.875135722,6.76056338 C1.45855954,5.4084507 2.24900471,4.23474178 3.24647123,3.23943662 C4.24393775,2.24413146 5.42019544,1.45539906 6.7752443,0.873239437 C8.13029316,0.291079812 9.56062251,0 11.0662324,0 L40.9337676,0 C42.4770177,0 43.9167571,0.291079812 45.2529859,0.873239437 C46.5892146,1.45539906 47.7560623,2.24413146 48.7535288,3.23943662 C49.7509953,4.23474178 50.5414405,5.4084507 51.1248643,6.76056338 C51.7082881,8.11267606 52,9.55868545 52,11.0985915 L52,48.9014085 Z M11.0662324,11.0985915 L11.0662324,48.9014085 L40.9337676,48.9014085 L40.9337676,11.0985915 L11.0662324,11.0985915 Z" id="Shape"></path>
+      </g>
+      <g id="a" transform="translate(78.0781, 24.7927)">
+        <path d="M0,33.8028169 C0,32.2629108 0.29245283,30.8262911 0.877358491,29.4929577 C1.46226415,28.1596244 2.25471698,26.9859155 3.25471698,25.971831 C4.25471698,24.9577465 5.43396226,24.1596244 6.79245283,23.5774648 C8.1509434,22.9953052 9.58490566,22.7042254 11.0943396,22.7042254 L39.8490566,22.7042254 L39.8490566,11.0985915 L3.45283019,11.0985915 L3.45283019,0 L39.8490566,0 C41.3962264,0 42.8490566,0.291079812 44.2075472,0.873239437 C45.5660377,1.45539906 46.745283,2.24413146 47.745283,3.23943662 C48.745283,4.23474178 49.5377358,5.4084507 50.1226415,6.76056338 C50.7075472,8.11267606 51,9.55868545 51,11.0985915 L51,60 L39.8490566,60 L39.8490566,49.8591549 C39.7358491,51.2488263 39.3584906,52.5633803 38.7169811,53.8028169 C38.0754717,55.0422535 37.254717,56.1220657 36.254717,57.0422535 C35.254717,57.9624413 34.1132075,58.685446 32.8301887,59.2112676 C31.5471698,59.7370892 30.1886792,60 28.754717,60 L11.0943396,60 C9.58490566,60 8.1509434,59.7089202 6.79245283,59.1267606 C5.43396226,58.5446009 4.25471698,57.7558685 3.25471698,56.7605634 C2.25471698,55.7652582 1.46226415,54.5915493 0.877358491,53.2394366 C0.29245283,51.8873239 0,50.4413146 0,48.9014085 L0,33.8028169 Z M11.0943396,48.9014085 L39.8490566,48.9014085 L39.8490566,33.8028169 L11.0943396,33.8028169 L11.0943396,48.9014085 Z" id="Shape"></path>
+      </g>
+    </g>
+  </g>
+</svg>
+
+        <span class="font-medium text-base h-[30px] flex items-end" s:trans="" s:trans-node="trans__header_8" s:trans-escape="true">
+          App Engine
+        </span>
+      </a>
+
+      <nav class="text-gray-500 dark:text-gray-200 hidden lg:flex">
+        <div namespace="" type="flowbite-link" class="flowbite-link" s:public="/" s:assets="/assets" s:for="{{ [ 
+            {&#39;name&#39;:&#39;::Overview&#39;, &#39;href&#39;: &#39;/&#39;, &#39;target&#39;: &#39;_self&#39; },
+            {&#39;name&#39;:&#39;::Uses&#39;, &#39;href&#39;: &#39;/uses&#39;, &#39;target&#39;: &#39;_self&#39; },
+            {&#39;name&#39;:&#39;::Download&#39;, &#39;href&#39;: &#39;/download&#39;, &#39;target&#39;: &#39;_self&#39; },
+            {&#39;name&#39;:&#39;::Documentation&#39;, &#39;href&#39;: &#39;/docs&#39;, &#39;target&#39;: &#39;_self&#39; },
+            {&#39;name&#39;:&#39;::Community&#39;, &#39;href&#39;: &#39;/docs/documentation/en-us/community&#39;, &#39;target&#39;: &#39;_self&#39; },
+            {&#39;name&#39;:&#39;::Blog&#39;, &#39;href&#39;: &#39;/blog&#39;, &#39;target&#39;: &#39;_self&#39; },
+          ] }}" s:trans-attr-s:for="trans__header_1,trans__header_2,trans__header_3,trans__header_4,trans__header_5,trans__header_6" prop:href="{{ item.href }}" prop:target="{{ item.target }}" prop:color="{{ acvice == item.href ? &#39;primary&#39; : &#39;dark&#39; }}" prop:class="text-sm mx-2.5" s:ns="ns_ef81982516cc8d52" s:cn="comp__flowbite_components_anchor" s:ready="comp__flowbite_components_anchor()" s:parent="ns_bab534a523146770">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value="text-sm mx-2.5"></s:set>
+  <s:set name="title" value=""></s:set>
+  <s:set name="size" value=""></s:set>
+  <s:set name="color" value="{{ acvice == item.href ? &#39;primary&#39; : &#39;dark&#39; }}"></s:set>
+  <s:set name="href" value="{{ item.href }}"></s:set>
+  <s:set name="target" value="{{ item.target }}"></s:set>
+  <s:set name="weight" value=""></s:set>
+  <s:set name="icon" value=""></s:set>
+  <s:set name="sizes" value="{{ { 
+          &#39;xs&#39;: &#39;text-xs&#39;, 
+          &#39;sm&#39;: &#39;text-sm&#39;, 
+          &#39;base&#39;: &#39;text-base&#39;,
+          &#39;lg&#39;: &#39;text-lg&#39;, 
+          &#39;xl&#39;: &#39;text-xl&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+  <s:set name="colors" value="{{ {
+          &#39;primary&#39;: &#39;text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300&#39;,
+          &#39;dark&#39;:   &#39;text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-200&#39;,
+          &#39;light&#39;:  &#39;text-gray-200 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-500&#39;,
+          &#39;success&#39;: &#39;text-success hover:text-success-800 dark:text-success dark:hover:text-dark-success-700&#39;,
+          &#39;danger&#39;: &#39;text-danger hover:text-danger-800 dark:text-danger dark:hover:text-dark-danger-700&#39;,
+          &#39;warning&#39;: &#39;text-warning hover:text-warning-800 dark:text-warning dark:hover:text-dark-warning-700&#39;,
+          &#39;info&#39;: &#39;text-info hover:text-info-800 dark:text-info dark:hover:text-dark-info-700&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}
+    "></s:set>
+  <s:set name="weights" value="{{ {
+          &#39;normal&#39;: &#39;font-normal&#39;,
+          &#39;medium&#39;: &#39;font-medium&#39;,
+          &#39;bold&#39;: &#39;font-bold&#39;,
+          &#39;semibold&#39;: &#39;font-semibold&#39;,
+          &#39;light&#39;: &#39;font-light&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+
+  <a id="{{ id }}" name="{{ name }}" title="{{ title }}" class="cursor-pointer hover:transition hover:duration-200 hover:ease-in-out
+          {{ icon != &#39;&#39; ? &#39;flex items-center justify-start&#39; : &#39;inline-block&#39; }}
+          {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+          {{ color != &#39;&#39; ? colors[color] : colors.primary }}
+          {{ weight != &#39;&#39; ? weights[weight] : weights.normal }}
+          {{ class }}
+      " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" button="">
+    <i s:if="icon != &#39;&#39;" class="material outlined me-1"> {{icon}} </i>
+    
+          {{ item.name }}
+        
+  </a>
+</div>
+
+      </nav>
+    </div>
+    <!-- Navigation END -->
+
+    <div class="items-center justify-end hidden lg:flex">
+      <!-- Theme -->
+      <div s:public="/" s:assets="/assets" prop:id="header" s:ns="ns_62cd9e9a9c0549c6" s:cn="comp__components_theme" s:ready="comp__components_theme()" s:parent="ns_bab534a523146770">
+  <button s:if="__page_theme == null" id="theme-toggle" data-tooltip-target="tooltip-toggle-header" type="button" class=" text-gray-500 inline-flex items-center justify-center dark:text-gray-400 hover:bg-gray-100 w-10 h-10 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+    <svg id="theme-toggle-dark-icon" class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+      <path d="M17.8 13.75a1 1 0 0 0-.859-.5A7.488 7.488 0 0 1 10.52 2a1 1 0 0 0 0-.969A1.035 1.035 0 0 0 9.687.5h-.113a9.5 9.5 0 1 0 8.222 14.247 1 1 0 0 0 .004-.997Z"></path>
+    </svg>
+    <svg id="theme-toggle-light-icon" class="w-4 h-4 hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-11a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1Zm0 12a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1ZM4.343 5.757a1 1 0 0 0 1.414-1.414L4.343 2.929a1 1 0 0 0-1.414 1.414l1.414 1.414Zm11.314 8.486a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM4 10a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1Zm15-1h-2a1 1 0 1 0 0 2h2a1 1 0 0 0 0-2ZM4.343 14.243l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0-1.414-1.414ZM14.95 6.05a1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 .707 1.707Z"></path>
+    </svg>
+    <span class="sr-only"></span>
+  </button>
+  <div id="tooltip-toggle-header" role="tooltip" theme-toggle-tooltip="" class="hidden sm:inline-flex absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible" style="
+      position: absolute;
+      inset: auto auto 0px 0px;
+      margin: 0px;
+      transform: translate3d(1233.5px, -60px, 0px);
+    " data-popper-placement="top" s:trans="" s:trans-escape="true">
+    <span class="tips">Switch to Dark Mode</span>
+    <div class="tooltip-arrow" data-popper-arrow="" style="
+        position: absolute;
+        left: 0px;
+        transform: translate3d(68.5px, 0px, 0px);
+      "></div>
+  </div>
+</div>
+
+
+      <!-- Github -->
+      <a href="https://github.com/YaoApp/yao" target="_blank" data-tooltip-target="tooltip-github-1" class="hidden sm:inline-flex items-center justify-center text-gray-500 w-10 h-10 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
+        <svg class="w-[1.1rem] h-[1.1rem]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"></path>
+        </svg>
+        <span class="sr-only" s:trans="" s:trans-node="trans__header_9" s:trans-escape="true">View on Github</span>
+      </a>
+      <div id="tooltip-github-1" role="tooltip" class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible" style="
+          position: absolute;
+          inset: auto auto 0px 0px;
+          margin: 0px;
+          transform: translate3d(1066.5px, -60px, 0px);
+        " data-popper-placement="top" s:trans="" s:trans-node="trans__header_10" s:trans-escape="true">
+        View on Github
+        <div class="tooltip-arrow" data-popper-arrow="" style="
+            position: absolute;
+            left: 0px;
+            transform: translate3d(59.5px, 0px, 0px);
+          "></div>
+      </div>
+
+      <!-- Discord -->
+      <a href="https://discord.gg/BkMR2NUsjU" target="_blank" data-tooltip-target="tooltip-discord-1" class="hidden sm:inline-flex items-center justify-center text-gray-500 w-10 h-10 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-2">
+        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
+          <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"></path>
+        </svg>
+        <span class="sr-only" s:trans="" s:trans-node="trans__header_11" s:trans-escape="true">Join Discord community</span>
+      </a>
+      <div id="tooltip-discord-1" role="tooltip" class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible" style="
+          position: absolute;
+          inset: auto auto 0px 0px;
+          margin: 0px;
+          transform: translate3d(1071px, -60px, 0px);
+        " data-popper-placement="top" s:trans="" s:trans-node="trans__header_12" s:trans-escape="true">
+        Join community on Discord
+        <div class="tooltip-arrow" data-popper-arrow="" style="
+            position: absolute;
+            left: 0px;
+            transform: translate3d(99px, 0px, 0px);
+          "></div>
+      </div>
+
+      <!-- Generate -->
+      <div data-tooltip-target="tooltip-moapi">
+        <div namespace="" id="" type="flowbite-button" class="flowbite-button" state-loading="false" state-disabled="false" s:public="/" s:assets="/assets" prop:color="dark" prop:size="sm" prop:href="https://moapi.ai/?from=yaoapps.com" prop:icon="mark_chat_unread" prop:target="_blank" s:ns="ns_e8190a1ee0721acd" s:cn="comp__flowbite_components_button" s:ready="comp__flowbite_components_button()" s:parent="ns_bab534a523146770">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value=""></s:set>
+  <s:set name="size" value="sm"></s:set>
+  <s:set name="color" value="dark"></s:set>
+  <s:set name="href" value="https://moapi.ai/?from=yaoapps.com"></s:set>
+  <s:set name="target" value="_blank"></s:set>
+  <s:set name="icon" value="mark_chat_unread"></s:set>
+  <s:set name="iconClass" value=""></s:set>
+  <s:set name="disabled" value="false"></s:set>
+  <s:set name="loading" value="false"></s:set>
+
+  <s:set name="sizes" value="{{ { 
+        &#39;xs&#39;: &#39;text-xs px-3 py-1.5&#39;, 
+        &#39;sm&#39;: &#39;text-sm px-3 py-1.5&#39;, 
+        &#39;base&#39;: &#39;text-sm px-4 py-2&#39;, 
+        &#39;lg&#39;: &#39;text-base px-5 py-2.5&#39;, 
+        &#39;xl&#39;: &#39;text-lg px-6 py-3&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+  <s:set name="colors" value="{{ {
+        &#39;primary&#39;: &#39;text-white bg-primary-700 hover:bg-primary-800 dark:bg-dark-primary-600 dark:hover:bg-dark-primary-700&#39;,
+        &#39;dark&#39;:   &#39;text-gray-100 bg-gray-900  hover:bg-gray-700 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200&#39;,
+        &#39;light&#39;:  &#39;text-gray-900 bg-white box-border border border-gray-200 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-700&#39;,
+        &#39;danger&#39;: &#39;text-white bg-danger-700 hover:bg-danger-800 dark:bg-dark-danger-600 dark:hover:bg-dark-danger-700&#39;,
+        &#39;success&#39;: &#39;text-white bg-success-700 hover:bg-success-800 dark:bg-dark-success-600 dark:hover:bg-dark-success-700&#39;,
+        &#39;warning&#39;: &#39;text-white bg-warning-700 hover:bg-warning-800 dark:bg-dark-warning-600 dark:hover:bg-dark-warning-700&#39;,
+        &#39;info&#39;: &#39;text-white bg-info-700 hover:bg-info-800 dark:bg-dark-info-600 dark:hover:bg-dark-info-700&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}
+  "></s:set>
+
+  <s:set name="disabledStyles" value="{{ {
+      &#39;primary&#39;: &#39;text-white bg-primary-300 dark:bg-dark-primary-300&#39;,
+      &#39;dark&#39;: &#39;text-gray-300 bg-gray-700 dark:bg-gray-700&#39;,
+      &#39;light&#39;: &#39;text-gray-300 bg-white box-border border border-gray-200 dark:text-gray-700 dark:border-gray-800 dark:bg-gray-900&#39;,
+      &#39;danger&#39;: &#39;text-white bg-danger-300 dark:bg-dark-danger-300&#39;,
+      &#39;success&#39;: &#39;text-white bg-success-300 dark:bg-dark-success-300&#39;,
+      &#39;warning&#39;: &#39;text-white bg-warning-300 dark:bg-dark-warning-300&#39;,
+      &#39;info&#39;: &#39;text-white bg-info-300 dark:bg-dark-info-300&#39;,
+      &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+
+  <a s:if="{{ href != &#39;&#39; }}" id="{{ id }}" class="
+        rounded-lg
+        flex justify-center items-center cursor-pointer
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" s:attr-disabled="True(disabled)" s:attr-loading="True(loading)" color="{{ color }}" button="" s:trans-node="trans__header_7">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{ icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39; }}  {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+          Build App via Chat
+        
+  </a>
+
+  <button s:else="" name="{{ name }}" type="button" class="
+        rounded-lg    
+        flex justify-center items-center
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " s:attr-disabled="True(disabled) or True(loading)" s:attr-loading="True(loading)" color="{{ color }}" button="" s:trans-node="trans__header_7">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39;}} {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+          Build App via Chat
+        
+  </button>
+</div>
+
+
+        <div id="tooltip-moapi" role="tooltip" class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible" style="
+            position: absolute;
+            inset: auto auto 0px 0px;
+            margin: 0px;
+            transform: translate3d(1071px, -60px, 0px);
+          " data-popper-placement="top" s:trans="" s:trans-node="trans__header_13" s:trans-escape="true">
+          Create Apps via Chat using Moapi.ai
+          <div class="tooltip-arrow" data-popper-arrow="" style="
+              position: absolute;
+              left: 0px;
+              transform: translate3d(99px, 0px, 0px);
+            "></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile lg:hidden flex justify-end items-center">
+      <!-- RSS Link Icon-->
+      <a href="/blog" class="flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary-500 hover:dark:text-primary-400 rounded-lg mr-1.5">
+        <i class="material outlined font-light text-xl"> rss_feed </i>
+      </a>
+
+      <!-- Discord -->
+      <a href="https://discord.gg/BkMR2NUsjU" target="_blank" class="sm:inline-flex items-center justify-center text-gray-500 w-10 h-10 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
+          <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"></path>
+        </svg>
+        <span class="sr-only" s:trans="" s:trans-node="trans__header_14" s:trans-escape="true">Join Discord community</span>
+      </a>
+
+      <div s:public="/" s:assets="/assets" prop:id="header-mobile" s:ns="ns_62cd9c9a9c054660" s:cn="comp__components_theme" s:ready="comp__components_theme()" s:parent="ns_bab534a523146770">
+  <button s:if="__page_theme == null" id="theme-toggle" data-tooltip-target="tooltip-toggle-header-mobile" type="button" class=" text-gray-500 inline-flex items-center justify-center dark:text-gray-400 hover:bg-gray-100 w-10 h-10 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+    <svg id="theme-toggle-dark-icon" class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+      <path d="M17.8 13.75a1 1 0 0 0-.859-.5A7.488 7.488 0 0 1 10.52 2a1 1 0 0 0 0-.969A1.035 1.035 0 0 0 9.687.5h-.113a9.5 9.5 0 1 0 8.222 14.247 1 1 0 0 0 .004-.997Z"></path>
+    </svg>
+    <svg id="theme-toggle-light-icon" class="w-4 h-4 hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-11a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1Zm0 12a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1ZM4.343 5.757a1 1 0 0 0 1.414-1.414L4.343 2.929a1 1 0 0 0-1.414 1.414l1.414 1.414Zm11.314 8.486a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM4 10a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1Zm15-1h-2a1 1 0 1 0 0 2h2a1 1 0 0 0 0-2ZM4.343 14.243l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0-1.414-1.414ZM14.95 6.05a1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 .707 1.707Z"></path>
+    </svg>
+    <span class="sr-only"></span>
+  </button>
+  <div id="tooltip-toggle-header-mobile" role="tooltip" theme-toggle-tooltip="" class="hidden sm:inline-flex absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible" style="
+      position: absolute;
+      inset: auto auto 0px 0px;
+      margin: 0px;
+      transform: translate3d(1233.5px, -60px, 0px);
+    " data-popper-placement="top" s:trans="" s:trans-escape="true">
+    <span class="tips">Switch to Dark Mode</span>
+    <div class="tooltip-arrow" data-popper-arrow="" style="
+        position: absolute;
+        left: 0px;
+        transform: translate3d(68.5px, 0px, 0px);
+      "></div>
+  </div>
+</div>
+
+    </div>
+  </section>
+</header>
+
+  <section class="container mx-auto min-h-[calc(100vh-300px)] flex flex-col items-center px-8 lg:px-12 py-12 pb-6">
+    <!-- Unpublished Article warning -->
+    <div s:if="article.status != &#39;published&#39;">
+      <div class="flex items-center space-x-2">
+        <i class="material outlined text-danger-500"> warning </i>
+        <span class="text-danger-500 font-medium">
+          This article is not published yet
+        </span>
+      </div>
+    </div>
+
+    <div s:if="True(article.message)">
+      <div class="flex items-center space-x-2">
+        <i class="material outlined text-red-500"> error </i>
+        <span class="text-red-500 font-medium"> {{ article.message }} </span>
+        <a href="/blog" class="text-primary-500 dark:text-primary-400">
+          Back to Blog
+        </a>
+      </div>
+    </div>
+    <div s:else="" class="flex dark:border-gray-800 flex flex-col max-w-[1200px] w-full">
+      <!-- Breadcumb -->
+      <a href="/blog" class="text-gray-400 hover:text-gray-500 dark:text-gray-400 dark:hover:text-white flex items-center font-light">
+        <i class="material outlined text-gray-400 mr-1"> arrow_back </i>
+        <span class="text-sm">Back to Blog</span>
+      </a>
+
+      <div class="text-gray-400 dark:text-gray-400 text-sm flex items-center mt-8 justify-between">
+        <!-- Published Date -->
+        <span class="cursor-default">{{ article.date }}</span>
+
+        <!-- Categories -->
+        <div class="flex items-center space-x-2">
+          <a s:for="article.categories" s:for-item="category" href="/blog?category={{ category }}" class="block px-2 py-1 text-xs text-gray-700 dark:text-gray-300 bg-primary-50 dark:bg-primary-950 rounded-lg font-medium hover:bg-primary-100 dark:hover:bg-primary-900 cursor-pointer">
+            {{ category}}
+          </a>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-4xl font-bold mt-6 text-gray-900 dark:text-gray-200">
+        {{ article.title }}
+      </h1>
+
+      <!-- Authors -->
+      <div class="text-gray-400 dark:text-gray-400 text-sm mt-8 cursor-default">
+        <div>Posted by</div>
+        <ul class="flex items-center space-x-2 mt-2">
+          <li s:for="article.authors" class="hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg">
+            <a href="{{ item.link }}" class="flex items-center" target="_blank">
+              <img src="{{ item.avatar }}" alt="{{ item.name }}" class="w-6 h-6 rounded-full"/>
+              <span class="ml-2 font-medium text-gray-500 dark:text-gray-400">
+                {{ item.name }}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Content -->
+      <div class="w-full mt-4 border-t border-gray-100 dark:border-gray-900 pt-8">
+        <div type="article" s:public="/" s:assets="/assets" prop:data="{{ article }}" s:ns="ns_8c66f56c203f9a55" s:cn="comp__docs__name__article" s:ready="comp__docs__name__article()" s:parent="ns_81a6be93809382bf">
+  <s:set name="article" value="{{ article }}"></s:set>
+  <div class="w-full text-gray-400 dark:text-gray-500" loading=""></div>
+  <div class="w-full prose md:px-6 !max-w-none prose-gray dark:prose-invert hidden" content="" s:raw="true">
+    <pre id="markdown">{{ article.content }}</pre>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </section>
+  <div class="mt-6 lg:mt-12 border-t border-gray-100 dark:border-gray-900 pt-8 pb-8 text-center text-sm text-gray-400" s:public="/" s:assets="/assets" s:ns="ns_de1dcf8215052953" s:cn="comp__footer" s:ready="comp__footer()" s:parent="ns_81a6be93809382bf">
+  <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center px-6">
+    <div class="hidden lg:flex flex-grid items-center justify-center py-10" s:public="/" s:assets="/assets" prop:class="social" s:ns="ns_5fb1e9809f2380d5" s:cn="comp__footer_social" s:ready="comp__footer_social()" s:parent="ns_de1dcf8215052953">
+  <!-- Github -->
+  <a href="https://github.com/YaoApp/yao" data-tooltip-target="tooltip-github-2" class="hidden sm:inline-flex items-center justify-center text-gray-500 w-10 h-10 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
+    <svg class="w-[1.1rem] h-[1.1rem]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"></path>
+    </svg>
+    <span class="sr-only" s:trans="" s:trans-node="trans__footer_social_1" s:trans-escape="true">View on Github</span>
+  </a>
+  <div id="tooltip-github-2" role="tooltip" class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible" style="
+      position: absolute;
+      inset: auto auto 0px 0px;
+      margin: 0px;
+      transform: translate3d(1066.5px, -60px, 0px);
+    " data-popper-placement="top" s:trans="" s:trans-node="trans__footer_social_2" s:trans-escape="true">
+    View on Github
+    <div class="tooltip-arrow" data-popper-arrow="" style="
+        position: absolute;
+        left: 0px;
+        transform: translate3d(59.5px, 0px, 0px);
+      "></div>
+  </div>
+
+  <!-- Discord -->
+  <a href="https://discord.gg/BkMR2NUsjU" target="_blank" data-tooltip-target="tooltip-discord-2" class="hidden sm:inline-flex items-center justify-center text-gray-500 w-10 h-10 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
+    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
+      <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"></path>
+    </svg>
+    <span class="sr-only" s:trans="" s:trans-node="trans__footer_social_3" s:trans-escape="true">Join Discord community</span>
+  </a>
+  <div id="tooltip-discord-2" role="tooltip" class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible" style="
+      position: absolute;
+      inset: auto auto 0px 0px;
+      margin: 0px;
+      transform: translate3d(1071px, -60px, 0px);
+    " data-popper-placement="top" s:trans="" s:trans-node="trans__footer_social_4" s:trans-escape="true">
+    Join community on Discord
+    <div class="tooltip-arrow" data-popper-arrow="" style="
+        position: absolute;
+        left: 0px;
+        transform: translate3d(99px, 0px, 0px);
+      "></div>
+  </div>
+
+  <!-- x -->
+  <a href="https://twitter.com/YaoApp" data-tooltip-target="tooltip-twitter" class="hidden sm:inline-flex items-center justify-center text-gray-500 w-10 h-10 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
+    <svg class="w-4.5 h-4.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M13.8 10.5 20.7 2h-3l-5.3 6.5L7.7 2H1l7.8 11-7.3 9h3l5.7-7 5.1 7H22l-8.2-11.5Zm-2.4 3-1.4-2-5.6-7.9h2.3l4.5 6.3 1.4 2 6 8.5h-2.3l-4.9-7Z"></path>
+    </svg>
+    <span class="sr-only" s:trans="" s:trans-node="trans__footer_social_5" s:trans-escape="true">Follow us on Twitter/X</span>
+  </a>
+  <div id="tooltip-twitter" role="tooltip" class="absolute z-10 inline-flex px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible" style="
+      position: absolute;
+      inset: auto auto 0px 0px;
+      margin: 0px;
+      transform: translate3d(1176px, -60px, 0px);
+    " data-popper-placement="top" s:trans="" s:trans-node="trans__footer_social_6" s:trans-escape="true">
+    Follow us on Twitter/X
+    <div class="tooltip-arrow" data-popper-arrow="" style="
+        position: absolute;
+        left: 0px;
+        transform: translate3d(82px, 0px, 0px);
+      "></div>
+  </div>
+
+  <!-- Youtube -->
+  <a href="https://www.youtube.com/@yaoappengine4741" data-tooltip-target="tooltip-youtube" class="hidden sm:inline-flex items-center justify-center text-gray-500 w-10 h-10 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
+    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
+      <path fill-rule="evenodd" d="M19.7 3.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.84c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.84A4.225 4.225 0 0 0 .3 3.038a30.148 30.148 0 0 0-.2 3.206v1.5c.01 1.071.076 2.142.2 3.206.094.712.363 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.15 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965c.124-1.064.19-2.135.2-3.206V6.243a30.672 30.672 0 0 0-.202-3.206ZM8.008 9.59V3.97l5.4 2.819-5.4 2.8Z" clip-rule="evenodd"></path>
+    </svg>
+    <span class="sr-only" s:trans="" s:trans-node="trans__footer_social_7" s:trans-escape="true">Subscribe to YouTube channel</span>
+  </a>
+  <div id="tooltip-youtube" role="tooltip" class="absolute z-10 inline-flex px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible" style="
+      position: absolute;
+      inset: auto auto 0px 0px;
+      margin: 0px;
+      transform: translate3d(1104.5px, -60px, 0px);
+    " data-popper-placement="top" s:trans="" s:trans-node="trans__footer_social_8" s:trans-escape="true">
+    Subscribe to YouTube channel
+    <div class="tooltip-arrow" data-popper-arrow="" style="
+        position: absolute;
+        left: 0px;
+        transform: translate3d(109.5px, 0px, 0px);
+      "></div>
+  </div>
+</div>
+
+
+    <div>
+      <div class="mb-2">
+        Copyright © {{ now().Year() }} Infinite Wisdom Software
+      </div>
+      <div class="mb-2">
+        Powered by
+        <a href="https://yaoapps.com" target="_blank" class="text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300">
+          Yao App Engine
+        </a>
+      </div>
+    </div>
+
+    <div class="flex flex-col mt-6 lg:mt-0 lg:flex-row lg:justify-end items-center space-x-6">
+      <a href="https://moapi.ai/contact" target="_blank" class="text-gray-400 hover:text-gray-500 dark:text-gray-400 dark:hover:text-white flex items-center" s:trans="" s:trans-node="trans__footer_1" s:trans-escape="true">
+        Contact
+      </a>
+      <!--
+      <a
+        href="https://moapi.ai/about"
+        target="_blank"
+        class="text-gray-400 hover:text-gray-500 dark:text-gray-400 dark:hover:text-white flex items-center"
+        s:trans
+      >
+        About
+      </a>
+      
+        This feature will be enabled when documentation for other languages becomes available.
+        <LanguageSelect is="/components/language"></LanguageSelect>
+      -->
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_81a6be93809382bf" s:cn="comp__blog__slug_" s:hash="script_5b7e938101399b57" type="text/javascript">
+this.Constants = {}
+this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,e,o){return new __Render(__self,o).Exec(t,e)},this.emit=function(t,e){const o=new CustomEvent(t,{detail:e});__self.root.dispatchEvent(o)},this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const e=this.getAttribute("s:cn"),o=t.detail.target,n=t.detail.key,i=t.detail.value,s=new window[e](this);new __sui_state(s).Set(n,i,o)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"cache":3600,"dataCache":300,"api":null,"root":"/","title":"{{ article.title }} - {{ $global.title }}","guard":"","cacheStore":"cache"}
+</script>
+
+
+
+<script name="data" type="json">
+{
+  "$article": "@Article"
+}
+
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+
+
+<script name="imports" type="json">
+{"comp__flowbite_components_button":"/flowbite/components/button","comp__header":"/header","comp__docs__name__article":"/docs/[name]/article","comp__footer_social":"/footer/social","comp__footer":"/footer","comp__components_wordmark":"/components/wordmark","comp__flowbite_components_anchor":"/flowbite/components/anchor","comp__components_theme":"/components/theme"}
+</script>
+
+</body></html>

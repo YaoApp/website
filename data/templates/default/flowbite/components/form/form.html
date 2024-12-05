@@ -1,0 +1,49 @@
+<div type="flowbite-form">
+  <s:set name="name" value="[{ $props.name }]"></s:set>
+  <s:set name="mode" value="[{ $props.mode }]"></s:set>
+  <s:set name="dsl" value="[{ $props.dsl }]"></s:set>
+  <s:set name="data" value="[{ $props.data }]"></s:set>
+  <s:set name="class" value="[{ $props.class }]"></s:set>
+  <s:set
+    name="primary"
+    value="{{ dsl.layout.primary != null ? dsl.layout.primary : 'id'}}"
+  ></s:set>
+  <s:set name="fields" value="{{ dsl.fields.form }}"></s:set>
+
+  <form name="{{ name }}" class="{{ class }}">
+    <input type="hidden" name="__primary_key" value="{{ data[primary] }}" />
+
+    <div
+      class="grid grid-cols-12 gap-x-0 w-full lg:gap-x-8"
+      s:for="dsl.layout.form.sections"
+      s:for-item="section"
+      name="{{ section.name }}"
+      section
+    >
+      <h4
+        s:if="section.title != null and section.title != ''"
+        class="col-span-12 mb-4 text-sm font-medium text-gray-900"
+      >
+        {{ section.title }}
+      </h4>
+
+      <div
+        s:for="section.columns"
+        s:for-item="column"
+        class="relative mb-6 col-span-12 lg:col-span-{{column.width / 2}}"
+        column
+      >
+        <s:set name="field" value="{{ fields[column.name] }}"></s:set>
+        <FormItem
+          is="/flowbite/components/form/item"
+          index="{{ index }}"
+          mode="{{ mode }}"
+          column="{{ column }}"
+          data="{{ data }}"
+          field="{{ field }}"
+          namespace="{{ name }}"
+        />
+      </div>
+    </div>
+  </form>
+</div>

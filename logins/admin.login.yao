@@ -1,0 +1,9 @@
+{
+  "name": "Admin Login",
+  "action": { "process": "yao.login.Admin", "args": [":payload"] },
+  "layout": {
+    "entry": "/x/Table/article",
+    "slogan": "Yao Official Website",
+    "site": "https://yaoapps.com?from=instance-yao-website-source"
+  }
+}

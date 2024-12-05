@@ -1,0 +1,33 @@
+#!/usr/bin/env pwsh
+# PowerShell Script: Install Yao
+
+# Check if WSL is installed
+if (-not (Get-Command wsl -ErrorAction SilentlyContinue)) {
+    Write-Error "WSL is not installed. Please install WSL before running this script."
+    exit 1
+}
+
+
+# Check if 'curl' is installed in WSL
+Write-Host "Checking if 'curl' is installed in WSL..."
+if (-not (wsl command -v curl)) {
+   Write-Error "'curl' is not installed in WSL. Please ensure 'curl' is installed before running this script."
+   exit 1
+}
+
+# Check if 'unzip' is installed in WSL
+if (-not (wsl command -v unzip)) {
+    Write-Error "'unzip' is not installed in WSL. Please ensure 'unzip' is installed before running this script."
+    exit 1
+}
+
+# Run the installation command in WSL
+Write-Host "Running the installation script in WSL..."
+wsl curl -fsSL https://yaoapps.com/install.sh -o ~/yao-install.sh
+wsl chmod +x ~/yao-install.sh
+wsl ~/yao-install.sh
+wsl rm ~/yao-install.sh
+
+# Keep the WSL session open
+Write-Host "Installation completed. Keeping the WSL session open..."
+wsl

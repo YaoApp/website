@@ -1,0 +1,105 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+</head>
+  <body s:ns="ns_62cda19a9c054edf" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><div>
+  <button s:if="__page_theme == null" id="theme-toggle" data-tooltip-target="tooltip-toggle-{% id %}" type="button" class="{% class %} text-gray-500 inline-flex items-center justify-center dark:text-gray-400 hover:bg-gray-100 w-10 h-10 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+    <svg id="theme-toggle-dark-icon" class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+      <path d="M17.8 13.75a1 1 0 0 0-.859-.5A7.488 7.488 0 0 1 10.52 2a1 1 0 0 0 0-.969A1.035 1.035 0 0 0 9.687.5h-.113a9.5 9.5 0 1 0 8.222 14.247 1 1 0 0 0 .004-.997Z"></path>
+    </svg>
+    <svg id="theme-toggle-light-icon" class="w-4 h-4 hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-11a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1Zm0 12a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1ZM4.343 5.757a1 1 0 0 0 1.414-1.414L4.343 2.929a1 1 0 0 0-1.414 1.414l1.414 1.414Zm11.314 8.486a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM4 10a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1Zm15-1h-2a1 1 0 1 0 0 2h2a1 1 0 0 0 0-2ZM4.343 14.243l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0-1.414-1.414ZM14.95 6.05a1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 .707 1.707Z"></path>
+    </svg>
+    <span class="sr-only"></span>
+  </button>
+  <div id="tooltip-toggle-{% id %}" role="tooltip" theme-toggle-tooltip="" class="hidden sm:inline-flex absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible" style="
+      position: absolute;
+      inset: auto auto 0px 0px;
+      margin: 0px;
+      transform: translate3d(1233.5px, -60px, 0px);
+    " data-popper-placement="top" s:trans="" s:trans-escape="true">
+    <span class="tips">Switch to Dark Mode</span>
+    <div class="tooltip-arrow" data-popper-arrow="" style="
+        position: absolute;
+        left: 0px;
+        transform: translate3d(68.5px, 0px, 0px);
+      "></div>
+  </div>
+</div>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_62cda19a9c054edf" s:cn="comp__components_theme" s:hash="script_3d637d5a3ca867af" type="text/javascript" s:trans-script="trans__components_theme_1,trans__components_theme_2">
+this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,e,o){return new __Render(__self,o).Exec(t,e)},this.emit=function(t,e){const o=new CustomEvent(t,{detail:e});__self.root.dispatchEvent(o)};const self=this,themeToggle=self.$root.find("#theme-toggle"),lightIcon=self.$root.find("#theme-toggle-light-icon"),darkIcon=self.$root.find("#theme-toggle-dark-icon"),toggleTooltips=self.$root.find("[theme-toggle-tooltip]");self.once=Init;function getMode(){const t=new Yao;return t.Cookie("color-theme")==="dark"||!t.Cookie("color-theme")&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function setMode(t){const e=new Yao;if(setThemeToggleBtn(t),t==="light"){document.documentElement.classList.remove("dark"),e.SetCookie("color-theme","light");return}document.documentElement.classList.add(t),e.SetCookie("color-theme","dark")}function setThemeToggleBtn(t){if(t==="light"){lightIcon.element.setAttribute("style","display: none;"),darkIcon.element.setAttribute("style","display: block;"),toggleTooltips.find(".tips").element.innerHTML=__m("Switch to Dark Mode");return}lightIcon.element.setAttribute("style","display: block;"),darkIcon.element.setAttribute("style","display: none;"),toggleTooltips.find(".tips").element.innerHTML=__m("Switch to Light Mode")}function Init(){themeToggle.on("click",function(){const e=getMode();setMode(e==="dark"?"light":"dark")});const t=getMode();setThemeToggleBtn(t)}this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const e=this.getAttribute("s:cn"),o=t.detail.target,n=t.detail.key,i=t.detail.value,s=new window[e](this);new __sui_state(s).Set(n,i,o)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"dataCache":0,"api":null,"root":"/","title":"","guard":"","cacheStore":"cache","cache":0}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+</body></html>

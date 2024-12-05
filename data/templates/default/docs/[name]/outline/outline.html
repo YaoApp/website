@@ -1,0 +1,55 @@
+<nav
+  id="[{ $props.id }]"
+  class="sticky top-[100px] h-[calc(100vh-100px)] order-last hidden w-56 shrink-0 lg:flex lg:flex-col bg-white dark:bg-black scrollbar-hidden scrollbar-dark transition-all duration-300 fade-in"
+>
+  <s:set name="github" value="[{ $props.github }]"></s:set>
+  <div
+    class="text-gray-500 dark:text-gray-400 text-sm font-medium mb-2 flex items-center justify-between"
+  >
+    <span title>On this page</span>
+    <a
+      class="text-gray-500 dark:text-gray-400 text-sm font-medium hover:text-gray-700 dark:hover:text-gray-100 flex items-center cursor-pointer"
+      s:on-click="toggleOutline"
+    >
+      <i class="material outlined text-lg" icon> last_page </i>
+    </a>
+  </div>
+
+  <div content>
+    <ul items></ul>
+    <div
+      divider
+      class="border-t border-gray-100 mt-4 mb-4 hidden dark:border-gray-800"
+    ></div>
+    <ul>
+      <li class="mb-1.5">
+        <a
+          href="{{ github }}"
+          target="_blank"
+          class="text-sm text-gray-500 hover:text-gray-700 flex flex-row items-center dark:hover:text-gray-100 dark:text-gray-400 cursor-pointer"
+        >
+          <span>Edit this page on GitHub</span>
+          <i class="ml-2 material outlined">arrow_outward</i>
+        </a>
+      </li>
+
+      <li class="mb-1.5">
+        <a
+          class="text-sm text-gray-500 hover:text-gray-700 flex flex-row items-center cursor-pointer hidden dark:text-gray-400 dark:hover:text-gray-100"
+          scroll-to-top
+        >
+          <span>Scroll to top</span>
+          <i class="ml-2 material outlined">keyboard_double_arrow_up</i>
+        </a>
+      </li>
+    </ul>
+
+    <li item-template class="hidden mb-1.5">
+      <a
+        href="#"
+        class="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-100 dark:text-gray-400"
+      >
+      </a>
+    </li>
+  </div>
+</nav>

@@ -1,0 +1,32 @@
+keys:
+    trans__header_1: Overview
+    trans__header_2: Uses
+    trans__header_3: Download
+    trans__header_4: Documentation
+    trans__header_5: مدونة
+    trans__header_6: نشر
+    trans__header_7: App Engine
+    trans__header_8: View on Github
+    trans__header_9: View on Github
+    trans__header_10: Join Discord community
+    trans__header_11: Join community on Discord
+    trans__header_12: Deploy to Moapi Cloud
+    trans__header_13: Join Discord community
+messages:
+    App Engine: محرك التطبيقات
+    Blog: مدونة
+    Community: مجتمع
+    Dashboard: لوحة البيانات
+    Deploy: نشر
+    Deploy to Moapi Cloud: نشر على سحابة Moapi
+    Docs: المستندات
+    Documentation: التوثيق
+    Download: تحميل
+    Hub: مركز
+    Join Discord community: انضم لمجتمع Discord
+    Join community on Discord: انضم للمجتمع على Discord
+    Overview: نظرة عامة
+    Showcase: عرض
+    Uses: الاستخدامات
+    View on Github: عرض على Github
+    WEB: ويب

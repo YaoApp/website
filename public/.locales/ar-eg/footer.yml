@@ -1,0 +1,14 @@
+name: ar-eg
+formatter: scripts.tests.formatter
+keys:
+    trans__footer_1: Contact
+    trans__footer_social_1: شاهد على Github
+    trans__footer_social_2: شاهد على Github
+    trans__footer_social_3: انضم لمجتمع Discord
+    trans__footer_social_4: انضم للمجتمع على Discord
+    trans__footer_social_5: تابعنا على تويتر/X
+    trans__footer_social_6: تابعنا على تويتر/X
+    trans__footer_social_7: اشترك في قناة يوتيوب
+    trans__footer_social_8: اشترك في قناة يوتيوب
+direction: rtl
+timezone: "+2:00"

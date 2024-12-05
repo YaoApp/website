@@ -1,0 +1,427 @@
+---
+title: 网页
+description: 创建网页来显示数据。
+related:
+  title: 下一步
+  description: 创建管理面板帮助宠物商店的管理员管理数据。
+  links:
+    - admin-panel
+---
+
+在本节中，我们将使用简单用户界面（SUI）来构建一个显示应用程序数据的动态网页。
+
+SUI 是一个内置的基于组件的模板引擎，使用 HTML、CSS 和 TypeScript 来创建网页。它对 AI 友好，支持服务器端渲染（SSR），并且不需要额外的构建工具。
+
+- 🟢 在应用程序中创建和管理数据。 👉 [数据模型](data-model)
+- 🟢 开发 RESTful API 来暴露数据。 👉 [REST API](rest-api)
+- 🟠 **设计网页来显示数据。**
+- ⚪ 构建管理面板帮助宠物商店的管理员管理数据。 👉 [Admin Panel](admin-panel)
+- ⚪ 创建后端命令用于任务调度。 👉 [CLI](cli)
+- ⚪ 集成 AI 用于聊天机器人、图像生成和增强用户输入。 👉 [AI Integration](ai-integration)
+
+在继续之前，确保你已阅读了之前的文档，并且已完成了前面的步骤。
+
+👉 [数据模型](data-model)
+
+👉 [构建你的应用程序](../building-your-application)
+
+## 概述
+
+SUI 是 Yao v0.10.4 中的一个新功能，它对 AI 友好并简化了网页创建和数据集成。它支持向后兼容，使开发者能够使用 HTML、CSS 和 TypeScript/JavaScript，同时通过基于组件的架构促进代码重用。
+
+SUI 不需要额外的构建工具，并且天然支持服务器端渲染（SSR），增强了 SEO 并使其适合网站开发。
+
+**_注意：SUI 是一个新功能，仍处于实验阶段。对于高级前端需求，考虑使用 React 或 Vue 等框架。将构建的文件放在 `public` 目录中，并通过 REST API 与 Yao 连接。_**
+
+在这里访问完整的教程：👉 [网站教程](/docs/tutorials/website/getting-started)
+
+如果你对我们为什么推荐 SUI 感兴趣，请阅读这篇博客文章：
+
+👉 [为什么 Yao 要重新发明这么多轮子？](/blog/Why-does-Yao-reinvent-so-many-wheels)
+
+## 步骤 1：生成网页
+
+在这个演示中，我们将创建两个网页：一个用于列出宠物，另一个用于宠物详情。
+
+AI 生成的网页适用于简单的网站，你可以通过编辑生成的内容进一步自定义它们。
+
+这一步演示了如何编写提示来生成网页。
+
+### 💬 生成网页的提示
+
+_这是与 AI 聊天机器人生成网页的对话示例。根据你的需求更改提示。_
+
+````yaml
+模型示例：
+[模型示例]
+
+相关模型：
+    pets, pet.categories
+
+生成网页的指南：
+  - 每个网页应该由单独的纯 HTML、CSS 和 TypeScript 文件组成。使用相同的名称但不同的扩展名（例如，index.html、index.css、index.ts）。
+  - 避免使用框架或库。如果需要，通过 script 标签导入库。
+  - 渲染逻辑将由模板引擎处理，所以你不需要实现它。使用 JS 文件来处理动画。
+  - 对于第三方库，在 JS 文件中使用 `import '<CDN 链接>';` 包含 CDN 链接。
+  - HTML 内容应该排除 <head> 和 <body> 标签；这些由 SUI 引擎添加。
+  - 分离通用 CSS 文件以保持一致的样式，如果需要，使用 `import '@assets/[name].css';` 将它们导入到 CSS 文件中。
+  - 为了保持一致性，使用与模型字段相同的 CSS 类名和 ID。
+  - 每个文件应该用代码块包裹，顶部注释文件名。
+
+模板引擎规则：
+  - 在 HTML 标签内使用 `{{ variable }}` 语法进行数据渲染。
+  - 使用 `s:for` 遍历数据列表，例如，`<div s:for="items" s:for-item="pet"> <span>{{ pet.name }}</span> </div>`。
+  - 使用 `s:if` 进行条件渲染，例如，`<span s:if="pet.name">{{ pet.name }}</span>`。
+  - 文件系统路由定义网页路由。例如，`index.html` 映射到 '/'，'about.html' 映射到 '/about'。
+  - 动态路由用 `[id]` 表示，例如，'/pet/1'，'/pet/2' 是 '/[id]'。
+  - 使用 `s:on-click` 进行事件绑定，例如，`<button s:on-click="handleClick" s:data-id="{{ pet.id }}">点击</button>`。
+  - 在 TS/JS 文件中实现事件处理程序，例如：
+
+    ```typescript
+    import { EventData, Component, EventDetail } from "@yao/sui";
+    const self = this as Component;
+
+    self.handleClick = (event: Event, data: EventData, detail: EventDetail) => {
+        // 处理事件
+        // data['id'] 对应 s:data-id="{{ pet.id }}"
+    };
+    ```
+
+网页需求：
+  - 使用模型中的字段生成网页内容。
+  - 创建两个页面：'index' 用于列出宠物，'[id]' 用于宠物详情，其中 'id' 是宠物的 ID。
+  - 在列表页面上使用 pet.categories 模型显示宠物类别名称。
+  - 分离通用 CSS 文件 style.css 以保持一致的样式，在 CSS 文件中定义通用字体、颜色和间距。
+  - 保持一致的样式并实现动画和交互式 JS 效果。
+
+````
+
+### 🤖 _AI 聊天机器人的回复_
+
+AI 聊天机器人将为你生成网页，它应该像这样：
+
+```html
+<!-- [id].html -->
+<div class="pet-details">
+  <h1>{{ pet.pet_name }}</h1>
+  <p>类别：{{ pet.category_name }}</p>
+  <p s:if="pet.age">年龄：{{ pet.age }}</p>
+  <p s:if="pet.breed">品种：{{ pet.breed }}</p>
+  <p s:if="pet.description">{{ pet.description }}</p>
+  <button s:on-click="goBack">返回列表</button>
+</div>
+```
+
+```css
+/* [id].css */
+@import "@assets/style.css";
+
+.pet-details {
+  padding: 24px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+```
+
+```typescript
+// [id].ts
+import { EventData, Component, EventDetail } from "@yao/sui";
+const self = this as Component;
+
+self.goBack = () => {
+  window.location.href = `/`;
+};
+```
+
+## 步骤 2：保存网页
+
+在继续之前，确保你已经查看了之前的文档以了解 Yao 应用程序的目录结构，并已使用快速入门指南创建了一个 Yao 应用程序。
+
+👉 [快速开始](../getting-started#quickstart)
+
+👉 [Yao 应用程序](../getting-started/switching-to-yao#yao-application)
+
+### 📜 目录结构
+
+按照快速入门指南后，你的项目根目录应该包含三个目录：`data/templates/default`、`suis` 和 `public`。
+
+查看下面的 `data/templates/default` 目录结构：
+
+```bash
+├── data
+│   └── templates
+│       └── default  # 模板根目录
+│           ├── __assets  # 资源
+│           ├── __data.json  # 全局动态数据
+│           ├── __document.html  # 文档模板
+│           ├── index  # 主页
+│           │   └── index.html
+```
+
+更多信息，请参阅目录结构文档：
+
+👉 [网站教程-目录结构](/docs/tutorials/website/getting-started/project-structure)
+
+### 💾 保存网页
+
+SUI 页面使用文件系统路由进行网页路由。每个页面是一个目录，包含同名的 HTML、CSS 和 TypeScript 文件。在目录和文件名中使用 `[name]` 表示动态路由。
+
+示例：
+
+- `/index` 映射到 `TEMPLATE_ROOT/index`
+- `/pet/[id]` 映射到 `TEMPLATE_ROOT/pet/[id]`
+
+在 `data/templates/default` 目录中保存生成的网页。
+
+目录结构应该是：
+
+```bash
+├── data
+│   └── templates
+│       └── default # 模板根目录
+│           ├── __assets
+│           │   └── style.css
+│           ├── __data.json
+│           ├── __document.html
+│           ├── index
+│           │   └── index.html
+│           └── pet
+│               ├── [id] # 动态路由 /pet/1, /pet/2 ...
+│               │   ├── [id].css
+│               │   ├── [id].html
+│               │   └── [id].ts
+│               └── index # 宠物列表页面 /pet
+│                   ├── index.css
+│                   ├── index.html
+│                   └── index.ts
+```
+
+## 步骤 3：构建网页
+
+保存网页后，运行 `yao sui build` 命令来构建它们。这会生成 `.sui` 文件并将资源复制到 `public` 目录。
+
+内置的 Yao HTTP 服务器将识别并提供这些网页。
+
+### 📺 SUI 构建命令
+
+在新的终端中执行以下命令：
+
+```bash
+# `web` 是在 `suis` 目录中找到的 SUI 部件 ID。每个应用程序可以有多个模板引擎实例。
+# `default` 是位于 `data/templates` 目录中的模板名称。每个引擎可以有多个模板。
+yao sui build web default
+```
+
+正确的输出应该是：
+
+```bash
+-----------------------
+Public Root: /public/
+   Template: /templates/default
+    Session: {}
+-----------------------
+Build succeeded for production in 9ms
+```
+
+### 📜 URL 重写
+
+当前 Yao 版本缺乏自动重写规则。在 `app.yao` 中手动添加它们。这将在未来的版本中修复。
+
+```json
+{
+  "name": "Demo Application",
+  "short": "Demo",
+  "description": "Another yao application",
+  "version": "0.10.4",
+  "adminRoot": "admin",
+  "public": {
+    // 在这里添加 http 服务器重写规则
+    "rewrite": [
+      { "^\\/assets\\/(.*)$": "/assets/$1" }, //  /assets/* -> /public/assets/*
+      { "^\\/pet/index$": "/pet/index.sui" }, //  /pet/index -> /public/pet/index.sui
+      { "^\\/pet/(.*)$": "/pet/[id].sui" }, //    /pet/xxx -> /public/pet/[id].sui
+      { "^\\/(.*)$": "/$1.sui" } // 其他路由，/xxx -> /xxx.sui
+    ]
+  },
+  "optional": { "remoteCache": true }
+}
+```
+
+**修改 `app.yao` 文件后重启服务器。** 👉 **[应用配置](app-configuration)**
+
+### 🌐 在浏览器中访问
+
+构建网页后，你可以在浏览器中查看它们。在继续之前，确保 Yao 服务器正在运行。
+
+在浏览器中访问以下 URL：
+
+- [http://127.0.0.1:5099/pet/index](http://127.0.0.1:5099/pet/index) 宠物列表页面。
+- [http://127.0.0.1:5099/pet/1](http://127.0.0.1:5099/pet/1) 宠物详情页面。
+
+_用你的服务器的 IP 地址和端口替换 IP 地址和端口。_
+
+## 步骤 4：集成数据
+
+你已经成功使用 SUI 创建了网页。这一步演示如何将数据集成到网页中。
+
+### 📜 SUI 页面部分
+
+每个 SUI 页面最多可以包含六个部分：HTML、CSS、前端脚本、数据、后端脚本和配置。只有 HTML 是必需的。
+
+| 部分     | 扩展名      | 必需 | 描述                                    |
+| -------- | ----------- | ---- | --------------------------------------- |
+| HTML     | .html       | 是   | 核心 HTML 内容。                        |
+| CSS      | .css        | 否   | 页面的样式。                            |
+| 前端脚本 | .ts         | 否   | 浏览器的脚本，编译为 JS。              |
+| 后端脚本 | .backend.ts | 否   | 服务器端脚本，如自定义进程。           |
+| 数据     | .json       | 否   | 数据源，在 HTML 中使用 `{{ key }}` 渲染。|
+| 配置     | .config     | 否   | 页面设置，如标题、缓存策略。           |
+
+### 💾 数据集成
+
+我们使用后端脚本从数据库获取数据，并使用数据源文件将数据传递给 HTML 文件。
+
+后端脚本在服务器端运行，它与 `scripts` 文件相同。可以在后端脚本中导入 `scripts` 目录中的脚本，或使用 Yao Runtime API。
+
+**后端脚本文件：**
+
+为宠物列表和宠物详情页面创建后端脚本文件。
+
+```typescript
+// pet/index/index.backend.ts
+import { Process } from "@yao/runtime";
+
+function PetList() {
+  const pets = Process("models.pets.Get", {
+    select: ["id", "pet_name", "category_id"],
+    withs: { category: { query: { select: ["id", "category_name"] } } }, // 使用联表查询直接获取类别名称
+  });
+  return pets;
+}
+```
+
+```typescript
+// pet/[id]/[id].backend.ts
+import { Process, SuiRequest, Exception } from "@yao/runtime";
+
+function Pet(r: SuiRequest) {
+  // 从请求中获取宠物 ID
+  const id = r.params?.id;
+  if (!id) {
+    throw new Exception("需要宠物 ID", 400);
+  }
+
+  const pets = Process("models.pets.Find", id, {
+    select: ["id", "pet_name", "category_id"],
+    withs: { category: { query: { select: ["id", "category_name"] } } }, // 使用联表查询直接获取类别名称
+  });
+  return pets;
+}
+```
+
+**数据源文件：**
+
+```json
+// pet/index/index.json
+{
+  // 以 $ 为前缀的变量表示执行后端脚本函数或进程。
+  // 以 @ 为前缀的值表示从后端脚本获取数据；否则，将执行进程。
+  "$pets": "@PetList", // 执行后端脚本函数，获取数据
+
+  "$ping": "utils.app.ping", // 执行进程，获取数据
+
+  // 静态数据
+  "foo": { "hello": "world" }
+}
+```
+
+```json
+// pet/[id]/[id].json
+{
+  "$pet": "@Pet" // 执行后端脚本函数，获取数据
+}
+```
+
+创建后端脚本和数据源文件后，目录结构应该是：
+
+```bash
+├── data
+│   └── templates
+│       └── default
+│           ├── __assets
+│           │   └── style.css
+│           ├── __data.json
+│           ├── __document.html
+│           ├── index
+│           │   └── index.html
+│           └── pet
+│               ├── [id]
+│               │   ├── [id].backend.ts # 宠物详情页面的新后端脚本文件
+│               │   ├── [id].css
+│               │   ├── [id].html
+│               │   ├── [id].json # 宠物详情页面的新数据源文件
+│               │   └── [id].ts
+│               └── index
+│                   ├── index.backend.ts # 宠物列表页面的新后端脚本文件
+│                   ├── index.css
+│                   ├── index.html
+│                   ├── index.json # 宠物列表页面的新数据源文件
+│                   └── index.ts
+├── models
+│   ├── goods.mod.yao
+│   ├── pet
+│   │   └── categories.mod.yao
+│   ├── pets.mod.yao  # 修改模型 DSL，添加关系
+│   └── transactions.mod.yao
+
+```
+
+**📝 注意：**
+
+在后端脚本中，使用带有 `withs` 选项的 `Process` 函数来联表类别表并直接获取类别名称。
+
+**_我们应该修改 Model DSL 以支持联表查询，这理想情况下应该在创建 DSL 文件时完成。它放在这里是为了演示如何更新模型 DSL 和维护应用程序。_**
+
+打开 `models/pets.mod.yao` 文件并修改 DSL 添加关系；
+
+```json
+// models/pets.mod.yao
+{
+  "name": "Pet",
+  "table": { "name": "pets", "comment": "Pets" },
+  "columns": [
+    //...
+  ],
+
+  // 在这里添加关系
+  "relations": {
+    // category：关系名称
+    "category": {
+      "type": "hasOne", // 关系类型，hasOne 或 hasMany
+      "model": "pet.categories", // 关系模型部件 ID
+      "foreign": "category_id", // 当前模型中的外键
+      "key": "id" // 相关模型中的主键
+    }
+  },
+  "option": { "timestamps": true }
+}
+```
+
+有关数据模型的更多信息，请查看 👉 **[DSL 参考](references/dsl)**
+
+## 步骤 5：组件（可选）
+
+## 🎉 恭喜

@@ -1,0 +1,22 @@
+name: zh-cn
+formatter: scripts.tests.formatter
+keys:
+    trans__components_theme_1: 切換到深色模式
+    trans__components_theme_2: Switch to Light Mode
+    trans__components_theme_3: Switch to Light Mode
+    trans__header_1: 概览
+    trans__header_2: Uses
+    trans__header_3: 下载
+    trans__header_4: 文档
+    trans__header_5: 社区
+    trans__header_6: 博客
+    trans__header_7: Build App via Chat
+    trans__header_8: App Engine
+    trans__header_9: View on Github
+    trans__header_10: View on Github
+    trans__header_11: 加入Discord社区
+    trans__header_12: 加入Discord社区
+    trans__header_13: Create Apps via Chat using Moapi.ai
+    trans__header_14: 加入Discord社区
+direction: ltr
+timezone: "+8:00"

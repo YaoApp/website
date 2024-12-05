@@ -1,0 +1,20 @@
+# guard: "scripts.neo.Guard" # Custom guard, you can use it to check if the user is allowed to access the AI model
+
+conversation:
+  connector: default
+  table: yao_neo_conversation
+  max_size: 10
+  ttl: 3600
+
+connector: "moapi:gpt-4o" # gpt-3.5-turbo, gpt-3.5, gpt-4o, etc.
+prepare: "scripts.ai.neo.Prepare" # Prepare hook, you can use it to modify the input before sending it to the AI model.
+write: "scripts.ai.neo.Write" # Write hook, you can use it to modify the output before sending it to the user
+
+option:
+  temperature: 0.6
+
+allows:
+  - "http://127.0.0.1:8000"
+  - "http://127.0.0.1:5099"
+  - "http://localhost:5099"
+  - "http://localhost:8000"

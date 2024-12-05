@@ -1,0 +1,36 @@
+<section class="container mx-auto py-8 px-8 lg:py-12 flex flex-col">
+  <!-- Get the data from the parent component -->
+  <s:set name="group" value="{% data %}"></s:set>
+  <div class="pb-12">
+    <h2 class="text-2xl font-medium text-gray-800 dark:text-gray-100">
+      {{ group.name }}
+    </h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+    <a
+      s:for="group.tutorials"
+      href="{{ item.url }}"
+      class="flex space-x-4 border w-full border-gray-100 rounded-lg p-6 shadow-md shadow-gray-100 cursor-pointer hover:shadow-gray-200 dark:border-gray-800 dark:shadow-gray-900 dark:hover:shadow-gray-950 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 relative"
+    >
+      <div>
+        <div
+          class="w-16 h-16 bg-primary-100/40 dark:bg-gray-800 rounded-lg flex justify-center items-center"
+        >
+          <i
+            class="material outlined font-light text-primary-400 dark:text-primary-300 text-5xl"
+          >
+            {{item.icon}}
+          </i>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-medium text-gray-800 dark:text-gray-100 mb-2.5">
+          {{ item.title }}
+        </h3>
+        <p class="text-gray-500 text-sm dark:text-gray-500 leading-normal">
+          {{ item.description }}
+        </p>
+      </div>
+    </a>
+  </div>
+</section>

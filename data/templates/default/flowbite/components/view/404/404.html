@@ -1,0 +1,36 @@
+<div
+  namespace="[{ $props.namespace }]"
+  type="flowbite-view-404"
+  class="flowbite-view-404"
+>
+  <s:set name="namespace" value="[{ $props.namespace }]"></s:set>
+  <s:set name="key" value="[{ $props.key }]"></s:set>
+  <s:set name="index" value="[{ $props.index }]"></s:set>
+  <s:set name="mode" value="[{ $props.mode }]"></s:set>
+  <s:set name="data" value="[{ $props.data }]"></s:set>
+  <s:set name="props" value="[{ $props.props }]"></s:set>
+  <s:set name="column" value="[{ $props.column }]"></s:set>
+  <s:set name="bind" value="[{ $props.bind }]"></s:set>
+  <s:set name="value" value="[{ $props.value }]"></s:set>
+  <s:set name="type" value="[{ $props.type }]"></s:set>
+  <s:set
+    name="required"
+    value="{{ props.itemProps != null or props.required == 1 }}"
+  ></s:set>
+
+  <label
+    s:if="props.hideLabel != 1"
+    for="{{ key }}"
+    class="block mb-2 text-sm font-medium text-gray-900 cursor-pointer hover:text-primary"
+    label
+  >
+    <span>{{ column.name }}</span>
+    <span s:if="required" class="text-sm text-danger"> * </span>
+  </label>
+
+  <div
+    class="text-sm text-danger h-[42px] flex items-center bg-gray-50 border border-gray-100 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+  >
+    {{ props.hideLabel != 1 ? '' : column.name }} {{ type }} not found
+  </div>
+</div>

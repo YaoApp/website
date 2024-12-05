@@ -1,0 +1,54 @@
+name: Push to Public Respository
+
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: "Version tags"
+
+  # push:
+  #   branches: [main]
+
+env:
+  VERSION: 0.10.4
+jobs:
+  push-to-public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+          token: ${{ secrets.TOKEN }}
+
+      - name: Remove values field from user.mod.yao
+        run: |
+          sed -i '/\"values\": \[/,/\]/d' models/admin/user.mod.yao
+
+      - name: Prepare distribution
+        run: |
+          # Create temp directory
+          mkdir -p ../temp_dist
+          # Copy files to temp directory
+          cp -r . ../temp_dist/
+          # Remove git related files
+          rm -rf ../temp_dist/.git
+          # Copy environment file
+          cp ./online.env ../temp_dist/.env
+          # Move temp directory to final location
+          rm -rf dist
+          mv ../temp_dist dist
+
+      - name: Push to YaoApp/website
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.WRITE_TOKEN }}
+        with:
+          source-directory: "dist"
+          destination-github-username: "YaoApp"
+          destination-repository-name: "website"
+          user-email: github-actions[bot]@users.noreply.github.com
+          target-branch: main
+          create-target-branch-if-needed: true

@@ -1,0 +1,3 @@
+direction: ltr
+timezone: "+8:00"
+formatter: scripts.tests.formatter

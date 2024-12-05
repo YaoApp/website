@@ -1,0 +1,22 @@
+name: ar-eg
+formatter: scripts.tests.formatter
+keys:
+    trans__components_theme_1: تبديل إلى وضع الظلام
+    trans__components_theme_2: Switch to Light Mode
+    trans__components_theme_3: Switch to Light Mode
+    trans__header_1: نظرة عامة
+    trans__header_2: الاستخدامات
+    trans__header_3: تحميل
+    trans__header_4: التوثيق
+    trans__header_5: مجتمع
+    trans__header_6: مدونة
+    trans__header_7: Build App via Chat
+    trans__header_8: محرك التطبيقات
+    trans__header_9: عرض على Github
+    trans__header_10: عرض على Github
+    trans__header_11: انضم لمجتمع Discord
+    trans__header_12: انضم للمجتمع على Discord
+    trans__header_13: Create Apps via Chat using Moapi.ai
+    trans__header_14: انضم لمجتمع Discord
+direction: rtl
+timezone: "+2:00"

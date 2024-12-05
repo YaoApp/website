@@ -1,0 +1,87 @@
+---
+title: Installation
+description: Yao ships as a single executable with no package or toolchain dependencies. Just download and run it to start building your application.
+related:
+  title: Next Steps
+  description: Start building your application.
+  links:
+    - building-your-application
+---
+
+Yao is a standalone executable with no dependencies on packages or toolchains. Simply download and run it to begin building your application. You only need one installation per machine or server.
+
+## Installing
+
+Run the following command to install Yao on your machine or server.
+
+### Linux and macOS
+
+```bash
+curl -fsSL https://yaoapps.com/install.sh | bash
+```
+
+👉 [View Installation Script](https://yaoapps.com/install.sh)
+
+### Windows
+
+To install Yao on Windows, you need to have WSL2 installed. If you don't have WSL2 installed, you can follow the [official guide](https://docs.microsoft.com/en-us/windows/wsl/install).
+
+```powershell
+powershell -c "irm yaoapps.com/install.ps1 | iex"
+```
+
+👉 [View Installation Script](https://yaoapps.com/install.ps1)
+
+## Docker
+
+Yao provides production and development Docker images that support x64 and arm64 architectures.
+
+The development image includes additional tools and libraries for development and is based on Ubuntu 22.04, while the production image is smaller and based on Alpine 3.14.
+
+Download the latest production image:
+
+```bash
+docker pull yaoapp/yao:latest
+
+# or specify the version
+docker pull yaoapp/yao:0.10.4-rc.1
+```
+
+Download the latest development image:
+
+```bash
+docker pull yaoapp/yao:latest-dev
+
+# or specify the version
+docker pull yaoapp/yao:0.10.4-rc.1-dev
+```
+
+## Checking the Installation
+
+After installing Yao, you can check the version by running the following command:
+
+```bash
+yao version --all
+```
+
+If an error occurs, please verify that the yao command is in your system’s PATH.
+
+If it’s not found, you may need to add the directory containing the yao executable to your PATH and ensure it has execute permissions.
+
+## Download the development version
+
+Yao is under active development, and you can download the latest development version to try out new features and improvements.
+
+For Windows, you can download the Linux version and run it in WSL2.
+
+### Linux Artifacts
+
+👉 [https://github.com/YaoApp/yao/actions/workflows/build-linux.yml](https://github.com/YaoApp/yao/actions/workflows/build-linux.yml)
+
+On the above page, select the latest build, download and unzip it, then choose the artifact file for your CPU architecture. Supported architectures are x64 and arm64.
+
+### MacOS Artifacts
+
+👉 [https://github.com/YaoApp/yao/actions/workflows/build-macos.yml](https://github.com/YaoApp/yao/actions/workflows/build-macos.yml)
+
+On the above page, select the latest build, download and unzip it, then choose the artifact file for your CPU architecture. Supported architectures are Intel CPU and M1/M2/M3/M4 (arm64)

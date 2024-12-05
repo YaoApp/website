@@ -1,0 +1,6 @@
+name: zh-hk
+formatter: scripts.tests.formatter
+keys:
+    trans__blog_list_1: 下一個
+direction: ltr
+timezone: "+8:00"

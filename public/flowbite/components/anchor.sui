@@ -1,0 +1,127 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+</head>
+  <body s:ns="ns_ef81922516cc8320" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><div namespace="{% namespace %}" type="flowbite-link" class="flowbite-link">
+  <s:set name="id" value="{% id %}"></s:set>
+  <s:set name="name" value="{% name %}"></s:set>
+  <s:set name="class" value="{% class %}"></s:set>
+  <s:set name="title" value="{% title %}"></s:set>
+  <s:set name="size" value="{% size %}"></s:set>
+  <s:set name="color" value="{% color %}"></s:set>
+  <s:set name="href" value="{% href %}"></s:set>
+  <s:set name="target" value="{% target %}"></s:set>
+  <s:set name="weight" value="{% weight %}"></s:set>
+  <s:set name="icon" value="{% icon %}"></s:set>
+  <s:set name="sizes" value="{{ { 
+          &#39;xs&#39;: &#39;text-xs&#39;, 
+          &#39;sm&#39;: &#39;text-sm&#39;, 
+          &#39;base&#39;: &#39;text-base&#39;,
+          &#39;lg&#39;: &#39;text-lg&#39;, 
+          &#39;xl&#39;: &#39;text-xl&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+  <s:set name="colors" value="{{ {
+          &#39;primary&#39;: &#39;text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300&#39;,
+          &#39;dark&#39;:   &#39;text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-200&#39;,
+          &#39;light&#39;:  &#39;text-gray-200 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-500&#39;,
+          &#39;success&#39;: &#39;text-success hover:text-success-800 dark:text-success dark:hover:text-dark-success-700&#39;,
+          &#39;danger&#39;: &#39;text-danger hover:text-danger-800 dark:text-danger dark:hover:text-dark-danger-700&#39;,
+          &#39;warning&#39;: &#39;text-warning hover:text-warning-800 dark:text-warning dark:hover:text-dark-warning-700&#39;,
+          &#39;info&#39;: &#39;text-info hover:text-info-800 dark:text-info dark:hover:text-dark-info-700&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}
+    "></s:set>
+  <s:set name="weights" value="{{ {
+          &#39;normal&#39;: &#39;font-normal&#39;,
+          &#39;medium&#39;: &#39;font-medium&#39;,
+          &#39;bold&#39;: &#39;font-bold&#39;,
+          &#39;semibold&#39;: &#39;font-semibold&#39;,
+          &#39;light&#39;: &#39;font-light&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+
+  <a id="{{ id }}" name="{{ name }}" title="{{ title }}" class="cursor-pointer hover:transition hover:duration-200 hover:ease-in-out
+          {{ icon != &#39;&#39; ? &#39;flex items-center justify-start&#39; : &#39;inline-block&#39; }}
+          {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+          {{ color != &#39;&#39; ? colors[color] : colors.primary }}
+          {{ weight != &#39;&#39; ? weights[weight] : weights.normal }}
+          {{ class }}
+      " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" button="">
+    <i s:if="icon != &#39;&#39;" class="material outlined me-1"> {{icon}} </i>
+    <children></children>
+  </a>
+</div>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+
+
+<script name="config" type="json">
+{"title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/"}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+</body></html>

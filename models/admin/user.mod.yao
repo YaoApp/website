@@ -1,0 +1,243 @@
+{
+  "name": "AdminUser",
+  "table": { "name": "admin_user", "comment": "the administraor table" },
+  "columns": [
+    { "label": "ID", "name": "id", "type": "ID" },
+    {
+      "label": "Type",
+      "name": "type",
+      "type": "enum",
+      "option": ["admin", "staff", "user", "robot"],
+      "comment": "AccountTypes: admin , staff , user , robot ",
+      "default": "user",
+      "index": true,
+      "validations": [
+        {
+          "method": "typeof",
+          "args": ["string"],
+          "message": "{{input}}Error, {{label}}should be String"
+        },
+        {
+          "method": "enum",
+          "args": ["admin", "staff", "user", "robot"],
+          "message": "{{input}}不在许可范围, {{label}}应该为 admin/staff/user/robot"
+        }
+      ]
+    },
+    {
+      "label": "Email",
+      "name": "email",
+      "type": "string",
+      "length": 50,
+      "comment": "Email",
+      "index": true,
+      "nullable": true,
+      "validations": [
+        {
+          "method": "typeof",
+          "args": ["string"],
+          "message": "{{input}}Error, {{label}}should be String"
+        },
+        {
+          "method": "email",
+          "args": [],
+          "message": "{{input}}不是Email地址"
+        }
+      ]
+    },
+    {
+      "label": "Mobile",
+      "name": "mobile",
+      "type": "string",
+      "length": 50,
+      "comment": "Mobile",
+      "index": true,
+      "nullable": true,
+      "crypt": "AES",
+      "validations": [
+        {
+          "method": "mobile",
+          "args": [],
+          "message": "{{input}}Format error"
+        }
+      ]
+    },
+    {
+      "label": "Login Password",
+      "name": "password",
+      "type": "string",
+      "length": 256,
+      "comment": "Login Password",
+      "crypt": "PASSWORD",
+      "index": true,
+      "nullable": true,
+      "validations": [
+        {
+          "method": "typeof",
+          "args": ["string"],
+          "message": "{{input}}Error, {{label}}should be String"
+        },
+        {
+          "method": "minLength",
+          "args": [6],
+          "message": "{{label}}Should be composed of 6-18 characters, including uppercase and lowercase letters, numbers, and symbols."
+        },
+        {
+          "method": "maxLength",
+          "args": [18],
+          "message": "{{label}}Should be composed of 6-18 characters, including uppercase and lowercase letters, numbers, and symbols."
+        },
+        {
+          "method": "pattern",
+          "args": ["[0-9]+"],
+          "message": "{{label}}Should contain at least one number"
+        }
+      ]
+    },
+    {
+      "label": "2nd Password",
+      "name": "password2nd",
+      "type": "string",
+      "length": 256,
+      "comment": "2nd Password",
+      "crypt": "PASSWORD",
+      "index": true,
+      "nullable": true,
+      "validations": [
+        {
+          "method": "typeof",
+          "args": ["string"],
+          "message": "{{input}}Error, {{label}}should be String"
+        },
+        {
+          "method": "minLength",
+          "args": [6],
+          "message": "{{label}}Should be composed of 6-18 characters, including uppercase and lowercase letters, numbers, and symbols."
+        },
+        {
+          "method": "maxLength",
+          "args": [18],
+          "message": "{{label}}Should be composed of 6-18 characters, including uppercase and lowercase letters, numbers, and symbols."
+        },
+        {
+          "method": "pattern",
+          "args": ["[0-9]+"],
+          "message": "{{label}}Should contain at least one number"
+        }
+      ]
+    },
+    {
+      "label": "Name",
+      "name": "name",
+      "type": "string",
+      "length": 80,
+      "comment": "Name",
+      "index": true,
+      "nullable": true,
+      "validations": [
+        {
+          "method": "typeof",
+          "args": ["string"],
+          "message": "{{input}}Error, {{label}}should be String"
+        },
+        {
+          "method": "minLength",
+          "args": [2],
+          "message": "{{label}}Requires at least 2 characters."
+        },
+        {
+          "method": "maxLength",
+          "args": [40],
+          "message": "{{label}} Maximum 40 characters."
+        }
+      ]
+    },
+    {
+      "label": "API Key",
+      "name": "key",
+      "type": "string",
+      "length": 256,
+      "comment": "API Key",
+      "nullable": true,
+      "unique": true,
+      "validations": [
+        {
+          "method": "typeof",
+          "args": ["integer"],
+          "message": "{{input}}Error, {{label}} should be Integer"
+        },
+        {
+          "method": "pattern",
+          "args": ["^[0-9]{10}$"],
+          "message": " {{label}} Should be composed of 10 digits."
+        }
+      ]
+    },
+    {
+      "label": "API Secret",
+      "name": "secret",
+      "type": "string",
+      "length": 256,
+      "nullable": true,
+      "crypt": "AES",
+      "comment": "API Secret",
+      "index": true,
+      "validations": [
+        {
+          "method": "typeof",
+          "args": ["string"],
+          "message": "{{input}}Error, {{label}}should be String"
+        },
+        {
+          "method": "pattern",
+          "args": ["^[0-9A-Za-z@#$&*]{32}$"],
+          "message": "{{label}} Should be composed of 32 digits, uppercase and lowercase letters, and special characters."
+        }
+      ]
+    },
+    {
+      "label": "Extra",
+      "name": "extra",
+      "type": "json",
+      "comment": "Extra",
+      "nullable": true
+    },
+    {
+      "label": "Status",
+      "comment": "Status",
+      "name": "status",
+      "type": "enum",
+      "default": "enabled",
+      "option": ["enabled", "disabled"],
+      "index": true,
+      "validations": [
+        {
+          "method": "typeof",
+          "args": ["string"],
+          "message": "{{input}}Error, {{label}}should be String"
+        },
+        {
+          "method": "enum",
+          "args": ["enabled", "disabled"],
+          "message": "{{input}} not in the range, {{label}} should be enabled/disabled"
+        }
+      ]
+    }
+  ],
+  "relations": {},
+  "indexes": [
+    {
+      "comment": "Email Unique Index",
+      "name": "type_email_unique",
+      "columns": ["type", "email"],
+      "type": "unique"
+    },
+    {
+      "comment": "Mobile Unique Index",
+      "name": "type_mobile_unique",
+      "columns": ["type", "mobile"],
+      "type": "unique"
+    }
+  ],
+  "option": { "timestamps": true, "soft_deletes": true }
+}

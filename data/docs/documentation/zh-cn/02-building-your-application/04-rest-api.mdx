@@ -1,0 +1,518 @@
+---
+title: RESTFul API
+description: 创建 RESTful API 来暴露数据。
+related:
+  title: 下一步
+  description: 创建网页来显示数据。
+  links:
+    - web-page
+---
+
+在前面的章节中，你学习了如何在应用程序中创建和管理数据。宠物商店的数据模型现在已经准备就绪。现在，你将学习如何通过创建 RESTful API 来向外界暴露这些数据。
+
+- 🟢 在应用程序中创建和管理数据。 👉 [数据模型](data-model)
+- 🟠 **开发 RESTful API 来暴露数据。**
+- ⚪ 设计网页来显示数据。 👉 [Web Page](web-page)
+- ⚪ 构建管理面板帮助宠物商店的管理员管理数据。 👉 [Admin Panel](admin-panel)
+- ⚪ 创建后端命令用于任务调度。 👉 [CLI](cli)
+- ⚪ 集成 AI 用于聊天机器人、图像生成和增强用户输入。 👉 [AI Integration](ai-integration)
+
+在继续之前，确保你已阅读了之前的文档，并且已完成了前面的步骤。
+
+👉 [数据模型](data-model)
+
+👉 [构建你的应用程序](../building-your-application)
+
+## 概述
+
+RESTful API 是基于 REST（表述性状态转移）架构的设计标准。它是一种轻量级、无状态、面向资源的构建 Web 服务的方法。RESTful API 使用 HTTP 和标准方法如 GET、POST、PUT 和 DELETE 来管理资源。
+
+在 Yao 中，RESTful API 作为一个部件使用 API DSL 来定义存储在 `apis` 目录中的端点。这些端点在内置的 HTTP 服务器上运行。
+
+你可以在应用程序配置中调整 HTTP 服务器设置，如端口号。更多详细信息可以在这里找到 👉 **[应用配置](app-configuration)**。
+
+完整的 REST API 教程可以在这里找到：👉 **[REST API 教程](/tutorials/api/getting-started)**
+
+有关 API DSL 的更多详细信息，请参阅 👉 **[DSL 参考](references/dsl)**
+
+## 步骤 1：生成 API DSL
+
+在这个演示中，我们将创建 API 来为客户端应用程序（如移动应用）暴露宠物商店数据。
+
+这一步演示了如何编写提示并生成 API DSL，这对于自动化 AI 生成应用程序很有用。但是，在实践中，手写通常更快更有效。
+
+我们将创建三个端点：
+
+1. `GET /pets` - 获取宠物列表，可选择按类别过滤。
+2. `GET /pets/:id` - 通过 ID 获取宠物。
+3. `GET /pet/categories` - 获取类别列表。
+
+将模型 ID、进程描述和一个或多个现有的 API DSL 示例发送给聊天机器人，并请求帮助生成类似的 API DSL。
+
+你可以从 Yao 文档或其他公共仓库获取现有的 API DSL 示例。在本例中，我们将使用 Yao 网站仓库中的博客 API。
+
+👉 [博客 API DSL](https://github.com/YaoApp/yao-website/blob/main/apis/blog.http.yao)
+
+### 💬 生成 API DSL 的提示
+
+_这是与 AI 聊天机器人生成 API DSL 的对话示例。根据你的需求更改提示。_
+
+```yaml
+API DSL 示例：
+[API DSL 示例]
+
+API DSL 路由说明：
+    - API 路由遵循文件系统路由。
+    - 例如 /apis/v1.http.yao 根路径应为 /apis/v1，/apis/v1/pet.http.yao 根路径应为 /apis/v1/pet。
+
+API DSL paths.path 说明：
+    - API 路由应该使用小写。
+    - paths.path 是相对于根路径的路径。
+    - 例如 /apis/v1.http.yao 根路径应为 /apis/v1，/apis/v1/pet.http.yao 根路径应为 /apis/v1/pet。
+    - 在 /apis/v1.http.yao 中，paths.path 等于 /pets，端点是 GET /v1/pets。
+    - 在 /apis/v1/pet.http.yao 中，paths.path 等于 /categories，端点是 GET /v1/pet/categories。
+
+API DSL paths.in 说明：
+    - "$param.<name>" - 路径中的参数名。
+    - "$query.<name>" - 查询字符串参数名。
+    - ":query-param" - 查询参数，总是命名为 query-param。
+
+相关模型：
+    pets, pet.categories
+
+相关进程详情：
+    models.<model>.Find [id] [QueryParam]
+    models.<model>.Paginate [QueryParam] [page] [pageSize]
+
+- 我想创建一个 RESTful API 来为客户端应用程序暴露宠物商店数据。
+- paths.in 应该与相关模型和进程参数匹配。例如，models.pets.Find [id] [QueryParam]，path.in 应该是 ["$params.id", ":query-param"]。
+- 页码和页面大小使用查询字符串参数，命名为 page 和 pagesize。
+- 每个 API DSL 应该用代码块包裹。
+- 我需要三个端点
+    - 1. `GET /pets` - 获取宠物列表，可选择按类别过滤。
+    - 2. `GET /pets/:id` - 通过 ID 获取宠物。
+    - 3. `GET /pet/categories` - 获取类别列表。
+- 帮我为这些端点生成两个 API DSL。
+    - 1. /apis/v1.http.yao 用于宠物，
+    - 2. /apis/v1/pet.http.yao 用于宠物类别。
+```
+
+### 🤖 _AI 聊天机器人的回复_
+
+AI 聊天机器人将为你生成 API DSL。看起来像这样：
+
+```json
+// /apis/v1.http.yao
+{
+  "name": "Pet Store API",
+  "version": "1.0.0",
+  "description": "API to manage pet data",
+  "paths": [
+    {
+      "path": "/pets",
+      "method": "GET",
+      "process": "models.pets.Paginate",
+      "guard": "-",
+      "in": [":query-param", "$query.page", "$query.pagesize"],
+      "out": { "status": 200, "type": "application/json" }
+    },
+    {
+      "path": "/pets/:id",
+      "method": "GET",
+      "process": "models.pets.Find",
+      "guard": "-",
+      "in": ["$param.id", ":query-param"],
+      "out": { "status": 200, "type": "application/json" }
+    }
+  ]
+}
+
+
+// /apis/v1/pet.http.yao
+{
+  "name": "Pet Store Categories API",
+  "version": "1.0.0",
+  "description": "API to manage pet categories",
+  "paths": [
+    {
+      "path": "/categories",
+      "method": "GET",
+      "process": "models.pet.categories.Paginate",
+      "guard": "-",
+      "in": [":query-param", "$query.page", "$query.pagesize"],
+      "out": { "status": 200, "type": "application/json" }
+    }
+  ]
+}
+
+//...
+```
+
+## 步骤 2：保存 API DSL
+
+在继续之前，确保你已经查看了之前的文档以了解 Yao 应用程序的目录结构，并已使用快速入门指南创建了一个 Yao 应用程序。
+
+👉 [快速开始](../getting-started#quickstart)
+
+👉 [Yao 应用程序](../getting-started/switching-to-yao#yao-application)
+
+### 💾 保存到 APIs 目录
+
+生成 API DSL 后，将 **JSON 部分**保存在 Yao 应用程序的 `apis` 目录中。确保文件和目录名称使用**小写**并具有 `.http.yao` 扩展名。
+
+Yao 使用文件系统路由匹配 API DSL。API DSL 文件中指定的路径相对于其 DSL 文件的根路径，每个路径都应以 `/api` 开头。
+
+确保路径使用小写，并且 paths.in 与进程参数匹配。
+
+例如：
+
+- `apis/v1.http.yao`：根路由将匹配路径 `/api/v1`。
+- `apis/v1/pet.http.yao`：根路由将匹配路径 `/api/v1/pet`。
+
+```json
+// /apis/v1/pet.http.yao
+// 根路径是 /api/v1
+{
+  "name": "Pet Store Categories API",
+  "version": "1.0.0",
+  "description": "API to manage pet categories",
+  "paths": [
+    {
+      // 相对于根路径，/v1
+      // 完整路径是 /api/v1/categories
+      "path": "/categories",
+
+      // 使用哪个 HTTP 方法。GET、POST、PUT、DELETE 等。
+      "method": "GET",
+
+      // 使用内部进程来获取类别。
+      // Yao 中有数百个可用的内部进程，你也可以创建自己的进程。
+      // 内部进程可以在进程参考中找到。
+      "process": "models.pet.categories.Paginate",
+
+      // 查询参数匹配进程参数，查看 REST API 教程了解更多详情。
+      "in": [":query-param", "$query.page", "$query.pagesize"],
+
+      // 响应数据格式。查看 REST API 教程了解更多详情。
+      "out": { "status": 200, "type": "application/json" },
+
+      // 用于检查请求权限的守卫。查看 REST API 教程了解更多详情。
+      "guard": "-"
+    }
+  ]
+}
+```
+
+保存后，apis 目录应该看起来像这样：
+
+```bash
+├── apis
+│   ├── v1
+│   │   └── pet.http.yao
+│   └── v1.http.yao
+```
+
+## 步骤 3：测试 API 端点
+
+保存 API DSL 后，使用 `yao start` 命令启动内置的 HTTP 服务器并测试 API 端点。
+
+### 📺 启动 HTTP 服务器
+
+打开终端窗口，进入项目目录并运行以下命令：
+
+```bash
+# 进入项目根目录，
+# 如果你的机器上有多个项目，确保你在正确的项目目录中。
+cd /path/to/your/project
+
+# 启动 HTTP 服务器
+yao start
+```
+
+正确的输出应该看起来像这样：
+
+```bash
+--------------------------------------------
+Demo Application 0.10.4 development
+--------------------------------------------
+Root  /Users/max/Yao/demo
+Runtime  standard
+Data  /Users/max/Yao/demo/data
+Listening  0.0.0.0:5099
+
+http://127.0.0.1:5099
+--------------------------
+Frontend  http://127.0.0.1:5099
+Dashboard  http://127.0.0.1:5099/admin/login/admin
+API  http://127.0.0.1:5099/api
+
+# ...
+---------------------------------
+API List
+---------------------------------
+
+widgets.form(10)
+GET /api/__yao/form/:id/setting         process: yao.form.Setting
+GET /api/__yao/form/:id/find/:primary   process: yao.form.Find
+# ...
+# 前面步骤添加的 API 应该列在这里。
+# ---------------
+v1.pet(1)
+GET /api/v1/pet/categories      process: models.pet.categories.Paginate
+
+v1(2)
+GET /api/v1/pets        process: models.pets.Paginate
+GET /api/v1/pets/:id    process: models.pets.Find
+# ---------------
+#...
+```
+
+如果 API 列表为空，请验证 `YAO_ENV` 环境变量是否设置为 `development`，并且 `apis` 目录中包含 API DSL。此外，如果你遇到设置提示，请确保项目根目录中存在 `app.yao` 文件。更多详细信息，请参阅 **[应用配置](app-configuration)** 部分。
+
+### 📺 测试端点
+
+确保 HTTP 服务器正在运行，这样我们就可以测试 API 端点。你可以使用 `yao run` 命令执行 `http.Get` 进程。或者，你可以使用任何 HTTP 客户端，如 Postman、Insomnia 或 cURL。
+
+打开一个**新的终端窗口**并运行以下命令：
+
+```bash
+# 进入项目根目录
+cd /path/to/your/project
+
+#
+# 测试 API 端点
+# 在本例中，服务器运行在 127.0.0.1:5099
+# 你可以用你的服务器 IP 和端口替换它。
+# 启动 HTTP 服务器时，IP 和端口会显示在控制台输出中。
+#
+yao run http.Get http://127.0.0.1:5099/api/v1/pets
+yao run http.Get http://127.0.0.1:5099/api/v1/pets '::{"page":1,"pagesize":1}'
+yao run http.Get http://127.0.0.1:5099/api/v1/pets/1
+yao run http.Get http://127.0.0.1:5099/api/v1/pet/categories
+```
+
+正确的输出应该看起来像这样：
+
+```bash
+# yao run http.Get http://127.0.0.1:5099/api/v1/pets/1
+Run: http.Get
+args[0]: http://127.0.0.1:5099/api/v1/pets/1
+--------------------------------------
+http.Get Response
+--------------------------------------
+{
+    "code": 200,
+    "data": {
+        "age": 3,
+        "breed": "Golden Retriever",
+        "category_id": 1,
+        "created_at": "2024-11-18 10:39:51",
+        "description": "Friendly and energetic dog.",
+        "id": 1,
+        "pet_name": "Buddy",
+        "updated_at": null
+    },
+    "headers": {
+        "Content-Length": [
+            "175"
+        ],
+        "Content-Type": [
+            "application/json"
+        ],
+        "Date": [
+            "Tue, 19 Nov 2024 08:46:02 GMT"
+        ]
+    },
+    "message": "",
+    "status": 200
+}
+--------------------------------------
+✨DONE✨
+```
+
+## 步骤 4：自定义进程（可选）
+
+除了 CRUD 操作外，通常需要自定义进程来处理复杂任务。
+
+在这里，我们将使用 TypeScript 创建一个进程，该进程按类别获取宠物并返回类别过滤选项。
+
+Yao 中的脚本保存在 `scripts` 目录中，用于定义自定义进程。这些脚本可以使用 `yao run` 命令执行或在 DSL 中引用。它在服务器端运行并在终端中输出结果。
+
+### 💾 在 Scripts 目录中创建脚本
+
+在 `scripts` 目录中创建一个 `pet.ts` 脚本文件。确保文件和目录名称使用**小写**并具有 `.ts` 扩展名。
+
+源代码和说明：
+
+```typescript
+import { Process, log } from "@yao/runtime";
+
+type Option = { label: string; value: number | string };
+
+/**
+ * 获取宠物类别并作为选择输入的选项返回。
+ */
+function FetchCategoryOptions(): Option[] {
+  // Process 函数由 Yao Runtime 提供，执行进程并返回结果。
+  // 它类似于 'yao run' 命令。
+  // 你也可以使用 FS、HTTP 和其他 Yao Runtime API。
+  // 更多详细信息，请参阅运行时参考。
+  const categories = Process("models.pet.categories.Get", {
+    select: ["id", "category_name"],
+    limit: 100,
+  });
+
+  // console.log 用于向终端输出信息。
+  // 因为脚本在服务器端运行，所以控制台输出显示在终端中，而不是浏览器中。
+  console.log(categories);
+
+  // log.Info 用于向终端输出信息。
+  log.Info("Categories: %s", JSON.stringify(categories));
+
+  // 将类别作为选择输入的选项返回。
+  return categories.map(
+    (category) =>
+      ({ label: category.category_name, value: category.id } as Option)
+  );
+}
+```
+
+保存后，scripts 目录应该看起来像这样：
+
+```bash
+├── scripts
+│   └── pet.ts
+```
+
+如果你在 IDE 中遇到导入错误，请检查项目根目录中的 `tsconfig.json`。设置开发环境并添加必要的 vscode 扩展来解决它们。
+
+👉 **[Visual Studio Code 扩展](../building-your-application#visual-studio-code-extensions)**
+
+### 📺 测试自定义进程
+
+使用 `yao run` 命令执行自定义进程。
+
+进程 ID 是从相对于 `scripts` 目录的文件路径构造的。要形成 ID，去掉 `.ts` 扩展名并用 `.` 替换 `/`。脚本中的每个函数都被视为一个单独的进程。
+
+例如：
+
+- 文件 `scripts/pet.ts` 提供了一系列 `scripts.pet.*` 下的进程。
+- 文件 `scripts/pet/foo.ts` 提供了一系列 `scripts.pet.foo.*` 下的进程。
+
+在这个特定的例子中，进程 ID 是 `scripts.pet.fetchCategoryOptions`。
+
+```bash
+# 进入项目根目录
+# 如果你的机器上有多个项目，确保你在正确的项目目录中。
+cd /path/to/your/project
+
+yao run scripts.pet.FetchCategoryOptions
+```
+
+正确的输出应该看起来像这样：
+
+```bash
+Run: scripts.pet.FetchCategoryOptions
+[
+    {
+        "category_name": "Dogs",
+        "id": 1
+    },
+    {
+        "category_name": "Cats",
+        "id": 2
+    },
+    {
+        "category_name": "Birds",
+        "id": 3
+    }
+]
+--------------------------------------
+scripts.pet.FetchCategoryOptions Response
+--------------------------------------
+[
+    {
+        "label": "Dogs",
+        "value": 1
+    },
+    {
+        "label": "Cats",
+        "value": 2
+    },
+    {
+        "label": "Birds",
+        "value": 3
+    }
+]
+--------------------------------------
+✨DONE✨
+```
+
+### 💾 将端点添加到 API DSL
+
+要暴露自定义进程，通过更新 `apis/v1/pet.http.yao` DSL 文件添加一个新端点。保存文件后，在开发模式下 HTTP 服务器将自动重新加载。
+
+**Windows 开发者注意：** Windows WSL 环境中存在一个已知的 bug，如果项目路径挂载在 WSL 中，服务器不会自动重新加载。你可以使用 `Ctrl+C` 手动停止服务器并重新启动。这个 bug 将在未来的更新中解决。
+
+```json
+{
+  "name": "Pet Store Categories API",
+  "version": "1.0.0",
+  "description": "API to manage pet categories",
+  "paths": [
+    {
+      "path": "/categories",
+      "method": "GET",
+      "process": "models.pet.categories.Paginate",
+      "guard": "-",
+      "in": [":query-param", "$query.page", "$query.pagesize"],
+      "out": { "status": 200, "type": "application/json" }
+    },
+
+    // 添加一个新端点来获取类别选项
+    {
+      "path": "/categories/options",
+      "method": "GET",
+      "process": "scripts.pet.FetchCategoryOptions",
+      "guard": "-",
+      "in": [],
+      "out": { "status": 200, "type": "application/json" }
+    }
+  ]
+}
+```
+
+使用 `yao run` 命令测试它：
+
+```bash
+yao run http.Get http://127.0.0.1:5099/api/v1/pet/categories/options
+```
+
+## 🎉 恭喜
+
+你已经成功开发了 RESTful API 来暴露宠物商店数据。此外，你还学会了创建自定义进程，这些进程可以按类别获取宠物并提供类别过滤选项。而且，你还探索了如何与 AI 协作使用 Yao 开发 RESTful API。
+
+如果你是前端开发者，你可以完成后端开发者所做的工作。如果你是后端开发者，你会发现使用 Yao 开发既简单又高效。
+
+接下来，你将学习如何设计网页来显示数据。
+
+- 🟢 在应用程序中创建和管理数据。 👉 [数据模型](data-model)
+- 🟢 **开发 RESTful API 来暴露数据。**
+- 🔵 设计网页来显示数据。 👉 [Web Page](web-page)
+- ⚪ 构建管理面板帮助宠物商店的管理员管理数据。 👉 [Admin Panel](admin-panel)
+- ⚪ 创建后端命令用于任务调度。 👉 [CLI](cli)
+- ⚪ 集成 AI 用于聊天机器人、图像生成和增强用户输入。 👉 [AI Integration](ai-integration)
+
+有关 API DSL 的更多详细信息，请参阅：
+
+👉 **[REST API 教程](/docs/tutorials/api/getting-started)**
+
+👉 **[DSL 参考](references/dsl)**
+
+👉 **[进程参考](references/process)**
+
+实际上，你可以使用 Yao 应用生成器自动化上述所有步骤。更多信息，请参阅以下资源：
+
+👉 [Yao Playground](https://github.com/YaoApp/playground)
+
+👉 [Yao 应用生成器](https://mopai.ai)

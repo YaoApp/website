@@ -1,0 +1,54 @@
+---
+title: Adding Your Process
+description: A guide to adding your custom process to the Yao.
+---
+
+This section guides you through adding a custom process to Yao. You can run it using yao run or invoke it via the Process API.
+
+## Step 1: Create a New Process
+
+```bash
+# Create a new process file
+mkdir -p /code/root/yao/hello
+touch /code/root/yao/hello/hello.go
+```
+
+```go
+// /code/root/yao/hello/hello.go
+package hello
+import (
+    "github.com/yaoapp/gou/process"
+)
+
+func init(){
+    process.Register("namespace.hello", processHello)
+}
+
+func processHello(process *process.Process) inteface{} {
+    args := process.Args
+    return map[string]interface{}{"args": process.Args}
+}
+```
+
+## Step 2: main.go
+
+Import the new process into the main.go file.
+
+```go
+package main
+
+import (
+	"github.com/yaoapp/yao/cmd"
+	"github.com/yaoapp/yao/utils"
+
+    // Import the new process
+    _ "github.com/yaoapp/yao/hello"
+
+	_ "github.com/yaoapp/gou/encoding"
+	_ "github.com/yaoapp/yao/aigc"
+	_ "github.com/yaoapp/yao/crypto"
+	_ "github.com/yaoapp/yao/helper"
+	_ "github.com/yaoapp/yao/openai"
+	_ "github.com/yaoapp/yao/wework"
+)
+```

@@ -1,0 +1,15 @@
+keys:
+    trans__index_hero_intro_1: Getting Started
+    trans__index_hero_intro_2: All-in-one App Engine
+    trans__index_hero_intro_3: |-
+        is a free, open-source application engine that allows developers to
+                create web apps, REST APIs, enterprise apps and more, with AI as a
+                seamless collaborator.
+messages:
+    All-in-one App Engine: All-in-one App Engine
+    Getting Started: 入门指南
+    ? |-
+        is a free, open-source application engine that allows developers to
+                create web apps, REST APIs, enterprise apps and more, with AI as a
+                seamless collaborator.
+    : 是一个免费的开源应用引擎，允许开发人员创建Web应用程序、REST API、企业应用程序等，AI作为一个无缝的合作者。

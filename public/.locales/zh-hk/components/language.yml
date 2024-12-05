@@ -1,0 +1,6 @@
+name: zh-hk
+formatter: scripts.tests.formatter
+keys:
+    trans__components_language_1: 選擇語言
+direction: ltr
+timezone: "+8:00"

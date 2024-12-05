@@ -1,0 +1,92 @@
+---
+title: Debug Guide
+description: How to debug your application.
+related:
+  title: Next Steps
+  description: Creating data models.
+  links:
+    - data-model
+---
+
+This section offers a quick overview of a common debugging approach in Yao. A brief look is enough, as it will be used when building a simple application later.
+
+## Run a Process
+
+The `yao run` command is used to execute a single process. This is useful for debugging custom processes.
+
+You can execute a single process to display the result in the console.
+
+**Note:**
+
+- The process runs on the server side.
+- The console output appears in the terminal, not in the browser.
+
+```bash
+yao run utils.app.Ping # Return Yao version information
+
+yao run models.tests.pet.Find 1 '::{}' # Return a pet with id 1
+
+yao run not.exist.Process # Return an error message
+```
+
+## Print Debug Information
+
+For debugging processes, you can use `console.log` or the `log` object to output debug information in your scripts.
+
+For more information, see the runtime references. 👉 **[Runtime References](references/runtime)**
+
+```bash
+yao run scripts.test.Hello 'Yao!'   # Returns 'Hello, Yao!'
+
+yao run scripts.test.Pets cat  # Returns a list of pets in the cat category.
+```
+
+**scripts/hello.ts**
+
+```javascript
+import { Process, log } from "@yao/runtime";
+
+/**
+ * Say hello to someone
+ */
+function Hello(name: string): string {
+  // Output debug information to console
+  console.log(`Hello, ${name}!`);
+
+  // Output debug information to log
+  log.Debug(`Hello %s`, name);
+
+  return `Hello, ${name}!`;
+}
+
+/**
+ * Get pets by category
+ */
+function Pets(category?: string): Record {
+  category = category || "dog";
+
+  // Execute a models.* internal process, to get pets by category
+  const pets = Process("models.tests.pet.Get", {
+    select: ["id", "name"],
+    wheres: [{ column: "category", value: category }],
+  });
+
+  // Output debug information to console
+  console.Debug(`category: ${category}, pets:`, pets);
+
+  // Output debug information to log
+  log.Info(`category: %s, pets: %#v`, category, pets);
+
+  return pets;
+}
+```
+
+## Check Logs
+
+The default application log is stored in the `logs` directory. You can check the log files for more detailed information.
+
+You can change the log location and level in environment variables.
+
+For more information, see the App Configuration section.
+
+👉 **[App Configuration](building-your-application/app-configuration)**

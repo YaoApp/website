@@ -1,0 +1,22 @@
+name: ja-jp
+formatter: scripts.tests.formatter
+keys:
+    trans__components_theme_1: 切り替える
+    trans__components_theme_2: Switch to Light Mode
+    trans__components_theme_3: Switch to Light Mode
+    trans__header_1: 概要
+    trans__header_2: 使用法
+    trans__header_3: ダウンロード
+    trans__header_4: ドキュメント
+    trans__header_5: コミュニティ
+    trans__header_6: ブログ
+    trans__header_7: Build App via Chat
+    trans__header_8: App Engine
+    trans__header_9: View on Github
+    trans__header_10: View on Github
+    trans__header_11: Discordコミュニティに参加
+    trans__header_12: Discordコミュニティに参加
+    trans__header_13: Create Apps via Chat using Moapi.ai
+    trans__header_14: Discordコミュニティに参加
+direction: ltr
+timezone: "+9:00"

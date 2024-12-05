@@ -1,0 +1,208 @@
+{
+  "name": "Administrators",
+  "action": {
+    "bind": { "model": "admin.user", "option": { "form": "account" } },
+    "after:search": "scripts.account.AfterSearch"
+  },
+  "layout": {
+    "header": {},
+    "primary": "id",
+    "filter": {
+      "columns": [
+        { "name": "Type" },
+        { "name": "Email" },
+        { "name": "Mobile" },
+        { "name": "Name" },
+        { "name": "Status" }
+      ],
+      "actions": [
+        {
+          "title": "Add Administrator",
+          "icon": "icon-plus",
+          "style": "primary",
+          "action": [
+            {
+              "name": "openModal",
+              "type": "Common.openModal",
+              "payload": {
+                "byDrawer": { "mask": true },
+                "Form": { "type": "add", "model": "account" }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "table": {
+      "columns": [
+        { "name": "ID", "width": 60 },
+        { "name": "Type", "width": 120 },
+        { "name": "Email", "width": 200 },
+        { "name": "Mobile", "width": 150 },
+        { "name": "Name", "width": 150 },
+        { "name": "Status", "width": 100 }
+      ],
+      "operation": {
+        "fold": false,
+        "actions": [
+          {
+            "style": "primary",
+            "title": "Edit",
+            "icon": "icon-edit-2",
+            "action": [
+              {
+                "name": "openModal",
+                "type": "Common.openModal",
+                "payload": {
+                  "byDrawer": { "mask": true },
+                  "Form": {
+                    "type": "edit",
+                    "model": "account",
+                    "params": { "id": "" }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "style": "danger",
+            "title": "Delete",
+            "icon": "icon-trash-2",
+            "action": [
+              {
+                "name": "Confirm",
+                "type": "Common.confirm",
+                "payload": {
+                  "title": "Please confirm to delete []",
+                  "content": "This action is irreversible! The user will be permanently deleted."
+                }
+              },
+              { "name": "Delete", "type": "Table.delete", "payload": {} }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "fields": {
+    "filter": {
+      "Type": {
+        "bind": "where.type.eq",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Type",
+            "options": [
+              { "label": "Admin", "value": "admin" },
+              { "label": "Staff", "value": "staff" },
+              { "label": "User", "value": "user" },
+              { "label": "Robot", "value": "robot" }
+            ]
+          }
+        }
+      },
+      "Email": {
+        "bind": "where.email.match",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Email" }
+        }
+      },
+      "Mobile": {
+        "bind": "where.mobile.match",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Mobile" }
+        }
+      },
+      "Name": {
+        "bind": "where.name.match",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Name" }
+        }
+      },
+      "Status": {
+        "bind": "where.status.eq",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Status",
+            "options": [
+              { "label": "Enabled", "value": "enabled" },
+              { "label": "Disabled", "value": "disabled" }
+            ]
+          }
+        }
+      }
+    },
+    "table": {
+      "ID": {
+        "bind": "id",
+        "view": { "type": "Text" },
+        "edit": { "type": "Input", "props": { "disabled": true } }
+      },
+      "Type": {
+        "bind": "type",
+        "view": {
+          "type": "Tag",
+          "props": {
+            "options": [
+              { "label": "Admin", "value": "admin" },
+              { "label": "Staff", "value": "staff" },
+              { "label": "User", "value": "user" },
+              { "label": "Robot", "value": "robot" }
+            ]
+          }
+        },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "options": [
+              { "label": "Admin", "value": "admin" },
+              { "label": "Staff", "value": "staff" },
+              { "label": "User", "value": "user" },
+              { "label": "Robot", "value": "robot" }
+            ]
+          }
+        }
+      },
+      "Email": {
+        "bind": "email",
+        "view": { "type": "Text" },
+        "edit": { "type": "Input", "props": { "placeholder": "Email" } }
+      },
+      "Mobile": {
+        "bind": "mobile",
+        "view": { "type": "Text" },
+        "edit": { "type": "Input", "props": { "placeholder": "Mobile" } }
+      },
+      "Name": {
+        "bind": "name",
+        "view": { "type": "Text" },
+        "edit": { "type": "Input", "props": { "placeholder": "Name" } }
+      },
+      "Status": {
+        "bind": "status",
+        "view": {
+          "type": "Tag",
+          "props": {
+            "options": [
+              { "label": "Enabled", "value": "enabled", "color": "success" },
+              { "label": "Disabled", "value": "disabled", "color": "danger" }
+            ]
+          }
+        },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "options": [
+              { "label": "Enabled", "value": "enabled" },
+              { "label": "Disabled", "value": "disabled" }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

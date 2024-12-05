@@ -1,0 +1,325 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+</head>
+  <body s:ns="ns_c29509aa44f9869" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><section class="sticky top-[100px] hidden h-[calc(100vh-100px)] w-[284px] md:flex md:shrink-0 md:flex-col md:justify-start scrollbar-hidden scrollbar-dark">
+  
+  <s:set name="items" value="{% items %}"></s:set>
+  <div s:for="items" class="mb-6 w-[278px]">
+    <div namespace="" type="flowbite-link" class="flowbite-link" s:public="/" s:assets="/assets" prop:href="{{ &#39;/docs/&#39; + item.link }}" prop:color="{{ $param.name == item.link ? &#39;primary&#39; : &#39;dark&#39; }}" prop:class="mb-2 {{ $param.name == item.link ? &#39;active&#39; : &#39;&#39; }}" s:ns="ns_ef81922516cc8320" s:cn="comp__flowbite_components_anchor" s:ready="comp__flowbite_components_anchor()" s:parent="ns_c29509aa44f9869">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value="mb-2 {{ $param.name == item.link ? &#39;active&#39; : &#39;&#39; }}"></s:set>
+  <s:set name="title" value=""></s:set>
+  <s:set name="size" value=""></s:set>
+  <s:set name="color" value="{{ $param.name == item.link ? &#39;primary&#39; : &#39;dark&#39; }}"></s:set>
+  <s:set name="href" value="{{ &#39;/docs/&#39; + item.link }}"></s:set>
+  <s:set name="target" value=""></s:set>
+  <s:set name="weight" value=""></s:set>
+  <s:set name="icon" value=""></s:set>
+  <s:set name="sizes" value="{{ { 
+          &#39;xs&#39;: &#39;text-xs&#39;, 
+          &#39;sm&#39;: &#39;text-sm&#39;, 
+          &#39;base&#39;: &#39;text-base&#39;,
+          &#39;lg&#39;: &#39;text-lg&#39;, 
+          &#39;xl&#39;: &#39;text-xl&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+  <s:set name="colors" value="{{ {
+          &#39;primary&#39;: &#39;text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300&#39;,
+          &#39;dark&#39;:   &#39;text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-200&#39;,
+          &#39;light&#39;:  &#39;text-gray-200 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-500&#39;,
+          &#39;success&#39;: &#39;text-success hover:text-success-800 dark:text-success dark:hover:text-dark-success-700&#39;,
+          &#39;danger&#39;: &#39;text-danger hover:text-danger-800 dark:text-danger dark:hover:text-dark-danger-700&#39;,
+          &#39;warning&#39;: &#39;text-warning hover:text-warning-800 dark:text-warning dark:hover:text-dark-warning-700&#39;,
+          &#39;info&#39;: &#39;text-info hover:text-info-800 dark:text-info dark:hover:text-dark-info-700&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}
+    "></s:set>
+  <s:set name="weights" value="{{ {
+          &#39;normal&#39;: &#39;font-normal&#39;,
+          &#39;medium&#39;: &#39;font-medium&#39;,
+          &#39;bold&#39;: &#39;font-bold&#39;,
+          &#39;semibold&#39;: &#39;font-semibold&#39;,
+          &#39;light&#39;: &#39;font-light&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+
+  <a id="{{ id }}" name="{{ name }}" title="{{ title }}" class="cursor-pointer hover:transition hover:duration-200 hover:ease-in-out
+          {{ icon != &#39;&#39; ? &#39;flex items-center justify-start&#39; : &#39;inline-block&#39; }}
+          {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+          {{ color != &#39;&#39; ? colors[color] : colors.primary }}
+          {{ weight != &#39;&#39; ? weights[weight] : weights.normal }}
+          {{ class }}
+      " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" button="">
+    <i s:if="icon != &#39;&#39;" class="material outlined me-1"> {{icon}} </i>
+    
+      <span class="font-bold text-sm"> {{ item.title }} </span>
+    
+  </a>
+</div>
+
+
+    <ul class="px-1">
+      <li s:for="item.children" class="py-1">
+        <!-- Has Children -->
+        <div s:if="len(item.children) &gt; 0" submenu="">
+          <div namespace="" type="flowbite-link" class="flowbite-link" s:public="/" s:assets="/assets" prop:href="{{ &#39;/docs/&#39; + item.link }}" prop:color="{{ $param.name == item.link ? &#39;primary&#39; : &#39;dark&#39; }}" prop:size="sm" prop:class="flex items-center justify-between mb-2 {{ $param.name == item.link ? &#39;active&#39; : &#39;&#39; }}" prop:menu-item="" s:ns="ns_ef81932516cc84d3" s:cn="comp__flowbite_components_anchor" s:ready="comp__flowbite_components_anchor()" s:parent="ns_c29509aa44f9869">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value="flex items-center justify-between mb-2 {{ $param.name == item.link ? &#39;active&#39; : &#39;&#39; }}"></s:set>
+  <s:set name="title" value=""></s:set>
+  <s:set name="size" value="sm"></s:set>
+  <s:set name="color" value="{{ $param.name == item.link ? &#39;primary&#39; : &#39;dark&#39; }}"></s:set>
+  <s:set name="href" value="{{ &#39;/docs/&#39; + item.link }}"></s:set>
+  <s:set name="target" value=""></s:set>
+  <s:set name="weight" value=""></s:set>
+  <s:set name="icon" value=""></s:set>
+  <s:set name="sizes" value="{{ { 
+          &#39;xs&#39;: &#39;text-xs&#39;, 
+          &#39;sm&#39;: &#39;text-sm&#39;, 
+          &#39;base&#39;: &#39;text-base&#39;,
+          &#39;lg&#39;: &#39;text-lg&#39;, 
+          &#39;xl&#39;: &#39;text-xl&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+  <s:set name="colors" value="{{ {
+          &#39;primary&#39;: &#39;text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300&#39;,
+          &#39;dark&#39;:   &#39;text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-200&#39;,
+          &#39;light&#39;:  &#39;text-gray-200 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-500&#39;,
+          &#39;success&#39;: &#39;text-success hover:text-success-800 dark:text-success dark:hover:text-dark-success-700&#39;,
+          &#39;danger&#39;: &#39;text-danger hover:text-danger-800 dark:text-danger dark:hover:text-dark-danger-700&#39;,
+          &#39;warning&#39;: &#39;text-warning hover:text-warning-800 dark:text-warning dark:hover:text-dark-warning-700&#39;,
+          &#39;info&#39;: &#39;text-info hover:text-info-800 dark:text-info dark:hover:text-dark-info-700&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}
+    "></s:set>
+  <s:set name="weights" value="{{ {
+          &#39;normal&#39;: &#39;font-normal&#39;,
+          &#39;medium&#39;: &#39;font-medium&#39;,
+          &#39;bold&#39;: &#39;font-bold&#39;,
+          &#39;semibold&#39;: &#39;font-semibold&#39;,
+          &#39;light&#39;: &#39;font-light&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+
+  <a id="{{ id }}" name="{{ name }}" title="{{ title }}" class="cursor-pointer hover:transition hover:duration-200 hover:ease-in-out
+          {{ icon != &#39;&#39; ? &#39;flex items-center justify-start&#39; : &#39;inline-block&#39; }}
+          {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+          {{ color != &#39;&#39; ? colors[color] : colors.primary }}
+          {{ weight != &#39;&#39; ? weights[weight] : weights.normal }}
+          {{ class }}
+      " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" button="">
+    <i s:if="icon != &#39;&#39;" class="material outlined me-1"> {{icon}} </i>
+    
+            <span>{{ item.title }}</span>
+            <span class="material outlined text-gray-400 text-lg hover:text-primary cursor-pointer" toggle="">
+              keyboard_arrow_down
+            </span>
+          
+  </a>
+</div>
+
+
+          <ul class="px-2">
+            <li s:for="item.children" s:for-item="child" class="ps-4 py-1
+                {{ $param.name == child.link ? &#39;active border-primary border-l-2 dark:border-dark-primary-400&#39; : &#39;border-l  border-gray-200 dark:border-gray-800&#39; }}
+              " menu-item="">
+              <div namespace="" type="flowbite-link" class="flowbite-link" s:public="/" s:assets="/assets" prop:href="{{ &#39;/docs/&#39; +child.link }}" prop:color="{{ $param.name == child.link ? &#39;primary&#39; : &#39;dark&#39; }}" prop:size="sm" s:ns="ns_ef81982516cc8d52" s:cn="comp__flowbite_components_anchor" s:ready="comp__flowbite_components_anchor()" s:parent="ns_c29509aa44f9869">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value=""></s:set>
+  <s:set name="title" value=""></s:set>
+  <s:set name="size" value="sm"></s:set>
+  <s:set name="color" value="{{ $param.name == child.link ? &#39;primary&#39; : &#39;dark&#39; }}"></s:set>
+  <s:set name="href" value="{{ &#39;/docs/&#39; +child.link }}"></s:set>
+  <s:set name="target" value=""></s:set>
+  <s:set name="weight" value=""></s:set>
+  <s:set name="icon" value=""></s:set>
+  <s:set name="sizes" value="{{ { 
+          &#39;xs&#39;: &#39;text-xs&#39;, 
+          &#39;sm&#39;: &#39;text-sm&#39;, 
+          &#39;base&#39;: &#39;text-base&#39;,
+          &#39;lg&#39;: &#39;text-lg&#39;, 
+          &#39;xl&#39;: &#39;text-xl&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+  <s:set name="colors" value="{{ {
+          &#39;primary&#39;: &#39;text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300&#39;,
+          &#39;dark&#39;:   &#39;text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-200&#39;,
+          &#39;light&#39;:  &#39;text-gray-200 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-500&#39;,
+          &#39;success&#39;: &#39;text-success hover:text-success-800 dark:text-success dark:hover:text-dark-success-700&#39;,
+          &#39;danger&#39;: &#39;text-danger hover:text-danger-800 dark:text-danger dark:hover:text-dark-danger-700&#39;,
+          &#39;warning&#39;: &#39;text-warning hover:text-warning-800 dark:text-warning dark:hover:text-dark-warning-700&#39;,
+          &#39;info&#39;: &#39;text-info hover:text-info-800 dark:text-info dark:hover:text-dark-info-700&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}
+    "></s:set>
+  <s:set name="weights" value="{{ {
+          &#39;normal&#39;: &#39;font-normal&#39;,
+          &#39;medium&#39;: &#39;font-medium&#39;,
+          &#39;bold&#39;: &#39;font-bold&#39;,
+          &#39;semibold&#39;: &#39;font-semibold&#39;,
+          &#39;light&#39;: &#39;font-light&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+
+  <a id="{{ id }}" name="{{ name }}" title="{{ title }}" class="cursor-pointer hover:transition hover:duration-200 hover:ease-in-out
+          {{ icon != &#39;&#39; ? &#39;flex items-center justify-start&#39; : &#39;inline-block&#39; }}
+          {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+          {{ color != &#39;&#39; ? colors[color] : colors.primary }}
+          {{ weight != &#39;&#39; ? weights[weight] : weights.normal }}
+          {{ class }}
+      " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" button="">
+    <i s:if="icon != &#39;&#39;" class="material outlined me-1"> {{icon}} </i>
+    
+                {{ child.title }}
+              
+  </a>
+</div>
+
+            </li>
+          </ul>
+        </div>
+
+        <!-- No Children -->
+        <div namespace="" type="flowbite-link" class="flowbite-link" s:public="/" s:assets="/assets" s:else="" prop:href="{{ &#39;/docs/&#39; + item.link }}" prop:size="sm" prop:color="{{ $param.name == item.link ? &#39;primary&#39; : &#39;dark&#39; }}" prop:class="{{ $param.name == item.link ? &#39;active&#39; : &#39;&#39; }}" s:ns="ns_ef81992516cc8f05" s:cn="comp__flowbite_components_anchor" s:ready="comp__flowbite_components_anchor()" s:parent="ns_c29509aa44f9869">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value="{{ $param.name == item.link ? &#39;active&#39; : &#39;&#39; }}"></s:set>
+  <s:set name="title" value=""></s:set>
+  <s:set name="size" value="sm"></s:set>
+  <s:set name="color" value="{{ $param.name == item.link ? &#39;primary&#39; : &#39;dark&#39; }}"></s:set>
+  <s:set name="href" value="{{ &#39;/docs/&#39; + item.link }}"></s:set>
+  <s:set name="target" value=""></s:set>
+  <s:set name="weight" value=""></s:set>
+  <s:set name="icon" value=""></s:set>
+  <s:set name="sizes" value="{{ { 
+          &#39;xs&#39;: &#39;text-xs&#39;, 
+          &#39;sm&#39;: &#39;text-sm&#39;, 
+          &#39;base&#39;: &#39;text-base&#39;,
+          &#39;lg&#39;: &#39;text-lg&#39;, 
+          &#39;xl&#39;: &#39;text-xl&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+  <s:set name="colors" value="{{ {
+          &#39;primary&#39;: &#39;text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300&#39;,
+          &#39;dark&#39;:   &#39;text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-200&#39;,
+          &#39;light&#39;:  &#39;text-gray-200 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-500&#39;,
+          &#39;success&#39;: &#39;text-success hover:text-success-800 dark:text-success dark:hover:text-dark-success-700&#39;,
+          &#39;danger&#39;: &#39;text-danger hover:text-danger-800 dark:text-danger dark:hover:text-dark-danger-700&#39;,
+          &#39;warning&#39;: &#39;text-warning hover:text-warning-800 dark:text-warning dark:hover:text-dark-warning-700&#39;,
+          &#39;info&#39;: &#39;text-info hover:text-info-800 dark:text-info dark:hover:text-dark-info-700&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}
+    "></s:set>
+  <s:set name="weights" value="{{ {
+          &#39;normal&#39;: &#39;font-normal&#39;,
+          &#39;medium&#39;: &#39;font-medium&#39;,
+          &#39;bold&#39;: &#39;font-bold&#39;,
+          &#39;semibold&#39;: &#39;font-semibold&#39;,
+          &#39;light&#39;: &#39;font-light&#39;,
+          &#39;none&#39;: &#39;&#39;
+      } }}"></s:set>
+
+  <a id="{{ id }}" name="{{ name }}" title="{{ title }}" class="cursor-pointer hover:transition hover:duration-200 hover:ease-in-out
+          {{ icon != &#39;&#39; ? &#39;flex items-center justify-start&#39; : &#39;inline-block&#39; }}
+          {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+          {{ color != &#39;&#39; ? colors[color] : colors.primary }}
+          {{ weight != &#39;&#39; ? weights[weight] : weights.normal }}
+          {{ class }}
+      " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" button="">
+    <i s:if="icon != &#39;&#39;" class="material outlined me-1"> {{icon}} </i>
+    
+          {{ item.title }}
+        
+  </a>
+</div>
+
+      </li>
+    </ul>
+  </div>
+</section>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_c29509aa44f9869" s:cn="comp__docs__name__sidebar" s:hash="script_391865b7434059c5" type="text/javascript">
+this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(selector){return new __Query(__self.root).find(selector)},this.query=function(selector){return __self.root.querySelector(selector)},this.queryAll=function(selector){return __self.root.querySelectorAll(selector)},this.render=function(name,data,option){return new __Render(__self,option).Exec(name,data)},this.emit=function(name,data){const event=new CustomEvent(name,{detail:data});__self.root.dispatchEvent(event)};const elm=$(arguments[0]);function Init(){elm.find("[submenu] > ul").find("li").each(function(){$(this).hasClass("active")&&(elm.find("[submenu] > ul").removeClass("hidden"),elm.find("[submenu] [toggle]").html("keyboard_arrow_down"))}),elm.find("[submenu] [toggle]").on("click",function(event){event.preventDefault(),console.log($(this)),$(this).closest("[submenu]").find("ul").slideToggle(100).toggleClass("hidden"),$(this).html($(this).closest("[submenu]").find("ul").hasClass("hidden")?"keyboard_arrow_right":"keyboard_arrow_down")}),setTimeout(()=>{const active=elm.find("[menu-item].active");if(active.length){const activeTop=active.position().top,activeHeight=active.outerHeight(),sidebarHeight=elm.height(),scrollTop=elm.scrollTop();activeTop+activeHeight>sidebarHeight&&elm.animate({scrollTop:scrollTop+activeTop},100)}},10)}Init(),this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(event){const name=this.getAttribute("s:cn"),target=event.detail.target,key=event.detail.key,value=event.detail.value,component=new window[name](this);new __sui_state(component).Set(key,value,target)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/"}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+
+
+<script name="imports" type="json">
+{"comp__flowbite_components_anchor":"/flowbite/components/anchor"}
+</script>
+
+</body></html>

@@ -1,0 +1,202 @@
+{
+  "name": "Playground",
+  "action": { "save": { "process": "scripts.playground.Save" } },
+  "layout": {
+    "actions": [
+      {
+        "title": "Load Demo Table",
+        "icon": "icon-layout",
+        "showWhenAdd": true,
+        "style": "default",
+        "action": [
+          {
+            "name": "DSL",
+            "type": "Service.playground",
+            "payload": {
+              "method": "LoadDSL",
+              "args": [{ "url": "/admin/x/Table/tests.article" }]
+            }
+          },
+          {
+            "name": "UpdateStatus",
+            "type": "Common.emitEvent",
+            "payload": {
+              "key": "Form-Page-playground/setFieldsValue",
+              "value": {
+                "url": "/admin/x/Table/tests.article",
+                "status": "[[$DSL.status]]",
+                "dsl": "[[[$DSL.source]]]"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Load Demo Form",
+        "icon": "icon-columns",
+        "showWhenAdd": true,
+        "style": "default",
+        "action": [
+          {
+            "name": "DSL",
+            "type": "Service.playground",
+            "payload": {
+              "method": "LoadDSL",
+              "args": [{ "url": "/admin/x/Form/tests.article/0" }]
+            }
+          },
+          {
+            "name": "UpdateStatus",
+            "type": "Common.emitEvent",
+            "payload": {
+              "key": "Form-Page-playground/setFieldsValue",
+              "value": {
+                "url": "/admin/x/Form/tests.article/0",
+                "status": "[[$DSL.status]]",
+                "dsl": "[[[$DSL.source]]]"
+              }
+            }
+          }
+        ]
+      },
+
+      {
+        "title": "Reset DSL",
+        "icon": "icon-save",
+        "style": "danger",
+        "divideLine": true,
+        "disabled": { "bind": "{{status}}", "value": ["", "readonly"] },
+        "showWhenAdd": true,
+        "action": [
+          {
+            "name": "Confirm",
+            "type": "Common.confirm",
+            "payload": {
+              "title": "Please confirm to RESET the DSL",
+              "content": "This action is irreversible! The DSL will be rewrited."
+            }
+          },
+          {
+            "name": "DSL",
+            "type": "Service.playground",
+            "payload": { "method": "ResetDSL", "args": [{ "url": "{{url}}" }] }
+          },
+          {
+            "name": "UpdateStatus",
+            "type": "Common.emitEvent",
+            "payload": {
+              "key": "Form-Page-playground/setFieldsValue",
+              "value": {
+                "status": "[[$DSL.status]]",
+                "dsl": "[[[$DSL.source]]]"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Load DSL",
+        "icon": "icon-upload",
+        "style": "primary",
+        "showWhenAdd": true,
+        "disabled": { "bind": "{{url}}", "value": "" },
+        "action": [
+          {
+            "name": "DSL",
+            "type": "Service.playground",
+            "payload": { "method": "LoadDSL", "args": [{ "url": "{{url}}" }] }
+          },
+          {
+            "name": "UpdateStatus",
+            "type": "Common.emitEvent",
+            "payload": {
+              "key": "Form-Page-playground/setFieldsValue",
+              "value": {
+                "status": "[[$DSL.status]]",
+                "dsl": "[[[$DSL.source]]]"
+              }
+            }
+          }
+        ]
+      },
+
+      {
+        "title": "Save DSL",
+        "icon": "icon-save",
+        "style": "success",
+        "disabled": { "bind": "{{status}}", "value": ["", "readonly"] },
+        "showWhenAdd": true,
+        "action": [
+          { "name": "Submit", "type": "Form.submit" },
+          {
+            "name": "UpdateStatus",
+            "type": "Common.emitEvent",
+            "payload": {
+              "key": "Form-Page-playground/setFieldsValue",
+              "value": { "ts": "[[$Submit]]" }
+            }
+          }
+        ]
+      }
+    ],
+    "form": {
+      "sections": [
+        {
+          "columns": [
+            { "name": "Page URL", "width": 18 },
+            { "name": "Status", "width": 6 },
+            { "name": "DSL", "width": 12 },
+            { "name": "Preview", "width": 12 }
+          ]
+        }
+      ]
+    },
+    "config": { "editTitle": "Playground", "hideBreadcrumb": true }
+  },
+  "fields": {
+    "form": {
+      "Status": {
+        "bind": "status",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Readonly or Editable",
+            "disabled": true,
+            "options": [
+              { "label": "Readonly", "value": "readonly" },
+              { "label": "Editable", "value": "editable" }
+            ]
+          }
+        }
+      },
+
+      "Page URL": {
+        "bind": "url",
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "Enter the URL of the page you want to play with, then click Load Button"
+          }
+        }
+      },
+      "DSL": {
+        "bind": "dsl",
+        "edit": {
+          "type": "CodeEditor",
+          "props": { "language": "json", "height": "75vh" }
+        }
+      },
+      "Preview": {
+        "bind": "frame_component",
+        "edit": {
+          "type": "Frame",
+          "props": {
+            "url": "/playground/preview", // The URL of the preview page @/public/previews/playground.html
+            "params": { "url": "{{ url }}", "ts": "{{ ts }}" },
+            "height": "77vh"
+          }
+        }
+      }
+    }
+  }
+}

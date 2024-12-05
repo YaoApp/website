@@ -1,0 +1,11 @@
+<div type="article">
+  <s:set name="article" value="{% data %}"></s:set>
+  <div class="w-full text-gray-400 dark:text-gray-500" loading></div>
+  <div
+    class="w-full prose md:px-6 !max-w-none prose-gray dark:prose-invert hidden"
+    content
+    s:raw="true"
+  >
+    <pre id="markdown">{{ article.content }}</pre>
+  </div>
+</div>

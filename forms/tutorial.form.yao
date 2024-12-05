@@ -1,0 +1,105 @@
+{
+  "name": "Tutorials",
+  "action": { "bind": { "table": "tutorial" } },
+  "layout": {
+    "primary": "id",
+    "actions": [
+      {
+        "title": "Save",
+        "icon": "icon-save",
+        "showWhenAdd": true,
+        "style": "primary",
+        "action": [{ "name": "Submit", "type": "Form.submit" }]
+      },
+      {
+        "title": "Delete",
+        "icon": "icon-trash-2",
+        "style": "danger",
+        "action": [
+          {
+            "name": "Confirm",
+            "type": "Common.confirm",
+            "payload": {
+              "title": "Please confirm to delete [{{ title }}]",
+              "content": "This action is irreversible!"
+            }
+          },
+          { "name": "Delete", "type": "Table.delete", "payload": {} }
+        ]
+      },
+      {
+        "title": "Close",
+        "icon": "icon-arrow-left",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          { "name": "CloseModal", "type": "Common.closeModal", "payload": {} }
+        ]
+      }
+    ],
+    "form": {
+      "sections": [
+        {
+          "columns": [
+            { "name": "Title", "width": 24 },
+            { "name": "URL", "width": 24 },
+            { "name": "Description", "width": 24 },
+            { "name": "Language", "width": 12 },
+            { "name": "Category", "width": 12 },
+            { "name": "Icon", "width": 12 },
+            { "name": "Release Date", "width": 12 },
+            { "name": "Sort", "width": 12 }
+          ]
+        }
+      ]
+    }
+  },
+  "fields": {
+    "form": {
+      "Title": {
+        "bind": "title",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Input the title of the tutorial" }
+        }
+      },
+      "URL": {
+        "bind": "url",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Input the URL of the tutorial" }
+        }
+      },
+      "Description": {
+        "bind": "description",
+        "edit": {
+          "type": "TextArea",
+          "props": {
+            "placeholder": "Input a brief description of the tutorial"
+          }
+        }
+      },
+      "Icon": {
+        "bind": "icon",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Input the icon of the tutorial" }
+        }
+      },
+      "Release Date": {
+        "bind": "release_date",
+        "edit": {
+          "type": "DatePicker",
+          "props": { "placeholder": "Select the release date" }
+        }
+      },
+      "Sort": {
+        "bind": "sort",
+        "edit": {
+          "type": "InputNumber",
+          "props": { "placeholder": "Input the sort order" }
+        }
+      }
+    }
+  }
+}

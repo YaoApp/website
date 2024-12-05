@@ -1,0 +1,28 @@
+<div class="app p-4 lg:p-8">
+  <div class="container mx-auto mb-4">
+    <div class="flex items-center justify-between">
+      <div class="text-2xl text-white select-none">
+        {{ page.dsl_form != null ? page.dsl_form.name : 'Untitled Form' }}
+      </div>
+      <div class="mr-4">
+        <DarkModeToggle
+          is="/flowbite/components/edit/toggle"
+          column="{{ {'name': 'Dark Mode'} }}"
+          value="1"
+        />
+      </div>
+    </div>
+  </div>
+  <section
+    class="container mx-auto bg-white p-4 rounded-lg shadow-lg shadow-primary-50/20"
+  >
+    <FlowbiteForm
+      is="/flowbite/components/form"
+      name="flowbite-app"
+      class="app-form"
+      mode="edit"
+      dsl="{{ page.dsl_form != null ? page.dsl_form  : {} }}"
+      data="{{ page.__data != null ? page.__data : {} }}"
+    />
+  </section>
+</div>

@@ -1,0 +1,42 @@
+<div class="bg-white dark:bg-black min-h-[100vh]">
+  <header is="/header" active="/docs"></header>
+
+  <div
+    class="container mx-auto px-6 py-10 px-12 md:px-16 md:py-10 flex flex-col justify-center relative md:flex md:flex-row"
+  >
+    <Sidebar is="/docs/[name]/sidebar" items="{{ catalog }}"></Sidebar>
+
+    <Outline
+      is="/docs/[name]/outline"
+      id="outline"
+      github="{{ 'https://github.com/yaoapp/docs/tree/main' +  document.path }}"
+    ></Outline>
+
+    <div class="w-full min-w-0 max-w-6xl px-1">
+      <Breadcrumb
+        is="/flowbite/components/breadcrumb"
+        prefix="/docs/"
+        paths="{{ document.breadcrumb }}"
+        class="mb-6 {{ len(document.breadcrumb) == 1 ? 'hidden' : '' }}"
+      ></Breadcrumb>
+
+      <h1
+        class="text-4xl text-gray-900 mb-4 md:px-5 font-medium dark:text-gray-100"
+      >
+        {{ document.title }}
+      </h1>
+      <article is="/docs/[name]/article" data="{{ document }}"></article>
+    </div>
+  </div>
+
+  <footer is="/footer"></footer>
+</div>
+
+<!-- Global Message Toast -->
+<Toast
+  is="/flowbite/components/toast"
+  id="message"
+  class="message"
+  position="bottom-right"
+  duration="5000"
+></Toast>

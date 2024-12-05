@@ -1,0 +1,67 @@
+:root {
+  --hero-border: rgba(0, 0, 0, 0.01) 1px;
+  --hero-point: rgba(0, 0, 0, 0.02) 1px;
+  --hero-bg: #ffffff;
+  --hero-border-dark: rgba(255, 255, 255, 0.03) 1px;
+  --hero-point-dark: rgba(255, 255, 255, 0.02) 1px;
+  --hero-bg-dark: #000000;
+  --size: 80px;
+  --size-border: 3px;
+  --size-padding: 78px;
+  --offset-x: 10%;
+  --offset-y: 10%;
+}
+
+.grid-bg {
+  background: linear-gradient(-90deg, var(--hero-border), transparent 1px),
+    linear-gradient(var(--hero-border), transparent 1px),
+    linear-gradient(-90deg, var(--hero-border), transparent 1px),
+    linear-gradient(var(--hero-border), transparent 1px),
+    linear-gradient(
+      transparent var(--size-border),
+      var(--hero-bg) var(--size-border),
+      var(--hero-bg) var(--size-padding),
+      transparent var(--size-padding)
+    ),
+    linear-gradient(-90deg, var(--hero-point), transparent 1px),
+    linear-gradient(
+      -90deg,
+      transparent var(--size-border),
+      var(--hero-bg) var(--size-border),
+      var(--hero-bg) var(--size-padding),
+      transparent var(--size-padding)
+    ),
+    linear-gradient(var(--hero-point), transparent 1px), #ffffff;
+  background-size: var(--size) var(--size), var(--size) var(--size),
+    var(--size) var(--size), var(--size) var(--size), var(--size) var(--size),
+    var(--size) var(--size), var(--size) var(--size), var(--size) var(--size);
+
+  background-position: var(--offset-x) var(--offset-y);
+}
+
+.dark .grid-bg {
+  background: linear-gradient(-90deg, var(--hero-border-dark), transparent 1px),
+    linear-gradient(var(--hero-border-dark), transparent 1px),
+    linear-gradient(-90deg, var(--hero-border-dark), transparent 1px),
+    linear-gradient(var(--hero-border-dark), transparent 1px),
+    linear-gradient(
+      transparent var(--size-border),
+      var(--hero-bg-dark) var(--size-border),
+      var(--hero-bg-dark) var(--size-padding),
+      transparent var(--size-padding)
+    ),
+    linear-gradient(-90deg, var(--hero-point-dark), transparent 1px),
+    linear-gradient(
+      -90deg,
+      transparent var(--size-border),
+      var(--hero-bg-dark) var(--size-border),
+      var(--hero-bg-dark) var(--size-padding),
+      transparent var(--size-padding)
+    ),
+    linear-gradient(var(--hero-point-dark), transparent 1px), #000000;
+  background-size: var(--size) var(--size), var(--size) var(--size),
+    var(--size) var(--size), var(--size) var(--size), var(--size) var(--size),
+    var(--size) var(--size), var(--size) var(--size), var(--size) var(--size);
+
+  background-position: var(--offset-x) var(--offset-y);
+}

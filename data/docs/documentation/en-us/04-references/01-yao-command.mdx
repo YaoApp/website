@@ -1,0 +1,136 @@
+---
+title: Yao Command Reference
+description: The detailed reference for the Yao command.
+---
+
+The detailed reference for the Yao command.
+
+## Available Commands
+
+| Command                         | Description                                           | Example                     |
+| ------------------------------- | ----------------------------------------------------- | --------------------------- |
+| [yao start](#yao-start)         | Start the built-in http server                        | `yao start`                 |
+| [yao run](#yao-run)             | Run a process                                         | `yao run utils.app.Ping`    |
+| [yao migrate](#yao-migrate)     | Migrate the database, build the schema                | `yao migrate`               |
+| [yao version](#yao-version)     | Display the version of Yao                            | `yao version --all`         |
+| [yao inspect](#yao-inspect)     | Inspect the application configuration                 | `yao inspect`               |
+| [yao sui build](#yao-sui-build) | Build the SUI page                                    | `yao sui build web default` |
+| [yao sui watch](#yao-sui-watch) | Watch the SUI page changes, and rebuild automatically | `yao sui watch web default` |
+| [yao help](#yao-help)           | Display help information for the Yao command          | `yao help`                  |
+
+**❗ Yao command should be executed in the root directory of the project.**
+
+## Yao Start
+
+`yao start [--debug] [--disable-watching]`
+
+Start the built-in http server.
+
+```bash
+# Start the application server
+yao start
+
+# Start the application server in debug mode
+yao start --debug
+
+# Start the application server in debug mode and disable watching
+yao start --debug --disable-watching
+
+# Display help information for the Yao start command
+yao start --help
+```
+
+## Yao Run
+
+`yao run <process> [-s | --silent] [...args]`
+
+The yao run command is used to execute a single process. If the argument is an object, use the '::' prefix to pass the object as a string.
+
+```bash
+# Run a process
+yao run utils.app.Ping
+yao run models.tests.pet.Find 1 '::{"select": ["id", "name"]}'
+yao run scripts.tests.Hello 'Hello, Yao!'
+
+# Run a process in silent mode
+yao run --silent utils.app.Ping
+yao run --silent models.tests.pet.Find 1 '::{"select": ["id", "name"]}'
+yao run -s scripts.tests.Hello 'Hello, Yao!'
+
+# Display help information for the Yao run command
+yao run --help
+```
+
+## Yao Migrate
+
+`yao migrate [-n | --name <model_id>] [--reset] [--force]`
+
+Migrate the database, build the schema
+
+```bash
+# Migrate the database, build the schema
+yao migrate
+
+# Migrate the database, build the schema and force
+yao migrate --force
+
+# Migrate the database, build the schema and reset
+yao migrate --reset
+
+# Migrate the database, build the schema and specify the model ID
+yao migrate --name models.tests.pet
+yao migrate -n models.tests.pet
+```
+
+## Yao Version
+
+`yao version [--all]`
+
+Display the version of Yao
+
+```bash
+# Display the version of Yao
+yao version
+
+# Display the version of Yao and all dependencies
+yao version --all
+```
+
+## Yao Inspect
+
+`yao inspect`
+
+Inspect the application configuration
+
+```bash
+# Inspect the application configuration
+yao inspect
+```
+
+## Yao SUI Build
+
+`yao sui build <sui_id> <template_name>`
+
+Build the SUI page
+
+```bash
+yao sui build web default
+```
+
+## Yao SUI Watch
+
+`yao sui watch <sui_id> <template_name>`
+
+Watch the SUI page changes, and rebuild automatically
+
+```bash
+yao sui watch web default
+```
+
+## Yao Help
+
+Display help information for the Yao command
+
+```bash
+yao help
+```

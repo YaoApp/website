@@ -1,0 +1,15 @@
+keys:
+    trans__index_hero_intro_1: Getting Started
+    trans__index_hero_intro_2: All-in-one App Engine
+    trans__index_hero_intro_3: |-
+        is a free, open-source application engine that allows developers to
+                create web apps, REST APIs, enterprise apps and more, with AI as a
+                seamless collaborator.
+messages:
+    All-in-one App Engine: محرك التطبيقات متعدد الاستخدامات
+    Getting Started: البدء
+    ? |-
+        is a free, open-source application engine that allows developers to
+                create web apps, REST APIs, enterprise apps and more, with AI as a
+                seamless collaborator.
+    : هو محرك التطبيقات مفتوح المصدر ومجاني يتيح للمطورين إنشاء تطبيقات الويب، وواجهات برمجة التطبيقات REST، وتطبيقات الشركات وأكثر، مع الذكاء الاصطناعي كشريك تعاوني سلس.

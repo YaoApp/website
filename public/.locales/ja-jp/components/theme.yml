@@ -1,0 +1,11 @@
+name: ja-jp
+formatter: scripts.tests.formatter
+keys:
+    trans__components_theme_1: 切り替える
+    trans__components_theme_2: Switch to Light Mode
+    trans__components_theme_3: Switch to Light Mode
+script_messages:
+    Switch to Dark Mode: 切り替える
+    Switch to Light Mode: Switch to Light Mode
+direction: ltr
+timezone: "+9:00"

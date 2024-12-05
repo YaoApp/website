@@ -1,0 +1,29 @@
+{
+  "name": "Yao Official Website",
+  "description": "The official website of Yao.",
+  "themes": [
+    { "label": "Light", "value": "light" },
+    { "label": "Dark", "value": "dark" }
+  ],
+  "locales": [
+    { "label": "English", "value": "en-us", "default": true },
+    { "label": "简体中文", "value": "zh-cn" },
+    { "label": "繁體中文", "value": "zh-hk" },
+    { "label": "日本語", "value": "ja-jp" }
+  ],
+  "translator": "scripts.translator.Default",
+  "scripts": {
+    "before:build": [
+      { "type": "process", "content": "scripts.build.Before" },
+      {
+        "type": "command",
+        "content": "npx tailwindcss -i ./__assets/css/tailwind.css -o ./__assets/css/tailwind.min.css --minify"
+      }
+    ],
+    "after:build": [{ "type": "process", "content": "scripts.build.After" }],
+
+    "build:complete": [
+      { "type": "process", "content": "scripts.build.Complete" }
+    ]
+  }
+}

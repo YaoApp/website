@@ -1,0 +1,259 @@
+{
+  "name": "Article",
+  "action": { "bind": { "table": "article" } },
+  "layout": {
+    "primary": "id",
+    "actions": [
+      {
+        "title": "Save",
+        "icon": "icon-save",
+        "showWhenAdd": true,
+        "style": "primary",
+        "action": [
+          { "name": "Submit", "type": "Form.submit" },
+          {
+            "name": "Link",
+            "type": "Common.historyPush",
+            "payload": { "pathname": "/x/Form/article/[[$Submit]]/edit" }
+          }
+        ]
+      },
+      {
+        "style": "danger",
+        "title": "Delete",
+        "divideLine": true,
+        "icon": "icon-trash-2",
+        "disabled": {
+          "bind": "{{ status }}",
+          "value": ["publishing", "published"]
+        },
+        "action": [
+          {
+            "name": "Confirm",
+            "type": "Common.confirm",
+            "payload": {
+              "title": "Please confirm to delete [{{ title }}]",
+              "content": "This action is irreversible! The page will be inaccessible."
+            }
+          },
+          { "name": "Delete", "type": "Table.delete", "payload": {} }
+        ]
+      },
+
+      {
+        "title": "Unpublish",
+        "icon": "icon-arrow-down",
+        "style": "danger",
+        "disabled": { "bind": "{{status}}", "value": "draft" },
+        "action": [
+          { "name": "Submit", "type": "Form.submit" },
+          {
+            "name": "Draft",
+            "type": "Service.article",
+            "payload": {
+              "method": "UpdateStatus",
+              "args": [{ "id": "[[$Submit]]", "status": "draft" }]
+            }
+          },
+          { "name": "Refetch", "type": "Common.refetch" }
+        ]
+      },
+      {
+        "title": "Publish",
+        "icon": "icon-send",
+        "divideLine": true,
+        "style": "success",
+        "disabled": { "bind": "{{status}}", "value": "published" },
+        "action": [
+          { "name": "Submit", "type": "Form.submit" },
+          {
+            "name": "Publish",
+            "type": "Service.article",
+            "payload": {
+              "method": "UpdateStatus",
+              "args": [
+                {
+                  "id": "[[$Submit]]",
+                  "status": "published",
+                  "title": "{{title}}"
+                }
+              ]
+            }
+          },
+          { "name": "Refetch", "type": "Common.refetch" }
+        ]
+      },
+      {
+        "title": "View",
+        "icon": "icon-link",
+        "disabled": { "bind": "{{ slug }}", "value": [""] },
+        "action": [
+          {
+            "name": "Link",
+            "type": "Common.historyPush",
+            "payload": {
+              "pathname": "/blog/{{ slug }}?__debug",
+              "public": true
+            }
+          }
+        ]
+      },
+
+      {
+        "title": "Back",
+        "icon": "icon-arrow-left",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          {
+            "name": "Link",
+            "type": "Common.historyPush",
+            "payload": { "pathname": "/x/Table/article" }
+          }
+        ]
+      }
+    ],
+    "form": {
+      "sections": [
+        {
+          "columns": [
+            { "name": "Content", "width": 24 },
+            { "name": "Title", "width": 18 },
+            { "name": "Language", "width": 6 },
+            { "name": "Authors", "width": 24 }
+          ]
+        },
+        {
+          "title": "Additional Details",
+          "desc": "The additional details for this article",
+          "columns": [
+            { "name": "Division", "width": 24 },
+            { "name": "Category", "width": 24 },
+            { "name": "Cover", "width": 24 },
+            { "name": "Summary", "width": 24 },
+            { "name": "Share Message", "width": 24 },
+            {
+              "tabs": [
+                {
+                  "title": "Publish Settings",
+                  "columns": [
+                    { "name": "Slug", "width": 12 },
+                    { "name": "Published Date", "width": 6 },
+                    { "name": "Status", "width": 6 },
+                    { "name": "Original source", "width": 18 },
+                    { "name": "Recommend", "width": 6 }
+                  ]
+                },
+                {
+                  "title": "SEO Settings",
+                  "columns": [
+                    { "name": "SEO Title", "width": 24 },
+                    { "name": "SEO Keywords", "width": 24 },
+                    { "name": "SEO Description", "width": 24 }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "config": { "showAnchor": false }
+  },
+
+  "fields": {
+    "form": {
+      "Authors": {
+        "bind": "authors",
+        "edit": { "type": "List", "props": { "name": "author" } }
+      },
+      "Summary": {
+        "bind": "summary",
+        "edit": {
+          "type": "TextArea",
+          "props": { "placeholder": "Input the summary of the article" }
+        }
+      },
+
+      "Title": {
+        "bind": "title",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Input the title of the article" }
+        }
+      },
+
+      "Content": {
+        "bind": "content",
+        "edit": {
+          "type": "CodeEditor",
+          "props": {
+            "language": "markdown",
+            "autoSize": { "minRows": 10, "maxRows": 20 },
+            "ai": {
+              "placeholder": "Input the prompt, and I will generate the content."
+            }
+          }
+        }
+      },
+
+      "SEO Title": {
+        "bind": "seo_title",
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "Input title for search engine display"
+          }
+        }
+      },
+      "SEO Keywords": {
+        "bind": "seo_keywords",
+        "edit": {
+          "type": "TextArea",
+          "props": {
+            "placeholder": "Input keywords for search engine, separated by comma, or space"
+          }
+        }
+      },
+      "SEO Description": {
+        "bind": "seo_description",
+        "edit": {
+          "type": "TextArea",
+          "props": {
+            "placeholder": "Input description for search engine display"
+          }
+        }
+      },
+
+      "Share Message": {
+        "bind": "share_message",
+        "edit": {
+          "type": "TextArea",
+          "props": {
+            "ai": {
+              "placeholder": "Input the prompt, and I will generate the article content based on it"
+            },
+            "placeholder": "Input message for sharing on social media"
+          }
+        }
+      },
+
+      "Original source": {
+        "bind": "source",
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "Input the original source of the article"
+          }
+        }
+      },
+
+      "Division": {
+        "edit": {
+          "type": "Divider",
+          "props": { "size": 2, "color": "default" }
+        }
+      }
+    }
+  }
+}

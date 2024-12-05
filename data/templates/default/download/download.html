@@ -1,0 +1,217 @@
+<div class="bg-white dark:bg-black min-h-[100vh]">
+  <header is="/header" active="/download"></header>
+  <section
+    class="container mx-auto px-8 md:px-16 lg:px-48 py-12 pb-8 flex flex-col text-gray-300"
+  >
+    <h1
+      class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-50 flex items-center"
+      s:trans
+    >
+      <span>Download Yao</span>
+      <span
+        class="text-xs bg-primary-400 text-gray-50 dark:bg-primary-500 dark:text-gray-100 rounded-full px-2 py-1 ml-2 font-mono"
+      >
+        {{ releases[0].version }}
+      </span>
+    </h1>
+    <div
+      class="text-base lg:text-base mt-4 text-gray-500 dark:text-gray-200 flex flex-col lg:flex-row lg:items-center"
+    >
+      <span s:trans>
+        Download the latest version of Yao for your operating system.
+      </span>
+      <Anchor
+        is="/flowbite/components/anchor"
+        href="{{ releases[0].release_notes_link }}"
+        class="text-base items-center mt-1 lg:mt-0 lg:ml-2"
+      >
+        Release Notes
+      </Anchor>
+    </div>
+  </section>
+
+  <section
+    class="container mx-auto mt-4 px-8 md:px-16 lg:px-48 flex flex-col justify-center text-gray-300 mb-52 lg:mb-0"
+  >
+    <ul class="flex text-gray-500 dark:text-gray-200">
+      <li
+        s:for="[
+            { 'id':'macos-linux','name':'Linux / MacOS'}, 
+            { 'id':'windows','name':'Windows'}, 
+            { 'id':'docker','name':'Docker'}, 
+        ]"
+        class="
+            py-2.5 px-6 text-xs lg:text-sm  cursor-pointer
+            rounded-t-lg font-medium 
+            hover:text-primary-400 dark:hover:text-primary-200
+            {{ index == 0 ? 'text-primary-200 bg-slate-900' : '' }}
+        "
+        id="tab-{{ item.id }}"
+        s:data-id="{{ item.id }}"
+        s:on-click="ShowPlatform"
+        tab
+      >
+        <div class="mt-1">{{ item.name }}</div>
+      </li>
+    </ul>
+
+    <!-- Macos / Linux -->
+    <div id="code-macos-linux" code>
+      <div
+        class="bg-slate-900 text-gray-400 text-2xs md:text-xs lg:text-base p-6 font-mono !max-w-none language-bash p-4 rounded-tr-lg rounded-br-lg rounded-bl-lg flex items-center relative min-h-[80px]"
+      >
+        <div class="mr-2">$</div>
+        <div class="text-gray-50 font-medium">
+          curl -fsSL https://yaoapps.com/install.sh | bash
+        </div>
+        <button
+          class="absolute text-xl text-gray-400 right-4 hover:text-gray-50"
+          s:on-click="CopyCode"
+          s:data-command="curl -fsSL https://yaoapps.com/install.sh | bash"
+          copy
+        >
+          <i class="material outlined icon">content_copy</i>
+        </button>
+      </div>
+
+      <Anchor
+        is="/flowbite/components/anchor"
+        href="/install.sh"
+        target="_blank"
+        color="dark"
+        class="text-xs md:text-sm mx-1 mt-2"
+      >
+        View Installation Script
+      </Anchor>
+    </div>
+
+    <!-- Windows -->
+    <div id="code-windows" class="hidden" code>
+      <div
+        class="bg-slate-900 text-gray-400 text-2xs md:text-xs lg:text-base p-6 font-mono !max-w-none language-bash p-4 rounded-lg flex items-center relative min-h-[80px]"
+      >
+        <div class="mr-2">&gt;</div>
+        <div class="text-gray-50 font-medium">
+          powershell -c "irm yaoapps.com/install.ps1 | iex"
+        </div>
+        <button
+          class="absolute text-xl text-gray-400 right-4 hover:text-gray-50"
+          s:on-click="CopyCode"
+          s:data-command='powershell -c "irm yaoapps.com/install.ps1 | iex"'
+          copy
+        >
+          <i class="material outlined icon">content_copy</i>
+        </button>
+      </div>
+
+      <Anchor
+        is="/flowbite/components/anchor"
+        href="/install.ps1"
+        target="_blank"
+        color="dark"
+        class="text-xs md:text-sm mx-1 mt-2"
+      >
+        View Installation Script
+      </Anchor>
+    </div>
+
+    <!-- Docker -->
+    <div id="code-docker" class="hidden" code>
+      <div
+        class="bg-slate-900 text-gray-400 text-2xs md:text-xs lg:text-base p-6 font-mono !max-w-none language-bash p-4 rounded-lg flex items-center relative min-h-[80px]"
+      >
+        <div class="mr-2">$</div>
+        <div class="text-gray-50 font-medium">
+          docker run -it -p 5099:5099 yaoapp/yao:latest-dev /bin/bash
+        </div>
+        <button
+          class="absolute text-xl text-gray-400 right-4 hover:text-gray-50"
+          s:on-click="CopyCode"
+          s:data-command="docker run -it -p 5099:5099 yaoapp/yao:latest-dev /bin/bash"
+          copy
+        >
+          <i class="material outlined icon">content_copy</i>
+        </button>
+      </div>
+
+      <Anchor
+        is="/flowbite/components/anchor"
+        href="https://hub.docker.com/r/yaoapp/yao"
+        target="_blank"
+        color="dark"
+        class="text-xs md:text-sm mx-1 mt-2"
+      >
+        View Docker Image on Docker Hub
+      </Anchor>
+    </div>
+  </section>
+
+  <section
+    class="hidden lg:flex container mx-auto px-52 mt-24 flex flex-col justify-center text-gray-300"
+  >
+    <div class="pb-4">
+      <h2 class="text-2xl font-medium text-gray-800 dark:text-gray-100">
+        Manual Download of the Binary
+      </h2>
+    </div>
+
+    <table class="w-full text-left">
+      <thead class="text-gray-500 dark:text-gray-300 font-medium">
+        <tr>
+          <th class="text-left py-4">Release Date</th>
+          <th class="text-left py-4">Version</th>
+          <th class="text-left py-4">Release Notes</th>
+          <th class="text-left py-4">Download</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-500 dark:text-gray-300 text-sm">
+        <tr
+          s:for="releases"
+          class="border-t border-gray-200 dark:border-gray-800"
+        >
+          <td class="py-4 min-w-[120px]">{{ item.date }}</td>
+          <td class="py-4 min-w-[200px]">
+            <div class="flex items-center justify-start">
+              <span class="font-semibold">Yao {{ item.version }}</span>
+              <span
+                s:if="index == 0"
+                class="text-2xs bg-danger-400 text-gray-50 dark:bg-danger-500 dark:text-gray-100 rounded-full px-2 ml-2 font-bold font-mono"
+              >
+                latest
+              </span>
+            </div>
+          </td>
+          <td class="py-4 pr-2 max-w-[280px] min-w-[200px]">
+            <div>
+              <p>{{ item.summary }}</p>
+              <Anchor
+                is="/flowbite/components/anchor"
+                href="{{ item.release_notes_link }}"
+                target="_blank"
+                color="dark"
+                class="text-sm mt-2"
+              >
+                <span s:trans> Read more</span>
+              </Anchor>
+            </div>
+          </td>
+          <td class="py-4 grid grid-cols-1 gap-2 min-w-[100px]">
+            <Anchor
+              s:for="item.download_links"
+              s:for-item="download"
+              is="/flowbite/components/anchor"
+              href="{{ download.link }}"
+              target="_blank"
+              color="dark"
+              class="text-sm mx-1 mt-2"
+            >
+              {{ download.name }}
+            </Anchor>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer is="/footer"></footer>
+</div>

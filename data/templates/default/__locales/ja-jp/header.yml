@@ -1,0 +1,32 @@
+keys:
+    trans__header_1: Overview
+    trans__header_2: Uses
+    trans__header_3: Download
+    trans__header_4: Documentation
+    trans__header_5: ブログ
+    trans__header_6: 展開
+    trans__header_7: App Engine
+    trans__header_8: View on Github
+    trans__header_9: View on Github
+    trans__header_10: Join Discord community
+    trans__header_11: Join community on Discord
+    trans__header_12: Deploy to Moapi Cloud
+    trans__header_13: Join Discord community
+messages:
+    App Engine: App Engine
+    Blog: ブログ
+    Community: コミュニティ
+    Dashboard: ダッシュボード
+    Deploy: 展開
+    Deploy to Moapi Cloud: Moapi Cloudにデプロイ
+    Docs: ドキュメント
+    Documentation: ドキュメント
+    Download: ダウンロード
+    Hub: ハブ
+    Join Discord community: Discordコミュニティに参加
+    Join community on Discord: Discordコミュニティに参加
+    Overview: 概要
+    Showcase: ショーケース
+    Uses: 使用法
+    View on Github: View on Github
+    WEB: WEB

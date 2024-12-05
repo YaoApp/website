@@ -1,0 +1,73 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: "Version tags"
+
+  # push:
+  #   branches: [main]
+
+env:
+  VERSION: 0.9.0
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+          token: ${{ secrets.TOKEN }}
+
+      - name: Copy source for distribution
+        run: |
+          cp -r . ../dist
+          rm -rf ../dist/.git
+
+      - name: Set environment variables
+        run: |
+          cp ./online.env ../dist/.env
+          echo 'MOAPI_SECRET="${{ secrets.MOAPI_SECRET }}"' >> ../dist/.env
+
+      - name: Package source
+        run: |
+          tar -cvzf ../dist.tar.gz -C ../dist .
+          mv ../dist.tar.gz ./dist.tar.gz
+
+      - name: Test
+        run: |
+          echo "Testing..."
+          mkdir -p ../test
+          cd ../test && tar -xvzf ${{ github.workspace }}/dist.tar.gz
+          ls -al ../test
+          cat ../test/.env
+
+      - name: SCP to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.WEBSITE_HOST }}
+          username: ${{ secrets.WEBSITE_USER }}
+          port: ${{ secrets.WEBSITE_PORT }}
+          key: ${{ secrets.WEBSITE_KEY }}
+          source: dist.tar.gz
+          target: /data/station
+
+      - name: Deploy Development
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.WEBSITE_HOST }}
+          port: ${{ secrets.WEBSITE_PORT }}
+          username: ${{ secrets.WEBSITE_USER }}
+          command_timeout: 30m
+          key: ${{ secrets.WEBSITE_KEY }}
+          script: |
+            pkill yao
+            rm -rf ${{ secrets.WEBROOT }}
+            mkdir -p ${{ secrets.WEBROOT }} && cd ${{ secrets.WEBROOT }} && tar xvfz /data/station/dist.tar.gz
+            cd ${{ secrets.WEBROOT }} && nohup /home/${{ secrets.WEBSITE_USER }}/.yao/bin/yao migrate --reset --force
+            cd ${{ secrets.WEBROOT }} && nohup /home/${{ secrets.WEBSITE_USER }}/.yao/bin/yao run scripts.test.Data
+            sh -c 'cd ${{ secrets.WEBROOT }} && nohup /home/${{ secrets.WEBSITE_USER }}/.yao/bin/yao start >> /data/logs/yaoapps.log 2>&1 &'

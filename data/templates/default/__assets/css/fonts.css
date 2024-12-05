@@ -1,0 +1,249 @@
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/google/Outfit-Thin.woff2") format("woff2"),
+    url("../fonts/google/Outfit-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/google/Outfit-ExtraLight.woff2") format("woff2"),
+    url("../fonts/google/Outfit-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/google/Outfit-Light.woff2") format("woff2"),
+    url("../fonts/google/Outfit-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/google/Outfit-Regular.woff2") format("woff2"),
+    url("../fonts/google/Outfit-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/google/Outfit-Medium.woff2") format("woff2"),
+    url("../fonts/google/Outfit-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/google/Outfit-SemiBold.woff2") format("woff2"),
+    url("../fonts/google/Outfit-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/google/Outfit-Bold.woff2") format("woff2"),
+    url("../fonts/google/Outfit-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/google/Outfit-ExtraBold.woff2") format("woff2"),
+    url("../fonts/google/Outfit-ExtraBold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/google/Outfit-Black.woff2") format("woff2"),
+    url("../fonts/google/Outfit-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-ThinItalic.woff2") format("woff2"),
+    url("../fonts/google/Roboto-ThinItalic.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-Thin.woff2") format("woff2"),
+    url("../fonts/google/Roboto-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-Light.woff2") format("woff2"),
+    url("../fonts/google/Roboto-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-LightItalic.woff2") format("woff2"),
+    url("../fonts/google/Roboto-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-Regular.woff2") format("woff2"),
+    url("../fonts/google/Roboto-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-Italic.woff2") format("woff2"),
+    url("../fonts/google/Roboto-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-Medium.woff2") format("woff2"),
+    url("../fonts/google/Roboto-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-MediumItalic.woff2") format("woff2"),
+    url("../fonts/google/Roboto-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-BoldItalic.woff2") format("woff2"),
+    url("../fonts/google/Roboto-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-Bold.woff2") format("woff2"),
+    url("../fonts/google/Roboto-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-BlackItalic.woff2") format("woff2"),
+    url("../fonts/google/Roboto-BlackItalic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/google/Roboto-Black.woff2") format("woff2"),
+    url("../fonts/google/Roboto-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Icons */
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  src: url("../fonts/icons/MaterialSymbolsOutlined-Thin.woff2") format("woff2"),
+    url("../fonts/icons/MaterialSymbolsOutlined-Thin.woff") format("woff");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  src: url("../fonts/icons/MaterialSymbolsOutlined-ExtraLight.woff2")
+      format("woff2"),
+    url("../fonts/icons/MaterialSymbolsOutlined-ExtraLight.woff") format("woff");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  src: url("../fonts/icons/MaterialSymbolsOutlined-Light.woff2") format("woff2"),
+    url("../fonts/icons/MaterialSymbolsOutlined-Light.woff") format("woff");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  src: url("../fonts/icons/MaterialSymbolsOutlined-Regular.woff2")
+      format("woff2"),
+    url("../fonts/icons/MaterialSymbolsOutlined-Regular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  src: url("../fonts/icons/MaterialSymbolsOutlined-Medium.woff2")
+      format("woff2"),
+    url("../fonts/icons/MaterialSymbolsOutlined-Medium.woff") format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  src: url("../fonts/icons/MaterialSymbolsOutlined-SemiBold.woff2")
+      format("woff2"),
+    url("../fonts/icons/MaterialSymbolsOutlined-SemiBold.woff") format("woff");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  src: url("../fonts/icons/MaterialSymbolsOutlined-Bold.woff2") format("woff2"),
+    url("../fonts/icons/MaterialSymbolsOutlined-Bold.woff") format("woff");
+  font-weight: 700;
+}
+
+.material.outlined {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+body {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+}

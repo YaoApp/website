@@ -1,0 +1,88 @@
+<root
+  id="{{ id }}"
+  name="{{ name }}"
+  type="flowbite-dropdown"
+  data:color="{{ color }}"
+  data:size="{{ size }}"
+  data:disabled="{{ disabled }}"
+  data:selected="{{ selected ?? ''}}"
+  json:items="{{ items }}"
+  class="
+    flowbite-dropdown absolute z-10 w-full overflow-y-scroll dropdown-scrollbar 
+    {{ colorClass }}
+    {{ class }} {{ opened ? '' : 'hidden' }}
+  "
+>
+  <div s:if="items == null and api == null">
+    <children></children>
+  </div>
+
+  <div else class="{{ sizeClass }}" s:render="items">
+    <div
+      class="loading flex justify-center items-center h-12 {{ loading == true ? '' : 'hidden' }}"
+      loading
+    >
+      <i class="material outlined animate-spin">autorenew</i>
+    </div>
+
+    <div
+      class="error flex justify-center items-center text-danger-500 h-12 {{ error != false ? '' : 'hidden' }}"
+      error
+    >
+      <i class="material outlined">error</i>
+      <div class="ms-2">{{ error }}</div>
+    </div>
+
+    <div
+      class="min-h-12 {{ len(items) == 0 and loading != true ? '' : 'hidden' }} text-center"
+      empty
+    >
+      <empty></empty>
+    </div>
+    <div items>
+      <div s:for="items">
+        <div
+          s:if="True(item.divider)"
+          class="w-full h-[1.5px] bg-gray-100 my-2 me-4 dark:bg-gray-800"
+        ></div>
+
+        <div
+          s:else
+          class="flex items-center"
+          s:on-click="onItemClick"
+          s:data-index="{{ index }}"
+          s:json-item="{{ item }}"
+          data-value="{{ item.value }}"
+          class="
+            flex items-center justify-between cursor-pointer rounded-lg
+            transition-none hover:transition hover:duration-200 hover:ease-in-out
+            {{ itemSizeClass }} {{ itemColorClass }}
+            
+          "
+          item
+        >
+          <div class="flex justify-start items-center w-full">
+            <i
+              s:if="item.icon != null"
+              class="material outlined me-1 rtl:ms-1 rtl:me-0 {{ item.iconClass }}"
+              icon
+            >
+              {{ item.icon }}
+            </i>
+            <div>{{ item.label }}</div>
+          </div>
+          <div
+            class="flex items-center justify-end {{ item.selected == true ? '' : 'hidden'}}"
+            checked
+          >
+            <i
+              class="material outlined font-medium me-1 text-primary-900 text-base dark:text-gray-100"
+            >
+              check
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</root>

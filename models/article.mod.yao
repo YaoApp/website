@@ -1,0 +1,165 @@
+{
+  "name": "Article",
+  "table": { "name": "article", "comment": "Article" },
+  "columns": [
+    { "name": "id", "comment": "ID", "type": "ID", "label": "ID" },
+    {
+      "label": "Slug",
+      "name": "slug",
+      "comment": "The unique slug for this blog post",
+      "type": "string",
+      "length": 80,
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Language",
+      "name": "lang",
+      "type": "string",
+      "length": 20,
+      "index": true,
+      "default": "en-us"
+    },
+    {
+      "label": "Title",
+      "name": "title",
+      "comment": "The title of the blog post",
+      "type": "string",
+      "nullable": true,
+      "length": 150
+    },
+    {
+      "label": "Summary",
+      "name": "summary",
+      "comment": "The summary of the blog post",
+      "type": "string",
+      "nullable": true,
+      "length": 600
+    },
+    {
+      "label": "Authors",
+      "name": "authors",
+      "comment": "The authors of the blog post",
+      "type": "JSON",
+      "nullable": true
+    },
+    {
+      "label": "Categories",
+      "name": "categories",
+      "comment": "The categories of the blog post",
+      "type": "JSON",
+      "nullable": true
+    },
+    {
+      "label": "Content",
+      "name": "content",
+      "comment": "The content of the blog post",
+      "type": "text",
+      "nullable": true
+    },
+    {
+      "label": "SEO Title",
+      "name": "seo_title",
+      "comment": "The SEO title of the blog post",
+      "type": "string",
+      "nullable": true
+    },
+    {
+      "label": "SEO Keywords",
+      "name": "seo_keywords",
+      "comment": "The SEO keywords of the blog post",
+      "type": "JSON",
+      "nullable": true
+    },
+    {
+      "label": "SEO Description",
+      "name": "seo_description",
+      "comment": "The SEO description of the blog post",
+      "type": "string",
+      "nullable": true
+    },
+    {
+      "label": "Share Message",
+      "name": "share_message",
+      "comment": "The share message of the blog post",
+      "type": "string",
+      "length": 600,
+      "nullable": true
+    },
+    {
+      "label": "Published Date",
+      "name": "published_at",
+      "comment": "The date the blog post was published",
+      "type": "datetime",
+      "nullable": true
+    },
+    {
+      "label": "Cover Image",
+      "name": "cover",
+      "type": "json",
+      "nullable": true
+    },
+    {
+      "label": "Background Image",
+      "name": "background",
+      "type": "json",
+      "nullable": true
+    },
+    {
+      "label": "Sort",
+      "name": "sort",
+      "type": "integer",
+      "default": 9999,
+      "index": true,
+      "comment": "Sort order for blog posts"
+    },
+    {
+      "label": "Recommend",
+      "name": "recommend",
+      "type": "boolean",
+      "default": true,
+      "index": true,
+      "comment": "Whether to recommend on the homepage"
+    },
+
+    {
+      "label": "Sticky",
+      "name": "sticky",
+      "type": "boolean",
+      "default": false,
+      "comment": "Whether to stick to the top"
+    },
+    {
+      "label": "List Recommend",
+      "name": "list_recommend",
+      "type": "boolean",
+      "default": true,
+      "comment": "Whether to recommend on the list page"
+    },
+    {
+      "label": "Status",
+      "comment": "The status of the blog post",
+      "name": "status",
+      "type": "enum",
+      "default": "draft",
+      "option": ["draft", "publishing", "published"],
+      "index": true,
+      "validations": [
+        {
+          "method": "typeof",
+          "args": ["string"],
+          "message": "{{input}} is not a valid type, {{label}} should be a string"
+        },
+        {
+          "method": "enum",
+          "args": ["draft", "publishing", "published"],
+          "message": "{{input}} is not a valid status, {{label}} should be 'draft' or 'published'"
+        }
+      ]
+    }
+  ],
+  "option": { "timestamps": true, "soft_deletes": true },
+  "indexes": [
+    { "name": "lang_slug", "columns": ["lang", "slug"], "type": "unique" }
+  ]
+}

@@ -1,0 +1,54 @@
+<root
+  id="{{ id }}"
+  type="flowbite-form-item"
+  class="flowbite-form-item w-full {{ class }}"
+  data:color="{{ color }}"
+  data:size="{{ size }}"
+  data:disabled="{{ disabled }}"
+>
+  <div class="{{ labelPositionClass }} w-full ">
+    <label
+      for="{{ labelFor }}"
+      s:if="label != null and label != ''"
+      class="
+        block me-2 font-medium cursor-pointer
+        {{ labelAlignClass }} {{ labelWidthClass }}
+        {{ labelSize }} {{ labelColor }}
+        {{ labelClass }}
+      "
+      label
+    >
+      <span>{{ label }}</span>
+      <span
+        class="
+          text-danger ms-1 dark:text-dark-danger {{ labelSize }}
+          {{ True(required) ? '' : 'hidden'}}
+        "
+      >
+        *
+      </span>
+    </label>
+
+    <div class="w-full">
+      <children></children>
+      <div
+        class="flex items-center ps-1 {{ helperSize }} {{ helperColor }} {{ helperClass }}"
+        helper
+      >
+        <div class="flex {{ True(error) ? '' : 'hidden'}}" slots error-slot>
+          <error></error>
+        </div>
+        <div class="flex {{ True(success) ? '' : 'hidden'}}" slots success-slot>
+          <success></success>
+        </div>
+        <div
+          class="flex {{ True(success) or True(error)  ? 'hidden' : ''}}"
+          slots
+          helper-slot
+        >
+          <helper></helper>
+        </div>
+      </div>
+    </div>
+  </div>
+</root>

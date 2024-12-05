@@ -1,0 +1,17 @@
+keys:
+    trans__uses_switching_1: Learn More
+    trans__uses_switching_2: Switching to Yao
+    trans__uses_switching_3: |-
+        Switching to Yao is easy. Yao focuses on generative development. It may
+              take time to learn a few key concepts, but once you understand them,
+              you’ll see that Yao is a powerful tool. It helps you build applications
+              faster and offers a great development experience.
+messages:
+    Learn More: تعلم المزيد
+    Switching to Yao: التبديل إلى ياو
+    ? |-
+        Switching to Yao is easy. Yao focuses on generative development. It may
+              take time to learn a few key concepts, but once you understand them,
+              you’ll see that Yao is a powerful tool. It helps you build applications
+              faster and offers a great development experience.
+    : التبديل إلى ياو سهل. ياو يركز على التطوير الانشائي. قد تستغرق بعض الوقت لتعلم بعض المفاهيم الرئيسية، ولكن بمجرد فهمك لها، سترى أن ياو هي أداة قوية. تساعدك في بناء التطبيقات بشكل أسرع وتوفر تجربة تطوير رائعة.

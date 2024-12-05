@@ -1,0 +1,4 @@
+{
+  "name": "Account",
+  "action": { "bind": { "model": "admin.user" } }
+}

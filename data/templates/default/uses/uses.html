@@ -1,0 +1,16 @@
+<div class="bg-white dark:bg-black min-h-[100vh] justify-start flex flex-col">
+  <header is="/header" active="/uses"></header>
+  <Switching is="/uses/switching"></Switching>
+
+  <div s:for="tutorials">
+    <Scenarios
+      s:if="index == 0"
+      is="/uses/scenarios"
+      data="{{ item }}"
+    ></Scenarios>
+
+    <Tutorials s:else is="/uses/tutorials" data="{{ item }}"></Tutorials>
+  </div>
+
+  <footer is="/footer"></footer>
+</div>

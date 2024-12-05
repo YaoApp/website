@@ -1,0 +1,39 @@
+---
+title: Yao Process Reference
+description: A detailed reference to the Yao internal processes.
+---
+
+A detailed reference to the Yao internal processes.
+
+## Internal Processes
+
+| Documentation                            | Namespace                         | Description                                                               |
+| ---------------------------------------- | --------------------------------- | ------------------------------------------------------------------------- |
+| [Model](processes/models)                | models.<model_widget_id>.\*       | Interacts with the database to perform CRUD operations on models.         |
+| [Schema](processes/schemas)              | schemas.<connector_widget_id>.\*  | Manages the schema structure and database migrations.                     |
+| [Store](processes/stores)                | stores.<store_widget_id>.\*       | Provides key-value store operations for storing data.                     |
+| [Flow](processes/flows)                  | flows.<flow_widget_id>            | Executes and manages process flows within the application.                |
+| [Schedule](processes/schedule)           | schedules.<schedule_widget_id>.\* | Defines scheduled tasks and periodic executions.                          |
+| [Pipe](processes/pipe)                   | pipe.\*                           | Provides utility processes for handling data pipes and flows.             |
+| [File System](processes/fs)              | fs.<namespace>.\*                 | Manages file system interactions, including reading and writing.          |
+| [API](processes/api)                     | api.\*                            | Utility processes for managing and interacting with APIs.                 |
+| [HTTP](processes/http)                   | http.\*                           | Processes HTTP requests and responses.                                    |
+| [Session](processes/session)             | session.\*                        | Manages user sessions and state information.                              |
+| [Encoding](processes/encoding)           | encoding.\*                       | Provides encoding and decoding utilities for various formats.             |
+| [Crypto](processes/crypto)               | crypto.\*                         | Performs cryptographic operations, such as hashing and encryption.        |
+| [SSL](processes/ssl)                     | ssl.\*                            | Handles SSL/TLS encryption for secure communications.                     |
+| [Utils](processes/utils)                 | utils.\*                          | Provides general utility functions for various tasks.                     |
+| [OpenAI](processes/openai)               | openai.\*                         | Interacts with OpenAI services for AI-powered tasks.                      |
+| [MOAPI](processes/moapi)                 | moapi.\*                          | Processes related to MOAPI services for integrating APIs.                 |
+| [Neo](processes/neo)                     | neo.\*                            | Manages Neo chatbot interactions and AI-driven conversations.             |
+| [AIGC](processes/aigc)                   | aigcs.\*                          | Send prompts to the AI Model for generating AI-driven content.            |
+| [SUI](processes/sui)                     | sui.\*                            | Provides utilities for the SUI engine and web page management.            |
+| [Yao App](processes/yao-app)             | yao.app.\*                        | Processes for managing the Yao application widget and logic.              |
+| [Yao Login](processes/yao-login)         | yao.login.\*                      | Handles user authentication and login processes.                          |
+| [Yao Table](processes/yao-table)         | yao.table.\*                      | Manages table widget operations, including data binding and CRUD.         |
+| [Yao Form](processes/yao-form)           | yao.form.\*                       | Handles form widget operations, including data validation and submission. |
+| [Yao List](processes/yao-list)           | yao.list.\*                       | Manages dashboard widgets and displays list-based data.                   |
+| [Yao Chart](processes/yao-chart)         | yao.chart.\*                      | Manages chart widgets and data visualization in the admin panel.          |
+| [Yao Dashboard](processes/yao-dashboard) | yao.dashboard.\*                  | Manages dashboard widgets for creating custom admin panels.               |
+| [Script](processes/scripts)              | scripts.\*                        | Custom processes written in TypeScript to extend functionality.           |
+| [Plugin](processes/plugins)              | plugins.\*                        | Manages GRPC plugin integration and custom plugin logic.                  |

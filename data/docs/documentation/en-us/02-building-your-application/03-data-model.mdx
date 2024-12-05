@@ -1,0 +1,474 @@
+---
+title: Data Model
+description: Data models are blueprint for defining the structure of your data. it's the most important part of your application.
+related:
+  title: Next Steps
+  description: Create RESTful APIs, using data models.
+  links:
+    - rest-api
+---
+
+Starting from this section, we'll build a simple pet store application together, demonstrating how to use Yao effectively. You will learn how to:
+
+- 🟠 **Create and manage data in your application.**
+- ⚪ Develop RESTful APIs to expose data. 👉 [REST API](rest-api)
+- ⚪ Design web pages to display data. 👉 [Web Page](web-page)
+- ⚪ Build an admin panel to help administrators of the pet store manage data. 👉 [Admin Panel](admin-panel)
+- ⚪ Create backend commands for task scheduling. 👉 [CLI](cli)
+- ⚪ Integrate AI for chatbots, image generation, and enhanced user input. 👉 [AI Integration](ai-integration)
+
+Ensure you have read the previous documentation, to understand the basic concepts of Yao.
+
+👉 [Building Your Application](../building-your-application)
+
+👉 [Switching to Yao](../getting-started/switching-to-yao)
+
+## Overview
+
+Data models are blueprints for defining the structure of your data and are the most important part of a Yao application.
+
+In Yao, the Data Model is a widget that uses Model DSL to describe your data's structure, similar to a database schema. Understanding database structures and relationships will help you design your data model effectively.
+
+The data will be stored in a database. By default, Yao uses SQLite as the database engine. You can change the database engine to MySQL or other databases by modifying the environment configuration. 👉 **[App Configuration](app-configuration)**
+
+For more details about Model DSL, see 👉 **[DSL References](references/dsl)**
+
+## Step 1: Plan Your Data Structure
+
+Before creating a data model, you should plan the structure of your data. The best way is to let an AI chatbot assist you.
+
+**Open an AI Chatbot and ask for help to generate data structure for your application.**
+
+### 💬 Prompts for planning data structure
+
+_This is an example of a conversation with an AI chatbot to plan the data structure for a pet store application. Change the prompts according to your requirements._
+
+````yaml
+- I want to create a pet store application.
+- The functionality includes adding, updating, and deleting pets, pet's categories and goods in the store.
+- Help me design the data structure, Please provide me with a list of data tables and their fields.
+- Reply to me with the table name, field name, and field type for each table.
+- Table and field names should be in snake_case, Auto-increment fields should be named as `id`, wrapped in code blocks.
+- For example:
+```plaintext
+Table: pet_categories
+    - id: INT PRIMARY KEY AUTO_INCREMENT
+    - category_name: VARCHAR(255) NOT NULL
+    - description: TEXT
+```
+````
+
+### 🤖 _Reply from AI Chatbot_
+
+```plaintext
+Table: pet_categories
+    - id: INT PRIMARY KEY AUTO_INCREMENT
+    - category_name: VARCHAR(255) NOT NULL
+    - description: TEXT
+
+Table: pets
+    - id: INT PRIMARY KEY AUTO_INCREMENT
+    - pet_name: VARCHAR(255) NOT NULL
+    - category_id: INT NOT NULL
+    - age: INT
+    - breed: VARCHAR(255)
+    - description: TEXT
+    - FOREIGN KEY (category_id) REFERENCES pet_categories(id)
+
+Table: goods
+    - id: INT PRIMARY KEY AUTO_INCREMENT
+    - good_name: VARCHAR(255) NOT NULL
+    - category_id: INT NOT NULL
+    - price: DECIMAL(10, 2) NOT NULL
+    - stock_quantity: INT NOT NULL
+    - description: TEXT
+    - FOREIGN KEY (category_id) REFERENCES pet_categories(id)
+
+Table: transactions
+    - id: INT PRIMARY KEY AUTO_INCREMENT
+    - pet_id: INT
+    - good_id: INT
+    - transaction_date: DATETIME NOT NULL
+    - quantity: INT NOT NULL
+    - total_price: DECIMAL(10, 2) NOT NULL
+    - FOREIGN KEY (pet_id) REFERENCES pets(id)
+    - FOREIGN KEY (good_id) REFERENCES goods(id)
+
+Explanation:
+    pet_categories: This table stores the various categories of pets and goods available in the store.
+    pets: This table keeps track of the pets available in the store, including their name, age, breed, and category.
+    goods: This table records the goods available for purchase, including their name, price, stock quantity, and associated category.
+    transactions: This table logs transactions involving pets and goods, including the date, quantity, and total price.
+```
+
+## Step 2: Generate Model DSL
+
+With your data structure planned, you can now generate the Model DSL for your application.
+
+Send your data structure and one or more existing Model DSL examples to the chatbot, and ask for help in generating similar Model DSLs.
+
+You can get the existing Model DSL examples from the Yao documentation or other public repositories. in this case, we will use the article model from the Yao website repository.
+
+👉 [Article Model DSL](https://github.com/YaoApp/yao-website/blob/main/models/article.mod.yao)
+
+### 💬 Prompts for Generating Model DSL
+
+_This is an example of a conversation with an AI chatbot to generate Model DSL for a pet store application. Change the prompts according to your requirements._
+
+```yaml
+Model DSL Samples:
+[Model DSL Samples]
+
+Structure Planned:
+[Structure Planned (The response from the AI chatbot in the previous step)]
+
+- According to the planned structure, I need help generating Model DSL for the pet store application.
+- Please provide me the Model DSL like the example provided.
+- Each Model DSL should be wrapped in a code block.
+```
+
+### 🤖 _Reply from AI Chatbot_
+
+The AI chatbot will generate the Model DSL for each table based on the provided structure.
+
+It looks like this:
+
+```json
+// Model DSL for pet_categories
+{
+  "name": "PetCategory",
+  "table": { "name": "pet_categories", "comment": "Pet Categories" },
+  "columns": [
+    { "name": "id", "comment": "ID", "type": "ID", "label": "ID" },
+    {
+      "label": "Category Name",
+      "name": "category_name",
+      "comment": "Name of the pet category",
+      "type": "string",
+      "length": 255,
+      "nullable": false
+    },
+    {
+      "label": "Description",
+      "name": "description",
+      "comment": "Description of the pet category",
+      "type": "text",
+      "nullable": true
+    }
+  ],
+  "option": { "timestamps": true }
+}
+// ....
+```
+
+**📝 Notes:**
+
+You can improve the prompts and Generate Model DSL directly. In this example, steps are separated for better understanding.
+
+**💬 Prompts for Generating Model DSL Directly**
+
+Following the next prompts, you can generate Model DSL directly.
+
+```yaml
+Model DSL Samples:
+[Model DSL Samples]
+
+- I want to create a pet store application.
+- The functionality includes adding, updating, and deleting pets, pet's categories and goods in the store.
+- Help me design the data structure for the pet store application.
+- According to the planned structure, I need help generating Model DSL for the pet store application.
+- Please provide me the Model DSL like the example provided.
+- Each Model DSL should be wrapped in a code block.
+```
+
+**🪄 Add More Promts**
+
+Adding more prompts helps generate better Model DSLs. The more information you provide, the better the AI chatbot can understand your needs.
+
+For example, describe your business to the AI chatbot, and it will generate more tailored Model DSLs for you.
+
+You can also establish some coding standards to facilitate future development and maintenance work.
+
+## Step 3: Save Model DSLs
+
+_Before proceeding, ensure you've reviewed the previous documentation to understand the Yao application's directory structure and have created a Yao application using the Quick Start Guide._
+
+👉 [Quickstart](../getting-started#quickstart)
+
+👉 [Yao Application](../getting-started/switching-to-yao#yao-application)
+
+### 💾 Save to Models Directory
+
+After generating the Model DSLs, save only the **JSON partials** in the `models` directory of your Yao application. Ensure the file and directory names are in **lowercase** and have a `.mod.yao` extension. You can further organize them using subdirectories.
+
+For example:
+
+- Save the `pets` Model DSL as `models/pets.mod.yao`, with a widget ID of `pets`.
+- Save the `pet_categories` Model DSL as `models/pet/categories.mod.yao`, with a widget ID of `pet.categories`.
+
+The **Widget ID** is crucial for process references, replacing the `/` with a `.`. for example, `models.pet.Find` or `models.pet.categories.Find`.
+
+After saving, the models directory should look like this:
+
+```bash
+└── models
+    ├── goods.mod.yao
+    ├── pet
+    │   └── categories.mod.yao
+    ├── pets.mod.yao
+    └── transactions.mod.yao
+```
+
+You can find them in the Demo Application repository. 👉 [Demo Application](https://github.com/YaoApp/demo/tree/main/models)
+
+**📝 Notes:**
+
+For maintaining the Model DSLs, it recommended keeping the Model DSLs names consistent with the table names. This will help you easily identify the Model DSLs for each table.
+
+The table name defined in the Model DSL. table names should be in **snake_case**, as should field names, and both must be all **lowercase**. This is a strict requirement in Yao to ensure cross-platform file system compatibility.
+
+For example:
+
+```json
+{
+  "name": "Pet Categories",
+  // The table name is the name of the table in the database
+  "table": { "name": "pet_categories", "comment": "Pet Categories" },
+  "columns": [{ "name": "id", "comment": "ID", "type": "ID", "label": "ID" }]
+}
+```
+
+- the `pet_categories` table saved at `models/pet/categories.mod.yao` will have a widget ID of `pet.categories`.
+- the `pets` table saved at `models/pets.mod.yao` will have a widget ID of `pets`.
+
+## Step 4: Create Database Tables
+
+Once you've saved the Model DSLs, you can create the database tables based on the Model DSLs using the `yao migrate` command.
+
+### 📺 Yao Migrate Command
+
+**Enter the project root directory** and run the `yao migrate` command. This will create the database tables based on the Model DSLs located in the `models` directory.
+
+If you've already done this and need to reset the database, you can run `yao migrate` with the `--reset` flag.
+
+`yao migrate` command is intended for development and testing environments only. If you need to use it in a production environment, you must include the `--force` flag to execute it. **This is a dangerous operation, so proceed with caution.**
+
+You can switch between development and production modes by setting the `YAO_ENV` environment variable. For more details, refer to the 👉 **[App configuration](app-configuration)**
+
+```bash
+# Enter the project root directory,
+# If multiple projects in your machine, ensure you are in the correct project directory.
+cd /path/to/your/project
+
+# Migration all models at once
+# Create database tables based on Model DSLs. if the tables already exist, it will be altered.
+yao migrate
+
+# Migration all models at once with the --reset flag
+# Reset the database tables. This will drop the existing tables and recreate them.
+yao migrate --reset
+
+# Migration one model at a time
+# Create database table based on the Model DSL of a specific model.
+# The argument is the widget ID of the model. eg: pets, pet.categories
+yao migrate --name pets
+
+# Migration one model at a time with the --reset flag
+# Reset the database table of a specific model.
+# The argument is the widget ID of the model. eg: pets, pet.categories
+yao migrate --name pets --reset
+
+# For production environment, use the --force flag.
+yao migrate --force
+```
+
+After running the `yao migrate` command, check the results in the terminal.
+
+_AI can occasionally make mistakes, If there are any errors, report them to the AI chatbot for help, update the Model DSLs as needed, and repeat until successful._
+
+The correct output should look like this:
+
+```bash
+Update schema model: goods (goods)      SUCCESS
+Update schema model: pet.categories (pet_categories)    SUCCESS
+Update schema model: pets (pets)        SUCCESS
+Update schema model: transactions (transactions)        SUCCESS
+```
+
+### ✅ Check the Database Tables
+
+In this case, the sqlite database file will be created in the `db` directory of your Yao application after successfully running.
+
+If you want to use a different database engine, you can modify the environment configuration. 👉 **[App configuration](app-configuration)**
+
+You can use a database management tool to check the database tables, such as DB Browser for SQLite, DBeaver, or any other tool you prefer.
+
+## Step 5: Prepare Test Data (Optional)
+
+Preparing test data and setting up a custom process for importing it is a good practice to enhance development efficiency.
+
+After creating the database tables, you can generate test data for each table based on the Model DSLs.
+
+Send the Model DSLs to an AI chatbot and ask for help in generating test data for each table. Then, use the `yao run` command to execute the models.\* internal processes to import the test data.
+
+### 💬 Prompts for Generating Test Data
+
+_This is an example of a conversation with an AI chatbot to generate Model DSL for a pet store application. Change the prompts according to your requirements._
+
+```yaml
+Model DSLs:
+[Model DSLs]
+
+- I have created the database tables based on the Model DSLs.
+- I need help generating test data for each table.
+- Please provide me with the test data for each table.
+- I will use the **yao run** command to import the test data.
+- The command is **yao run models.<WIDGET_ID>.Insert '::["field_name_1","field_name_2",...]'  '::[[field_1_value, field_2_value, ...],[field_1_value, field_2_value, ...]]'**.
+- The "::" is used to pass the JSON string as an argument.
+- The WIDGET_ID is the widget ID of the model. it's named from the Table name in the Model DSL. table name pet_categories with widget ID pet.categories  table name pets with widget ID pets
+- DO NOT INCLUDE the ID field in the test data.
+- BE CAREFUL the FOREIGN KEY fields SHOULD be valid.
+- EACH TABLE SHOULD have at least 3 records.
+```
+
+### 🤖 _Reply from AI Chatbot_
+
+The AI chatbot will generate the test data, and the reply will look like this:
+
+```bash
+# Pet Categories
+yao run models.pet.categories.Insert '::["category_name","description"]' '::[
+  ["Dogs", "Domesticated carnivorous mammals that typically have a long snout and barking voice."],
+  ["Cats", "Small domesticated carnivorous mammals with soft fur and retractable claws."],
+  ["Birds", "Warm-blooded egg-laying vertebrates characterized by feathers and wings."]
+]'
+
+# pets
+yao run models.pets.Insert '::["pet_name","category_id","age","breed","description"]' '::[
+  ["Buddy", 1, 3, "Golden Retriever", "Friendly and energetic dog."],
+  ["Whiskers", 2, 2, "Siamese", "Curious and playful cat."],
+  ["Tweety", 3, 1, "Canary", "Bright yellow songbird."]
+]'
+
+# ....
+```
+
+### 📺 Import Test Data
+
+After generating the test data, you can use the `yao run` command to import the test data into the database tables.
+
+`yao run` command is used to execute a single process. This is useful for debugging custom processes.You can find how to use it in the 👉 **[Debug Guide](debug-guide#run-a-process)**
+
+Copy the generated `yao run` commands and paste them into the terminal to execute.
+
+```bash
+# Enter the project root directory,
+# If multiple projects in your machine, ensure you are in the correct project directory.
+cd /path/to/your/project
+
+# Run the yao run command to import the test data
+yao run models.pets.Insert '::["pet_name","category_id","age","breed","description"]' '::[
+  ["Buddy", 1, 3, "Golden Retriever", "Friendly and energetic dog."],
+  ["Whiskers", 2, 2, "Siamese", "Curious and playful cat."],
+  ["Tweety", 3, 1, "Canary", "Bright yellow songbird."]
+]'
+# ....
+```
+
+The correct output should look like this:
+
+```bash
+Run: models.pet.categories.Insert
+args[0]: ["category_name","description"]
+args[1]: [
+  ["Dogs", "Domesticated carnivorous mammals that typically have a long snout and barking voice."],
+  ["Cats", "Small domesticated carnivorous mammals with soft fur and retractable claws."],
+  ["Birds", "Warm-blooded egg-laying vertebrates characterized by feathers and wings."]
+]
+--------------------------------------
+models.pet.categories.Insert Response
+--------------------------------------
+null
+--------------------------------------
+✨DONE✨
+```
+
+if there are any errors, report them to the AI chatbot for help, update the test data as needed, and repeat until successful.
+
+### ✅ Check Imported Data
+
+After importing the test data, you can use `yao run` to query the data and check if it was imported correctly. Of course, you can also use a database management tool to check the data.
+
+```bash
+# Enter the project root directory,
+# If multiple projects in your machine, ensure you are in the correct project directory.
+cd /path/to/your/project
+
+# Run the yao run command to query the data
+yao run models.pets.Get '::{}'
+```
+
+The correct output should look like this:
+
+```bash
+Run: models.pets.Get
+args[0]: {}
+--------------------------------------
+models.pets.Get Response
+--------------------------------------
+[
+    {
+        "age": 3,
+        "breed": "Golden Retriever",
+        "category_id": 1,
+        "created_at": "2024-11-18 10:39:51",
+        "description": "Friendly and energetic dog.",
+        "id": 1,
+        "pet_name": "Buddy",
+        "updated_at": null
+    },
+    {
+        "age": 2,
+        "breed": "Siamese",
+        "category_id": 2,
+        "created_at": "2024-11-18 10:39:51",
+        "description": "Curious and playful cat.",
+        "id": 2,
+        "pet_name": "Whiskers",
+        "updated_at": null
+    },
+    {
+        "age": 1,
+        "breed": "Canary",
+        "category_id": 3,
+        "created_at": "2024-11-18 10:39:51",
+        "description": "Bright yellow songbird.",
+        "id": 3,
+        "pet_name": "Tweety",
+        "updated_at": null
+    }
+]
+--------------------------------------
+✨DONE✨
+```
+
+## 🎉 Congratulations
+
+You've successfully created the data model for your pet store application. This includes demonstrating Yao's basic operations: creating database tables, importing test data, and querying data.
+
+Next, you'll learn how to develop RESTful APIs to expose data.
+
+- 🟢 **Create and manage data in your application.**
+- 🔵 Develop RESTful APIs to expose data. 👉 [REST API](rest-api)
+- ⚪ Design web pages to display data. 👉 [Web Page](web-page)
+- ⚪ Build an admin panel to help administrators of the pet store manage data. 👉 [Admin Panel](admin-panel)
+- ⚪ Create backend commands for task scheduling. 👉 [CLI](cli)
+- ⚪ Integrate AI for chatbots, image generation, and enhanced user input. 👉 [AI Integration](ai-integration)
+
+For more on the data model, check out the 👉 **[DSL References](references/dsl)**
+
+In this section, everything can be generated by an AI chatbot. You can create an AI agent or tool for automatic generation using natural language. If you're interested in building such a tool, see the following resources:
+
+👉 [Yao Playground](https://github.com/YaoApp/playground)
+
+👉 [Yao Application Generator](https://mopai.ai)

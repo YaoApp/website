@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "slug": "releases-yao-v0.10.4-rc1",
+    "lang": "en-us",
+    "title": "Yao 0.10.4-rc1 Release Notes",
+    "summary": "Yao v0.10.4-rc1 is now available, with new features and bug fixes...",
+    "authors": [],
+    "categories": ["Releases"],
+    "content": "...",
+    "published_at": "2024-12-04 18:30:00",
+    "cover": ["/images/placeholder/240X135.svg"],
+    "background": ["/images/placeholder/240X135.svg"],
+    "recommend": true,
+    "sticky": false,
+    "list_recommend": true,
+    "sort": 1,
+    "status": "published"
+  },
+  {
+    "id": 2,
+    "slug": "Why-does-Yao-reinvent-so-many-wheels",
+    "lang": "en-us",
+    "title": "Why does Yao reinvent so many wheels?",
+    "summary": "Why does Yao reinvent so many wheels?",
+    "authors": [],
+    "categories": ["Releases"],
+    "content": "...",
+    "published_at": "2024-12-04 19:40:00",
+    "cover": ["/images/placeholder/240X135.svg"],
+    "background": ["/images/placeholder/240X135.svg"],
+    "recommend": true,
+    "sticky": false,
+    "list_recommend": true,
+    "sort": 1,
+    "status": "published"
+  }
+]

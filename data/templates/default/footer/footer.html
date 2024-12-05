@@ -1,0 +1,51 @@
+<div
+  class="mt-6 lg:mt-12 border-t border-gray-100 dark:border-gray-900 pt-8 pb-8 text-center text-sm text-gray-400"
+>
+  <div
+    class="container mx-auto flex flex-col lg:flex-row justify-between items-center px-6"
+  >
+    <Social is="/footer/social" class="social"></Social>
+
+    <div>
+      <div class="mb-2">
+        Copyright &copy; {{ now().Year() }} Infinite Wisdom Software
+      </div>
+      <div class="mb-2">
+        Powered by
+        <a
+          href="https://yaoapps.com"
+          target="_blank"
+          class="text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300"
+        >
+          Yao App Engine
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col mt-6 lg:mt-0 lg:flex-row lg:justify-end items-center space-x-6"
+    >
+      <a
+        href="https://moapi.ai/contact"
+        target="_blank"
+        class="text-gray-400 hover:text-gray-500 dark:text-gray-400 dark:hover:text-white flex items-center"
+        s:trans
+      >
+        Contact
+      </a>
+      <!--
+      <a
+        href="https://moapi.ai/about"
+        target="_blank"
+        class="text-gray-400 hover:text-gray-500 dark:text-gray-400 dark:hover:text-white flex items-center"
+        s:trans
+      >
+        About
+      </a>
+      
+        This feature will be enabled when documentation for other languages becomes available.
+        <LanguageSelect is="/components/language"></LanguageSelect>
+      -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+<script s:ns="ns_f3f69da8dd31e3cc" s:cn="comp__index_hero_examples" s:hash="script_b6c3c1dafc5bce8a" src="/assets/js/highlight.min.js" type="text/javascript"></script>
+<style s:ns="ns_f3f69da8dd31e3cc" s:cn="__page" rel="stylesheet" type="text/css">
+@import"/assets/css/github-dark.min.css";
+
+</style>
+</head>
+  <body s:ns="ns_f3f69da8dd31e3cc" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><root class="w-full mt-12 lg:mt-0 lg:w-[61.8%] lg:min-w-[520px] relative">
+  <div class="bg-black rounded-lg text-gray-100 border border-gray-800 h-[400px] shadow-md shadow-gray-400 dark:shadow-gray-950 dark:border-gray-900 dark:bg-gray-900">
+    <div class="text-sm flex w-full justify-center lg:justify-between items-center">
+      <ul class="hidden lg:flex">
+        <li id="tab-{{ item.name }}" s:for="examples" data:name="{{ item.name }}" s:on-click="ShowExample" class="
+            cursor-pointer hover:text-primary-400 dark:hover:text-primary-300 p-4 lg:min-w-[80px] flex justify-center items-center font-medium border-b-2 
+            {{ True(item.active) ? &#39;text-primary-400 dark:text-primary-300 border-primary-400 dark:border-primary-300&#39; : &#39;border-gray-800 dark:border-gray-700&#39; }}" tab="" s:event="ns_f3f69da8dd31e3cc-2" s:event-cn="__page">
+          <i class="material outlined mr-1">{{ item.icon }}</i>
+          <span>{{ item.name }}</span>
+        </li>
+      </ul>
+      <div class="lg:hidden w-full justify-center items-center p-4 font-medium">
+        AI as a seamless collaborator
+      </div>
+      <div>
+        <a href="/uses" class="block h-[54px] lg:border-b-2 border-gray-800 hover:text-primary-400 dark:hover:text-primary-300 flex justify-end items-center p-4 text-lg">
+          <i class="material outlined">more_horiz</i>
+        </a>
+      </div>
+    </div>
+    <div class="overflow-y-auto h-full">
+      <div s:for="examples" id="code-{{ item.name }}" class="{{ True(item.active) ? &#39;&#39; : &#39;hidden&#39; }}" code="">
+        <pre class="code text-sm h-[calc(400px-56px)] !max-w-none language-{{ item.lang }} p-4 rounded-b-lg">{{ item.code }}</pre>
+      </div>
+    </div>
+  </div>
+</root>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_f3f69da8dd31e3cc" s:cn="comp__index_hero_examples" s:hash="script_1195831cc2e1923e" type="text/javascript">
+this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,r,e){return new __Render(__self,e).Exec(t,r)},this.emit=function(t,r){const e=new CustomEvent(t,{detail:r});__self.root.dispatchEvent(e)};const self=this;self.once=init;const activeClass="text-primary-400 dark:text-primary-300  border-primary-400 dark:border-primary-300",defaultClass="border-gray-800 dark:border-gray-700";function init(){document.querySelectorAll(".code").forEach(t=>{hljs.highlightElement(t)})}self.ShowExample=(t,r)=>{$Query("[tab]").elms().forEach(e=>$Query(e).removeClass(activeClass).addClass(defaultClass)),$Query(`#tab-${r.name}`).removeClass(defaultClass).addClass(activeClass),$Query("[code]").elms().forEach(e=>$Query(e).addClass("hidden")),$Query(`#code-${r.name}`).removeClass("hidden")},this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const r=this.getAttribute("s:cn"),e=t.detail.target,o=t.detail.key,n=t.detail.value,s=new window[r](this);new __sui_state(s).Set(o,n,e)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"api":null,"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+</body></html>

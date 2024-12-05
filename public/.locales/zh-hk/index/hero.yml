@@ -1,0 +1,12 @@
+name: zh-hk
+formatter: scripts.tests.formatter
+keys:
+    trans__index_hero_1: 入門指南
+    trans__index_hero_2: Github存儲庫
+    trans__index_hero_3: 使用Yao構建Web應用程式
+    trans__index_hero_4: 此應用程序展示了Yao應用程序中SUI的使用方式，非常適合開始您的Web應用程式項目。
+    trans__index_hero_intro_1: 入門指南
+    trans__index_hero_intro_2: 綜合應用程式引擎
+    trans__index_hero_intro_3: 是一個免費、開放原始碼的應用程式引擎，讓開發人員創建 Web 應用程式、REST API、企業應用程式等，以人工智能作為無縫的協作者。
+direction: ltr
+timezone: "+8:00"

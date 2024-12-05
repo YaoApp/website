@@ -1,0 +1,6 @@
+name: ar-eg
+formatter: scripts.tests.formatter
+keys:
+    trans__blog_list_1: التالي
+direction: rtl
+timezone: "+2:00"

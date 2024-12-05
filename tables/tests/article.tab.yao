@@ -1,0 +1,312 @@
+{
+  "name": "Articles",
+  "action": {
+    "bind": { "model": "article", "option": { "form": "article" } },
+    "before:search": "scripts.hooks.OrderBySort"
+  },
+  "layout": {
+    "header": {},
+    "primary": "id",
+    "filter": {
+      "columns": [
+        { "name": "Title" },
+        { "name": "Slug" },
+        { "name": "Category" },
+        { "name": "Language" },
+        { "name": "Status" }
+      ],
+      "actions": [
+        {
+          "title": "Publish",
+          "icon": "icon-plus",
+          "style": "primary",
+          "action": [
+            {
+              "name": "historyPush",
+              "type": "Common.historyPush",
+              "payload": { "pathname": "/x/Form/article/0/edit" }
+            }
+          ]
+        }
+      ]
+    },
+
+    "table": {
+      "columns": [
+        { "name": "Sort", "width": 60 },
+        { "name": "Language" },
+        { "name": "Slug", "width": 200 },
+        { "name": "Cover", "width": 120 },
+        { "name": "Title", "width": 300 },
+        { "name": "Category" },
+        { "name": "Published Date", "width": 160 },
+        { "name": "Recommend", "width": 120 },
+        { "name": "Status" }
+      ],
+
+      "operation": {
+        "fold": false,
+        "actions": [
+          {
+            "style": "primary",
+            "title": "View",
+            "icon": "icon-link",
+            "action": [
+              {
+                "name": "Link",
+                "type": "Common.historyPush",
+                "payload": { "pathname": "/blog/{{ slug }}", "public": true }
+              }
+            ]
+          },
+          {
+            "style": "primary",
+            "title": "Edit",
+            "icon": "icon-edit-2",
+            "action": [
+              {
+                "name": "HistoryPush",
+                "type": "Common.historyPush",
+                "payload": { "pathname": "/x/Form/article/{{id}}/edit" }
+              }
+            ]
+          },
+          {
+            "style": "danger",
+            "title": "Delete",
+            "icon": "icon-trash-2",
+            "disabled": {
+              "bind": "{{ status }}",
+              "value": ["publishing", "published"]
+            },
+            "action": [
+              {
+                "name": "Confirm",
+                "type": "Common.confirm",
+                "payload": {
+                  "title": "Please confirm to delete [{{ title }}]",
+                  "content": "This action is irreversible! The page will be inaccessible."
+                }
+              },
+              { "name": "Delete", "type": "Table.delete", "payload": {} }
+            ]
+          }
+        ]
+      }
+    }
+  },
+
+  "fields": {
+    "filter": {
+      "Category": {
+        "bind": "where.categories.match",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Category",
+            "allowClear": true,
+            "showSearch": true,
+            "xProps": {
+              "$remote": { "process": "scripts.blog.CategoryOptions" }
+            }
+          }
+        }
+      },
+
+      "Language": {
+        "bind": "where.lang.eq",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Language",
+            "options": [
+              { "label": "English", "value": "en-us" },
+              { "label": "Chinese", "value": "zh-cn" },
+              { "label": "Chinese (Traditional)", "value": "zh-hk" },
+              { "label": "Japanese", "value": "ja-jp" }
+            ]
+          }
+        }
+      },
+
+      "Title": {
+        "bind": "where.title.match",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Title keywords" }
+        }
+      },
+
+      "Slug": {
+        "bind": "where.slug.match",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Slug keywords" }
+        }
+      },
+
+      "Status": {
+        "bind": "where.status.eq",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Status",
+            "options": [
+              { "label": "Draft", "value": "draft" },
+              { "label": "Publishing", "value": "publishing" },
+              { "label": "Published", "value": "published" }
+            ]
+          }
+        }
+      }
+    },
+    "table": {
+      "Language": {
+        "bind": "lang",
+        "view": {
+          "type": "Tag",
+          "props": {
+            "options": [
+              { "label": "English", "value": "en-us" },
+              { "label": "Chinese", "value": "zh-cn" },
+              { "label": "Chinese (Traditional)", "value": "zh-hk" },
+              { "label": "Japanese", "value": "ja-jp" }
+            ]
+          }
+        },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "options": [
+              { "label": "English", "value": "en-us" },
+              { "label": "Chinese", "value": "zh-cn" },
+              { "label": "Chinese (Traditional)", "value": "zh-hk" },
+              { "label": "Japanese", "value": "ja-jp" }
+            ]
+          }
+        }
+      },
+
+      "Title": {
+        "bind": "title",
+        "view": { "type": "Text", "props": { "weight": "medium" } },
+        "edit": { "type": "Input", "props": { "placeholder": "Title" } }
+      },
+
+      "Category": {
+        "bind": "categories",
+        "view": { "type": "Tag", "props": {} },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "mode": "multiple",
+            "placeholder": "Category",
+            "allowClear": true,
+            "showSearch": true,
+            "xProps": {
+              "$remote": { "process": "scripts.blog.CategoryOptions" }
+            }
+          }
+        }
+      },
+
+      "Cover": {
+        "bind": "cover",
+        "view": {
+          "type": "Image",
+          "props": {
+            "previewURL": "/assets/upload[[ $PATH ]]",
+            "style": { "width": 80, "height": 45 }
+          }
+        },
+        "edit": {
+          "type": "Upload",
+          "props": {
+            "filetype": "image",
+            "accept": ".jpg,.jpeg,.png,.gif,.webp",
+            "fileSize": "5M",
+            "maxSize": "5M",
+            "imageSize": { "height": 135, "width": 240 },
+            "previewURL": "/assets/upload[[ $PATH ]]",
+            "$api": { "process": "scripts.asset.UploadImageToPublic" },
+            "ai": { "placeholder": "Help me to generate a cover" }
+          }
+        }
+      },
+
+      "Published Date": {
+        "bind": "published_at",
+        "view": { "type": "Text", "props": { "format": "DD/MM/YYYY" } },
+        "edit": { "type": "DatePicker", "props": { "showTime": true } }
+      },
+
+      "Slug": {
+        "bind": "slug",
+        "view": { "type": "Tag", "props": { "color": "primary" } },
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Lowercase letters, numbers and \"-\"" }
+        }
+      },
+
+      "Sort": {
+        "bind": "sort",
+        "view": { "type": "Tag" },
+        "edit": { "type": "InputNumber", "props": { "min": 0, "max": 10000 } }
+      },
+
+      "Recommend": {
+        "bind": "recommend",
+        "view": {
+          "type": "Tag",
+          "props": {
+            "options": [
+              { "label": "Recommend", "value": 1, "color": "success" },
+              { "label": "", "value": 0 }
+            ]
+          }
+        },
+
+        "edit": {
+          "type": "RadioGroup",
+          "props": {
+            "defaultValue": 0,
+            "options": [
+              { "label": "Yes", "value": 1 },
+              { "label": "No", "value": 0 }
+            ]
+          }
+        }
+      },
+
+      "Status": {
+        "bind": "status",
+        "view": {
+          "type": "Tag",
+          "props": {
+            "options": [
+              { "label": "Draft", "value": "draft", "color": "danger" },
+              {
+                "label": "Publishing",
+                "value": "publishing",
+                "color": "warning"
+              },
+              { "label": "Published", "value": "published", "color": "success" }
+            ]
+          }
+        },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "disabled": true,
+            "options": [
+              { "label": "Draft", "value": "draft" },
+              { "label": "Publishing", "value": "publishing" },
+              { "label": "Published", "value": "published" }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

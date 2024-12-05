@@ -1,0 +1,6 @@
+[submodule "data/docs"]
+	path = data/docs
+	url = https://github.com/YaoApp/docs
+[submodule "data/templates/default/flowbite"]
+	path = data/templates/default/flowbite
+	url = git@github.com:YaoApp/sui-flowbite.git

@@ -1,0 +1,102 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+</head>
+  <body s:ns="ns_7f9017e0a7080578" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><section class="container mx-auto px-6 py-10 md:py-20 flex flex-col items-center justify-center">
+  <s:set name="items" value="[{ $props.items }]"></s:set>
+  <ul class="w-full p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <li s:for="{{ items }}" class="
+        flex flex-col
+        border border-primary-50 dark:border-gray-950
+        bg-primary-50/20 dark:bg-gray-800/50 hover:bg-primary-50 dark:hover:bg-gray-800
+        shadow-sm shadow-primary-50  dark:shadow-gray-800
+        w-full rounded-lg
+        bg-cover bg-center bg-no-repeat
+        transition-none hover:transition hover:duration-300 hover:ease-in-out
+        {{ index == 1  ? &#39;md:row-span-2&#39; : &#39;&#39; }}
+        {{ item.bg_img == &#39;&#39; ? &#39;text-gray-900&#39; : &#39;filter hover:brightness-110 text-gray-100&#39;}} dark:text-gray-100
+      " style="background-image: url(&#39;{{ item.bg_img }}&#39;);">
+      <a href="/form/{{ item.slug }}" class="{{ item.bg_img == &#39;&#39; ? &#39;&#39; : &#39;bg-gray-900/50&#39; }} h-full p-6 rounded-lg flex flex-col">
+        <h2 class="{{ item.bg_img == &#39;&#39; ? &#39;text-lg&#39; : &#39;text-2xl&#39;}} font-medium">
+          {{ item.title }}
+        </h2>
+        <p class="mt-1 dark:text-gray-100 {{ item.bg_img == &#39;&#39; ? &#39;text-sm text-gray-500&#39; : &#39;text-base text-gray-100&#39;}}">
+          {{ item.description }}
+        </p>
+      </a>
+    </li>
+  </ul>
+</section>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+
+
+<script name="config" type="json">
+{"api":null,"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+</body></html>

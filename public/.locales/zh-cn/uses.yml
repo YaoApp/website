@@ -1,0 +1,32 @@
+formatter: scripts.tests.formatter
+keys:
+    trans__components_theme_1: 切換到深色模式
+    trans__components_theme_2: Switch to Light Mode
+    trans__components_theme_3: Switch to Light Mode
+    trans__footer_1: 联系我们
+    trans__footer_social_1: 在Github上查看
+    trans__footer_social_2: 在Github上查看
+    trans__footer_social_3: 加入Discord社区
+    trans__footer_social_4: 加入Discord社区
+    trans__footer_social_5: 关注我们的Twitter/X
+    trans__footer_social_6: 关注我们的Twitter/X
+    trans__footer_social_7: 订阅YouTube频道
+    trans__footer_social_8: 订阅YouTube频道
+    trans__header_1: 概览
+    trans__header_2: Uses
+    trans__header_3: 下载
+    trans__header_4: 文档
+    trans__header_5: 博客
+    trans__header_6: 部署
+    trans__header_7: App Engine
+    trans__header_8: View on Github
+    trans__header_9: View on Github
+    trans__header_10: 加入Discord社区
+    trans__header_11: 加入Discord社区
+    trans__header_12: 部署到Moapi Cloud
+    trans__header_13: 加入Discord社区
+    trans__uses_switching_1: 了解更多
+    trans__uses_switching_2: 切换到Yao
+    trans__uses_switching_3: 切换到Yao很容易。Yao侧重于生成式开发。可能需要时间来学习一些关键概念，但一旦你理解了它们，你将会发现Yao是一个强大的工具。它帮助你更快地构建应用程序，并提供出色的开发体验。
+direction: ltr
+timezone: "+8:00"

@@ -1,0 +1,115 @@
+<root
+  id="{{ id }}"
+  type="flowbite-edit-select"
+  data:color="{{ color }}"
+  data:size="{{ size }}"
+  data:disabled="{{ disabled }}"
+  data:options="{{ options }}"
+  data:value="{{ value }}"
+  data:label="{{ label }}"
+  data:selected="{{ selected }}"
+  data:placeholder="{{ placeholder }}"
+  class="flowbite-edit-select w-full relative {{ class }}"
+  s:data-hasvalue="{{ value == null ? 'false' : 'true' }}"
+  s:data-action="open"
+>
+  <import s:as="FInput" s:from="/flowbite/components/edit/input"></import>
+  <import s:as="Dropdown" s:from="/flowbite/components/dropdown"></import>
+
+  <div class="relative w-full">
+    <FInput
+      id="{{ id }}"
+      name="{{ name }}"
+      color="{{ color }}"
+      icon="{{ icon }}"
+      size="{{ size }}"
+      input-class="{{ inputClass }}"
+      icon-wrapper-class="{{ iconWrapperClass }}"
+      icon-class="{{ iconClass }}"
+      type="text"
+      value="{{ mode != 'multiple' ? (label ?? value) : '' }}"
+      placeholder="{{ Empty(values) ? placeholder : '' }}"
+      disabled="{{ disabled }}"
+      class="w-full"
+      s:on-click="onInputClick"
+      s:on-mouseenter="onInputMouseEnter"
+      s:on-mouseleave="onInputMouseLeave"
+      s:on-keydown="onInputKeyDown"
+    ></FInput>
+
+    <div
+      s:if="mode == 'multiple'"
+      class=" 
+        {{ Empty(icon) ? tagPosition.default : tagPosition.withIcon }}
+         absolute inset-y-0 z-4  {{ True(disabled) ? 'cursor-default' : 'cursor-text' }}
+         {{ tagWrapperClass }}
+      "
+      s:on-click="onMultipleInputClick"
+      s:on-mouseenter="onInputMouseEnter"
+      s:on-mouseleave="onInputMouseLeave"
+    >
+      <div
+        class="flex items-center flex-wrap"
+        s:render="multiple-values"
+        multiple-values
+      >
+        <div
+          s:for="values"
+          class="flex items-center justify-center rounded-full {{ tagSize }} {{ tagColor }} {{ tagClass }}"
+          multiple-value
+        >
+          <span class="me-1 cursor-pointer">
+            {{ item.label ?? item.value }}
+          </span>
+          <i
+            class="material outlined cursor-pointer font-bold {{ actionIconColor }} "
+            s:on-click="onMultipleRemove"
+            s:data-value="{{ item.value }}"
+          >
+            close
+          </i>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="
+        absolute inset-y-0 z-5 flex items-center cursor-pointer 
+        {{ actionIconColor }} {{actionIconPosition}} {{ actionIconSize }} 
+        {{ True(disabled) ? 'hidden' : '' }}
+      "
+      s:on-mouseenter="onActionMouseEnter"
+      s:on-mouseleave="onActionMouseLeave"
+    >
+      <i
+        class="material outlined"
+        action-icon
+        s:data-type="dropdown"
+        s:on-click="onActionClick"
+      >
+        arrow_drop_down
+      </i>
+    </div>
+  </div>
+
+  <div class="left-0 absolute w-full z-10 relative" dropdown>
+    <Dropdown
+      id="options-{{ id }}"
+      name="options"
+      size="{{ size }}"
+      color="{{ color }}"
+      opened="{{ opened }}"
+      items="{{ options }}"
+      selected="{{ value }}"
+      api="{{ api }}"
+      class="top-1 left-0 rtl:right-0 min-h-8 max-h-48 divide-y divide-gray-100 rounded-lg shadow shadow-gray-200/70 bg-white dark:divide-gray-800 dark:shadow-gray-800"
+      mode="{{ mode }}"
+      s:on-outside-click="onOutsideClick"
+      s:on-item-click="onSelect"
+    >
+      <slot name="empty">
+        <p class="p-3">No options available.</p>
+      </slot>
+    </Dropdown>
+  </div>
+</root>

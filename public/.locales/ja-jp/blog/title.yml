@@ -1,0 +1,7 @@
+name: ja-jp
+formatter: scripts.tests.formatter
+keys:
+    trans__blog_title_1: Twitter/Xて私たちに従ってください
+    trans__blog_title_2: Yaoの最新ニュース、アップデート、ヒント、トリック
+direction: ltr
+timezone: "+9:00"

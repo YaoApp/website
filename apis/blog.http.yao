@@ -1,0 +1,15 @@
+{
+  "name": "Blog API",
+  "version": "1.0.0",
+  "description": "Blog API",
+  "paths": [
+    {
+      "path": "/feed/:lang",
+      "method": "GET",
+      "process": "scripts.blog.Feed",
+      "guard": "-",
+      "in": ["$param.lang"],
+      "out": { "status": 200, "type": "application/xml; charset=utf-8" }
+    }
+  ]
+}

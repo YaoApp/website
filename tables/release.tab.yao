@@ -1,0 +1,147 @@
+{
+  "name": "Releases",
+  "action": {
+    "bind": { "model": "release", "option": { "form": "release" } },
+    "before:search": "scripts.hooks.OrderBySort"
+  },
+  "layout": {
+    "header": {},
+    "primary": "id",
+    "filter": {
+      "columns": [{ "name": "Version" }, { "name": "Status" }],
+      "actions": [
+        {
+          "title": "Add Release",
+          "icon": "icon-plus",
+          "style": "primary",
+          "action": [
+            {
+              "name": "openModal",
+              "type": "Common.openModal",
+              "payload": {
+                "byDrawer": { "mask": true },
+                "Form": { "type": "add", "model": "release" }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "table": {
+      "columns": [
+        { "name": "Sort", "width": 60 },
+        { "name": "Version", "width": 120 },
+        { "name": "Summary", "width": 300 },
+        { "name": "Release Date", "width": 160 },
+        { "name": "Status", "width": 100 }
+      ],
+      "operation": {
+        "fold": false,
+        "actions": [
+          {
+            "style": "primary",
+            "title": "Edit",
+            "icon": "icon-edit-2",
+            "action": [
+              {
+                "name": "openModal",
+                "type": "Common.openModal",
+                "payload": {
+                  "byDrawer": { "mask": true },
+                  "Form": {
+                    "type": "edit",
+                    "model": "release",
+                    "params": { "id": "" }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "style": "danger",
+            "title": "Delete",
+            "icon": "icon-trash-2",
+            "action": [
+              {
+                "name": "Confirm",
+                "type": "Common.confirm",
+                "payload": {
+                  "title": "Please confirm to delete []",
+                  "content": "This action is irreversible! The release will be permanently deleted."
+                }
+              },
+              { "name": "Delete", "type": "Table.delete", "payload": {} }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "fields": {
+    "filter": {
+      "Version": {
+        "bind": "where.version.match",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Version" }
+        }
+      },
+      "Status": {
+        "bind": "where.status.eq",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Status",
+            "options": [
+              { "label": "Draft", "value": "draft" },
+              { "label": "Published", "value": "published" }
+            ]
+          }
+        }
+      }
+    },
+    "table": {
+      "Version": {
+        "bind": "version",
+        "view": { "type": "Text", "props": { "weight": "medium" } },
+        "edit": { "type": "Input", "props": { "placeholder": "Version" } }
+      },
+      "Summary": {
+        "bind": "summary",
+        "view": { "type": "Text", "props": {} },
+        "edit": { "type": "Input", "props": { "placeholder": "Summary" } }
+      },
+      "Release Date": {
+        "bind": "published_at",
+        "view": { "type": "Text", "props": { "format": "DD/MM/YYYY" } },
+        "edit": { "type": "DatePicker", "props": { "showTime": true } }
+      },
+      "Sort": {
+        "bind": "sort",
+        "view": { "type": "Tag" },
+        "edit": { "type": "InputNumber", "props": { "min": 0, "max": 10000 } }
+      },
+      "Status": {
+        "bind": "status",
+        "view": {
+          "type": "Tag",
+          "props": {
+            "options": [
+              { "label": "Draft", "value": "draft", "color": "danger" },
+              { "label": "Published", "value": "published", "color": "success" }
+            ]
+          }
+        },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "options": [
+              { "label": "Draft", "value": "draft" },
+              { "label": "Published", "value": "published" }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

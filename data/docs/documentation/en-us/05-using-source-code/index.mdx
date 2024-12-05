@@ -1,0 +1,38 @@
+---
+title: Using Source Code
+description: How to use source code in your application.
+---
+
+This section guides you through using source code to add processes, add components, and build a custom component library tailored to your business needs.
+
+## The Repositories
+
+Yao is primarily developed using Golang, with the default interface engine, XGEN, built using the React framework.
+
+It separates several repositories for different purposes:
+
+| Repository      | Description                                                                  | Link                                             |
+| --------------- | ---------------------------------------------------------------------------- | ------------------------------------------------ |
+| **YaoApp/Yao**  | Core Yao repository. Defines the command-line tool & internal processes.     | 👉 [YaoApp/yao](https://github.com/YaoApp/Yao)   |
+| **YaoApp/Gou**  | App engine framework.                                                        | 👉 [YaoApp/gou](https://github.com/YaoApp/Gou)   |
+| **YaoApp/Xun**  | Database ORM.                                                                | 👉 [YaoApp/xun](https://github.com/YaoApp/Xun)   |
+| **YaoApp/Kun**  | Utility structures and functions.                                            | 👉 [YaoApp/kun](https://github.com/YaoApp/Kun)   |
+| **YaoApp/Xgen** | Default UI engine for building admin panels. Integrated into Yao executable. | 👉 [YaoApp/Xgen](https://github.com/YaoApp/Xgen) |
+
+Yao uses the **[rogchap/v8go](https://github.com/rogchap/v8go)** package to execute JavaScript code within the Go runtime. For our specific needs, we've forked the v8go package and added custom features to better support our requirements.
+
+You can access the forked repository here 👉 [YaoApp/v8go](https://github.com/YaoApp/v8go)
+
+## How to Use Source Code
+
+To use the source code, you need to clone the repositories and build the binaries, build it, and run it on your local machine.
+
+Here's how you can do it:
+
+👉 [Compiling Source Code](using-source-code/compiling-source-code)
+
+👉 [Adding Your Process](using-source-code/adding-your-process)
+
+👉 [Adding Your Component](using-source-code/adding-your-component)
+
+👉 [Building Your Component Library](using-source-code/building-your-component-library)

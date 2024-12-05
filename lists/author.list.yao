@@ -1,0 +1,45 @@
+{
+  "name": "Author List",
+  "action": {},
+  "layout": {
+    "list": {
+      "columns": [
+        { "name": "Name", "width": 6 },
+        { "name": "Email", "width": 6 },
+        { "name": "Link", "width": 12 },
+        { "name": "Avatar", "width": 24 }
+      ],
+      "props": { "placeholder": "Add Author", "height": 100 }
+    }
+  },
+  "fields": {
+    "list": {
+      "Email": {
+        "bind": "email",
+        "edit": { "type": "Input", "props": { "placeholder": "Email" } }
+      },
+      "Name": {
+        "bind": "name",
+        "edit": { "type": "Input", "props": { "placeholder": "Name" } }
+      },
+      "Link": {
+        "bind": "link",
+        "edit": { "type": "Input", "props": { "placeholder": "Link" } }
+      },
+      "Avatar": {
+        "bind": "avatar",
+        "edit": {
+          "type": "Upload",
+          "props": {
+            "placeholder": "Upload Avatar",
+            "filetype": "image",
+            "accept": ".jpg,.jpeg,.png,.gif,.webp",
+            "previewSize": { "ratio": 1 },
+            "previewURL": "/assets/upload[[ $PATH ]]",
+            "$api": { "process": "scripts.asset.UploadImageToPublic" }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+name: ja-jp
+formatter: scripts.tests.formatter
+keys:
+    trans__index_hero_1: はじめに
+    trans__index_hero_2: Github リポジトリ
+    trans__index_hero_3: Yaoを使ったWebアプリケーションの構築
+    trans__index_hero_4: このアプリは、Yaoアプリケーション内でのSUIの使用を示しており、Webアプリケーションプロジェクトを始めるには最適です。
+    trans__index_hero_intro_1: はじめに
+    trans__index_hero_intro_2: オールインワンアプリケーションエンジン
+    trans__index_hero_intro_3: |-
+        は開発者がウェブアプリ、REST API、エンタープライズアプリなどを
+                AIとのシームレスな共同作業者として作成できる無料でオープンソースの
+                アプリケーションエンジンです。
+direction: ltr
+timezone: "+9:00"

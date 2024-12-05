@@ -1,0 +1,36 @@
+<section
+  class="container mx-auto px-6 py-10 md:py-20 flex flex-col items-center justify-center"
+>
+  <s:set name="items" value="[{ $props.items }]"></s:set>
+  <ul class="w-full p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <li
+      s:for="{{ items }}"
+      class="
+        flex flex-col
+        border border-primary-50 dark:border-gray-950
+        bg-primary-50/20 dark:bg-gray-800/50 hover:bg-primary-50 dark:hover:bg-gray-800
+        shadow-sm shadow-primary-50  dark:shadow-gray-800
+        w-full rounded-lg
+        bg-cover bg-center bg-no-repeat
+        transition-none hover:transition hover:duration-300 hover:ease-in-out
+        {{ index == 1  ? 'md:row-span-2' : '' }}
+        {{ item.bg_img == '' ? 'text-gray-900' : 'filter hover:brightness-110 text-gray-100'}} dark:text-gray-100
+      "
+      style="background-image: url('{{ item.bg_img }}');"
+    >
+      <a
+        href="/form/{{ item.slug }}"
+        class="{{ item.bg_img == '' ? '' : 'bg-gray-900/50' }} h-full p-6 rounded-lg flex flex-col"
+      >
+        <h2 class="{{ item.bg_img == '' ? 'text-lg' : 'text-2xl'}} font-medium">
+          {{ item.title }}
+        </h2>
+        <p
+          class="mt-1 dark:text-gray-100 {{ item.bg_img == '' ? 'text-sm text-gray-500' : 'text-base text-gray-100'}}"
+        >
+          {{ item.description }}
+        </p>
+      </a>
+    </li>
+  </ul>
+</section>

@@ -1,0 +1,12 @@
+name: zh-cn
+formatter: scripts.tests.formatter
+keys:
+    trans__index_hero_1: 入门指南
+    trans__index_hero_2: Github存储库
+    trans__index_hero_3: 使用Yao构建Web应用程序
+    trans__index_hero_4: 该应用程序演示了在Yao应用程序中使用SUI，非常适合开始您的Web应用程序项目。
+    trans__index_hero_intro_1: 入门指南
+    trans__index_hero_intro_2: All-in-one App Engine
+    trans__index_hero_intro_3: 是一个免费的开源应用引擎，允许开发人员创建Web应用程序、REST API、企业应用程序等，AI作为一个无缝的合作者。
+direction: ltr
+timezone: "+8:00"

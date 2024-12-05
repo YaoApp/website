@@ -1,0 +1,65 @@
+{
+  "name": "Tutorials",
+  "table": { "name": "tutorial", "comment": "Usage Scenario Tutorials" },
+  "columns": [
+    { "name": "id", "comment": "ID", "type": "ID", "label": "ID" },
+    {
+      "label": "Language",
+      "name": "lang",
+      "type": "string",
+      "length": 20,
+      "index": true,
+      "default": "en-us"
+    },
+    {
+      "label": "Icon",
+      "name": "icon",
+      "comment": "The icon of the tutorial",
+      "type": "string",
+      "length": 100
+    },
+    {
+      "label": "Title",
+      "name": "title",
+      "comment": "The title of the tutorial",
+      "type": "string",
+      "index": true,
+      "length": 200
+    },
+    {
+      "label": "Description",
+      "name": "description",
+      "comment": "A brief description of the tutorial",
+      "type": "text"
+    },
+    {
+      "label": "Category",
+      "name": "category",
+      "comment": "Category such as AI Integration, Usage Scenarios",
+      "type": "string",
+      "length": 50
+    },
+    {
+      "label": "Release Date",
+      "name": "release_date",
+      "comment": "The date this tutorial was released or updated",
+      "type": "datetime"
+    },
+    {
+      "label": "Sort",
+      "name": "sort",
+      "type": "integer",
+      "default": 9999,
+      "index": true,
+      "comment": "Sort order for tutorials"
+    },
+    {
+      "label": "URL",
+      "name": "url",
+      "comment": "Link to the tutorial or more details",
+      "type": "string",
+      "length": 255
+    }
+  ],
+  "option": { "timestamps": true }
+}

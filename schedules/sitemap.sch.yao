@@ -1,0 +1,6 @@
+{
+  "name": "Generate sitemap at 23:59",
+  "schedule": "59 23 * * *", // 23:59 every day
+  "process": "scripts.sitemap.GenerateFile", // The process to run
+  "args": [] // The arguments to pass to the process
+}

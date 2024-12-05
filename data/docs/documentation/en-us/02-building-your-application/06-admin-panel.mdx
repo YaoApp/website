@@ -1,0 +1,572 @@
+---
+title: Admin panel
+description:
+related:
+  title: Next Steps
+  description: Create backend commands for task scheduling.
+  links:
+    - cli
+---
+
+In this section, we will build an admin panel for the pet store application. The admin panel will help administrators manage data in the application.
+
+- 🟢 Create and manage data in your application. 👉 [Data Model](data-model)
+- 🟢 Develop RESTful APIs to expose data. 👉 [REST API](rest-api)
+- 🟢 Design web pages to display data. 👉 [Web Page](web-page)
+- 🟠 **Build an admin panel to help administrators of the pet store manage data.**
+- ⚪ Create backend commands for task scheduling. 👉 [CLI](cli)
+- ⚪ Integrate AI for chatbots, image generation, and enhanced user input. 👉 [AI Integration](ai-integration)
+
+Ensure you have read the previous documentation, and the previous steps are completed before proceeding.
+
+👉 [Data Model](data-model)
+
+👉 [Building Your Application](../building-your-application)
+
+## Overview
+
+Building an admin panel with Yao is quick and easy.
+
+Use widgets like Table, Form, Dashboard, etc., to create a complete admin panel in minutes.
+
+These widgets provide RESTful APIs. The frontend uses React and communicates with the backend through these APIs. The distribution files are in the Yao executable.
+
+Before the HTTP server starts, Yao converts DSLs into RESTful APIs, serving both APIs and static files.
+
+For a custom admin panel, use the RESTful APIs to build your own frontend and place the distribution files in the `public` directory. 👉 [Building your component library](../using-source-code/building-your-component-library)
+
+In this demo, we use the Table and Form widgets to create an admin panel for the pet store administrator to manage data.
+
+The complete Admin Panel tutorial is available here: 👉 **[Admin Panel Tutorial](/tutorials/admin-panel/getting-started)**
+
+## Step 1: Browse the Admin Panel
+
+Before proceeding, ensure you've reviewed the previous documentation to understand the Yao application's directory structure and have created a Yao application using the Quick Start Guide.
+
+👉 [Quickstart](../getting-started#quickstart)
+
+👉 [Yao Application](../getting-started/switching-to-yao#yao-application)
+
+To browse the admin panel, open the browser and navigate to `http://127.0.0.1:5099/admin/`. _Replace the IP address and port with your server's IP address and port._
+
+|           |                                                              |
+| --------- | ------------------------------------------------------------ |
+| Admin URL | [http://127.0.0.1:5099/admin/](http://127.0.0.1:5099/admin/) |
+| Account   | demo@moapi.ai                                                |
+| Password  | demo@5099                                                    |
+
+Enter the account and password to log in to the admin panel.
+
+## Step 2: Generate the DSLs
+
+We will create 4 widgets, to manage pets and pet categories in the admin panel.
+
+1. **Pet Table**: `tables/pets.tab.yao` Display pets in a table.
+2. **Pet Form**: `forms/pet.form.yao` Add or edit pets in a form.
+3. **Pet Category Table**: `tables/pet-categories.tab.yao` Display pet categories in a table.
+4. **Pet Category Form**: `forms/pet-category.form.yao` Add or edit pet categories in a form.
+
+Send the Model DSLs and one or more one or more existing Table/Form DSL examples to the chatbot, ask for assistance in generating similar Table/Form DSLs.
+
+You can get an existing Table/Form DSL examples from the Yao documentation or other public repositories. in this case, we get them from the Yao website repository.
+
+| Source URL                                                                                              |
+| ------------------------------------------------------------------------------------------------------- |
+| 👉 [article.tab.yao](https://github.com/YaoApp/yao-website/blob/main/tables/article.tab.yao)            |
+| 👉 [category.tab.yao](https://github.com/YaoApp/yao-website/blob/main/tables/article/category.tab.yao)  |
+| 👉 [article.form.yao](https://github.com/YaoApp/yao-website/blob/main/forms/article.form.yao)           |
+| 👉 [category.form.yao](https://github.com/YaoApp/yao-website/blob/main/forms/article/category.form.yao) |
+
+### 💬 Prompts for Generating Table and Form DSLs
+
+_This is an example of a conversation with an AI chatbot to generate table and form DSLs. Change the prompts according to your requirements._
+
+````markdown
+# DSL Generation Task
+
+## DSL Samples Reference
+
+- **Table DSL Samples**: [Table DSL Samples]
+- **Form DSL Samples**: [Form DSL Samples]
+- **Model DSLs**: [Model DSLs]
+
+## Requirements
+
+### 1. Generate a Table DSL for Model `pets`
+
+- **File**: `pets.tab.yao`
+- **Path**: `pets`
+- **Fields**: Use the fields from the Model `Pet`, which are suitable for a table.
+- **Add and Edit**: The Form Window opens from the right side.
+- **Bind**: Bind the table to `model.pets` and the form `pets`.
+
+### 2. Generate a Form DSL for Model `pets`
+
+- **File**: `pets.form.yao`
+- **Path**: `pets`
+- **Fields**: Use the fields from the Model `Pet`, and ensure the layout is easy to use.
+- **Bind**: Bind the form to the table `pets`.
+
+### 3. Generate a Table DSL for Model `pet.categories`
+
+- **File**: `pet/category.tab.yao`
+- **Path**: `pet/categories`
+- **Name**: `pet.categories`
+- **Fields**: Use the fields from the Model `PetCategory`, which are suitable for a table.
+- **Add and Edit**: The Form Window opens from the right side.
+- **Bind**: Bind the table to `model.pet.categories` and the form `pet.categories`.
+
+### 4. Generate a Form DSL for Model `pet.categories`
+
+- **File**: `pet/categories.form.yao`
+- **Path**: `pet/categories`
+- **Name**: `pet.categories`
+- **Fields**: Use the fields from the Model `PetCategory`, and ensure the layout is easy to use.
+- **Bind**: Bind the form to the table `pet.categories`.
+
+## Output Instructions
+
+For each DSL:
+
+1. Return the code inside a **separate code block**.
+2. Add comments indicating the respective **file name** above each block, use // for comments.
+
+### Example Output Format
+
+```json
+// pets.tab.yao
+<Generated Table DSL for Model pets>
+```
+
+```json
+// pets.form.yao
+<Generated Form DSL for Model pets>
+```
+
+```json
+// pet/categories.tab.yao
+<Generated Table DSL for Model pet.categories>
+```
+
+```json
+// pet/categories.form.yao
+<Generated Form DSL for Model pet.categories>
+```
+````
+
+### 🤖 _Reply from AI Chatbot_
+
+The AI chatbot will generate the table and form DSLs for you. It looks like this:
+
+```json
+// pet/category.tab.yao
+{
+  "name": "Pet Categories",
+  "action": {
+    "bind": {
+      "model": "pet.categories",
+      "option": { "form": "pet.categories" }
+    },
+    "before:search": "scripts.hooks.OrderBySort"
+  },
+  "layout": {
+    "header": {},
+    "primary": "id",
+    "filter": {
+      "columns": [{ "name": "Category Name" }],
+      "actions": [
+        {
+          "title": "Add Category",
+          "icon": "icon-plus",
+          "style": "primary",
+          "action": [
+            {
+              "name": "openModal",
+              "type": "Common.openModal",
+              "payload": {
+                "byDrawer": { "mask": true },
+                "Form": { "type": "add", "model": "pet.categories" }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "table": {
+      "columns": [
+        { "name": "ID", "width": 60 },
+        { "name": "Category Name", "width": 200 },
+        { "name": "Description", "width": 300 }
+      ],
+      "operation": {
+        "fold": false,
+        "actions": [
+          {
+            "style": "primary",
+            "title": "Edit",
+            "icon": "icon-edit-2",
+            "action": [
+              {
+                "name": "openModal",
+                "type": "Common.openModal",
+                "payload": {
+                  "byDrawer": { "mask": true },
+                  "Form": {
+                    "type": "edit",
+                    "model": "pet.categories",
+                    "params": { "id": "{{id}}" }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "style": "danger",
+            "title": "Delete",
+            "icon": "icon-trash-2",
+            "action": [
+              {
+                "name": "Confirm",
+                "type": "Common.confirm",
+                "payload": {
+                  "title": "Please confirm to delete [{{ category_name }}]",
+                  "content": "This action is irreversible! The category will be permanently deleted."
+                }
+              },
+              { "name": "Delete", "type": "Table.delete", "payload": {} }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "fields": {
+    "filter": {
+      "Category Name": {
+        "bind": "where.category_name.match",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Category Name" }
+        }
+      }
+    },
+    "table": {
+      "ID": {
+        "bind": "id",
+        "view": { "type": "Text" }
+      },
+      "Category Name": {
+        "bind": "category_name",
+        "view": { "type": "Text", "props": { "weight": "medium" } },
+        "edit": { "type": "Input", "props": { "placeholder": "Category Name" } }
+      },
+      "Description": {
+        "bind": "description",
+        "view": { "type": "Text" },
+        "edit": {
+          "type": "TextArea",
+          "props": { "placeholder": "Description" }
+        }
+      }
+    }
+  }
+}
+```
+
+```json
+// pet/categories.form.yao
+{
+  "name": "Pet Category",
+  "action": { "bind": { "table": "pet.categories" } },
+  "layout": {
+    "primary": "id",
+    "actions": [
+      {
+        "title": "Save",
+        "icon": "icon-save",
+        "style": "primary",
+        "showWhenAdd": true,
+        "action": [{ "name": "Submit", "type": "Form.submit" }]
+      },
+      {
+        "title": "Delete",
+        "icon": "icon-trash-2",
+        "style": "danger",
+        "action": [
+          {
+            "name": "Confirm",
+            "type": "Common.confirm",
+            "payload": {
+              "title": "Please confirm to delete [{{ category_name }}]",
+              "content": "This action is irreversible!"
+            }
+          },
+          { "name": "Delete", "type": "Table.delete", "payload": {} }
+        ]
+      },
+      {
+        "title": "Close",
+        "icon": "icon-arrow-left",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          { "name": "CloseModal", "type": "Common.closeModal", "payload": {} }
+        ]
+      }
+    ],
+    "form": {
+      "sections": [
+        {
+          "columns": [
+            { "name": "Category Name", "width": 24 },
+            { "name": "Description", "width": 24 }
+          ]
+        }
+      ]
+    }
+  },
+  "fields": {
+    "form": {
+      "Category Name": {
+        "bind": "category_name",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Input the category name" }
+        }
+      },
+      "Description": {
+        "bind": "description",
+        "edit": {
+          "type": "TextArea",
+          "props": { "placeholder": "Input the description of the category" }
+        }
+      }
+    }
+  }
+}
+```
+
+## Step 3: Save the DSLs
+
+After generating the DSLs, save them in the `tables` and `forms` directories in your Yao application.
+
+### 💾 Save to Tables and Forms directories
+
+| Widget Type | Widget ID      | Path                          |
+| ----------- | -------------- | ----------------------------- |
+| Table       | pets           | tables/pets.tab.yao           |
+| Table       | pet.categories | tables/pet-categories.tab.yao |
+| Form        | pets           | forms/pets.form.yao           |
+| Form        | pet.categories | forms/pet-categories.form.yao |
+
+After saving the DSLs, the tables and forms directories should look like this:
+
+```bash
+├── forms
+│   ├── account.form.yao
+│   ├── pet
+│   │   └── categories.form.yao
+│   └── pets.form.yao
+├── tables
+│   ├── account.tab.yao
+│   ├── pet
+│   │   └── categories.tab.yao
+│   └── pets.tab.yao
+```
+
+## Step 4: Test the Admin Panel
+
+In development mode, the HTTP server auto-reloads widgets when DSLs are updated. Just refresh the browser to see the changes in the admin panel.
+
+### 📜 Admin Panel Routes
+
+The Widgets for the Admin Panel are available at the following routes:
+
+**https://127.0.0.1:5099/admin/x/{widget-type}/{widget-id}**
+
+| Widget Type | Description             |
+| ----------- | ----------------------- |
+| Table       | Table view of the data. |
+| Form        | Form view of the data.  |
+| Dashboard   | Dashboard view.         |
+| Chart       | Chart view.             |
+
+#### Table Routes
+
+**https://127.0.0.1:5099/admin/x/Table/{widget-id}**
+
+| Widget ID      | Path                          | Route                                              |
+| -------------- | ----------------------------- | -------------------------------------------------- |
+| pets           | tables/pets.tab.yao           | http://127.0.0.1:5099/admin/x/Table/pets           |
+| pet.categories | tables/pet/categories.tab.yao | http://127.0.0.1:5099/admin/x/Table/pet.categories |
+
+#### Form Routes
+
+- **https://127.0.0.1:5099/admin/x/Form/{widget-id}/{data-id}/view** view mode
+- **https://127.0.0.1:5099/admin/x/Form/{widget-id}/{data-id}/edit** edit mode
+
+data-id is 0 for add mode.
+
+| Widget ID      | Path                          | Route                                                    |
+| -------------- | ----------------------------- | -------------------------------------------------------- |
+| pets           | forms/pets.form.yao           | http://127.0.0.1:5099/admin/x/Form/pets/0/edit           |
+| pet.categories | forms/pet/categories.form.yao | http://127.0.0.1:5099/admin/x/Form/pet.categories/0/edit |
+
+### 🌐 Debug in Browser
+
+1. Log in to the admin panel and navigate to routes in the URL to view the tables.
+   **_Note: Stay in the same tab to avoid being logged out._**
+2. Open the browser’s developer tools to check for errors in the console.
+3. Errors may occur if components are misconfigured or DSLs are incorrectly generated. Debug using the error messages, fix the DSLs, and refresh the page to apply changes.
+
+### 💾 Add to Menu
+
+After testing the widgets, add them to the admin panel menu.
+
+The menu logic is defined in the `app.yao` file, with `flows.menu` as the default process. 👉 **[App Configuration](app-configuration)**
+
+There are two types of menu item icons: `Material` and `Feather`.
+
+| Icon Type | Usage             | Example           | URL                                                                        |
+| --------- | ----------------- | ----------------- | -------------------------------------------------------------------------- |
+| Feather   | icon-\[name\]     | icon-activity     | [Feather Icons](https://feathericons.com/)                                 |
+| Material  | material-\[name\] | material-favorite | [Material Icons](https://fonts.google.com/icons?icon.set=Material+Symbols) |
+
+1. open the `flows/menu.flow.yao` file.
+2. Add the menu items to the `items.items` array.
+3. Relogin to the admin panel to view the new menu items.
+
+```json
+{
+  "name": "Menu",
+  "nodes": [],
+  "output": {
+    "items": [
+      {
+        "name": "Generator",
+        "path": "/iframe?src=https://moapi.ai/iframe/yaoapp", // For production
+        "icon": "material-mark_chat_unread"
+      },
+
+      // Add the new menu items here
+      {
+        "name": "Pets", // Menu Item Name
+        "path": "/x/Table/pets", // The default route should navigate to a sub-menu.
+        "icon": { "name": "material-pets", "size": 22 }, // Material Icon
+        "children": [
+          // Submenu
+          {
+            "name": "Pets",
+            "path": "/x/Table/pets",
+            "icon": { "name": "material-pet_supplies", "size": 22 }
+          },
+          {
+            "name": "Pet Categories",
+            "path": "/x/Table/pet.categories",
+            "icon": { "name": "material-category", "size": 22 }
+          }
+        ]
+      }
+    ],
+    "setting": [
+      {
+        "icon": { "name": "material-person_pin_circle", "size": 22 },
+        "name": "Accounts",
+        "path": "/x/Table/account"
+      }
+    ]
+  }
+}
+```
+
+## Step 5: Hooks (Optional)
+
+Hooks control data handling in the admin panel and enable custom data processing.
+
+Widgets such as Table, Form, and Dashboard support hooks, which can be added directly to their DSLs.
+
+### 📝 Add Hooks to DSLs
+
+```json
+// tables/pets.tab.yao
+{
+  "name": "Pets",
+  "action": {
+    "bind": { "model": "pets", "option": { "form": "pets" } },
+    "before:search": "scripts.pet.BeforeSearch", // Before Search Hook
+    "after:search": "scripts.pet.AfterSearch", // After Search Hook
+    "save": { "process": "scripts.pet.Save" } //  Use custom process for saving pet data.
+  }
+  // .....
+}
+```
+
+```typescript
+// scripts/pet.ts
+import { Process, QueryParam, SearchResult, log } from "@yao/runtime";
+
+/**
+ * BeforeSearch hook for the pet search process.
+ * @param query Query parameters for the pet search process.
+ * @param page Current page number.
+ * @param pagesize Number of items per page.
+ * @returns [QueryParam,number,number] fixed query, page, and pagesize.
+ */
+function BeforeSearch(query: QueryParam, page, pagesize: number) {
+  // Join the category table to get the category name.
+  query.withs = { category: { query: { select: ["id", "category_name"] } } };
+  console.log(query, page, pagesize);
+  return [query, page, pagesize];
+}
+
+/**
+ * AfterSearch hook for the pet search process.
+ * @param response Search result of the pet search process.
+ * @returns SearchResult<Record<string, any>> Modified search result.
+ */
+function AfterSearch(response: SearchResult<Record<string, any>>) {
+  // Flatten the category object and add the category name to the pet object.
+  response.data?.forEach((pet: Record<string, any>) => {
+    pet.category_name = pet.category.category_name;
+  });
+  console.log(response);
+  return response;
+}
+
+/**
+ * Save pet data. custom process for saving pet data.
+ * @param data
+ * @returns
+ */
+function Save(payload: Record<string, any>) {
+  console.log(payload);
+  return Process("models.pets.Save", payload);
+}
+```
+
+## 🎉 Congratulations
+
+You’ve built a pet store admin panel with widgets like Table, Form, and Dashboard in minutes.
+
+Explore advanced features, customizations, and more widgets with our tutorials and documentation:
+
+👉 **[Admin Panel Tutorials](/docs/tutorials/admin-panel/getting-started)**
+
+👉 **[DSL References](/docs/references/dsl)**
+
+In the next section, we will create backend commands for task scheduling.
+
+- 🟢 Create and manage data in your application. 👉 [Data Model](data-model)
+- 🟢 Develop RESTful APIs to expose data. 👉 [REST API](rest-api)
+- 🟢 Design web pages to display data. 👉 [Web Page](web-page)
+- 🟢 **Build an admin panel to help administrators of the pet store manage data.**
+- 🔵 Create backend commands for task scheduling. 👉 [CLI](cli)
+- ⚪ Integrate AI for chatbots, image generation, and enhanced user input. 👉 [AI Integration](ai-integration)
+
+From data models to RESTful APIs, web design, and admin panels, we’ve built a full app entirely with AI-generated code. Simple apps can be created by AI alone, with developers stepping in for complex features.
+
+**💬 Build App via Chat:**
+
+👉 [Yao Playground](https://github.com/YaoApp/playground)
+
+👉 [Yao Application Generator](https://mopai.ai)

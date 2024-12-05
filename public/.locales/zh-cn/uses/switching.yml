@@ -1,0 +1,12 @@
+name: zh-cn
+formatter: scripts.tests.formatter
+keys:
+    trans__uses_switching_1: 了解更多
+    trans__uses_switching_2: 切换到Yao
+    trans__uses_switching_3: |-
+        Switching to Yao is easy. Yao focuses on generative programming. It may
+              take time to learn a few key concepts, but once you understand them,
+              you’ll see that Yao is a powerful tool. It helps you build applications
+              faster and offers a great development experience.
+direction: ltr
+timezone: "+8:00"

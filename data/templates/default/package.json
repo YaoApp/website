@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "tailwindcss -i ./__assets/css/tailwind.css -o ./__assets/css/tailwind.min.css --watch --minify",
+    "build": "tailwindcss -i ./__assets/css/tailwind.css -o ./__assets/css/tailwind.min.css --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.13"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  }
+}

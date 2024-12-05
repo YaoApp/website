@@ -1,0 +1,32 @@
+<root>
+  <s:set
+    name="labels"
+    value="{{{ 
+      'en-us': 'English', 
+      'zh-cn': '简体中文', 
+      'zh-hk': '繁體中文', 
+      'ja-jp': '日本語', 
+  }}}"
+  ></s:set>
+
+  <s:set
+    name="lang"
+    value="{{ $cookie.locale == '' or $cookie.locale == null ? 'en-us' : $cookie.locale }}"
+  ></s:set>
+
+  <LanguageSelect
+    is="/flowbite/components/edit/select"
+    id="language-select"
+    value="{{ lang}}"
+    label="{{ labels[lang] }}"
+    placeholder="{{ '::Select language' }}"
+    size="sm"
+    s:on-change="SetLocale"
+    options="{{ [ 
+        {'label': 'English', 'value': 'en-us'},
+        {'label': '简体中文', 'value': 'zh-cn'},
+        {'label': '繁體中文', 'value': 'zh-hk'},
+        {'label': '日本語', 'value': 'ja-jp'},
+    ]}}"
+  ></LanguageSelect>
+</root>

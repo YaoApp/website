@@ -1,0 +1,181 @@
+---
+title: 入门指南
+description: 欢迎阅读 Yao 文档！
+---
+
+欢迎阅读 Yao 文档！
+
+## 什么是 Yao？
+
+Yao 是一个**全能应用引擎**，使开发者能够创建网页应用、REST API、企业应用等，并将 AI 作为无缝协作者。
+
+### 生成式编程
+
+生成式编程是 Yao 的核心理念。这意味着你可以使用 AI 模型、GUI 或编写代码来生成代码。Yao DSL 被设计为**人类可读**、易于编写、**AI 友好**且易于扩展。
+
+### 全能应用引擎
+
+Yao 内置了应用程序开发所需的一套基本工具，例如：
+
+- **TS/JS/DSL 运行时**：可以直接运行 TypeScript、JavaScript 和 DSL 代码的运行时。
+- **HTTP 服务器**：一个强大的 HTTP 服务器，可以处理任何 HTTP 请求，用于 REST API、网页等。
+- **进程引擎**：数百个进程，可以满足超过 90% 的应用程序需求。
+- **UI 组件**：支持 AI 驱动的输入的 UI 组件，可以在 DSL 代码中使用简单的语法来构建仪表板、管理面板等。
+- **模板引擎**：一个基于组件的模板引擎，可以生成任何网页。
+- **AI 连接器**：一个集成 AI 模型以在应用程序中使用的连接器。
+- **数据库**：用于数据库交互的强大 ORM。
+- **文件系统**：可以存储各种类型数据的虚拟文件系统。
+
+更多功能可以在 **[为什么选择 Yao 文档](getting-started/why-yao)** 中找到。
+
+所有这些功能都打包在一个可执行文件中，无需包或工具链依赖。**只需下载并运行它就可以开始构建你的应用程序。**
+
+Yao 可以带给你全新的开发体验，将你的开发效率提高数倍。
+
+## 快速开始
+
+要开始使用 Yao，请按照以下步骤操作：
+
+### 步骤 1：安装 Yao
+
+按照安装指南在你的机器或服务器上安装 Yao。每台机器或服务器只需要安装一次。
+
+Linux 和 macOS：
+
+```bash
+curl -fsSL https://yaoapps.com/install.sh | bash
+```
+
+Windows（**需要 WSL2**）：
+
+```powershell
+powershell -c "irm yaoapps.com/install.ps1 | iex"
+```
+
+👉 [安装指南](getting-started/installation)
+
+### 步骤 2：创建新项目
+
+创建新项目：运行以下命令来创建新项目：
+
+```bash
+# 为你的项目创建一个空目录
+mkdir /path/to/your/project
+
+# 进入项目目录
+cd /path/to/your/project
+
+# 使用 yao start 命令启动应用服务器
+# 使用 `Ctrl + C` 停止服务器
+yao start
+```
+
+### 步骤 3：按照控制台提示操作并打开浏览器设置项目
+
+完成设置后，打开浏览器并访问提供的 URL 来查看项目，检查生成的代码，并开始进行修改。
+
+🪄 你也可以使用 Yao 应用在线生成器来使用 AI 创建新项目。
+
+👉 [Yao 应用在线生成器](https://hi.moapi.ai/)
+
+生成代码后，将其放入你的项目目录，然后运行 `yao start` 来启动应用服务器。
+
+### 步骤 4：运行进程来了解 Yao 的工作原理
+
+**进程**是 Yao 中的一个核心概念。它代表一个可以直接运行或在代码中引用的函数。
+
+Yao 包含许多内部进程，可以满足超过 90% 的应用程序需求。
+
+你也可以使用 TypeScript、GRPC 插件或其他方法定义自己的进程。
+
+打开一个新终端，**进入项目目录**，运行以下命令：
+
+```bash
+#
+# 运行内部进程
+#
+
+# 使用 utils.* 进程来运行一个实用程序进程
+# 该进程在 Yao 的源代码中定义
+# 你可以在以下链接的 Yao 项目中找到它：
+# https://github.com/YaoApp/yao/blob/840dae4b163811347598c740f43d43be065d01fa/engine/process.go#L30
+#
+
+yao run utils.app.Ping   # 这将返回 Yao 的版本
+
+# 使用 models.* 进程来查询数据库
+# Model DSL 在项目目录中的 models/tests/pet.mod.yao 文件中定义
+# 第一个参数是宠物的 ID，第二个参数是查询
+# 如果参数是一个对象，使用 '::' 前缀将对象作为字符串传递
+
+yao run models.tests.pet.Find 1 '::{}'                # 返回宠物的所有字段
+yao run models.tests.pet.Find 1 '::{"select": ["id", "name"]}' # 只返回宠物的 id 和名称
+
+#
+# 运行使用 TypeScript 定义的进程
+#
+
+# 使用 scripts.* 进程来运行 TypeScript 进程
+# TypeScript 进程在项目目录中的 scripts/tests/hello.ts 文件中定义
+# 命令行参数将作为参数传递给 TypeScript 函数
+
+yao run scripts.tests.Hello 'Hello, Yao!'   # 返回 'Hello, Yao!'
+```
+
+## 如何阅读文档
+
+Yao 文档中有三种类型的文档：
+
+1. **文档** 这些文档提供了 Yao 的功能和概念的概述。
+2. **教程** 这些文档提供了使用 Yao 构建应用程序的分步说明。
+3. **参考** 这些文档提供了有关 Yao DSL、进程、JSAPI 等的详细信息。
+
+### 文档
+
+在屏幕左侧，你可以找到导航菜单。文档按照从基础到高级的顺序组织。你可以按顺序阅读它们以更好地理解 Yao。
+
+**实践是最好的学习方式。** 我们建议你按照文档操作，尝试构建一个简单的应用程序来入门。
+
+### 教程
+
+教程按场景组织，如构建网站、REST API、管理面板、企业应用等。
+
+你可以在网站的 **[用途](/uses)** 部分找到教程。每个教程都提供了构建应用程序的分步说明。
+
+👉 [用途](/uses)
+
+根据你的需求选择教程：
+
+👉 [网站](/docs/tutorials/website/getting-started)
+
+👉 [REST API](/docs/tutorials/api/getting-started)
+
+👉 [管理面板](/docs/tutorials/admin-panel/getting-started)
+
+👉 [命令行应用](/docs/tutorials/cli/getting-started)
+
+👉 [企业应用](/docs/tutorials/enterprise/getting-started)
+
+👉 [边缘应用](/docs/tutorials/edge/getting-started)
+
+### 参考
+
+参考提供了有关 Yao DSL、进程、JSAPI 等的详细信息。
+
+你可以在导航菜单的末尾找到参考。
+
+👉 **[CLI](references/cli)**
+
+👉 **[DSL](references/dsl)**
+
+👉 **[进程](references/process)**
+
+👉 **[运行时](references/runtime)**
+
+👉 **[查询参数](references/query-param)**
+
+👉 **[查询 DSL](references/query-dsl)**
+
+👉 **[UI 组件](references/ui-components)**
+
+👉 **[模板引擎](references/template-engine)**

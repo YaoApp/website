@@ -1,0 +1,174 @@
+---
+title: Automatic Deployment
+description: Deploy your application automatically.
+---
+
+In this guide, we’ll walk you through setting up a GitHub Actions workflow to automate your application’s deployment.
+
+You can use this workflow to deploy your application to a server with Yao installed or run it in a Docker container.
+
+## Prerequisites
+
+Before you begin, make sure you have the following:
+
+- A server with Yao installed or a Docker container running Yao.
+- A GitHub repository with your application source code.
+- SSH access to the server
+
+## Step 1: Add Dockerfile
+
+First, you need to add a Dockerfile to your application. The Dockerfile should look like this:
+
+**docker/Dockerfile**
+
+```Dockerfile
+FROM yaoapp/yao:0.10.4-amd64
+
+# Add your application files to the container
+ADD app /data/app
+
+# Copy the production environment file
+RUN cp /data/app/.env.online /data/app/.env
+
+# Change the permissions of the application files:
+#   /data/app Read-Only (755 should work for directories, files are 444)
+#   /data/app/data Read-Write
+#   /data/app/logs Read-Write
+#   /data/app/db Read-Write
+RUN chown -R yao:yao /data/app && \
+    chmod -R 555 /data/app && \
+    chmod -R 755 /data/app/data && \
+    chmod -R 755 /data/app/logs && \
+    chmod -R 755 /data/app/db
+
+# Declare volumes for persistent data and logs
+VOLUME /data/app/data
+VOLUME /data/app/logs
+VOLUME /data/app/db
+
+# Expose the application port
+EXPOSE 5099
+
+# Start the Yao application
+CMD ["/usr/local/bin/yao", "start"]
+```
+
+Test the Dockerfile by building and running the Docker container locally, make sure it works as expected.
+
+## Step 2: Create Workflow
+
+Create a new file in the `.github/workflows` directory of your repository, name it `deploy.yml` and add the following content:
+
+```yaml
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: "Version tags"
+
+  push:
+    branches: [main]
+
+env:
+  VERSION: 0.9.0
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Copy source for distribution
+        run: |
+          cp -r . ../dist
+          rm -rf ../dist/.git
+
+      - name: Copy source to docker directory
+        run: |
+          cp -r ../dist ./docker/app
+
+      - name: Get Version
+        run: |
+          echo VERSION=$(cat ./app.yao  |grep 'version' | awk -F '"'  '{print $4}')  >> $GITHUB_ENV
+
+      - name: Check Version
+        run: echo $VERSION
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          registry: your-docker-registry.com
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./docker
+          platforms: linux/amd64
+          push: true
+          tags: your-docker-registry.com/your-org/your-app:${{ env.VERSION }}-your-tag
+
+      - name: Deploy Development
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            # Pull the Docker image
+            docker pull your-docker-registry.com/your-org/your-app:${{ env.VERSION }}-your-tag
+
+            # stop and remove the existing container
+            docker stop your-app || true
+            docker rm your-app || true
+
+            # Run the Docker container
+            docker run -d --name your-app \
+              -v /path/to/host/app/data:/data/app/data \
+              -v /path/to/host/app/logs:/data/app/logs \
+              -v /path/to/host/app/db:/data/app/db \
+              -p 5099:5099 your-docker-registry.com/your-org/your-app:${{ env.VERSION }}-your-tag
+
+            # Run migrations and seed data if nessesary
+            # Run a backup script to backup the database and data, before running the migrations
+            docker exec your-app sh -c 'yao migrate --force'
+```
+
+## Step 3: Configure Secrets
+
+To use the workflow, you need to configure the following secrets in your repository:
+
+| Secret Name    | Description                                          |
+| -------------- | ---------------------------------------------------- |
+| `DOCKER_USER`  | DockerHub username                                   |
+| `DOCKER_TOKEN` | DockerHub token                                      |
+| `SSH_HOST`     | Server hostname                                      |
+| `SSH_PORT`     | Server port                                          |
+| `SSH_USER`     | Server username, make sure it has docker permissions |
+| `SSH_KEY`      | SSH private key                                      |
+
+## Step 4: Run Workflow
+
+To deploy your application, go to the Actions tab in your repository and run the `Deploy` workflow.
+
+The workflow will build the Docker image, push it to your Docker registry, and deploy it to your server.
+
+That's it! Your application is now deployed automatically.
+
+## 🎉 Congratulations
+
+Your application has been successfully deployed automatically! 🚀
+
+Setting up a CI/CD pipeline is essential to automate deployments and ensure your application stays up-to-date.
+
+👉 [Join us on Discord](https://discord.com/invite/BkMR2NUsjU)

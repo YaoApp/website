@@ -1,0 +1,89 @@
+---
+title: Distributed Deployment
+description: Deploy your application to multiple servers.
+---
+
+To deploy your application to multiple servers, You need to change the app configuration to support distributed deployment.
+
+## Session sharing
+
+To enable session sharing between servers, you need to configure your application to use a shared session store.
+
+You can use a Redis server to store session data, then configure your application to use it.
+
+**.env**
+
+```bash
+YAO_SESSION_STORE=redis
+YAO_SESSION_HOST=your-redis-server-ip
+YAO_SESSION_PORT=yout-redis-server-port
+YAO_SESSION_PASSWORD=your-redis-server-password
+YAO_SESSION_DB=5 # Redis database number
+```
+
+Make sure each server has access to the Redis server and the same session configuration.
+
+## Database Connection
+
+If you're using a database, you need to configure the database connection for each server.
+
+**.env**
+
+```bash
+YAO_DB_DRIVER=mysql
+YAO_DB_PRIMARY="webuser:webpass@tcp(127.0.0.1:3306)/website?charset=utf8mb4&parseTime=True&loc=Local"
+YAO_DB_SECONDARY="webuser:webpass@tcp(127.0.0.1:3306)/website?charset=utf8mb4&parseTime=True&loc=Local" # Optional, Read-Replica
+```
+
+Make sure each server has access to the database server and the same database configuration.
+
+## Data Synchronization
+
+If your application writes data to the filesystem, you need to synchronize the data between servers.
+
+or you can use a shared storage solution like NFS, GlusterFS, or AWS EFS to store the data.
+
+**.env**
+
+```bash
+YAO_DATA_ROOT=/path/to/shared/storage
+```
+
+## Load Balancer
+
+To distribute traffic across multiple servers, you can use a load balancer.
+
+A load balancer evenly distributes incoming requests to various servers using different algorithms such as Round-Robin, Least Connections, or IP Hash.
+
+You can choose between a hardware load balancer or a software-based solution like NGINX, HAProxy, or AWS ELB.
+
+**NGINX Configuration**
+
+```nginx
+http {
+    upstream app_servers {
+        # List of your application servers
+        server app_server_1_ip:5099;
+        server app_server_2_ip:5099;
+        server app_server_3_ip:5099;
+
+        # Optional: configure load balancing algorithms
+        # least_conn; # Least connections method
+        # ip_hash;    # IP hash method for session persistence
+    }
+
+    server {
+        listen 80;  # Port the load balancer will listen on
+
+        server_name your-domain.com;  # Your domain or IP address
+
+        location / {
+            proxy_pass http://app_servers;  # Forward traffic to app servers
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}
+```

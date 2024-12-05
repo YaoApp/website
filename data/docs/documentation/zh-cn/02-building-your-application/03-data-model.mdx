@@ -1,0 +1,474 @@
+---
+title: 数据模型
+description: 数据模型是定义数据结构的蓝图，是应用程序中最重要的部分。
+related:
+  title: 下一步
+  description: 使用数据模型创建 RESTful API。
+  links:
+    - rest-api
+---
+
+从本节开始，我们将一起构建一个简单的宠物商店应用程序，演示如何有效地使用 Yao。你将学习如何：
+
+- 🟠 **在应用程序中创建和管理数据。**
+- ⚪ 开发 RESTful API 来暴露数据。 👉 [REST API](rest-api)
+- ⚪ 设计网页来显示数据。 👉 [Web Page](web-page)
+- ⚪ 构建管理面板帮助宠物商店的管理员管理数据。 👉 [Admin Panel](admin-panel)
+- ⚪ 创建后端命令用于任务调度。 👉 [CLI](cli)
+- ⚪ 集成 AI 用于聊天机器人、图像生成和增强用户输入。 👉 [AI Integration](ai-integration)
+
+确保你已阅读了之前的文档，以理解 Yao 的基本概念。
+
+👉 [构建你的应用程序](../building-your-application)
+
+👉 [切换到 Yao](../getting-started/switching-to-yao)
+
+## 概述
+
+数据模型是定义数据结构的蓝图，是 Yao 应用程序中最重要的部分。
+
+在 Yao 中，数据模型是一个使用 Model DSL 来描述数据结构的部件，类似于数据库架构。理解数据库结构和关系将帮助你有效地设计数据模型。
+
+数据将存储在数据库中。默认情况下，Yao 使用 SQLite 作为数据库引擎。你可以通过修改环境配置来更改数据库引擎为 MySQL 或其他数据库。 👉 **[应用配置](app-configuration)**
+
+有关 Model DSL 的更多详细信息，请参阅 👉 **[DSL 参考](references/dsl)**
+
+## 步骤 1：规划数据结构
+
+在创建数据模型之前，你应该规划数据的结构。最好的方式是让 AI 聊天机器人协助你。
+
+**打开 AI 聊天机器人并寻求帮助来为你的应用程序生成数据结构。**
+
+### 💬 规划数据结构的提示
+
+_这是与 AI 聊天机器人规划宠物商店应用程序数据结构的对话示例。根据你的需求更改提示。_
+
+````yaml
+- 我想创建一个宠物商店应用程序。
+- 功能包括添加、更新和删除商店中的宠物、宠物类别和商品。
+- 帮我设计数据结构，请提供数据表及其字段的列表。
+- 请用表名、字段名和字段类型回复我。
+- 表名和字段名应该使用 snake_case，自增字段应命名为 `id`，用代码块包裹。
+- 例如：
+```plaintext
+Table: pet_categories
+    - id: INT PRIMARY KEY AUTO_INCREMENT
+    - category_name: VARCHAR(255) NOT NULL
+    - description: TEXT
+```
+````
+
+### 🤖 _AI 聊天机器人的回复_
+
+```plaintext
+Table: pet_categories
+    - id: INT PRIMARY KEY AUTO_INCREMENT
+    - category_name: VARCHAR(255) NOT NULL
+    - description: TEXT
+
+Table: pets
+    - id: INT PRIMARY KEY AUTO_INCREMENT
+    - pet_name: VARCHAR(255) NOT NULL
+    - category_id: INT NOT NULL
+    - age: INT
+    - breed: VARCHAR(255)
+    - description: TEXT
+    - FOREIGN KEY (category_id) REFERENCES pet_categories(id)
+
+Table: goods
+    - id: INT PRIMARY KEY AUTO_INCREMENT
+    - good_name: VARCHAR(255) NOT NULL
+    - category_id: INT NOT NULL
+    - price: DECIMAL(10, 2) NOT NULL
+    - stock_quantity: INT NOT NULL
+    - description: TEXT
+    - FOREIGN KEY (category_id) REFERENCES pet_categories(id)
+
+Table: transactions
+    - id: INT PRIMARY KEY AUTO_INCREMENT
+    - pet_id: INT
+    - good_id: INT
+    - transaction_date: DATETIME NOT NULL
+    - quantity: INT NOT NULL
+    - total_price: DECIMAL(10, 2) NOT NULL
+    - FOREIGN KEY (pet_id) REFERENCES pets(id)
+    - FOREIGN KEY (good_id) REFERENCES goods(id)
+
+说明：
+    pet_categories：此表存储商店中可用的各种宠物和商品类别。
+    pets：此表跟踪商店中可用的宠物，包括它们的名称、年龄、品种和类别。
+    goods：此表记录可供购买的商品，包括它们的名称、价格、库存数量和关联类别。
+    transactions：此表记录涉及宠物和商品的交易，包括日期、数量和总价。
+```
+
+## 步骤 2：生成 Model DSL
+
+在规划好数据结构后，你现在可以为你的应用程序生成 Model DSL。
+
+将你的数据结构和一个或多个现有的 Model DSL 示例发送给聊天机器人，并请求帮助生成类似的 Model DSL。
+
+你可以从 Yao 文档或其他公共仓库获取现有的 Model DSL 示例。在本例中，我们将使用 Yao 网站仓库中的文章模型。
+
+👉 [文章 Model DSL](https://github.com/YaoApp/yao-website/blob/main/models/article.mod.yao)
+
+### 💬 生成 Model DSL 的提示
+
+_这是与 AI 聊天机器人生成宠物商店应用程序 Model DSL 的对话示例。根据你的需求更改提示。_
+
+```yaml
+Model DSL 示例：
+[Model DSL 示例]
+
+已规划的结构：
+[已规划的结构（AI 聊天机器人在上一步的回复）]
+
+- 根据已规划的结构，我需要帮助为宠物商店应用程序生成 Model DSL。
+- 请按照提供的示例提供 Model DSL。
+- 每个 Model DSL 应该用代码块包裹。
+```
+
+### 🤖 _AI 聊天机器人的回复_
+
+AI 聊天机器人将根据提供的结构为每个表生成 Model DSL。
+
+看起来像这样：
+
+```json
+// pet_categories 的 Model DSL
+{
+  "name": "PetCategory",
+  "table": { "name": "pet_categories", "comment": "Pet Categories" },
+  "columns": [
+    { "name": "id", "comment": "ID", "type": "ID", "label": "ID" },
+    {
+      "label": "Category Name",
+      "name": "category_name",
+      "comment": "Name of the pet category",
+      "type": "string",
+      "length": 255,
+      "nullable": false
+    },
+    {
+      "label": "Description",
+      "name": "description",
+      "comment": "Description of the pet category",
+      "type": "text",
+      "nullable": true
+    }
+  ],
+  "option": { "timestamps": true }
+}
+// ....
+```
+
+**📝 注意：**
+
+你可以改进提示并直接生成 Model DSL。在本例中，步骤被分开是为了更好地理解。
+
+**💬 直接生成 Model DSL 的提示**
+
+按照以下提示，你可以直接生成 Model DSL。
+
+```yaml
+Model DSL 示例：
+[Model DSL 示例]
+
+- 我想创建一个宠物商店应用程序。
+- 功能包括添加、更新和删除商店中的宠物、宠物类别和商品。
+- 帮我设计宠物商店应用程序的数据结构。
+- 根据规划的结构，我需要帮助为宠物商店应用程序生成 Model DSL。
+- 请按照提供的示例提供 Model DSL。
+- 每个 Model DSL 应该用代码块包裹。
+```
+
+**🪄 添加更多提示**
+
+添加更多提示有助于生成更好的 Model DSL。你提供的信息越多，AI 聊天机器人就越能理解你的需求。
+
+例如，向 AI 聊天机器人描述你的业务，它将为你生成更适合的 Model DSL。
+
+你还可以建立一些编码标准，以便于未来的开发和维护工作。
+
+## 步骤 3：保存 Model DSL
+
+_在继续之前，确保你已经查看了之前的文档以了解 Yao 应用程序的目录结构，并已使用快速入门指南创建了一个 Yao 应用程序。_
+
+👉 [快速开始](../getting-started#quickstart)
+
+👉 [Yao 应用程序](../getting-started/switching-to-yao#yao-application)
+
+### 💾 保存到 Models 目录
+
+生成 Model DSL 后，将 **JSON 部分**保存在 Yao 应用程序的 `models` 目录中。确保文件和目录名称使用**小写**并具有 `.mod.yao` 扩展名。你可以使用子目录进一步组织它们。
+
+例如：
+
+- 将 `pets` Model DSL 保存为 `models/pets.mod.yao`，部件 ID 为 `pets`。
+- 将 `pet_categories` Model DSL 保存为 `models/pet/categories.mod.yao`，部件 ID 为 `pet.categories`。
+
+**部件 ID** 对于进程引用很重要，用 `.` 替换 `/`。例如，`models.pet.Find` 或 `models.pet.categories.Find`。
+
+保存后，models 目录应该看起来像这样：
+
+```bash
+└── models
+    ├── goods.mod.yao
+    ├── pet
+    │   └── categories.mod.yao
+    ├── pets.mod.yao
+    └── transactions.mod.yao
+```
+
+你可以在演示应用程序仓库中找到它们。 👉 [演示应用程序](https://github.com/YaoApp/demo/tree/main/models)
+
+**📝 注意：**
+
+为了维护 Model DSL，建议保持 Model DSL 名称与表名一致。这将帮助你轻松识别每个表的 Model DSL。
+
+表名在 Model DSL 中定义。表名应该使用 **snake_case**，字段名也应如此，并且都必须全部使用**小写**。这是 Yao 的严格要求，以确保跨平台文件系统的兼容性。
+
+例如：
+
+```json
+{
+  "name": "Pet Categories",
+  // 表名是数据库中的表名
+  "table": { "name": "pet_categories", "comment": "Pet Categories" },
+  "columns": [{ "name": "id", "comment": "ID", "type": "ID", "label": "ID" }]
+}
+```
+
+- 保存在 `models/pet/categories.mod.yao` 的 `pet_categories` 表将有一个部件 ID `pet.categories`。
+- 保存在 `models/pets.mod.yao` 的 `pets` 表将有一个部件 ID `pets`。
+
+## 步骤 4：创建数据库表
+
+一旦保存了 Model DSL，你可以使用 `yao migrate` 命令根据 Model DSL 创建数据库表。
+
+### 📺 Yao Migrate 命令
+
+**进入项目根目录**并运行 `yao migrate` 命令。这将根据 `models` 目录中的 Model DSL 创建数据库表。
+
+如果你已经完成这个步骤并需要重置数据库，你可以使用 `--reset` 标志运行 `yao migrate`。
+
+`yao migrate` 命令仅用于开发和测试环境。如果你需要在生产环境中使用它，必须包含 `--force` 标志来执行它。**这是一个危险的操作，所以要谨慎进行。**
+
+你可以通过设置 `YAO_ENV` 环境变量在开发和生产模式之间切换。更多详细信息，请参阅 👉 **[应用配置](app-configuration)**
+
+```bash
+# 进入项目根目录，
+# 如果你的机器上有多个项目，确保你在正确的项目目录中。
+cd /path/to/your/project
+
+# 一次性迁移所有模型
+# 根据 Model DSL 创建数据库表。如果表已存在，将会被修改。
+yao migrate
+
+# 使用 --reset 标志一次性迁移所有模型
+# 重置数据库表。这将删除现有表并重新创建它们。
+yao migrate --reset
+
+# 一次迁移一个模型
+# 根据特定模型的 Model DSL 创建数据库表。
+# 参数是模型的部件 ID。例如：pets, pet.categories
+yao migrate --name pets
+
+# 使用 --reset 标志一次迁移一个模型
+# 重置特定模型的数据库表。
+# 参数是模型的部件 ID。例如：pets, pet.categories
+yao migrate --name pets --reset
+
+# 对于生产环境，使用 --force 标志。
+yao migrate --force
+```
+
+运行 `yao migrate` 命令后，检查终端中的结果。
+
+_AI 偶尔会犯错，如果有任何错误，向 AI 聊天机器人报告以寻求帮助，根据需要更新 Model DSL，并重复直到成功。_
+
+正确的输出应该看起来像这样：
+
+```bash
+Update schema model: goods (goods)      SUCCESS
+Update schema model: pet.categories (pet_categories)    SUCCESS
+Update schema model: pets (pets)        SUCCESS
+Update schema model: transactions (transactions)        SUCCESS
+```
+
+### ✅ 检查数据库表
+
+在本例中，成功运行后 sqlite 数据库文件将在你的 Yao 应用程序的 `db` 目录中创建。
+
+如果你想使用不同的数据库引擎，可以修改环境配置。 👉 **[应用配置](app-configuration)**
+
+你可以使用数据库管理工具来检查数据库表，比如 DB Browser for SQLite、DBeaver 或任何你喜欢的工具。
+
+## 步骤 5：准备测试数据（可选）
+
+准备测试数据并设置自定义进程来导入它是提高开发效率的好做法。
+
+创建数据库表后，你可以根据 Model DSL 为每个表生成测试数据。
+
+将 Model DSL 发送给 AI 聊天机器人，并请求帮助为每个表生成测试数据。然后，使用 `yao run` 命令执行 models.* 内部进程来导入测试数据。
+
+### 💬 生成测试数据的提示
+
+_这是与 AI 聊天机器人为宠物商店应用程序生成 Model DSL 的对话示例。根据你的需求更改提示。_
+
+```yaml
+Model DSL：
+[Model DSL]
+
+- 我已经根据 Model DSL 创建了数据库表。
+- 我需要帮助为每个表生成测试数据。
+- 请为每个表提供测试数据。
+- 我将使用 **yao run** 命令导入测试数据。
+- 命令是 **yao run models.<WIDGET_ID>.Insert '::["field_name_1","field_name_2",...]'  '::[[field_1_value, field_2_value, ...],[field_1_value, field_2_value, ...]]'**。
+- "::" 用于将 JSON 字符串作为参数传递。
+- WIDGET_ID 是模型的部件 ID。它是从 Model DSL 中的表名命名的。表名 pet_categories 的部件 ID 是 pet.categories，表名 pets 的部件 ID 是 pets。
+- 不要包含 ID 字段在测试数据中。
+- 注意外键字段应该是有效的。
+- 每个表应该至少有 3 条记录。
+```
+
+### 🤖 _AI 聊天机器人的回复_
+
+AI 聊天机器人将生成测试数据，回复看起来像这样：
+
+```bash
+# Pet Categories
+yao run models.pet.categories.Insert '::["category_name","description"]' '::[
+  ["Dogs", "Domesticated carnivorous mammals that typically have a long snout and barking voice."],
+  ["Cats", "Small domesticated carnivorous mammals with soft fur and retractable claws."],
+  ["Birds", "Warm-blooded egg-laying vertebrates characterized by feathers and wings."]
+]'
+
+# pets
+yao run models.pets.Insert '::["pet_name","category_id","age","breed","description"]' '::[
+  ["Buddy", 1, 3, "Golden Retriever", "Friendly and energetic dog."],
+  ["Whiskers", 2, 2, "Siamese", "Curious and playful cat."],
+  ["Tweety", 3, 1, "Canary", "Bright yellow songbird."]
+]'
+
+# ....
+```
+
+### 📺 导入测试数据
+
+生成测试数据后，你可以使用 `yao run` 命令将测试数据导入数据库表。
+
+`yao run` 命令用于执行单个进程。这对于调试自定义进程很有用。你可以在 👉 **[调试指南](debug-guide#run-a-process)** 中找到如何使用它。
+
+复制生成的 `yao run` 命令并粘贴到终端中执行。
+
+```bash
+# 进入项目根目录，
+# 如果你的机器上有多个项目，确保你在正确的项目目录中。
+cd /path/to/your/project
+
+# 运行 yao run 命令导入测试数据
+yao run models.pets.Insert '::["pet_name","category_id","age","breed","description"]' '::[
+  ["Buddy", 1, 3, "Golden Retriever", "Friendly and energetic dog."],
+  ["Whiskers", 2, 2, "Siamese", "Curious and playful cat."],
+  ["Tweety", 3, 1, "Canary", "Bright yellow songbird."]
+]'
+# ....
+```
+
+正确的输出应该看起来像这样：
+
+```bash
+Run: models.pet.categories.Insert
+args[0]: ["category_name","description"]
+args[1]: [
+  ["Dogs", "Domesticated carnivorous mammals that typically have a long snout and barking voice."],
+  ["Cats", "Small domesticated carnivorous mammals with soft fur and retractable claws."],
+  ["Birds", "Warm-blooded egg-laying vertebrates characterized by feathers and wings."]
+]
+--------------------------------------
+models.pet.categories.Insert Response
+--------------------------------------
+null
+--------------------------------------
+✨DONE✨
+```
+
+如果有任何错误，向 AI 聊天机器人报告以寻求帮助，根据需要更新测试数据，并重复直到成功。
+
+### ✅ 检查导入的数据
+
+导入测试数据后，你可以使用 `yao run` 来查询数据并检查是否正确导入。当然，你也可以使用数据库管理工具来检查数据。
+
+```bash
+# 进入项目根目录，
+# 如果你的机器上有多个项目，确保你在正确的项目目录中。
+cd /path/to/your/project
+
+# 运行 yao run 命令查询数据
+yao run models.pets.Get '::{}'
+```
+
+正确的输出应该看起来像这样：
+
+```bash
+Run: models.pets.Get
+args[0]: {}
+--------------------------------------
+models.pets.Get Response
+--------------------------------------
+[
+    {
+        "age": 3,
+        "breed": "Golden Retriever",
+        "category_id": 1,
+        "created_at": "2024-11-18 10:39:51",
+        "description": "Friendly and energetic dog.",
+        "id": 1,
+        "pet_name": "Buddy",
+        "updated_at": null
+    },
+    {
+        "age": 2,
+        "breed": "Siamese",
+        "category_id": 2,
+        "created_at": "2024-11-18 10:39:51",
+        "description": "Curious and playful cat.",
+        "id": 2,
+        "pet_name": "Whiskers",
+        "updated_at": null
+    },
+    {
+        "age": 1,
+        "breed": "Canary",
+        "category_id": 3,
+        "created_at": "2024-11-18 10:39:51",
+        "description": "Bright yellow songbird.",
+        "id": 3,
+        "pet_name": "Tweety",
+        "updated_at": null
+    }
+]
+--------------------------------------
+✨DONE✨
+```
+
+## 🎉 恭喜
+
+你已经成功为你的宠物商店应用程序创建了数据模型。这包括演示了 Yao 的基本操作：创建数据库表、导入测试数据和查询数据。
+
+接下来，你将学习如何开发 RESTful API 来暴露数据。
+
+- 🟢 **在应用程序中创建和管理数据。**
+- 🔵 开发 RESTful API 来暴露数据。 👉 [REST API](rest-api)
+- ⚪ 设计网页来显示数据。 👉 [Web Page](web-page)
+- ⚪ 构建管理面板帮助宠物商店的管理员管理数据。 👉 [Admin Panel](admin-panel)
+- ⚪ 创建后端命令用于任务调度。 👉 [CLI](cli)
+- ⚪ 集成 AI 用于聊天机器人、图像生成和增强用户输入。 👉 [AI Integration](ai-integration)
+
+有关数据模型的更多信息，请查看 👉 **[DSL 参考](references/dsl)**
+
+在本节中，所有内容都可以由 AI 聊天机器人生成。你可以创建一个 AI 代理或工具，使用自然语言进行自动生成。如果你对构建这样的工具感兴趣，请参阅以下资源：
+
+👉 [Yao Playground](https://github.com/YaoApp/playground)
+
+👉 [Yao 应用生成器](https://mopai.ai)

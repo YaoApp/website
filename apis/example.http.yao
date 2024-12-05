@@ -1,0 +1,23 @@
+{
+  "name": "Example API",
+  "version": "1.0.0",
+  "description": "Example API",
+  "paths": [
+    {
+      "path": "/download/*id",
+      "method": "GET",
+      "process": "flows.example.download",
+      "guard": "-",
+      "in": ["$param.id"],
+      "out": {
+        "body": "?:file.content",
+        "status": 200,
+        "headers": {
+          "Content-Type": "?:file.type",
+          "Content-Disposition": "?:disposition",
+          "Access-Control-Expose-Headers": "Content-Disposition"
+        }
+      }
+    }
+  ]
+}

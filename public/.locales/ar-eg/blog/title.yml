@@ -1,0 +1,7 @@
+name: ar-eg
+formatter: scripts.tests.formatter
+keys:
+    trans__blog_title_1: اتبعنا على تويتر/X
+    trans__blog_title_2: آخر الأخبار، التحديثات، النصائح، والحيل لـ Yao.
+direction: rtl
+timezone: "+2:00"

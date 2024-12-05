@@ -1,0 +1,50 @@
+<root class="w-full mt-12 lg:mt-0 lg:w-[61.8%] lg:min-w-[520px] relative">
+  <div
+    class="bg-black rounded-lg text-gray-100 border border-gray-800 h-[400px] shadow-md shadow-gray-400 dark:shadow-gray-950 dark:border-gray-900 dark:bg-gray-900"
+  >
+    <div
+      class="text-sm flex w-full justify-center lg:justify-between items-center"
+    >
+      <ul class="hidden lg:flex">
+        <li
+          id="tab-{{ item.name }}"
+          s:for="examples"
+          s:data-name="{{ item.name }}"
+          s:on-click="ShowExample"
+          class="
+            cursor-pointer hover:text-primary-400 dark:hover:text-primary-300 p-4 lg:min-w-[80px] flex justify-center items-center font-medium border-b-2 
+            {{ True(item.active) ? 'text-primary-400 dark:text-primary-300 border-primary-400 dark:border-primary-300' : 'border-gray-800 dark:border-gray-700' }}"
+          tab
+        >
+          <i class="material outlined mr-1">{{ item.icon }}</i>
+          <span>{{ item.name }}</span>
+        </li>
+      </ul>
+      <div class="lg:hidden w-full justify-center items-center p-4 font-medium">
+        AI as a seamless collaborator
+      </div>
+      <div>
+        <a
+          href="/uses"
+          class="block h-[54px] lg:border-b-2 border-gray-800 hover:text-primary-400 dark:hover:text-primary-300 flex justify-end items-center p-4 text-lg"
+        >
+          <i class="material outlined">more_horiz</i>
+        </a>
+      </div>
+    </div>
+    <div class="overflow-y-auto h-full">
+      <div
+        s:for="examples"
+        id="code-{{ item.name }}"
+        class="{{ True(item.active) ? '' : 'hidden' }}"
+        code
+      >
+        <pre
+          class="code text-sm h-[calc(400px-56px)] !max-w-none language-{{ item.lang }} p-4 rounded-b-lg"
+        >
+{{ item.code }}</pre
+        >
+      </div>
+    </div>
+  </div>
+</root>

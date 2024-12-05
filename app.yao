@@ -1,0 +1,74 @@
+{
+  "name": "Yao Official Website",
+  "short": "yao website",
+  "description": "Building Web Applications with Yao",
+  "version": "0.10.4",
+  "adminRoot": "admin",
+  "menu": { "process": "flows.menu", "args": [] },
+  "public": {
+    // Disable the gzip compression
+    "disableGzip": false,
+
+    // the public backend script source root mapping to the real source root
+    // the key is the public root and the value is the real source root
+    // development mode only
+    "sourceRoots": { "/public": "/data/templates/default" },
+
+    // The rules from the top to the bottom
+    "rewrite": [
+      { "^\\/assets\\/(.*)$": "/assets/$1" }, // SUI assets
+      { "^\\/docs/(.*)$": "/docs/[name].sui" }, // SUI Documentation Detail
+      { "^\\/blog/(.*)$": "/blog/[slug].sui" }, // SUI Blog Detail
+      { "^\\/example/(.*)$": "/example/[id].sui" },
+
+      // Installation route
+      { "^\\/install.sh$": "/install.sh.txt" },
+      { "^\\/install.ps1$": "/install.ps1.txt" },
+
+      // Sitemap route
+      { "^\\/sitemap.xml$": "/sitemap.xml" },
+
+      // Redirect to the new routes...
+      { "^\\/en-US(.*)$": "/index.sui" },
+      { "^\\/components(.*)$": "/index.sui" },
+      { "^\\/doc/(.*)$": "/index.sui" },
+
+      // File system route
+      { "^\\/(.*)$": "/$1.sui" }
+    ]
+  },
+  "optional": {
+    "remoteCache": false,
+
+    /**
+     * This is a new feature of the yao v0.10.4
+     * layout:
+     * 	  1-column: one column for menu and sub-menu
+     * 	  2-columns: menu and sub-menu in two column
+     *
+     * hide: hide the menu and sub-menu
+     * showName: show the name of the menu
+     */
+    "menu": { "layout": "2-columns", "showName": true },
+
+    /**
+     * Admin:
+     * - PATH:        {"api":"/neo"}
+     * - URL:         {"api":"http://localhost:5099/api/__yao/neo"}
+     *
+     * Studio:
+     * - Studio PATH: {"api":"/neo", "studio":true }
+     * - Studio URL:  {"api":"http://localhost:5077/neo", "studio":true }
+     */
+    "neo": { "api": "/neo" }
+  },
+
+  /**
+   * The Moapi service configuration ( Optional )
+   */
+  "moapi": {
+    "channel": "global",
+    "mirrors": ["https://api.moapi.ai"],
+    "secret": "$ENV.MOAPI_SECRET"
+  }
+}

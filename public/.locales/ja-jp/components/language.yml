@@ -1,0 +1,6 @@
+name: ja-jp
+formatter: scripts.tests.formatter
+keys:
+    trans__components_language_1: 言語を選択
+direction: ltr
+timezone: "+9:00"

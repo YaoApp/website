@@ -1,0 +1,33 @@
+<div class="{% class %}">
+  <s:set name="paths" value="{% paths %}"></s:set>
+  <s:set name="prefix" value="{% prefix %}"></s:set>
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol
+      class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+    >
+      <li s:for="paths">
+        <div class="flex items-center font-light">
+          <span
+            s:if="index != 0 "
+            class="material outlined text-gray-400 font-normal"
+          >
+            chevron_right
+          </span>
+          <a
+            s:if=" len( paths ) > index + 1 and item.link != '' "
+            href="{{ prefix }}{{ item.link }}"
+            class="ms-1 text-sm text-gray-400 hover:text-gray-500 md:ms-2 dark:text-gray-400 dark:hover:text-white"
+          >
+            {{ item.title != null ? item.title : item.name }}
+          </a>
+          <span
+            s:else
+            class="ms-1 text-sm text-gray-500 md:ms-2 dark:text-gray-400 dark:hover:text-white cursor-default"
+          >
+            {{ item.title != null ? item.title : item.name }}
+          </span>
+        </div>
+      </li>
+    </ol>
+  </nav>
+</div>

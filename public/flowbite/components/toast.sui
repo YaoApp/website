@@ -1,0 +1,111 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+</head>
+  <body s:ns="ns_2e02f081a8e55ade" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><div id="{% id  %}" name="{% name  %}" class="{% class %} hidden" data-duration="{% duration %}" data-position="{% position %}">
+  <s:set name="title" value="{% title %}"></s:set>
+  <s:set name="message" value="{% message %}"></s:set>
+  <s:set name="icon" value="{% icon %}"></s:set>
+
+  <div class="fixed z-[100] flex items-start justify-between backdrop-blur-md border border-gray-100/60 bg-opacity-90 w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow shadow-gray-200/80 opacity-0 transition-opacity duration-300 ease-in-out" role="alert">
+    <div class="flex items-center space-x-2">
+      <!-- Icon -->
+      <div class="flex items-center justify-center mr-1 w-6 h-6 rounded-full  {{ icon != null and icon != &#39;&#39;  ? &#39;&#39; : &#39;hidden&#39; }}" icon-bg="">
+        <span class="material text-white text-xl outlined" icon="">
+          {{ icon }}
+        </span>
+      </div>
+
+      <div class="text-sm font-normal break-words max-w-[200px] flex flex-col">
+        <div class="font-medium {{ title != null and title != &#39;&#39;  ? &#39;&#39; : &#39;hidden&#39; }} min-h-6 flex items-center " title="">
+          {{ title }}
+        </div>
+        <div class="{{ message != null and message != &#39;&#39;  ? &#39;&#39; : &#39;hidden&#39; }}  min-h-6 flex items-center " message="">
+          {{ message}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Close button -->
+    <button class="flex items-center justify-center text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700" close="">
+      <span class="material text-xl outlined">close</span>
+    </button>
+  </div>
+</div>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_2e02f081a8e55ade" s:cn="comp__flowbite_components_toast" s:hash="script_2979a11e11d08bfc" type="text/javascript">
+this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(selector){return new __Query(__self.root).find(selector)},this.query=function(selector){return __self.root.querySelector(selector)},this.queryAll=function(selector){return __self.root.querySelectorAll(selector)},this.render=function(name,data,option){return new __Render(__self,option).Exec(name,data)},this.emit=function(name,data){const event=new CustomEvent(name,{detail:data});__self.root.dispatchEvent(event)};const root=$(arguments[0]);function Init(){const root_id=root.attr("id")||null;root.on("show",(event,message)=>{message=message||event.detail||{};const clone=root.clone(),alert=clone.find('[role="alert"]'),close=clone.find("[close]"),id=`${root_id}-toast-${Date.now()}`,duration=message.duration||root.data("duration")||null;clone.attr("id",id),setPosition(alert),setTheme(alert,message.type||"primary"),setMessage(alert,message),clone.on("hide",event2=>{try{alert.removeClass("opacity-100").addClass("opacity-0"),clone.one("transitionend",e=>{clone.addClass("hidden"),clone.remove()})}catch(e){}}),close.on("click",e=>clone.trigger("hide")),clone.removeClass("hidden"),document.body.append(clone[0]),setTimeout(()=>alert.removeClass("opacity-0").addClass("opacity-100"),5),duration!==null&&setTimeout(()=>clone.trigger("hide"),parseInt(duration))})}function setMessage(alert,message){message=message||{},message.message&&message.message.length>0&&alert.find("[message]").html(message.message).removeClass("hidden"),message.title&&message.title.length>0&&alert.find("[title]").html(message.title).removeClass("hidden"),message.icon&&message.icon.length>0&&alert.find("[icon]").html(message.icon)}function setTheme(alert,type){const colors={primary:"primary",info:"primary",success:"success",warning:"warning",error:"danger"},icons={primary:"exclamation",info:"exclamation",success:"check",warning:"exclamation",error:"exclamation"},color=colors[type]||"primary";alert.find("[icon]").html(icons[type]||"info"),alert.find("[icon-bg]").removeClass("bg-primary").addClass(`bg-${color}`).removeClass("hidden")}function setPosition(alert){const position=root.data("position")||"bottom-right",positions={"top-right":"top-5 right-5","top-left":"top-5 left-5","bottom-right":"bottom-5 right-5","bottom-left":"bottom-5 left-4"};alert.addClass(positions[position]||"bottom-5 right-5")}Init(),this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(event){const name=this.getAttribute("s:cn"),target=event.detail.target,key=event.detail.key,value=event.detail.value,component=new window[name](this);new __sui_state(component).Set(key,value,target)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/"}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+</body></html>

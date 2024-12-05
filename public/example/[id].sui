@@ -1,0 +1,244 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $param.id  | upper() | split(&#39;/&#39;) | join(&#39; &#39;) }} | {{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+<script s:ns="ns_4135d2c1a7180774" s:cn="comp__example__id__action" s:hash="script_760f935b52d07708" type="text/javascript">
+function comp__example__id__action( component ){
+  this.root=component;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(selector){return new __Query(__self.root).find(selector)},this.query=function(selector){return __self.root.querySelector(selector)},this.queryAll=function(selector){return __self.root.querySelectorAll(selector)},this.render=function(name,data,option){return new __Render(__self,option).Exec(name,data)},this.emit=function(name,data){const event=new CustomEvent(name,{detail:data});__self.root.dispatchEvent(event)};const root=arguments[0],button=root.querySelector("button");function Init(){button.addEventListener("click",e=>{const ButtonClickEvent=new CustomEvent("button-click",{detail:{button}});root.dispatchEvent(ButtonClickEvent)})}Init(),this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(event){const name=this.getAttribute("s:cn"),target=event.detail.target,key=event.detail.key,value=event.detail.value,component2=new window[name](this);new __sui_state(component2).Set(key,value,target)}),__self.once&&__self.once());
+}
+
+</script>
+<script s:ns="ns_2e02e681a8e549e0" s:cn="comp__flowbite_components_toast" s:hash="script_a6b85e4dad8f3ad2" type="text/javascript">
+function comp__flowbite_components_toast( component ){
+  this.root=component;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(selector){return new __Query(__self.root).find(selector)},this.query=function(selector){return __self.root.querySelector(selector)},this.queryAll=function(selector){return __self.root.querySelectorAll(selector)},this.render=function(name,data,option){return new __Render(__self,option).Exec(name,data)},this.emit=function(name,data){const event=new CustomEvent(name,{detail:data});__self.root.dispatchEvent(event)};const root=$(arguments[0]);function Init(){const root_id=root.attr("id")||null;root.on("show",(event,message)=>{message=message||event.detail||{};const clone=root.clone(),alert=clone.find('[role="alert"]'),close=clone.find("[close]"),id=`${root_id}-toast-${Date.now()}`,duration=message.duration||root.data("duration")||null;clone.attr("id",id),setPosition(alert),setTheme(alert,message.type||"primary"),setMessage(alert,message),clone.on("hide",event2=>{try{alert.removeClass("opacity-100").addClass("opacity-0"),clone.one("transitionend",e=>{clone.addClass("hidden"),clone.remove()})}catch(e){}}),close.on("click",e=>clone.trigger("hide")),clone.removeClass("hidden"),document.body.append(clone[0]),setTimeout(()=>alert.removeClass("opacity-0").addClass("opacity-100"),5),duration!==null&&setTimeout(()=>clone.trigger("hide"),parseInt(duration))})}function setMessage(alert,message){message=message||{},message.message&&message.message.length>0&&alert.find("[message]").html(message.message).removeClass("hidden"),message.title&&message.title.length>0&&alert.find("[title]").html(message.title).removeClass("hidden"),message.icon&&message.icon.length>0&&alert.find("[icon]").html(message.icon)}function setTheme(alert,type){const colors={primary:"primary",info:"primary",success:"success",warning:"warning",error:"danger"},icons={primary:"exclamation",info:"exclamation",success:"check",warning:"exclamation",error:"exclamation"},color=colors[type]||"primary";alert.find("[icon]").html(icons[type]||"info"),alert.find("[icon-bg]").removeClass("bg-primary").addClass(`bg-${color}`).removeClass("hidden")}function setPosition(alert){const position=root.data("position")||"bottom-right",positions={"top-right":"top-5 right-5","top-left":"top-5 left-5","bottom-right":"bottom-5 right-5","bottom-left":"bottom-5 left-4"};alert.addClass(positions[position]||"bottom-5 right-5")}Init(),this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(event){const name=this.getAttribute("s:cn"),target=event.detail.target,key=event.detail.key,value=event.detail.value,component2=new window[name](this);new __sui_state(component2).Set(key,value,target)}),__self.once&&__self.once());
+}
+
+</script>
+<script s:ns="ns_c83b72ca3ad14463" s:cn="comp__example__id_" s:hash="script_a08f7115068079f1" src="/assets/js/highlight.min.js" type="text/javascript"></script>
+<style s:ns="ns_c83b72ca3ad14463" s:cn="__page" rel="stylesheet" type="text/css">
+@import"/assets/css/github-dark.min.css";.dev-canvas{background-color:#f8fafc;background-image:linear-gradient(90deg,rgba(200,200,200,.1) 1px,transparent 1px),linear-gradient(rgba(200,200,200,.1) 1px,transparent 1px);background-size:20px 20px;background-position:10px 10px,10px 10px}.dark .dev-canvas{background-color:#111827;background-image:linear-gradient(90deg,rgba(50,50,50,.3) 1px,transparent 1px),linear-gradient(rgba(50,50,50,.3) 1px,transparent 1px);background-size:20px 20px;background-position:10px 10px,10px 10px}
+
+</style>
+</head>
+  <body s:ns="ns_c83b72ca3ad14463" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><div type="example" data-id="{{ $param.id }}" class="border border-gray-100 bg-white rounded-lg h-[100vh] flex flex-col relative dark:bg-black dark:border-gray-800 dark:bg-black overflow-hidden">
+  <div class="h-[48px] min-h-[48px] flex items-center justify-center z-10 sticky bg-gray-100 dark:bg-gray-800 dark:text-gray-200 rounded-t-lg backdrop-blur-md bg-opacity-75 border-b border-gray-100 dark:border-gray-800">
+    <a data:theme="{{ $theme }}" class="flex p-1.5 rounded-md shadow-md z-10 items-center justify-center shadow-sm hover:text-primary cursor-pointer bg-gray-50 text-gray-400 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" s:on-click="ToggleTheme" s:event="ns_c83b72ca3ad14463-2" s:event-cn="__page">
+      <span class="material outlined text-sm" icon="">
+        {{ $theme == &#39;light&#39; ? &#39;dark_mode&#39; : &#39;light_mode&#39; }}
+      </span>
+    </a>
+    <a data:device="ltr" class="flex p-1.5 ms-2 rounded-md shadow-md z-10 items-center justify-center shadow-sm hover:text-primary cursor-pointer bg-gray-50 text-gray-400 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" s:on-click="ToggleDirection" s:event="ns_c83b72ca3ad14463-3" s:event-cn="__page">
+      <span class="text-[10px] w-[14px] h-[14px] flex items-center justify-center font-medium" icon="">
+        RTL
+      </span>
+    </a>
+
+    <a data:device="desktop" class="flex p-1.5 ms-4 rounded-md shadow-md z-10 items-center justify-center shadow-sm hover:text-primary cursor-pointer bg-gray-50 text-gray-400 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" s:on-click="ToggleDevice" s:event="ns_c83b72ca3ad14463-4" s:event-cn="__page">
+      <span class="material outlined text-sm" icon="">smartphone</span>
+    </a>
+
+    <a active-class="bg-gray-200 text-gray-500 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600" default-class="bg-gray-50 text-gray-400 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100" data:active="true" class="flex p-1.5 ms-2 rounded-md shadow-md z-10 items-center justify-center shadow-sm hover:text-primary cursor-pointer bg-gray-200 text-gray-500 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600" s:on-click="ToggleCode" s:event="ns_c83b72ca3ad14463-5" s:event-cn="__page">
+      <span class="material outlined text-sm">code</span>
+    </a>
+
+    <a class="bg-gray-50 ms-2 text-gray-400 flex p-1.5 rounded-md shadow-md z-10 items-center justify-center shadow-sm hover:text-primary hidden dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 cursor-pointer dark:hover:bg-gray-700" target="_blank" href="/example/{{ $param.id }}" maximize="">
+      <span class="material outlined text-sm">open_in_new</span>
+    </a>
+  </div>
+
+  <div class="dev-canvas h-[calc(100vh-48px)] max-h-[calc(100vh-48px)] flex flex-col items-center justify-center text-gray-100 p-6" preview-wrapper="">
+    <div class="flex justify-center items-center h-full animate-spin rounded-lg" spinner="">
+      <span class="material outlined text-gray-400 text-2xl">autorenew</span>
+    </div>
+    <iframe src="/examples/{{ $param.id }}" style="width: 100%; height: 100%; border: none; display: none" class="rounded-lg" preview=""></iframe>
+  </div>
+
+  <div class="bg-gray-50 h-[50vh] flex flex-col dark:bg-gray-800 dark:text-gray-200 rounded-b-lg absolute bottom-0 left-0 right-0 w-full" code="">
+    <div class="text-sm font-medium text-center bg-gray-50 text-gray-500 border-b border-t border-gray-100 flex items-center justify-between dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700">
+      <ul class="flex flex-wrap -mb-px ps-4">
+        <li s:for="source" class="me-2 text-xs">
+          <a data:active="{{ index == 0 }}" class="inline-block py-2.5">
+            <span data-link="{{item.name}}" active-class="text-gray-100 bg-gray-950 dark:text-gray-950 dark:bg-gray-100 font-medium cursor-default" default-class="text-gray-500 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" class="p-1.5 rounded-lg text-2xs
+              {{ 
+                  index == 0 
+                    ? &#39;text-gray-100 bg-gray-950 dark:text-gray-950 dark:bg-gray-100 font-medium cursor-default&#39; 
+                    : &#39;text-gray-500 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer&#39; 
+              }}
+              " tab="">
+              {{item.name}}
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="flex items-center mr-1">
+        <div id="copy" class="copy relative" s:public="/" s:assets="/assets" prop:id="copy" prop:class="copy" prop:icon="content_copy" prop:title="Copy to clipboard" s:ns="ns_4135d2c1a7180774" s:cn="comp__example__id__action" s:ready="comp__example__id__action()" s:parent="ns_c83b72ca3ad14463">
+  <button data-tooltip-target="tooltip-copy" class="material outlined text-sm text-gray-400 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+    content_copy
+  </button>
+  <div id="tooltip-copy" role="tooltip" class="absolute z-10 invisible w-[auto] inline-block px-3 py-2 text-xs text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-800">
+    <!-- auto width no break -->
+
+    <div class="max-w-[200px] text-xs text-gray-100 whitespace-nowrap overflow-hidden overflow-ellipsis dark:text-gray-200">
+      Copy to clipboard
+    </div>
+
+    <div class="tooltip-arrow" data-popper-arrow=""></div>
+  </div>
+</div>
+
+
+        <div id="download" class="download relative" s:public="/" s:assets="/assets" prop:id="download" prop:class="download" prop:icon="download" prop:title="Download source code" s:ns="ns_4135d3c1a7180927" s:cn="comp__example__id__action" s:ready="comp__example__id__action()" s:parent="ns_c83b72ca3ad14463">
+  <button data-tooltip-target="tooltip-download" class="material outlined text-sm text-gray-400 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+    download
+  </button>
+  <div id="tooltip-download" role="tooltip" class="absolute z-10 invisible w-[auto] inline-block px-3 py-2 text-xs text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-800">
+    <!-- auto width no break -->
+
+    <div class="max-w-[200px] text-xs text-gray-100 whitespace-nowrap overflow-hidden overflow-ellipsis dark:text-gray-200">
+      Download source code
+    </div>
+
+    <div class="tooltip-arrow" data-popper-arrow=""></div>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div s:for="source" class="
+        code text-sm
+        prose
+        prose-slate
+        dark:prose-invert
+        h-full !max-w-none overflow-y-auto 
+        {{ index == 0 ? &#39;&#39; : &#39;hidden&#39; }}
+      " name="{{ item.name }}" tab-content="">
+      <pre class="language-{{ item.lang }} h-full p-4" style="border-top-left-radius: 0; border-top-right-radius: 0" dir="ltr">{{ item.code }}</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Global Message Toast -->
+<div id="message" name="" class="message hidden" data-duration="5000" data-position="bottom-right" s:public="/" s:assets="/assets" prop:id="message" prop:class="message" prop:position="bottom-right" prop:duration="5000" s:ns="ns_2e02e681a8e549e0" s:cn="comp__flowbite_components_toast" s:ready="comp__flowbite_components_toast()" s:parent="ns_c83b72ca3ad14463">
+  <s:set name="title" value=""></s:set>
+  <s:set name="message" value=""></s:set>
+  <s:set name="icon" value=""></s:set>
+
+  <div class="fixed z-[100] flex items-start justify-between backdrop-blur-md border border-gray-100/60 bg-opacity-90 w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow shadow-gray-200/80 opacity-0 transition-opacity duration-300 ease-in-out" role="alert">
+    <div class="flex items-center space-x-2">
+      <!-- Icon -->
+      <div class="flex items-center justify-center mr-1 w-6 h-6 rounded-full  {{ icon != null and icon != &#39;&#39;  ? &#39;&#39; : &#39;hidden&#39; }}" icon-bg="">
+        <span class="material text-white text-xl outlined" icon="">
+          {{ icon }}
+        </span>
+      </div>
+
+      <div class="text-sm font-normal break-words max-w-[200px] flex flex-col">
+        <div class="font-medium {{ title != null and title != &#39;&#39;  ? &#39;&#39; : &#39;hidden&#39; }} min-h-6 flex items-center " title="">
+          {{ title }}
+        </div>
+        <div class="{{ message != null and message != &#39;&#39;  ? &#39;&#39; : &#39;hidden&#39; }}  min-h-6 flex items-center " message="">
+          {{ message}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Close button -->
+    <button class="flex items-center justify-center text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700" close="">
+      <span class="material text-xl outlined">close</span>
+    </button>
+  </div>
+</div>
+
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_c83b72ca3ad14463" s:cn="comp__example__id_" s:hash="script_5dd27961b42fb1b" type="text/javascript">
+var __defProp=Object.defineProperty,__defProps=Object.defineProperties;var __getOwnPropDescs=Object.getOwnPropertyDescriptors;var __getOwnPropSymbols=Object.getOwnPropertySymbols;var __hasOwnProp=Object.prototype.hasOwnProperty,__propIsEnum=Object.prototype.propertyIsEnumerable;var __defNormalProp=(obj,key,value)=>key in obj?__defProp(obj,key,{enumerable:!0,configurable:!0,writable:!0,value}):obj[key]=value,__spreadValues=(a,b)=>{for(var prop in b||(b={}))__hasOwnProp.call(b,prop)&&__defNormalProp(a,prop,b[prop]);if(__getOwnPropSymbols)for(var prop of __getOwnPropSymbols(b))__propIsEnum.call(b,prop)&&__defNormalProp(a,prop,b[prop]);return a},__spreadProps=(a,b)=>__defProps(a,__getOwnPropDescs(b));this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(selector){return new __Query(__self.root).find(selector)},this.query=function(selector){return __self.root.querySelector(selector)},this.queryAll=function(selector){return __self.root.querySelectorAll(selector)},this.render=function(name,data,option){return new __Render(__self,option).Exec(name,data)},this.emit=function(name,data){const event=new CustomEvent(name,{detail:data});__self.root.dispatchEvent(event)};const Message={Info:message=>{message=typeof message=="string"?{message}:message,$("#message").trigger("show",[__spreadProps(__spreadValues({},message),{type:"info"})])},Success:message=>{message=typeof message=="string"?{message}:message,$("#message").trigger("show",[__spreadProps(__spreadValues({},message),{type:"success"})])},Warning:message=>{message=typeof message=="string"?{message}:message,$("#message").trigger("show",[__spreadProps(__spreadValues({},message),{type:"warning"})])},Error:message=>{message=typeof message=="string"?{message}:message,$("#message").trigger("show",[__spreadProps(__spreadValues({},message),{type:"error"})])}};document.addEventListener("DOMContentLoaded",()=>{const message=window.location!==window.parent.location?window.parent.Message:Message;window.location!==window.parent.location&&document.querySelector("[maximize]").classList.remove("hidden"),document.querySelectorAll("pre").forEach(block=>{hljs.highlightElement(block)}),document.querySelectorAll("[tab]").forEach(tab=>{tab.addEventListener("click",e=>{e.preventDefault();const target=e.target.getAttribute("data-link"),parent=e.target.closest('[type="example"]'),defaultClass=e.target.getAttribute("default-class").split(" "),activeClass=e.target.getAttribute("active-class").split(" ");parent.querySelectorAll("[tab]").forEach(tab2=>{activeClass.forEach(className=>tab2.classList.remove(className)),defaultClass.forEach(className=>tab2.classList.add(className))}),defaultClass.forEach(active=>e.target.classList.remove(active)),activeClass.forEach(active=>e.target.classList.add(active)),parent.querySelectorAll("[tab-content]").forEach(tabContent=>{tabContent.classList.add("hidden")}),parent.querySelector(`[name="${target}"]`).classList.remove("hidden")})}),document.querySelector("#copy").addEventListener("button-click",(event,elm)=>{const content=document.querySelector("[tab-content]:not(.hidden) pre").innerText;navigator.clipboard.writeText(content).then(()=>{message.Success({title:"Copied to clipboard",duration:2e3})})}),document.querySelector("#download").addEventListener("button-click",(event,elm)=>{const url=`/api/example/download/${document.querySelector('[type="example"]').dataset.id}`;window.location=url}),document.querySelector("[preview]").addEventListener("load",(event,elm)=>{const iframe=document.querySelector("[preview]"),spinner=document.querySelector("[spinner]");iframe.style.display="block",spinner.classList.add("hidden")})}),this.ToggleCode=(event,data,detail)=>{const elm=detail.targetElement,store=new __sui_store(elm),example=elm.closest("[type='example']"),code=example.querySelector("[code]"),preview=example.querySelector("[preview-wrapper]"),active=store.Get("active")||"false",activeClass=elm.getAttribute("active-class").split(" "),defaultClass=elm.getAttribute("default-class").split(" ");if(active==="true"){store.Set("active","false"),activeClass.forEach(className=>elm.classList.remove(className)),defaultClass.forEach(className=>elm.classList.add(className)),code.classList.add("hidden"),preview.classList.add("h-full");return}store.Set("active","true"),defaultClass.forEach(className=>elm.classList.remove(className)),activeClass.forEach(className=>elm.classList.add(className)),code.classList.remove("hidden"),preview.classList.remove("h-full")},this.ToggleTheme=(event,data,detail)=>{const elm=detail.targetElement,store=new __sui_store(elm),theme=store.Get("theme")||"light",icon=elm.querySelector("[icon]"),preview=document.querySelector("[preview]"),doc=preview.contentWindow.document;if(theme==="light"){store.Set("theme","dark"),icon.innerHTML="light_mode",document.documentElement.setAttribute("class","dark"),doc.documentElement.setAttribute("class","dark"),preview.style.backgroundColor="black";return}store.Set("theme","light"),icon.innerHTML="dark_mode",document.documentElement.removeAttribute("class"),doc.documentElement.removeAttribute("class"),preview.style.backgroundColor="white"},this.ToggleDirection=(event,data,detail)=>{const elm=detail.targetElement,store=new __sui_store(elm),direction=store.Get("direction")||"ltr",icon=elm.querySelector("[icon]"),doc=document.querySelector("[preview]").contentWindow.document;if(direction==="ltr"){store.Set("direction","rtl"),icon.innerHTML="LTR",document.documentElement.setAttribute("dir","rtl"),doc.documentElement.setAttribute("dir","rtl");return}store.Set("direction","ltr"),icon.innerHTML="RTL",document.documentElement.removeAttribute("dir"),doc.documentElement.removeAttribute("dir")},this.ToggleDevice=(event,data,detail)=>{const elm=detail.targetElement,store=new __sui_store(elm),device=store.Get("device")||"desktop",icon=elm.querySelector("[icon]"),iframe=document.querySelector("[preview]");if(device==="desktop"){store.Set("device","mobile"),icon.innerHTML="desktop_windows",iframe.style.width="375px";return}store.Set("device","desktop"),icon.innerHTML="smartphone",iframe.style.width="100%"},this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(event){const name=this.getAttribute("s:cn"),target=event.detail.target,key=event.detail.key,value=event.detail.value,component=new window[name](this);new __sui_state(component).Set(key,value,target)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/","title":"{{ $param.id  | upper() | split('/') | join(' ') }} | {{ $global.title }}","guard":""}
+</script>
+
+
+
+<script name="data" type="json">
+{
+  "$source": "scripts.example.GetSource"
+}
+
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+
+
+<script name="imports" type="json">
+{"comp__example__id__action":"/example/[id]/action","comp__flowbite_components_toast":"/flowbite/components/toast"}
+</script>
+
+</body></html>

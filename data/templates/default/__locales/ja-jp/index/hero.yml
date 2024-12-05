@@ -1,0 +1,13 @@
+keys:
+    trans__index_hero_1: はじめに
+    trans__index_hero_2: Github リポジトリ
+    trans__index_hero_3: Yaoを使ったWebアプリケーションの構築
+    trans__index_hero_4: このアプリは、Yaoアプリケーション内でのSUIの使用を示しており、Webアプリケーションプロジェクトを始めるには最適です。
+messages:
+    Building Web Applications with Yao: Yaoを使ったWebアプリケーションの構築
+    Getting Started: はじめに
+    Github Repo: Github リポジトリ
+    ? |-
+        This app demonstrates SUI usage within Yao applications, making it perfect
+              for starting your web application project.
+    : このアプリは、Yaoアプリケーション内でのSUIの使用を示しており、Webアプリケーションプロジェクトを始めるには最適です。

@@ -1,0 +1,145 @@
+{
+  "name": "Categories",
+  "action": {
+    "bind": {
+      "model": "article.category",
+      "option": { "form": "article.category" }
+    },
+    "before:search": "scripts.hooks.OrderBySort"
+  },
+  "layout": {
+    "header": {},
+    "primary": "id",
+    "filter": {
+      "columns": [{ "name": "Name" }, { "name": "Language" }],
+      "actions": [
+        {
+          "title": "Add Category",
+          "icon": "icon-plus",
+          "style": "primary",
+          "action": [
+            {
+              "name": "openModal",
+              "type": "Common.openModal",
+              "payload": {
+                "byDrawer": { "mask": true },
+                "Form": { "type": "add", "model": "article.category" }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "table": {
+      "columns": [
+        { "name": "Sort", "width": 60 },
+        { "name": "Language", "width": 120 },
+        { "name": "Name", "width": 300 }
+      ],
+      "operation": {
+        "fold": false,
+        "actions": [
+          {
+            "style": "primary",
+            "title": "Edit",
+            "icon": "icon-edit-2",
+            "disabled": { "bind": "{{ root }}", "value": ["1"] },
+            "action": [
+              {
+                "name": "openModal",
+                "type": "Common.openModal",
+                "payload": {
+                  "byDrawer": { "mask": true },
+                  "Form": {
+                    "type": "edit",
+                    "model": "article.category",
+                    "params": { "id": "{{id}}" }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "style": "danger",
+            "title": "Delete",
+            "icon": "icon-trash-2",
+            "action": [
+              {
+                "name": "Confirm",
+                "type": "Common.confirm",
+                "payload": {
+                  "title": "Please confirm to delete [{{ name }}]",
+                  "content": "This action is irreversible! The category will be permanently deleted."
+                }
+              },
+              { "name": "Delete", "type": "Table.delete", "payload": {} }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "fields": {
+    "filter": {
+      "Name": {
+        "bind": "where.name.match",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Category Name" }
+        }
+      },
+      "Language": {
+        "bind": "where.lang.eq",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "Language",
+            "options": [
+              { "label": "English", "value": "en-us" },
+              { "label": "Chinese", "value": "zh-cn" },
+              { "label": "Chinese (Traditional)", "value": "zh-hk" },
+              { "label": "Japanese", "value": "ja-jp" }
+            ]
+          }
+        }
+      }
+    },
+    "table": {
+      "Name": {
+        "bind": "name",
+        "view": { "type": "Text", "props": { "weight": "medium" } },
+        "edit": { "type": "Input", "props": { "placeholder": "Category Name" } }
+      },
+      "Language": {
+        "bind": "lang",
+        "view": {
+          "type": "Tag",
+          "props": {
+            "options": [
+              { "label": "English", "value": "en-us" },
+              { "label": "Chinese", "value": "zh-cn" },
+              { "label": "Chinese (Traditional)", "value": "zh-hk" },
+              { "label": "Japanese", "value": "ja-jp" }
+            ]
+          }
+        },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "options": [
+              { "label": "English", "value": "en-us" },
+              { "label": "Chinese", "value": "zh-cn" },
+              { "label": "Chinese (Traditional)", "value": "zh-hk" },
+              { "label": "Japanese", "value": "ja-jp" }
+            ]
+          }
+        }
+      },
+      "Sort": {
+        "bind": "sort",
+        "view": { "type": "Tag" },
+        "edit": { "type": "InputNumber", "props": { "min": 0, "max": 10000 } }
+      }
+    }
+  }
+}

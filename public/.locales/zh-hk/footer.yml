@@ -1,0 +1,14 @@
+name: zh-hk
+formatter: scripts.tests.formatter
+keys:
+    trans__footer_1: Contact
+    trans__footer_social_1: 查看Github
+    trans__footer_social_2: 查看Github
+    trans__footer_social_3: 加入Discord社區
+    trans__footer_social_4: 在Discord上加入社區
+    trans__footer_social_5: 在Twitter關注我們/X
+    trans__footer_social_6: 在Twitter關注我們/X
+    trans__footer_social_7: 訂閱YouTube頻道
+    trans__footer_social_8: 訂閱YouTube頻道
+direction: ltr
+timezone: "+8:00"

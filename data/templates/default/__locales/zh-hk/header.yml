@@ -1,0 +1,32 @@
+keys:
+    trans__header_1: Overview
+    trans__header_2: Uses
+    trans__header_3: Download
+    trans__header_4: Documentation
+    trans__header_5: 部落格
+    trans__header_6: 部署
+    trans__header_7: App Engine
+    trans__header_8: View on Github
+    trans__header_9: View on Github
+    trans__header_10: Join Discord community
+    trans__header_11: Join community on Discord
+    trans__header_12: Deploy to Moapi Cloud
+    trans__header_13: Join Discord community
+messages:
+    App Engine: App Engine
+    Blog: 部落格
+    Community: 社區
+    Dashboard: 儀表板
+    Deploy: 部署
+    Deploy to Moapi Cloud: Deploy to Moapi Cloud
+    Docs: 文件
+    Documentation: Documentation
+    Download: 下載
+    Hub: 中心
+    Join Discord community: Join Discord community
+    Join community on Discord: Join community on Discord
+    Overview: Overview
+    Showcase: 展示
+    Uses: Uses
+    View on Github: View on Github
+    WEB: 網頁

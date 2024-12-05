@@ -1,0 +1,101 @@
+{
+  "name": "Release",
+  "table": { "name": "release", "comment": "Releases" },
+  "columns": [
+    { "name": "id", "comment": "ID", "type": "ID", "label": "ID" },
+    {
+      "label": "Version",
+      "name": "version",
+      "comment": "The version of the software",
+      "type": "string",
+      "length": 20,
+      "index": true
+    },
+    {
+      "label": "Summary",
+      "name": "summary",
+      "comment": "Summary of the release",
+      "type": "text",
+      "nullable": true
+    },
+    {
+      "label": "Summary (Chinese)",
+      "name": "summary_zh-cn",
+      "comment": "The chinese summary of the release",
+      "type": "text",
+      "nullable": true
+    },
+
+    {
+      "label": "Summary (Traditional Chinese)",
+      "name": "summary_zh-hk",
+      "comment": "The traditional chinese summary of the release",
+      "type": "text",
+      "nullable": true
+    },
+
+    {
+      "label": "Summary (Japanese)",
+      "name": "summary_ja-jp",
+      "comment": "The japanese summary of the release",
+      "type": "text",
+      "nullable": true
+    },
+
+    {
+      "label": "Release Notes Link",
+      "name": "release_notes_link",
+      "comment": "Notes about the release",
+      "type": "string",
+      "nullable": true
+    },
+
+    {
+      "label": "Release Date",
+      "name": "published_at",
+      "comment": "The date this version was released",
+      "type": "datetime",
+      "nullable": true
+    },
+
+    {
+      "label": "Download Links",
+      "name": "download_links",
+      "comment": "Links to download the version for different platforms",
+      "type": "JSON",
+      "nullable": true
+    },
+
+    {
+      "label": "Sort",
+      "name": "sort",
+      "type": "integer",
+      "default": 9999,
+      "index": true,
+      "comment": "Sort order for releases"
+    },
+
+    {
+      "label": "Status",
+      "comment": "The status of the release",
+      "name": "status",
+      "type": "enum",
+      "default": "draft",
+      "option": ["draft", "published"],
+      "index": true,
+      "validations": [
+        {
+          "method": "typeof",
+          "args": ["string"],
+          "message": "{{input}} is not a valid type, {{label}} should be a string"
+        },
+        {
+          "method": "enum",
+          "args": ["draft", "published"],
+          "message": "{{input}} is not a valid status, {{label}} should be 'draft' or 'published'"
+        }
+      ]
+    }
+  ],
+  "option": { "timestamps": true, "soft_deletes": true }
+}

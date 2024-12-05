@@ -1,0 +1,84 @@
+---
+title: 安装
+description: Yao 以单个可执行文件的形式发布，无需依赖任何包或工具链。只需下载并运行它即可开始构建你的应用程序。
+related:
+  title: 下一步
+  description: 开始构建你的应用程序。
+  links:
+    - building-your-application
+---
+
+Yao 是一个独立的可执行文件，不依赖于任何包或工具链。只需下载并运行它即可开始构建你的应用程序。每台机器或服务器只需安装一次。
+
+## 安装
+
+运行以下命令在你的机器或服务器上安装 Yao。
+
+### Linux 和 macOS
+
+```bash
+curl -fsSL https://yaoapps.com/install.sh | bash
+```
+
+👉 [查看安装脚本](https://yaoapps.com/install.sh)
+
+### Windows
+
+要在 Windows 上安装 Yao，你需要安装 WSL2。如果你还没有安装 WSL2，可以按照[官方指南](https://docs.microsoft.com/en-us/windows/wsl/install)进行安装。
+
+```powershell
+powershell -c "irm yaoapps.com/install.ps1 | iex"
+```
+
+👉 [查看安装脚本](https://yaoapps.com/install.ps1)
+
+## Docker
+
+Yao 提供生产和开发用 Docker 镜像，支持 x64 和 arm64 架构。
+
+开发镜像包含额外的开发工具和库，基于 Ubuntu 22.04，而生产镜像更小，基于 Alpine 3.14。
+
+下载最新的生产镜像：
+
+```bash
+docker pull yaoapp/yao:latest
+
+# 或指定版本
+docker pull yaoapp/yao:0.10.4
+```
+
+下载最新的开发镜像：
+
+```bash
+docker pull yaoapp/yao:0.10.4-dev
+```
+
+## 检查安装
+
+安装 Yao 后，你可以通过运行以下命令检查版本：
+
+```bash
+yao version --all
+```
+
+如果出现错误，请验证 yao 命令是否在你系统的 PATH 中。
+
+如果找不到，你可能需要将包含 yao 可执行文件的目录添加到你的 PATH 中，并确保它具有执行权限。
+
+## 下载开发版本
+
+Yao 正在积极开发中，你可以下载最新的开发版本来尝试新功能和改进。
+
+对于 Windows，你可以下载 Linux 版本并在 WSL2 中运行。
+
+### Linux 构建产物
+
+👉 [https://github.com/YaoApp/yao/actions/workflows/build-linux.yml](https://github.com/YaoApp/yao/actions/workflows/build-linux.yml)
+
+在上述页面中，选择最新的构建，下载并解压，然后选择适合你 CPU 架构的构建产物文件。支持的架构有 x64 和 arm64。
+
+### MacOS 构建产物
+
+👉 [https://github.com/YaoApp/yao/actions/workflows/build-macos.yml](https://github.com/YaoApp/yao/actions/workflows/build-macos.yml)
+
+在上述页面中，选择最新的构建，下载并解压，然后选择适合你 CPU 架构的构建产物文件。支持的架构有 Intel CPU 和 M1/M2/M3/M4 (arm64)

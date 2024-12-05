@@ -1,0 +1,6 @@
+name: ja-jp
+formatter: scripts.tests.formatter
+keys:
+    trans__blog_list_1: 次へ
+direction: ltr
+timezone: "+9:00"

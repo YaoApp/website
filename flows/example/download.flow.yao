@@ -1,0 +1,18 @@
+{
+  "label": "Document Example Download",
+  "version": "1.0.0",
+  "description": "Download the document example by the given id.",
+  "nodes": [
+    {
+      "name": "Zip",
+      "process": "scripts.example.Download",
+      "args": ["?:$in.0"]
+    },
+    {
+      "name": "Content",
+      "process": "fs.system.Download",
+      "args": ["{{$res.Zip.file}}", false]
+    }
+  ],
+  "output": { "file": "?:$res.Content", "disposition": "?:$res.disposition" }
+}

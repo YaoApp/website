@@ -1,0 +1,13 @@
+{
+  // yao sui build web default
+  // yao sui watch web default
+  "name": "Yao Startup Webapp",
+  "storage": { "driver": "local", "option": { "root": "/templates" } },
+  "cache_store": "cache", // The store name of cache
+  "public": {
+    "root": "/",
+    "matcher": "[0-9a-zA-Z_\\-\\.]+",
+    "remote": "/",
+    "index": "/index"
+  }
+}

@@ -1,0 +1,316 @@
+---
+title: 切换到 Yao
+description: Yao 专注于生成式编程。虽然可能需要一些时间来学习几个关键概念，但一旦你理解了它们，你就会发现 Yao 是一个强大的工具。它可以帮助你更快地构建应用程序，并提供出色的开发体验。
+---
+
+切换到 Yao 很容易。Yao 专注于生成式编程。虽然可能需要一些时间来学习几个关键概念，但一旦你理解了它们，你就会发现 Yao 是一个强大的工具。它可以帮助你更快地构建应用程序，并提供出色的开发体验。
+
+以下部分将帮助你理解 Yao 的核心概念以及如何使用它们来构建应用程序。
+
+## 生成式编程
+
+在 AGI 时代之前，我们认为与 AI 合作是最好的方式，而不是将其作为主导。
+
+我们的目标是使生成的代码与手写代码相匹配，易于阅读和修改，以便开发者和机器可以无缝协作。
+
+- **对人类而言**：我们希望代码易于阅读和编写，清晰直观。
+- **对机器而言**：我们的目标是使代码对 AI 友好，易于生成和扩展。
+
+在 Yao 中，我们使用 DSL（领域特定语言）来描述组件，将它们组装成应用程序，并使用进程作为原子函数。
+
+Yao 组件可以是表格、表单、列表或图表。它也可以是数据模型、API、存储、流程等。
+
+Yao DSL 是一种人类和机器都能理解的中间语言。它可以由 AI 生成，通过 GUI 创建，或手动编写，这些方法之间可以无缝切换。
+
+使用 Yao 运行时来执行代码，并使用其内置的 HTTP 服务器来提供应用程序服务。
+
+## Yao 应用程序
+
+Yao 应用程序是由组件 DSL 和用 TypeScript 或 JavaScript 编写的自定义进程组成的集合。
+
+对于网站，SUI 模板引擎（0.10.4 版本新增）可以帮助你构建所需的网页。
+
+每种组件类型在项目根目录中都有自己的目录，如 `models`、`tables`、`forms`、`apis` 等。
+
+DSL 源文件使用小写命名，扩展名为 `.[TYPE].yao`，例如 `article.mod.yao`。
+
+自定义进程文件在 `scripts` 目录中使用小写命名，例如 `article.ts`。进程名称为 `scripts.article.[FUNCTION_NAME]`。
+
+### 目录结构
+
+yao 应用程序的目录结构如下：
+
+```bash
+app
+├── aigcs # AIGC 组件：使用提示作为进程
+├── apis  # API 组件：定义 REST API
+├── app.yao # 应用程序配置
+├── charts # 图表组件：管理面板中的图表类型页面
+├── connectors  # AI 连接器、数据库连接器、Redis 连接器等
+├── dashboards  # 仪表板组件：管理面板中的仪表板类型页面
+├── data    # 默认应用程序数据目录，使用文件系统进程或 JSAPI 访问。可以在环境变量中设置自定义数据目录。
+├── db      # sqlite 数据库目录，这是数据库的默认选项。如果使用其他数据库，此目录不是必需的。
+├── flows   # 流程组件：定义进程流程
+├── forms   # 表单组件：管理面板中的表单类型页面
+├── icons   # 管理面板中使用的应用程序图标
+├── langs   # 管理面板中使用的 I18n 语言文件
+├── logins  # 登录组件：管理面板中的登录类型页面
+├── logs    # 应用程序日志目录，这是日志的默认选项。可以在环境变量中设置自定义日志目录。
+├── models  # 模型组件：定义数据结构
+├── neo     # AI 聊天机器人配置目录
+├── plugins # 默认 GRPC 插件目录，可以在环境变量中设置自定义插件目录。
+├── public  # 静态文件目录，可以通过 HTTP 服务器访问。SUI 模板引擎也在这里生成网页。
+├── scripts # 自定义进程：用 TypeScript 或 JavaScript 编写自定义进程
+├── tables  # 表格组件：管理面板中的表格类型页面
+└── ....    # 其他组件类型，或你自定义的组件类型
+```
+
+### 如何开发 Yao 应用程序？
+
+开发 Yao 应用程序需要做三件事：
+
+1. **编写 DSL**：用 DSL 描述组件，如模型、API、表格、表单等。
+2. **编写进程**：用 TypeScript 或 JavaScript 编写自定义进程，或编写 GRPC 插件。
+3. **调试和运行**：使用 Yao 运行时调试和运行应用程序。
+
+`yao start` 是启动应用程序服务器的命令。在**开发模式**下，Yao 会监视 DSL 和进程文件的变化，并自动重新加载应用程序服务器。
+
+`yao run` 是运行进程的命令。你可以在将进程集成到应用程序之前使用它来测试进程。
+
+**Visual Studio Code** 是开发 Yao 应用程序的推荐 IDE。在设置中将 `.yao` 文件类型设置为 `jsonc`，你就可以获得语法高亮和自动完成功能。
+
+更多信息，请参见：
+
+👉 [构建你的应用程序](../building-your-application)
+
+## 切换到 Yao 的建议
+
+Yao 是构建 Web 应用程序的新方式。以下是一些帮助你切换到 Yao 的建议。
+
+**1. 最好的学习方式：实践和阅读源代码**
+
+最好的学习方式是通过实践。按照文档构建一个简单的应用程序并探索基础知识。
+
+你也可以阅读应用程序源代码，看看组件是如何描述的，进程是如何编写的。
+
+以下是一些你可以参考的仓库：
+
+👉 [Yao 官方网站](https://github.com/YaoApp/yao-website)
+
+👉 [用于 Xgen 开发的 Yao 应用](https://github.com/YaoApp/xgen-dev-app)
+
+**2. 开发前的规划**
+
+在 Yao 中，数据模型至关重要。开始开发时，必须规划数据结构和关系。
+
+开始新项目时，首先在 `models` 目录中定义数据模型。然后，基于这个模型创建表格、表单和 API 组件。
+
+准备测试数据并创建导入进程是一个好习惯，因为它可以提高开发效率。部署应用程序时，你可以使用这个进程导入演示数据。
+
+你可以通过将模型 DSL 发送给 AI 并要求它生成数据来使用 AI 生成测试数据。
+
+👉 [导入进程示例](https://github.com/YaoApp/yao-website/blob/main/scripts/test.ts)
+
+**3. 先用 AI 生成，再手动修改**
+
+创建组件最快的方式是使用 AI 生成 DSL，然后手动调整以满足你的需求。
+
+例如：
+
+- 向 AI 提供模型 DSL，指定你的要求，让 AI 生成类似的模型。然后根据需要调整它。
+- 你也可以同时向 AI 提供模型 DSL 和表格 DSL，让它生成绑定到模型的表格组件 DSL。根据需要调整它。
+
+Yao 官方网站仓库提供了一个简单的 DSL 生成工具，你可以使用它。或者，你可以开发自己的工具。
+
+👉 [Yao 官方网站 Playground](https://github.com/YaoApp/yao-website/blob/main/scripts/ai/agents/playground.ts)
+
+**4. 前端开发者的建议**
+
+开始开发之前，了解一些后端知识会有帮助：
+
+- 理解数据库结构和关系。
+- 掌握 REST API 的基础知识及其功能。
+- 了解 TypeScript 或 JavaScript，用于编写服务器端自定义进程。
+
+按照文档构建一个简单的应用程序。学习如何创建模型、编写自定义进程和开发 REST API。
+
+👉 [构建你的应用程序](../building-your-application)
+
+👉 [添加你的组件](../adding-your-component)
+
+**5. 后端开发者的建议**
+
+开始开发之前，一些前端知识会有帮助：
+
+- TypeScript 或 JavaScript 对于编写自定义进程至关重要。推荐使用 TypeScript。
+- 基本的 HTML、CSS 和 JavaScript 知识对于构建网站是必要的。
+
+在 Yao 中创建管理面板很简单，不需要前端编码。使用表格、表单和 API 组件来构建它。这就像制作 HTML 页面，但更强大，使用 DSL 描述页面，使用进程处理数据。
+
+按照文档构建一个简单的应用程序，学习如何使用这些组件构建管理面板。
+
+👉 [构建你的应用程序](../building-your-application)
+
+👉 [添加你的进程](../using-source-code/adding-your-process)
+
+## Yao 的局限性
+
+虽然我们提到 Yao 可以处理 Web 开发的所有方面，但仍有一些可能不太适合 Yao 的情况。
+
+- **高度自定义的 UI**：如果你需要为管理面板或企业应用程序提供高度自定义的 UI，你可能需要编写自定义代码。不过，你可以将 Yao 用作后端服务。👉 [构建你的组件库](../using-source-code/building-your-component-library)
+
+- **移动应用客户端**：对于移动应用客户端，你可能需要开发原生应用或使用移动应用开发框架，同时使用 Yao 作为后端服务。👉 [REST API 教程](/docs/tutorials/api/getting-started)
+
+SUI 模板引擎在 Yao 0.10.4 中引入，提供了构建网页的新方式。它仍处于实验阶段，尚未完全开发完成，但为开发者提供了新的选择。对于更高级的前端需求，考虑使用 React 或 Vue 等框架，并通过 REST API 与 Yao 连接。👉 [网站教程](/docs/tutorials/website/getting-started)
+
+TypeScript 是编写自定义进程的推荐语言，它将在 V8 引擎中运行。如果需要高性能，可以用 Go 添加进程，它比 TypeScript 更快。👉 [添加你的进程](../using-source-code/adding-your-process)
+
+## 概念解释
+
+### Yao 进程
+
+Yao 中的进程是在 Yao 运行时中运行的原子函数。
+
+Yao 提供了数百个具有不同功能的内部进程。你也可以用 TypeScript 或 JavaScript 创建自定义进程。
+
+- **内部进程**：在 Yao 的源代码中定义，你可以在 Yao 仓库中找到它们。
+- **自定义进程**：用 TypeScript 或 JavaScript 编写，位于项目的 `scripts` 目录中。
+- **GRPC 插件**：用任何语言编写，位于项目的 `plugins` 目录中。
+
+要运行进程，使用 `yao run` 命令。
+
+更多信息，请参见：👉 **[进程参考](references/process)**
+
+示例：
+
+```bash
+# 执行内部进程
+yao run utils.app.Ping   # 这将返回 Yao 的版本。
+
+# 执行使用 TypeScript 定义的自定义进程
+yao run scripts.test.Hello 'Yao!'   # 返回 'Hello, Yao!'
+
+yao run scripts.test.Pets cat  # 返回 cat 类别的宠物列表。
+```
+
+**scripts/test.ts**
+
+```typescript
+import { Process } from "@yao/runtime";
+
+function Hello(name: string): string {
+  return `Hello, ${name}!`;
+}
+
+function Pets(category?: string): Record<string, any> {
+  category = category || "dog";
+  const pets = Process("models.tests.pet.Get", {
+    select: ["id", "name"],
+    wheres: [{ column: "category", value: category }],
+  });
+
+  return pets;
+}
+```
+
+### Yao 运行时
+
+Yao 运行时是用于运行进程的服务器端执行环境。
+
+- **内部进程**用 Go 编写，直接执行。
+- **自定义进程**用 TypeScript 或 JavaScript 编写，使用 V8 引擎执行。Yao 提供了 `Process`、`File System` 和 `HTTP Request` 等 API 来编写这些进程。
+
+**注意**：**Yao 运行时不是 Node.js**。它专门用于运行进程，不支持 Node.js API。
+
+**执行方法**：
+
+1. **CLI**：使用 `yao run` 命令。
+2. **HTTP 服务器**：使用内置的 HTTP 服务器通过 REST API 运行进程。
+
+### Yao 组件
+
+Yao 中的组件不仅仅是传统的前端组件；它是 UI、交互、逻辑和数据的组合。在组件中没有前端和后端的概念；它是一个自包含的单元。
+
+组件可以是表格、表单、列表或图表。它也可以是数据模型、API、存储、流程等。
+
+每个组件都有一组进程，有些组件有一组 REST API。它可以在其他组件中使用，在自定义进程中使用，或集成到其他应用程序中。
+
+组件使用 DSL 描述，采用 JSON 格式。它可以由 AI 生成，通过 GUI 创建，或手动编写。
+
+更多信息，请参见：👉 **[DSL 参考](references/dsl)**
+
+**模型组件**
+
+模型组件用于描述数据结构，它与数据库表结构相同。
+
+模型 DSL 包含一组用于操作数据的进程，如 CRUD、查询等。你可以直接使用它。
+
+```json
+// 模型 DSL
+{
+  "name": "Article",
+  "table": { "name": "article", "comment": "文章" },
+  "columns": [
+    { "name": "id", "comment": "ID", "type": "ID", "label": "ID" },
+    { "label": "标题", "name": "title", "type": "string" },
+    { "label": "摘要", "name": "summary", "type": "string" }
+  ]
+}
+```
+
+```bash
+# 使用进程查找数据
+yao run models.article.Find 1 '::{}'
+```
+
+**表格组件**
+
+表格组件用于在管理面板中显示数据。绑定到模型组件，自动生成基本的 CRUD 操作。
+
+表格 DSL 包含一组进程和 REST API 来操作数据，如查找、搜索等。你可以直接使用它。
+
+```json
+// 表格 DSL
+{
+  "name": "文章",
+  "action": {
+    "bind": { "model": "article", "option": { "form": "article" } }
+  }
+}
+```
+
+```bash
+# 使用进程搜索数据
+yao run yao.tables.Search article '::{}' 1 10
+```
+
+```bash
+# 使用 REST API 搜索数据
+curl --request GET \
+  --url https://127.0.0.1:5099/api/__yao/table/article/search \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer your_token_here'
+```
+
+## 许可证概述
+
+Yao 提供两种不同的许可证以满足各种用户需求：Apache 2.0 许可证和 Yao 商业许可证。
+
+**Apache 2.0 许可证**
+
+在 Apache 2.0 许可证下，你可以自由使用、修改和分发 Yao。这种开放的方式鼓励集成和创新，只要求在任何分发中包含原始版权声明和许可条款。
+
+👉 **[Apache 2.0 许可证](https://github.com/YaoApp/yao/blob/main/LICENSE)**
+
+**Yao 商业许可证**
+
+为了确保我们能够持续开发和增强 Yao，我们推出了 Yao 商业许可证。这个许可证支持我们未来的服务，如应用程序托管和 AI Web 应用程序生成服务。对于超出 Apache 2.0 许可证范围的特定商业用途，这是必需的。
+
+虽然 Apache 2.0 许可证涵盖了大多数商业应用，但以下情况需要商业许可证：
+
+- 应用程序托管服务
+- AI Web 应用程序生成服务
+
+我们感谢你的理解和支持，因为我们致力于为整个社区改进 Yao。通过遵守这些许可条款，你帮助我们分配更多资源来开发和维护 Yao，确保它继续成为每个人的强大工具。
+
+👉 **[Yao 商业许可证](https://github.com/YaoApp/yao/blob/main/COMMERCIAL_LICENSE.md)**

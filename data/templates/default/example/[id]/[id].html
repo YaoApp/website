@@ -1,0 +1,156 @@
+<div
+  type="example"
+  data-id="{{ $param.id }}"
+  class="border border-gray-100 bg-white rounded-lg h-[100vh] flex flex-col relative dark:bg-black dark:border-gray-800 dark:bg-black overflow-hidden"
+>
+  <div
+    class="h-[48px] min-h-[48px] flex items-center justify-center z-10 sticky bg-gray-100 dark:bg-gray-800 dark:text-gray-200 rounded-t-lg backdrop-blur-md bg-opacity-75 border-b border-gray-100 dark:border-gray-800"
+  >
+    <a
+      data:theme="{{ $theme }}"
+      class="flex p-1.5 rounded-md shadow-md z-10 items-center justify-center shadow-sm hover:text-primary cursor-pointer bg-gray-50 text-gray-400 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+      s:on-click="ToggleTheme"
+    >
+      <span class="material outlined text-sm" icon>
+        {{ $theme == 'light' ? 'dark_mode' : 'light_mode' }}
+      </span>
+    </a>
+    <a
+      data:device="ltr"
+      class="flex p-1.5 ms-2 rounded-md shadow-md z-10 items-center justify-center shadow-sm hover:text-primary cursor-pointer bg-gray-50 text-gray-400 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+      s:on-click="ToggleDirection"
+    >
+      <span
+        class="text-[10px] w-[14px] h-[14px] flex items-center justify-center font-medium"
+        icon
+      >
+        RTL
+      </span>
+    </a>
+
+    <a
+      data:device="desktop"
+      class="flex p-1.5 ms-4 rounded-md shadow-md z-10 items-center justify-center shadow-sm hover:text-primary cursor-pointer bg-gray-50 text-gray-400 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+      s:on-click="ToggleDevice"
+    >
+      <span class="material outlined text-sm" icon>smartphone</span>
+    </a>
+
+    <a
+      active-class="bg-gray-200 text-gray-500 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+      default-class="bg-gray-50 text-gray-400 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100"
+      data:active="true"
+      class="flex p-1.5 ms-2 rounded-md shadow-md z-10 items-center justify-center shadow-sm hover:text-primary cursor-pointer bg-gray-200 text-gray-500 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+      s:on-click="ToggleCode"
+    >
+      <span class="material outlined text-sm">code</span>
+    </a>
+
+    <a
+      class="bg-gray-50 ms-2 text-gray-400 flex p-1.5 rounded-md shadow-md z-10 items-center justify-center shadow-sm hover:text-primary hidden dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 cursor-pointer dark:hover:bg-gray-700"
+      target="_blank"
+      href="/example/{{ $param.id }}"
+      maximize
+    >
+      <span class="material outlined text-sm">open_in_new</span>
+    </a>
+  </div>
+
+  <div
+    class="dev-canvas h-[calc(100vh-48px)] max-h-[calc(100vh-48px)] flex flex-col items-center justify-center text-gray-100 p-6"
+    preview-wrapper
+  >
+    <div
+      class="flex justify-center items-center h-full animate-spin rounded-lg"
+      spinner
+    >
+      <span class="material outlined text-gray-400 text-2xl">autorenew</span>
+    </div>
+    <iframe
+      src="/examples/{{ $param.id }}"
+      style="width: 100%; height: 100%; border: none; display: none"
+      class="rounded-lg"
+      preview
+    ></iframe>
+  </div>
+
+  <div
+    class="bg-gray-50 h-[50vh] flex flex-col dark:bg-gray-800 dark:text-gray-200 rounded-b-lg absolute bottom-0 left-0 right-0 w-full"
+    code
+  >
+    <div
+      class="text-sm font-medium text-center bg-gray-50 text-gray-500 border-b border-t border-gray-100 flex items-center justify-between dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700"
+    >
+      <ul class="flex flex-wrap -mb-px ps-4">
+        <li s:for="source" class="me-2 text-xs">
+          <a data:active="{{ index == 0 }}" class="inline-block py-2.5">
+            <span
+              data-link="{{item.name}}"
+              active-class="text-gray-100 bg-gray-950 dark:text-gray-950 dark:bg-gray-100 font-medium cursor-default"
+              default-class="text-gray-500 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+              class="p-1.5 rounded-lg text-2xs
+              {{ 
+                  index == 0 
+                    ? 'text-gray-100 bg-gray-950 dark:text-gray-950 dark:bg-gray-100 font-medium cursor-default' 
+                    : 'text-gray-500 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer' 
+              }}
+              "
+              tab
+            >
+              {{item.name}}
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="flex items-center mr-1">
+        <Copy
+          is="/example/[id]/action"
+          id="copy"
+          class="copy"
+          icon="content_copy"
+          title="Copy to clipboard"
+        ></Copy>
+
+        <Download
+          is="/example/[id]/action"
+          id="download"
+          class="download"
+          icon="download"
+          title="Download source code"
+        ></Download>
+      </div>
+    </div>
+
+    <div
+      s:for="source"
+      class="
+        code text-sm
+        prose
+        prose-slate
+        dark:prose-invert
+        h-full !max-w-none overflow-y-auto 
+        {{ index == 0 ? '' : 'hidden' }}
+      "
+      name="{{ item.name }}"
+      tab-content
+    >
+      <pre
+        class="language-{{ item.lang }} h-full p-4"
+        style="border-top-left-radius: 0; border-top-right-radius: 0"
+        dir="ltr"
+      >
+{{ item.code }}</pre
+      >
+    </div>
+  </div>
+</div>
+
+<!-- Global Message Toast -->
+<Toast
+  is="/flowbite/components/toast"
+  id="message"
+  class="message"
+  position="bottom-right"
+  duration="5000"
+></Toast>

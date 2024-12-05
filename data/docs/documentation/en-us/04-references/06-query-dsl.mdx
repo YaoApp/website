@@ -1,0 +1,48 @@
+---
+title: Query DSL
+description: The detailed reference for the Yao Query DSL.
+---
+
+Yao Query DSL is used to query data from the database or other data sources. It is a powerful tool for filtering, sorting, and aggregating data to get the desired results.
+
+```json
+{
+  "from": "pets",
+  "debug": true,
+  "select": [
+    "category_id",
+    "category.category_name",
+    ":COUNT(pets.id) as total"
+  ],
+  "joins": [
+    {
+      "left": true,
+      "from": "pet_categories as category",
+      "key": "category_id",
+      "foreign": "category.id"
+    }
+  ],
+  "wheres": [
+    { "field": "pets.created_at", ">=": "from" },
+    { "field": "pets.created_at", "<=": "to" }
+  ],
+  "groups": ["category_id"]
+}
+```
+
+## Table of Contents
+
+👉 [Query DSL Reference](reference/overview)
+
+| Section                                | Description                                       |
+| -------------------------------------- | ------------------------------------------------- |
+| [Overview](reference/overview)         | An introduction to the Query DSL and its purpose. |
+| [Basics Usage](reference/basics-usage) | Basic usage of the Query DSL.                     |
+| [Select](reference/select)             | Selecting fields from the data source.            |
+| [Wheres](reference/wheres)             | Filtering data based on conditions.               |
+| [Joins](reference/joins)               | Joining multiple tables to get related data.      |
+| [Groups](reference/groups)             | Grouping data based on fields.                    |
+| [Orders](reference/orders)             | Sorting data based on fields.                     |
+| [Limits](reference/limits)             | Limiting the number of records returned.          |
+| [Subqueries](reference/subqueries)     | Using subqueries to get data from nested queries. |
+| [Unions](reference/unions)             | Combining multiple queries into a single result.  |

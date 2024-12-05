@@ -1,0 +1,150 @@
+{
+  "name": "Releases",
+  "action": {
+    "bind": { "table": "release" }
+  },
+  "layout": {
+    "primary": "id",
+    "actions": [
+      {
+        "title": "Save",
+        "icon": "icon-save",
+        "style": "primary",
+        "showWhenAdd": true,
+        "action": [{ "name": "Submit", "type": "Form.submit" }]
+      },
+      {
+        "title": "Delete",
+        "icon": "icon-trash-2",
+        "style": "danger",
+        "action": [
+          {
+            "name": "Confirm",
+            "type": "Common.confirm",
+            "payload": {
+              "title": "Please confirm to delete []",
+              "content": "This action is irreversible!"
+            }
+          },
+          { "name": "Delete", "type": "Table.delete", "payload": {} }
+        ]
+      },
+      {
+        "title": "Close",
+        "icon": "icon-arrow-left",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          { "name": "CloseModal", "type": "Common.closeModal", "payload": {} }
+        ]
+      }
+    ],
+    "form": {
+      "sections": [
+        {
+          "columns": [
+            { "name": "Version", "width": 12 },
+            { "name": "Status", "width": 12 },
+            { "name": "Summary", "width": 24 },
+            { "name": "Release Date", "width": 12 },
+            { "name": "Download Links", "width": 24 }
+          ]
+        },
+        {
+          "title": "International Summaries",
+          "columns": [
+            { "name": "Summary (Chinese)", "width": 24 },
+            { "name": "Summary (Traditional Chinese)", "width": 24 },
+            { "name": "Summary (Japanese)", "width": 24 }
+          ]
+        },
+        {
+          "title": "Additional Information",
+          "columns": [
+            { "name": "Release Notes Link", "width": 24 },
+            { "name": "Sort", "width": 12 }
+          ]
+        }
+      ]
+    }
+  },
+  "fields": {
+    "form": {
+      "Version": {
+        "bind": "version",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Enter version" }
+        }
+      },
+      "Summary": {
+        "bind": "summary",
+        "edit": {
+          "type": "TextArea",
+          "props": { "placeholder": "Enter summary" }
+        }
+      },
+      "Summary (Chinese)": {
+        "bind": "summary_zh-cn",
+        "edit": {
+          "type": "TextArea",
+          "props": { "placeholder": "Enter Chinese summary" }
+        }
+      },
+      "Summary (Traditional Chinese)": {
+        "bind": "summary_zh-hk",
+        "edit": {
+          "type": "TextArea",
+          "props": { "placeholder": "Enter Traditional Chinese summary" }
+        }
+      },
+      "Summary (Japanese)": {
+        "bind": "summary_ja-jp",
+        "edit": {
+          "type": "TextArea",
+          "props": { "placeholder": "Enter Japanese summary" }
+        }
+      },
+      "Release Notes Link": {
+        "bind": "release_notes_link",
+        "edit": {
+          "type": "Input",
+          "props": { "placeholder": "Enter release notes link" }
+        }
+      },
+      "Release Date": {
+        "bind": "published_at",
+        "edit": {
+          "type": "DatePicker",
+          "props": { "showTime": true }
+        }
+      },
+      "Download Links": {
+        "bind": "download_links",
+        "edit": {
+          "type": "CodeEditor",
+          "props": { "placeholder": "Enter download links in JSON format" }
+        }
+      },
+      "Sort": {
+        "bind": "sort",
+        "edit": {
+          "type": "InputNumber",
+          "props": { "min": 0, "max": 10000 }
+        }
+      },
+      "Status": {
+        "bind": "status",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "options": [
+              { "label": "Draft", "value": "draft" },
+              { "label": "Published", "value": "published" }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

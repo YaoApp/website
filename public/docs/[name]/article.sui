@@ -1,0 +1,95 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+</head>
+  <body s:ns="ns_8c66fb6c203fa487" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><div type="article">
+  <s:set name="article" value="{% data %}"></s:set>
+  <div class="w-full text-gray-400 dark:text-gray-500" loading=""></div>
+  <div class="w-full prose md:px-6 !max-w-none prose-gray dark:prose-invert hidden" content="" s:raw="true">
+    <pre id="markdown">{{ article.content }}</pre>
+  </div>
+</div>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_8c66fb6c203fa487" s:cn="comp__docs__name__article" s:hash="script_abe6997820dad997" type="text/javascript">
+var __defProp=Object.defineProperty;var __getOwnPropSymbols=Object.getOwnPropertySymbols;var __hasOwnProp=Object.prototype.hasOwnProperty,__propIsEnum=Object.prototype.propertyIsEnumerable;var __defNormalProp=(obj,key,value)=>key in obj?__defProp(obj,key,{enumerable:!0,configurable:!0,writable:!0,value}):obj[key]=value,__spreadValues=(a,b)=>{for(var prop in b||(b={}))__hasOwnProp.call(b,prop)&&__defNormalProp(a,prop,b[prop]);if(__getOwnPropSymbols)for(var prop of __getOwnPropSymbols(b))__propIsEnum.call(b,prop)&&__defNormalProp(a,prop,b[prop]);return a};this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(selector){return new __Query(__self.root).find(selector)},this.query=function(selector){return __self.root.querySelector(selector)},this.queryAll=function(selector){return __self.root.querySelectorAll(selector)},this.render=function(name,data,option){return new __Render(__self,option).Exec(name,data)},this.emit=function(name,data){const event=new CustomEvent(name,{detail:data});__self.root.dispatchEvent(event)};const root=$(arguments[0]),content=root.find("[content]"),loading=root.find("[loading]");function Init(){const{Remarkable}=remarkable,raw=(content.find("#markdown").html()||"Not Found").replace(/&nbsp;/g," ").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&").replace(/&quot;/g,'"').replace(/&apos;/g,"'").replace(/&copy;/g,"\xA9").replace(/&reg;/g,"\xAE"),parser=new Remarkable({Remarkable:!0});parser.renderer.rules.component=componentRender,parser.inline.ruler.before("text","component",componentParser),parser.renderer.rules.fence=(tokens,idx,options,env,self)=>{const token=tokens[idx],lang=token.params||"teplaintextxt",languageClass=`language-${lang}`,content2=highlight(token.content,lang);return`<pre class="code-canvas ${languageClass}"><code>${content2}</code></pre>`};const html=parser.render(raw);content.html(html);const outline=outlineParser();$("#outline").trigger("change",[outline]),content.removeClass("hidden"),loading.addClass("hidden")}function outlineParser(){const scrollTo=elm=>{const target=$(elm);if(target.length>0){const top=target.offset().top||!1;top&&(window.scrollTo({top:top-96,behavior:"smooth"}),history.pushState?history.pushState(null,null,elm):location.hash=elm)}},outline=[];return(content.find("h2")||[]).each((index,title)=>{const text=$(title).text(),id=text.toLowerCase().replace(/ /g,"-");$(title).attr("id",id),$(title).addClass("hover:text-blue-500 cursor-pointer"),$(title).on("click",()=>{scrollTo(`#${escapeJQuerySelector(id)}`)}),outline.push({id,title:text,link:`#${id}`})}),(document.querySelectorAll('a[href^="#"]')||[]).forEach(link=>{$(link).on("click",e=>{e.preventDefault();const href=$(link).attr("href");scrollTo(href)})}),outline}function componentParser(state,startLine,endLine,silent){const start=state.pos;if(state.src.charCodeAt(start)!==123||state.src.charCodeAt(start+1)!==123||state.src.charCodeAt(start+2)!==60)return!1;const tagEnd=state.src.indexOf(">}}",start+3);if(tagEnd===-1)return!1;if(silent)return!0;const content2=state.src.slice(start+3,tagEnd).trim(),parts=content2.split(" ");if(parts.length<2)return!1;const name=parts[0].trim(),query=parts.slice(1),params={};return query.forEach(q=>{let[key,value]=q.split("=");key=key.trim(),value=value.trim().replace(/"/g,"").replace(/'/g,""),params[key]=value}),!params.id||params.id.length==""?!1:(state.pos=tagEnd+3,state.tokens.push({type:"component",params:__spreadValues({name},params),content:content2}),!0)}function componentRender(tokens,idx){const name=tokens[idx].params.name,is=tokens[idx].params.id,height=tokens[idx].params.height||"300px",url=`/${name}/${is}`,id=`${name}-${is}`.replace(/\//g,"-");return`
+  <div style="height: ${height};" class="overflow-hidden relative">
+    <div id="${id}" class="flex justify-center items-center h-full animate-spin">
+        <span class="material outlined text-gray-400 text-2xl">autorenew</span>
+    </div>
+    <iframe src="${url}" onload="$('#${id}').hide();$(this).show();" style="width: 100%; height: ${height}; border: none; display:none "></iframe>
+  </div>
+  `}function highlight(str,lang){if(lang&&hljs.getLanguage(lang))try{return hljs.highlight(str,{language:lang,ignoreIllegals:!0}).value}catch(err){}try{return hljs.highlightAuto(str).value}catch(err){}return""}function escapeJQuerySelector(id){return id.replace(/([ ;?%&,.+*~':"!^$[\]()=>|/@])/g,"\\$1")}Init(),this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(event){const name=this.getAttribute("s:cn"),target=event.detail.target,key=event.detail.key,value=event.detail.value,component=new window[name](this);new __sui_state(component).Set(key,value,target)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"api":null,"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+</body></html>

@@ -1,0 +1,147 @@
+<section
+  class="container mx-auto py-4 px-8 lg:px-12 flex flex-col items-center"
+>
+  <ul
+    class="hidden lg:flex border-b border-gray-100 dark:border-gray-800 space-x-4 max-w-[1200px] w-full"
+  >
+    <li
+      s:for="categories"
+      class="
+        px-1 py-2.5 text-sm font-medium text-gray-500 dark:text-gray-200
+        hover:text-primary-500 dark:hover:text-primary-400 cursor-pointer
+        border-b-2 
+        {{ item.name == articles.category ? 'text-primary-500 dark:text-primary-400  border-primary-500 dark:border-primary-400' : 'border-transparent ' }}
+      "
+      s:data-category="{{ item.name }}"
+      s:on-click="LoadCategory"
+      category
+    >
+      {{ item.name }}
+    </li>
+  </ul>
+
+  <div s:render="articles" class="min-h-[calc(100vh-500px)]">
+    <!-- Empty State -->
+    <div
+      s:if="articles.total == 0"
+      class="flex flex-col items-center justify-center mt-12"
+    >
+      <h2 class="text-lg text-gray-300 dark:text-gray-700 mt-6">
+        No articles found
+      </h2>
+    </div>
+
+    <!-- Posts -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:p-4 lg:mt-4 max-w-[1200px] w-full"
+    >
+      <a
+        s:for="articles.data"
+        class="flex flex-col border w-full border-gray-100 rounded-lg shadow-md shadow-gray-100 cursor-pointer hover:shadow-gray-200 dark:border-gray-800 dark:shadow-gray-900 dark:hover:shadow-gray-950 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 relative"
+        href="/blog/{{ item.slug }}"
+      >
+        <div
+          class="w-full h-[160px] bg-cover bg-center rounded-t-lg"
+          style="background-image: url('{{ item.cover }}')"
+        ></div>
+
+        <!-- Start of Summary -->
+        <div class="flex flex-col w-full justify-between min-h-[190px]">
+          <div class="p-4 lg:p-6 md:min-h-[168px] lg:min-h-[212px]">
+            <h2
+              class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+              style="
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                line-clamp: 2;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+              "
+            >
+              {{ item.title }}
+            </h2>
+            <p
+              class="text-sm text-gray-400 dark:text-gray-500 max-h-20 overflow-hidden"
+              style="
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                line-clamp: 3;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+              "
+            >
+              {{ item.summary }}
+            </p>
+
+            <div class="pt-4">
+              <span
+                class="px-2 w-auto py-1 text-xs text-gray-700 dark:text-gray-300 bg-primary-50 dark:bg-primary-950 rounded-lg font-medium hover:bg-primary-100 dark:hover:bg-primary-900"
+                s:data-category="{{ item.categories[0] }}"
+                s:on-click="LoadCategory"
+              >
+                {{ item.categories[0] }}
+              </span>
+            </div>
+          </div>
+
+          <div class="flex p-4 lg:p-6 lg:pt-0">
+            <img
+              src="{{ item.firstAuthor.avatar }}"
+              class="w-10 h-10 rounded-full"
+            />
+            <div class="flex justify-between w-full items-center">
+              <div class="flex flex-col ml-2 text-sm">
+                <span class="text-gray-700 dark:text-gray-300 font-medium">
+                  {{ item.firstAuthor.name }}
+                </span>
+                <span class="text-gray-500 dark:text-gray-300">
+                  {{ item.date}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Summary -->
+      </a>
+    </div>
+
+    <!-- Pagination -->
+    <div
+      s:if="articles.pagecnt > 1"
+      class="flex justify-center mt-6 space-x-4 max-w-[1200px] w-full"
+    >
+      <button
+        size="sm"
+        is="/flowbite/components/button"
+        color="light"
+        disabled="{{ articles.prev == -1 ? 'true' : 'false' }}"
+        s:data-page="{{ articles.prev }}"
+        s:on-click="LoadPage"
+      >
+        <span s:tran>Previous</span>
+      </button>
+      <div s:for="articles.pages" s:for-item="page">
+        <button
+          size="sm"
+          is="/flowbite/components/button"
+          color="light"
+          disabled="{{ page == articles.page ? 'true' : 'false' }}"
+          s:data-page="{{ page }}"
+          s:on-click="LoadPage"
+        >
+          {{ page }}
+        </button>
+      </div>
+      <button
+        size="sm"
+        is="/flowbite/components/button"
+        color="light"
+        disabled="{{ articles.next == -1 ? 'true' : 'false' }}"
+        s:data-page="{{ articles.next }}"
+        s:on-click="LoadPage"
+      >
+        <span s:trans>Next</span>
+      </button>
+    </div>
+  </div>
+</section>

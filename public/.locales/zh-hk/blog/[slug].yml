@@ -1,0 +1,29 @@
+formatter: scripts.tests.formatter
+keys:
+    trans__components_theme_1: 切換到暗模式
+    trans__components_theme_2: Switch to Light Mode
+    trans__components_theme_3: Switch to Light Mode
+    trans__footer_1: 聯絡我們
+    trans__footer_social_1: 查看Github
+    trans__footer_social_2: 查看Github
+    trans__footer_social_3: 加入Discord社區
+    trans__footer_social_4: 在Discord上加入社區
+    trans__footer_social_5: 在Twitter關注我們/X
+    trans__footer_social_6: 在Twitter關注我們/X
+    trans__footer_social_7: 訂閱YouTube頻道
+    trans__footer_social_8: 訂閱YouTube頻道
+    trans__header_1: Overview
+    trans__header_2: Uses
+    trans__header_3: 下載
+    trans__header_4: Documentation
+    trans__header_5: 部落格
+    trans__header_6: 部署
+    trans__header_7: App Engine
+    trans__header_8: View on Github
+    trans__header_9: View on Github
+    trans__header_10: Join Discord community
+    trans__header_11: Join community on Discord
+    trans__header_12: Deploy to Moapi Cloud
+    trans__header_13: Join Discord community
+direction: ltr
+timezone: "+8:00"

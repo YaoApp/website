@@ -1,0 +1,95 @@
+---
+title: Adding Your Component
+description: A guide to adding your custom component to the Yao.
+---
+
+This section guides you through adding a custom component to Yao. You can use it in your application to create custom interfaces and widgets.
+
+## Step 1: Clone the XGEN Repository
+
+To add a custom component, you need to clone the XGEN repository to your local machine. XGEN is the default interface engine for building admin panels in Yao.
+
+```bash
+# Clone the XGEN repository
+git clone https://github.com/yaoapp/xgen.git /your/directory/xgen
+```
+
+## Step 2: Run the XGEN development
+
+You need start the yao http server, it's the backend server for the xgen development server.
+
+```bash
+cd /path/to/your/project
+yao start
+```
+
+Then you can start the xgen development server.
+
+```bash
+cd /your/directory/xgen
+pnpm install
+pnpm dev
+```
+
+Through the xgen dev server to visit admin panel.
+
+## Step 3: Create a New Component
+
+Reference the Input component code to implement your own component. Place the component in the `packages/xgen/components/edit` folder.
+
+👉 [packages/xgen/components/edit/Input](https://github.com/YaoApp/xgen/blob/main/packages/xgen/components/edit/Input/index.tsx)
+
+```tsx
+// packages/xgen/components/edit/YourComponent/index.tsx
+import { Input } from "antd";
+
+import { Item } from "@/components";
+import { getLocale } from "@umijs/max";
+
+import type { InputProps } from "antd";
+import type { Component } from "@/types";
+
+interface IProps extends InputProps, Component.PropsEditComponent {}
+
+const Index = (props: IProps) => {
+  const { __bind, __name, itemProps, ...rest_props } = props;
+  const is_cn = getLocale() === "zh-CN";
+
+  return (
+    <Item {...itemProps} {...{ __bind, __name }}>
+      <Input
+        placeholder={`Please input .... ${__name}`}
+        {...rest_props}
+      ></Input>
+    </Item>
+  );
+};
+
+export default window.$app.memo(Index);
+```
+
+## Step 4: Use the Component
+
+```json
+// ...
+{
+  "edit": {
+    "type": "YourComponent",
+    "props": {
+      // ...
+    }
+  }
+}
+// ...
+```
+
+## Step 5: Build the Component Library
+
+To build the component library, you need to run the following command:
+
+```bash
+cd /your/directory/xgen
+pnpm build
+```
+
+After building the component library, place the compiled files in the `public` directory, or host them on a CDN.

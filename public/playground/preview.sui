@@ -1,0 +1,107 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+<style s:ns="ns_a14147c0dd026283" s:cn="__page" rel="stylesheet" type="text/css">
+:root{--r: 51;--g: 113;--b: 252;--h: 221;--s: 97.1%;--l: 59.4%;--color_main: #3371fc;--color_text: #111;--color_text_grey: #999;--color_text_contrast: black;--color_title: #363636;--color_title_grey: #a9abac;--color_warning: #faad14;--color_success: #00c853;--color_danger: #e62965;--color_placeholder: #727272;--color_page_title: #363636;--color_bg: #f0f0f0;--color_bg_nav: #f9f9f9;--color_bg_menu: #ffffff;--color_border: #e6e6e6;--color_border_light: rgba(0, 0, 0, .06);--color_border_soft: rgba(0, 0, 0, .03);--shadow: 0 0 30px rgba(0, 0, 0, .081);--radius: 6px;--fontsize: 14px;--base_height: 38px;--max_width: 1200px;--setting_width: 720px}[data-theme=dark]{--r: 69;--g: 128;--b: 255;--h: 221;--s: 100%;--l: 63.5%;--color_main: #4580ff;--color_text: #a2a5b9;--color_text_grey: #aaa;--color_text_contrast: white;--color_title: #aaaab3;--color_placeholder: #727272;--color_page_title: #999;--color_bg: #3b3b41;--color_bg_nav: #232326;--color_bg_menu: #2f2f34;--color_border: #404046;--color_border_light: rgba(255, 255, 255, .06);--color_border_soft: rgba(255, 255, 255, .03);--shadow: 0 0 30px rgba(255, 255, 255, .06)}body{font-family:Open Sans,sans-serif;font-size:var(--fontsize);line-height:1.5;color:var(--color_text);margin:0;padding:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;border-radius:var(--radius);width:100vw;overflow-x:hidden;background-color:var(--color_bg_menu)}.label{font-weight:700;font-size:12.6px;color:var(--color_text);padding-top:1px;padding-bottom:6px;display:block}.panel{background-color:var(--color_bg_nav);border-radius:var(--radius)}
+
+</style>
+</head>
+  <body s:ns="ns_a14147c0dd026283" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><div class="flex flex-col h-[100vh] overflow-hidden">
+  <div class="label">Preview</div>
+  <div class="h-auto h-full">
+    <!-- Placeholder for the preview -->
+    <div s:if="len($query.url) == 0 || $query.url[0] == &#39;&#39;" class="flex items-center justify-center h-full panel">
+      <div class="text-center p-6">
+        <div class="text-sm text-gray-500">Please enter a URL to preview</div>
+      </div>
+    </div>
+
+    <!-- If the URL is valid, show the preview -->
+    <div s:else="" class="h-[100vh] panel">
+      <!-- Loading indicator -->
+      <div class="flex items-center justify-center h-full overflow-scroll" id="loading">
+        <div class="text-center p-6">
+          <div class="text-sm text-gray-500">Loading...</div>
+        </div>
+      </div>
+      <iframe id="preview" class="flex-1 hidden border-0 radius-[6px] overflow-auto" s:on-load="OnPreviewLoaded" height="100%" width="100%" frameborder="0" s:event="ns_a14147c0dd026283-2" s:event-cn="__page"></iframe>
+    </div>
+  </div>
+</div>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_a14147c0dd026283" s:cn="comp__playground_preview" s:hash="script_54bb1ac3813857f3" type="text/javascript">
+this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,e,n){return new __Render(__self,n).Exec(t,e)},this.emit=function(t,e){const n=new CustomEvent(t,{detail:e});__self.root.dispatchEvent(n)};const self=this;self.OnPreviewLoaded=function(){var t,e;(t=$Query("#preview"))==null||t.removeClass("hidden"),(e=$Query("#loading"))==null||e.addClass("hidden")};function init(){var u,c;const{$query:t}=__sui_data,{url:e,__token:n,__theme:o}=t||{},s=(o==null?void 0:o[0])||"light";document.documentElement.removeAttribute("data-theme"),document.documentElement.setAttribute("data-theme",s);const i=decodeURIComponent(decodeHtmlEntity((e==null?void 0:e[0])||"")),r=i.includes("&")?`${i}&__token=${n}&__hidemenu=1`:`${i}?__token=${n}&__hidemenu=1`;(c=(u=$Query("#preview"))==null?void 0:u.elm())==null||c.setAttribute("src",r)}function decodeHtmlEntity(t){const e=document.createElement("textarea");return e.innerHTML=t,e.value}document.addEventListener("DOMContentLoaded",init),this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const e=this.getAttribute("s:cn"),n=t.detail.target,o=t.detail.key,s=t.detail.value,i=new window[e](this);new __sui_state(i).Set(o,s,n)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"dataCache":0,"api":null,"root":"/","title":"","guard":"","cacheStore":"cache","cache":0}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+</body></html>

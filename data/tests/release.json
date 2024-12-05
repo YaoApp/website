@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "version": "v0.10.4-rc.1",
+    "summary": "The latest version of Yao. It includes all the latest features and bug fixes.",
+    "summary_zh-cn": "最新版本的 Yao，包含所有最新的功能和修复。",
+    "summary_zh-hk": "最新版本的 Yao，包含所有最新的功能和修復。",
+    "summary_ja-jp": "Yao の最新バージョンには、すべての新機能とバグ修正が含まれています。",
+    "release_notes_link": "/blog/releases-yao-v0.10.4-rc1",
+    "published_at": "2024-12-04 12:00:00",
+    "download_links": [
+      {
+        "name": "MacOS M1/M2/M3/M4",
+        "link": "https://github.com/YaoApp/yao/releases/download/v0.10.4-rc.1/yao-0.10.4-rc.1-darwin-arm64.zip",
+        "md5": "edd95e439c92b7a503b08e4564cae2fe"
+      },
+      {
+        "name": "MacOS Intel",
+        "link": "https://github.com/YaoApp/yao/releases/download/v0.10.4-rc.1/yao-0.10.4-rc.1-darwin-amd64.zip",
+        "md5": "1c5e6dab0165159569aa9be550291bc9"
+      },
+      {
+        "name": "Linux x86",
+        "link": "https://github.com/YaoApp/yao/releases/download/v0.10.4-rc.1/yao-0.10.4-rc.1-linux-amd64.zip",
+        "md5": "493abf6213194ee58ccc470e6a9d7980"
+      },
+      {
+        "name": "Linux Arm64",
+        "link": "https://github.com/YaoApp/yao/releases/download/v0.10.4-rc.1/yao-0.10.4-rc.1-linux-arm64.zip",
+        "md5": "914ea234fedfcf43b55815dbcf11c494"
+      }
+    ],
+    "sort": 1,
+    "status": "published",
+    "created_at": "2024-12-04 12:00:00",
+    "updated_at": "2024-12-04 12:00:00"
+  }
+]

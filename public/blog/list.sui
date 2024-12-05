@@ -1,0 +1,403 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+<script s:ns="ns_e819091ee072191a" s:cn="comp__flowbite_components_button" s:hash="script_1eb9da5f2126a2eb" type="text/javascript">
+function comp__flowbite_components_button( component ){
+  this.root=component;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,r,e){return new __Render(__self,e).Exec(t,r)},this.emit=function(t,r){const e=new CustomEvent(t,{detail:r});__self.root.dispatchEvent(e)};const colorStyles={primary:"text-white bg-primary-700 hover:bg-primary-800 dark:bg-dark-primary-600 dark:hover:bg-dark-primary-700",dark:"text-gray-100 bg-gray-900  hover:bg-gray-700 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200",light:"text-gray-900 bg-white box-border border border-gray-200 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-700",danger:"text-white bg-danger-700 hover:bg-danger-800 dark:bg-dark-danger-600 dark:hover:bg-dark-danger-700",success:"text-white bg-success-700 hover:bg-success-800 dark:bg-dark-success-600 dark:hover:bg-dark-success-700",warning:"text-white bg-warning-700 hover:bg-warning-800 dark:bg-dark-warning-600 dark:hover:bg-dark-warning-700",info:"text-white bg-info-700 hover:bg-info-800 dark:bg-dark-info-600 dark:hover:bg-dark-info-700",none:""},disabledStyles={primary:"text-white bg-primary-300 dark:bg-dark-primary-300",dark:"text-gray-300 bg-gray-700 dark:bg-gray-700",light:"text-gray-300 bg-white box-border border border-gray-200 dark:text-gray-700 dark:border-gray-800 dark:bg-gray-900",danger:"text-white bg-danger-300 dark:bg-dark-danger-300",success:"text-white bg-success-300 dark:bg-dark-success-300",warning:"text-white bg-warning-300 dark:bg-dark-warning-300",info:"text-white bg-info-300 dark:bg-dark-info-300",none:""};function removeClass(t,r){r.split(" ").forEach(e=>{e&&t.classList.contains(e)&&t.classList.remove(e)})}function addClass(t,r){r.split(" ").forEach(e=>{e&&!t.classList.contains(e)&&t.classList.add(e)})}this.watch={disabled:t=>{const r=this.root.querySelector("[button]"),e=r.getAttribute("color")||"primary";if(t){removeClass(r,colorStyles[e]),addClass(r,disabledStyles[e]),r.setAttribute("disabled","true");return}removeClass(r,disabledStyles[e]),addClass(r,colorStyles[e]),r.removeAttribute("disabled")},loading:t=>{const r=this.root.querySelector("[icon]"),e=this.root.querySelector("[button]");if(t){r.classList.add("animate-spin"),r.innerHTML="progress_activity",e.setAttribute("disabled","true");return}const i=r.getAttribute("name");r.classList.remove("animate-spin"),r.innerHTML=i,e.removeAttribute("disabled")}},this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const r=this.getAttribute("s:cn"),e=t.detail.target,i=t.detail.key,a=t.detail.value,n=new window[r](this);new __sui_state(n).Set(i,a,e)}),__self.once&&__self.once());
+}
+
+</script>
+</head>
+  <body s:ns="ns_e7d77f6527539960" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><section class="container mx-auto py-4 px-8 lg:px-12 flex flex-col items-center">
+  <ul class="hidden lg:flex border-b border-gray-100 dark:border-gray-800 space-x-4 max-w-[1200px] w-full">
+    <li s:for="categories" class="
+        px-1 py-2.5 text-sm font-medium text-gray-500 dark:text-gray-200
+        hover:text-primary-500 dark:hover:text-primary-400 cursor-pointer
+        border-b-2 
+        {{ item.name == articles.category ? &#39;text-primary-500 dark:text-primary-400  border-primary-500 dark:border-primary-400&#39; : &#39;border-transparent &#39; }}
+      " data:category="{{ item.name }}" s:on-click="LoadCategory" category="" s:event="ns_e7d77f6527539960-2" s:event-cn="__page">
+      {{ item.name }}
+    </li>
+  </ul>
+
+  <div s:render="articles" class="min-h-[calc(100vh-500px)]">
+    <!-- Empty State -->
+    <div s:if="articles.total == 0" class="flex flex-col items-center justify-center mt-12">
+      <h2 class="text-lg text-gray-300 dark:text-gray-700 mt-6">
+        No articles found
+      </h2>
+    </div>
+
+    <!-- Posts -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:p-4 lg:mt-4 max-w-[1200px] w-full">
+      <a s:for="articles.data" class="flex flex-col border w-full border-gray-100 rounded-lg shadow-md shadow-gray-100 cursor-pointer hover:shadow-gray-200 dark:border-gray-800 dark:shadow-gray-900 dark:hover:shadow-gray-950 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 relative" href="/blog/{{ item.slug }}">
+        <div class="w-full h-[160px] bg-cover bg-center rounded-t-lg" style="background-image: url(&#39;{{ item.cover }}&#39;)"></div>
+
+        <!-- Start of Summary -->
+        <div class="flex flex-col w-full justify-between min-h-[190px]">
+          <div class="p-4 lg:p-6 md:min-h-[168px] lg:min-h-[212px]">
+            <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2" style="
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                line-clamp: 2;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+              ">
+              {{ item.title }}
+            </h2>
+            <p class="text-sm text-gray-400 dark:text-gray-500 max-h-20 overflow-hidden" style="
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                line-clamp: 3;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+              ">
+              {{ item.summary }}
+            </p>
+
+            <div class="pt-4">
+              <span class="px-2 w-auto py-1 text-xs text-gray-700 dark:text-gray-300 bg-primary-50 dark:bg-primary-950 rounded-lg font-medium hover:bg-primary-100 dark:hover:bg-primary-900" data:category="{{ item.categories[0] }}" s:on-click="LoadCategory" s:event="ns_e7d77f6527539960-3" s:event-cn="__page">
+                {{ item.categories[0] }}
+              </span>
+            </div>
+          </div>
+
+          <div class="flex p-4 lg:p-6 lg:pt-0">
+            <img src="{{ item.firstAuthor.avatar }}" class="w-10 h-10 rounded-full"/>
+            <div class="flex justify-between w-full items-center">
+              <div class="flex flex-col ml-2 text-sm">
+                <span class="text-gray-700 dark:text-gray-300 font-medium">
+                  {{ item.firstAuthor.name }}
+                </span>
+                <span class="text-gray-500 dark:text-gray-300">
+                  {{ item.date}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Summary -->
+      </a>
+    </div>
+
+    <!-- Pagination -->
+    <div s:if="articles.pagecnt &gt; 1" class="flex justify-center mt-6 space-x-4 max-w-[1200px] w-full">
+      <div namespace="" id="" type="flowbite-button" class="flowbite-button" state-loading="false" state-disabled="{{ articles.prev == -1 ? &#39;true&#39; : &#39;false&#39; }}" s:public="/" s:assets="/assets" prop:size="sm" prop:color="light" prop:disabled="{{ articles.prev == -1 ? &#39;true&#39; : &#39;false&#39; }}" data:page="{{ articles.prev }}" s:on-click="LoadPage" s:event="ns_e7d77f6527539960-4" s:event-cn="__page" s:ns="ns_e819091ee072191a" s:cn="comp__flowbite_components_button" s:ready="comp__flowbite_components_button()" s:parent="ns_e7d77f6527539960">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value=""></s:set>
+  <s:set name="size" value="sm"></s:set>
+  <s:set name="color" value="light"></s:set>
+  <s:set name="href" value=""></s:set>
+  <s:set name="target" value=""></s:set>
+  <s:set name="icon" value=""></s:set>
+  <s:set name="iconClass" value=""></s:set>
+  <s:set name="disabled" value="{{ articles.prev == -1 ? &#39;true&#39; : &#39;false&#39; }}"></s:set>
+  <s:set name="loading" value="false"></s:set>
+
+  <s:set name="sizes" value="{{ { 
+        &#39;xs&#39;: &#39;text-xs px-3 py-1.5&#39;, 
+        &#39;sm&#39;: &#39;text-sm px-3 py-1.5&#39;, 
+        &#39;base&#39;: &#39;text-sm px-4 py-2&#39;, 
+        &#39;lg&#39;: &#39;text-base px-5 py-2.5&#39;, 
+        &#39;xl&#39;: &#39;text-lg px-6 py-3&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+  <s:set name="colors" value="{{ {
+        &#39;primary&#39;: &#39;text-white bg-primary-700 hover:bg-primary-800 dark:bg-dark-primary-600 dark:hover:bg-dark-primary-700&#39;,
+        &#39;dark&#39;:   &#39;text-gray-100 bg-gray-900  hover:bg-gray-700 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200&#39;,
+        &#39;light&#39;:  &#39;text-gray-900 bg-white box-border border border-gray-200 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-700&#39;,
+        &#39;danger&#39;: &#39;text-white bg-danger-700 hover:bg-danger-800 dark:bg-dark-danger-600 dark:hover:bg-dark-danger-700&#39;,
+        &#39;success&#39;: &#39;text-white bg-success-700 hover:bg-success-800 dark:bg-dark-success-600 dark:hover:bg-dark-success-700&#39;,
+        &#39;warning&#39;: &#39;text-white bg-warning-700 hover:bg-warning-800 dark:bg-dark-warning-600 dark:hover:bg-dark-warning-700&#39;,
+        &#39;info&#39;: &#39;text-white bg-info-700 hover:bg-info-800 dark:bg-dark-info-600 dark:hover:bg-dark-info-700&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}
+  "></s:set>
+
+  <s:set name="disabledStyles" value="{{ {
+      &#39;primary&#39;: &#39;text-white bg-primary-300 dark:bg-dark-primary-300&#39;,
+      &#39;dark&#39;: &#39;text-gray-300 bg-gray-700 dark:bg-gray-700&#39;,
+      &#39;light&#39;: &#39;text-gray-300 bg-white box-border border border-gray-200 dark:text-gray-700 dark:border-gray-800 dark:bg-gray-900&#39;,
+      &#39;danger&#39;: &#39;text-white bg-danger-300 dark:bg-dark-danger-300&#39;,
+      &#39;success&#39;: &#39;text-white bg-success-300 dark:bg-dark-success-300&#39;,
+      &#39;warning&#39;: &#39;text-white bg-warning-300 dark:bg-dark-warning-300&#39;,
+      &#39;info&#39;: &#39;text-white bg-info-300 dark:bg-dark-info-300&#39;,
+      &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+
+  <a s:if="{{ href != &#39;&#39; }}" id="{{ id }}" class="
+        rounded-lg
+        flex justify-center items-center cursor-pointer
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" s:attr-disabled="True(disabled)" s:attr-loading="True(loading)" color="{{ color }}" button="">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{ icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39; }}  {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+        <span s:tran="">Previous</span>
+      
+  </a>
+
+  <button s:else="" name="{{ name }}" type="button" class="
+        rounded-lg    
+        flex justify-center items-center
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " s:attr-disabled="True(disabled) or True(loading)" s:attr-loading="True(loading)" color="{{ color }}" button="">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39;}} {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+        <span s:tran="">Previous</span>
+      
+  </button>
+</div>
+
+      <div s:for="articles.pages" s:for-item="page">
+        <div namespace="" id="" type="flowbite-button" class="flowbite-button" state-loading="false" state-disabled="{{ page == articles.page ? &#39;true&#39; : &#39;false&#39; }}" s:public="/" s:assets="/assets" prop:size="sm" prop:color="light" prop:disabled="{{ page == articles.page ? &#39;true&#39; : &#39;false&#39; }}" data:page="{{ page }}" s:on-click="LoadPage" s:event="ns_e7d77f6527539960-5" s:event-cn="__page" s:ns="ns_e818fc1ee0720303" s:cn="comp__flowbite_components_button" s:ready="comp__flowbite_components_button()" s:parent="ns_e7d77f6527539960">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value=""></s:set>
+  <s:set name="size" value="sm"></s:set>
+  <s:set name="color" value="light"></s:set>
+  <s:set name="href" value=""></s:set>
+  <s:set name="target" value=""></s:set>
+  <s:set name="icon" value=""></s:set>
+  <s:set name="iconClass" value=""></s:set>
+  <s:set name="disabled" value="{{ page == articles.page ? &#39;true&#39; : &#39;false&#39; }}"></s:set>
+  <s:set name="loading" value="false"></s:set>
+
+  <s:set name="sizes" value="{{ { 
+        &#39;xs&#39;: &#39;text-xs px-3 py-1.5&#39;, 
+        &#39;sm&#39;: &#39;text-sm px-3 py-1.5&#39;, 
+        &#39;base&#39;: &#39;text-sm px-4 py-2&#39;, 
+        &#39;lg&#39;: &#39;text-base px-5 py-2.5&#39;, 
+        &#39;xl&#39;: &#39;text-lg px-6 py-3&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+  <s:set name="colors" value="{{ {
+        &#39;primary&#39;: &#39;text-white bg-primary-700 hover:bg-primary-800 dark:bg-dark-primary-600 dark:hover:bg-dark-primary-700&#39;,
+        &#39;dark&#39;:   &#39;text-gray-100 bg-gray-900  hover:bg-gray-700 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200&#39;,
+        &#39;light&#39;:  &#39;text-gray-900 bg-white box-border border border-gray-200 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-700&#39;,
+        &#39;danger&#39;: &#39;text-white bg-danger-700 hover:bg-danger-800 dark:bg-dark-danger-600 dark:hover:bg-dark-danger-700&#39;,
+        &#39;success&#39;: &#39;text-white bg-success-700 hover:bg-success-800 dark:bg-dark-success-600 dark:hover:bg-dark-success-700&#39;,
+        &#39;warning&#39;: &#39;text-white bg-warning-700 hover:bg-warning-800 dark:bg-dark-warning-600 dark:hover:bg-dark-warning-700&#39;,
+        &#39;info&#39;: &#39;text-white bg-info-700 hover:bg-info-800 dark:bg-dark-info-600 dark:hover:bg-dark-info-700&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}
+  "></s:set>
+
+  <s:set name="disabledStyles" value="{{ {
+      &#39;primary&#39;: &#39;text-white bg-primary-300 dark:bg-dark-primary-300&#39;,
+      &#39;dark&#39;: &#39;text-gray-300 bg-gray-700 dark:bg-gray-700&#39;,
+      &#39;light&#39;: &#39;text-gray-300 bg-white box-border border border-gray-200 dark:text-gray-700 dark:border-gray-800 dark:bg-gray-900&#39;,
+      &#39;danger&#39;: &#39;text-white bg-danger-300 dark:bg-dark-danger-300&#39;,
+      &#39;success&#39;: &#39;text-white bg-success-300 dark:bg-dark-success-300&#39;,
+      &#39;warning&#39;: &#39;text-white bg-warning-300 dark:bg-dark-warning-300&#39;,
+      &#39;info&#39;: &#39;text-white bg-info-300 dark:bg-dark-info-300&#39;,
+      &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+
+  <a s:if="{{ href != &#39;&#39; }}" id="{{ id }}" class="
+        rounded-lg
+        flex justify-center items-center cursor-pointer
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" s:attr-disabled="True(disabled)" s:attr-loading="True(loading)" color="{{ color }}" button="">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{ icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39; }}  {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+          {{ page }}
+        
+  </a>
+
+  <button s:else="" name="{{ name }}" type="button" class="
+        rounded-lg    
+        flex justify-center items-center
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " s:attr-disabled="True(disabled) or True(loading)" s:attr-loading="True(loading)" color="{{ color }}" button="">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39;}} {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+          {{ page }}
+        
+  </button>
+</div>
+
+      </div>
+      <div namespace="" id="" type="flowbite-button" class="flowbite-button" state-loading="false" state-disabled="{{ articles.next == -1 ? &#39;true&#39; : &#39;false&#39; }}" s:public="/" s:assets="/assets" prop:size="sm" prop:color="light" prop:disabled="{{ articles.next == -1 ? &#39;true&#39; : &#39;false&#39; }}" data:page="{{ articles.next }}" s:on-click="LoadPage" s:event="ns_e7d77f6527539960-6" s:event-cn="__page" s:ns="ns_e818fb1ee0720150" s:cn="comp__flowbite_components_button" s:ready="comp__flowbite_components_button()" s:parent="ns_e7d77f6527539960">
+  <s:set name="id" value=""></s:set>
+  <s:set name="name" value=""></s:set>
+  <s:set name="class" value=""></s:set>
+  <s:set name="size" value="sm"></s:set>
+  <s:set name="color" value="light"></s:set>
+  <s:set name="href" value=""></s:set>
+  <s:set name="target" value=""></s:set>
+  <s:set name="icon" value=""></s:set>
+  <s:set name="iconClass" value=""></s:set>
+  <s:set name="disabled" value="{{ articles.next == -1 ? &#39;true&#39; : &#39;false&#39; }}"></s:set>
+  <s:set name="loading" value="false"></s:set>
+
+  <s:set name="sizes" value="{{ { 
+        &#39;xs&#39;: &#39;text-xs px-3 py-1.5&#39;, 
+        &#39;sm&#39;: &#39;text-sm px-3 py-1.5&#39;, 
+        &#39;base&#39;: &#39;text-sm px-4 py-2&#39;, 
+        &#39;lg&#39;: &#39;text-base px-5 py-2.5&#39;, 
+        &#39;xl&#39;: &#39;text-lg px-6 py-3&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+  <s:set name="colors" value="{{ {
+        &#39;primary&#39;: &#39;text-white bg-primary-700 hover:bg-primary-800 dark:bg-dark-primary-600 dark:hover:bg-dark-primary-700&#39;,
+        &#39;dark&#39;:   &#39;text-gray-100 bg-gray-900  hover:bg-gray-700 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200&#39;,
+        &#39;light&#39;:  &#39;text-gray-900 bg-white box-border border border-gray-200 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-700&#39;,
+        &#39;danger&#39;: &#39;text-white bg-danger-700 hover:bg-danger-800 dark:bg-dark-danger-600 dark:hover:bg-dark-danger-700&#39;,
+        &#39;success&#39;: &#39;text-white bg-success-700 hover:bg-success-800 dark:bg-dark-success-600 dark:hover:bg-dark-success-700&#39;,
+        &#39;warning&#39;: &#39;text-white bg-warning-700 hover:bg-warning-800 dark:bg-dark-warning-600 dark:hover:bg-dark-warning-700&#39;,
+        &#39;info&#39;: &#39;text-white bg-info-700 hover:bg-info-800 dark:bg-dark-info-600 dark:hover:bg-dark-info-700&#39;,
+        &#39;none&#39;: &#39;&#39;
+    } }}
+  "></s:set>
+
+  <s:set name="disabledStyles" value="{{ {
+      &#39;primary&#39;: &#39;text-white bg-primary-300 dark:bg-dark-primary-300&#39;,
+      &#39;dark&#39;: &#39;text-gray-300 bg-gray-700 dark:bg-gray-700&#39;,
+      &#39;light&#39;: &#39;text-gray-300 bg-white box-border border border-gray-200 dark:text-gray-700 dark:border-gray-800 dark:bg-gray-900&#39;,
+      &#39;danger&#39;: &#39;text-white bg-danger-300 dark:bg-dark-danger-300&#39;,
+      &#39;success&#39;: &#39;text-white bg-success-300 dark:bg-dark-success-300&#39;,
+      &#39;warning&#39;: &#39;text-white bg-warning-300 dark:bg-dark-warning-300&#39;,
+      &#39;info&#39;: &#39;text-white bg-info-300 dark:bg-dark-info-300&#39;,
+      &#39;none&#39;: &#39;&#39;
+    } }}"></s:set>
+
+  <a s:if="{{ href != &#39;&#39; }}" id="{{ id }}" class="
+        rounded-lg
+        flex justify-center items-center cursor-pointer
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " href="{{ href }}" target="{{ target != &#39;&#39; ? target : &#39;_self&#39; }}" s:attr-disabled="True(disabled)" s:attr-loading="True(loading)" color="{{ color }}" button="">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{ icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39; }}  {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+        <span s:trans="" s:trans-node="trans__blog_list_1" s:trans-escape="true">Next</span>
+      
+  </a>
+
+  <button s:else="" name="{{ name }}" type="button" class="
+        rounded-lg    
+        flex justify-center items-center
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != &#39;&#39; ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != &#39;&#39; ? colors[color] : colors.primary)  }}
+        {{ class }}
+    " s:attr-disabled="True(disabled) or True(loading)" s:attr-loading="True(loading)" color="{{ color }}" button="">
+    <i s:if="{{ icon != &#39;&#39; }}" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{icon != &#39;&#39; or True(loading) ?  &#39;&#39; : &#39;hidden&#39;}} {{ True(loading) ? &#39;animate-spin&#39; : &#39;&#39; }} {{ iconClass }}" name="{{ icon }}" icon="">
+      {{ True(loading) ? &#39;progress_activity&#39; : icon }}
+    </i>
+    
+        <span s:trans="" s:trans-node="trans__blog_list_1" s:trans-escape="true">Next</span>
+      
+  </button>
+</div>
+
+    </div>
+  </div>
+</section>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_e7d77f6527539960" s:cn="comp__blog_list" s:hash="script_3f933288d2ea65ba" type="text/javascript">
+var u=(t,o,e)=>new Promise((n,r)=>{var i=s=>{try{c(e.next(s))}catch(l){r(l)}},a=s=>{try{c(e.throw(s))}catch(l){r(l)}},c=s=>s.done?n(s.value):Promise.resolve(s.value).then(i,a);c((e=e.apply(t,o)).next())});this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(t){return new __Query(__self.root).find(t)},this.query=function(t){return __self.root.querySelector(t)},this.queryAll=function(t){return __self.root.querySelectorAll(t)},this.render=function(t,o,e){return new __Render(__self,e).Exec(t,o)},this.emit=function(t,o){const e=new CustomEvent(t,{detail:o});__self.root.dispatchEvent(e)};const self=this;self.LoadPage=function(t,o){return u(this,null,function*(){const e=self.store.Get("category")||null,n=o.page||1,r=yield $Backend("/blog").Call("GetArticles",e,n);self.render("articles",{articles:r})})},self.ImageLoadError=function(t){console.log("Image load error",t);const o=t.target;console.log("Image load error",o)},self.LoadCategory=function(t,o){return u(this,null,function*(){const e="text-primary-500 dark:text-primary-400 border-primary-500 dark:border-primary-400",n="border-transparent";t.preventDefault();const r=o.category||null;self.store.Set("category",r),$Query("[category]").each(a=>{a.removeClass(e).addClass(n),$Store(a.element).Get("category")===r&&a.removeClass(n).addClass(e)});const i=yield $Backend("/blog").Call("GetArticles",r,1);yield self.render("articles",{articles:i})})},this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(t){const o=this.getAttribute("s:cn"),e=t.detail.target,n=t.detail.key,r=t.detail.value,i=new window[o](this);new __sui_state(i).Set(n,r,e)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+
+
+<script name="imports" type="json">
+{"comp__flowbite_components_button":"/flowbite/components/button"}
+</script>
+
+</body></html>

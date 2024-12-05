@@ -1,0 +1,47 @@
+{
+  "name": "Administrator",
+  "action": {
+    "bind": { "table": "account" },
+    "after:find": "scripts.account.AfterFind",
+    "save": { "process": "scripts.account.Save" }
+  },
+  "layout": {
+    "form": {
+      "sections": [
+        {
+          "columns": [
+            { "name": "Type", "width": 4 },
+            { "name": "Name", "width": 8 },
+            { "name": "Status", "width": 12 },
+            { "name": "Email", "width": 12 },
+            { "name": "Mobile", "width": 12 },
+            { "name": "Password", "width": 12 },
+            { "name": "Placement", "width": 12 },
+            { "name": "New Password", "width": 12 },
+            { "name": "Confirm Password", "width": 12 }
+          ]
+        }
+      ]
+    }
+  },
+  "fields": {
+    "form": {
+      "Placement": {
+        "bind": "_placement",
+        "edit": { "type": "Placement" }
+      },
+      "Password": {
+        "bind": "password",
+        "edit": { "type": "Password" }
+      },
+      "New Password": {
+        "bind": "new_password",
+        "edit": { "type": "Password" }
+      },
+      "Confirm Password": {
+        "bind": "new_password_confirm",
+        "edit": { "type": "Password" }
+      }
+    }
+  }
+}

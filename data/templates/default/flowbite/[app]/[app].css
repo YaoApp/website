@@ -1,0 +1,11 @@
+.app {
+  background: var(--color-primary-950);
+  min-height: 100vh;
+}
+.app-form {
+  background: #fefefe;
+  width: 100%;
+  min-height: 80vh;
+  padding: 20px;
+  border-radius: 8px;
+}

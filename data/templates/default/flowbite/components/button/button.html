@@ -1,0 +1,117 @@
+<div
+  namespace="{% namespace %}"
+  id="{% id %}"
+  type="flowbite-button"
+  class="flowbite-button"
+  state-loading="{% loading ?? false %}"
+  state-disabled="{% disabled ?? false %}"
+>
+  <s:set name="id" value="{% id %}"></s:set>
+  <s:set name="name" value="{% name %}"></s:set>
+  <s:set name="class" value="{% class %}"></s:set>
+  <s:set name="size" value="{% size %}"></s:set>
+  <s:set name="color" value="{% color %}"></s:set>
+  <s:set name="href" value="{% href %}"></s:set>
+  <s:set name="target" value="{% target %}"></s:set>
+  <s:set name="icon" value="{% icon ?? '' %}"></s:set>
+  <s:set name="iconClass" value="{% iconClass %}"></s:set>
+  <s:set name="disabled" value="{% disabled ?? false %}"></s:set>
+  <s:set name="loading" value="{% loading ?? false %}"></s:set>
+
+  <s:set
+    name="sizes"
+    value="{{ { 
+        'xs': 'text-xs px-3 py-1.5', 
+        'sm': 'text-sm px-3 py-1.5', 
+        'base': 'text-sm px-4 py-2', 
+        'lg': 'text-base px-5 py-2.5', 
+        'xl': 'text-lg px-6 py-3',
+        'none': ''
+    } }}"
+  ></s:set>
+  <s:set
+    name="colors"
+    value="{{ {
+        'primary': 'text-white bg-primary-700 hover:bg-primary-800 dark:bg-dark-primary-600 dark:hover:bg-dark-primary-700',
+        'dark':   'text-gray-100 bg-gray-900  hover:bg-gray-700 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200',
+        'light':  'text-gray-900 bg-white box-border border border-gray-200 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-700',
+        'danger': 'text-white bg-danger-700 hover:bg-danger-800 dark:bg-dark-danger-600 dark:hover:bg-dark-danger-700',
+        'success': 'text-white bg-success-700 hover:bg-success-800 dark:bg-dark-success-600 dark:hover:bg-dark-success-700',
+        'warning': 'text-white bg-warning-700 hover:bg-warning-800 dark:bg-dark-warning-600 dark:hover:bg-dark-warning-700',
+        'info': 'text-white bg-info-700 hover:bg-info-800 dark:bg-dark-info-600 dark:hover:bg-dark-info-700',
+        'none': ''
+    } }}
+  "
+  ></s:set>
+
+  <s:set
+    name="disabledStyles"
+    value="{{ {
+      'primary': 'text-white bg-primary-300 dark:bg-dark-primary-300',
+      'dark': 'text-gray-300 bg-gray-700 dark:bg-gray-700',
+      'light': 'text-gray-300 bg-white box-border border border-gray-200 dark:text-gray-700 dark:border-gray-800 dark:bg-gray-900',
+      'danger': 'text-white bg-danger-300 dark:bg-dark-danger-300',
+      'success': 'text-white bg-success-300 dark:bg-dark-success-300',
+      'warning': 'text-white bg-warning-300 dark:bg-dark-warning-300',
+      'info': 'text-white bg-info-300 dark:bg-dark-info-300',
+      'none': ''
+    } }}"
+  ></s:set>
+
+  <a
+    s:if="{{ href != '' }}"
+    id="{{ id }}"
+    class="
+        rounded-lg
+        flex justify-center items-center cursor-pointer
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != '' ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != '' ? colors[color] : colors.primary)  }}
+        {{ class }}
+    "
+    href="{{ href }}"
+    target="{{ target != '' ? target : '_self' }}"
+    s:attr-disabled="True(disabled)"
+    s:attr-loading="True(loading)"
+    color="{{ color }}"
+    button
+  >
+    <i
+      s:if="{{ icon != '' }}"
+      class="material outlined me-1 rtl:ms-1 rtl:me-0 {{ icon != '' or True(loading) ?  '' : 'hidden' }}  {{ True(loading) ? 'animate-spin' : '' }} {{ iconClass }}"
+      name="{{ icon }}"
+      icon
+    >
+      {{ True(loading) ? 'progress_activity' : icon }}
+    </i>
+    <children></children>
+  </a>
+
+  <button
+    s:else
+    name="{{ name }}"
+    type="button"
+    class="
+        rounded-lg    
+        flex justify-center items-center
+        transition-none hover:transition hover:duration-200 hover:ease-in-out
+        {{ size != '' ? sizes[size] : sizes.base }}
+        {{ True(disabled) ? disabledStyles[color] : (color != '' ? colors[color] : colors.primary)  }}
+        {{ class }}
+    "
+    s:attr-disabled="True(disabled) or True(loading)"
+    s:attr-loading="True(loading)"
+    color="{{ color }}"
+    button
+  >
+    <i
+      s:if="{{ icon != '' }}"
+      class="material outlined me-1 rtl:ms-1 rtl:me-0 {{icon != '' or True(loading) ?  '' : 'hidden'}} {{ True(loading) ? 'animate-spin' : '' }} {{ iconClass }}"
+      name="{{ icon }}"
+      icon
+    >
+      {{ True(loading) ? 'progress_activity' : icon }}
+    </i>
+    <children></children>
+  </button>
+</div>

@@ -1,0 +1,60 @@
+// icons
+// * feather icon https://feathericons.com/ icon-* eg: icon-activity
+// * material symbols https://fonts.google.com/icons?icon.set=Material+Symbols  material-*  eg: material-favorite
+// * material icons https://fonts.google.com/icons?icon.set=Material+Icons   *-outline *-filled eg: person_pin_circle-outline settings-filled
+//
+{
+  "name": "Menu",
+  "nodes": [],
+  "output": {
+    "items": [
+      {
+        "name": "Blog",
+        "path": "/x/Table/article",
+        "icon": "material-rss_feed",
+        "children": [
+          {
+            "name": "Articles",
+            "path": "/x/Table/article",
+            "icon": "material-full_coverage"
+          },
+          {
+            "name": "Categories",
+            "path": "/x/Table/article.category",
+            "icon": "material-category"
+          }
+        ]
+      },
+
+      {
+        "name": "Tutorials",
+        "path": "/x/Table/tutorial",
+        "icon": "material-bookmarks",
+        "children": [
+          {
+            "name": "Tutorials",
+            "path": "/x/Table/tutorial",
+            "icon": "material-bookmarks"
+          },
+          {
+            "name": "Categories",
+            "path": "/x/Table/tutorial.category",
+            "icon": "material-category"
+          }
+        ]
+      },
+      {
+        "name": "Release",
+        "path": "/x/Table/release",
+        "icon": "material-download"
+      }
+    ],
+    "setting": [
+      {
+        "icon": { "name": "material-person_pin_circle", "size": 22 },
+        "name": "Accounts",
+        "path": "/x/Table/account"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+db
+logs
+.DS_Store
+
+moapi.env.sh
+tables/tests/article.tab.yao.*.bak
+forms/tests/article.form.yao.*.bak
+
+
+public/assets/upload/*/[0-9]*/
+!public/assets/upload/images/240X135.svg
+public/install.sh
+public/install.ps1

@@ -1,0 +1,68 @@
+<section
+  class="sticky top-[100px] hidden h-[calc(100vh-100px)] w-[284px] md:flex md:shrink-0 md:flex-col md:justify-start scrollbar-hidden scrollbar-dark"
+>
+  <import s:as="Anchor" s:from="/flowbite/components/anchor"></import>
+  <s:set name="items" value="{% items %}"></s:set>
+  <div s:for="items" class="mb-6 w-[278px]">
+    <Anchor
+      href="{{ '/docs/' + item.link }}"
+      color="{{ $param.name == item.link ? 'primary' : 'dark' }}"
+      class="mb-2 {{ $param.name == item.link ? 'active' : '' }}"
+    >
+      <span class="font-bold text-sm"> {{ item.title }} </span>
+    </Anchor>
+
+    <ul class="px-1">
+      <li s:for="item.children" class="py-1">
+        <!-- Has Children -->
+        <div s:if="len(item.children) > 0" submenu>
+          <Anchor
+            href="{{ '/docs/' + item.link }}"
+            color="{{ $param.name == item.link ? 'primary' : 'dark' }}"
+            size="sm"
+            class="flex items-center justify-between mb-2 {{ $param.name == item.link ? 'active' : '' }}"
+            menu-item
+          >
+            <span>{{ item.title }}</span>
+            <span
+              class="material outlined text-gray-400 text-lg hover:text-primary cursor-pointer"
+              toggle
+            >
+              keyboard_arrow_down
+            </span>
+          </Anchor>
+
+          <ul class="px-2">
+            <li
+              s:for="item.children"
+              s:for-item="child"
+              class="ps-4 py-1
+                {{ $param.name == child.link ? 'active border-primary border-l-2 dark:border-dark-primary-400' : 'border-l  border-gray-200 dark:border-gray-800' }}
+              "
+              menu-item
+            >
+              <Anchor
+                href="{{ '/docs/' +child.link }}"
+                color="{{ $param.name == child.link ? 'primary' : 'dark' }}"
+                size="sm"
+              >
+                {{ child.title }}
+              </Anchor>
+            </li>
+          </ul>
+        </div>
+
+        <!-- No Children -->
+        <Anchor
+          s:else
+          href="{{ '/docs/' + item.link }}"
+          size="sm"
+          color="{{ $param.name == item.link ? 'primary' : 'dark' }}"
+          class="{{ $param.name == item.link ? 'active' : '' }}"
+        >
+          {{ item.title }}
+        </Anchor>
+      </li>
+    </ul>
+  </div>
+</section>

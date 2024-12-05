@@ -1,0 +1,92 @@
+---
+title: 调试指南
+description: 如何调试你的应用程序。
+related:
+  title: 下一步
+  description: 创建数据模型。
+  links:
+    - data-model
+---
+
+本节提供了 Yao 中常见调试方法的快速概述。简单浏览一下就足够了，因为这些方法将在后面构建简单应用程序时使用。
+
+## 运行进程
+
+`yao run` 命令用于执行单个进程。这对于调试自定义进程很有用。
+
+你可以执行单个进程来在控制台中显示结果。
+
+**注意：**
+
+- 进程在服务器端运行。
+- 控制台输出显示在终端中，而不是浏览器中。
+
+```bash
+yao run utils.app.Ping # 返回 Yao 版本信息
+
+yao run models.tests.pet.Find 1 '::{}' # 返回 id 为 1 的宠物信息
+
+yao run not.exist.Process # 返回错误信息
+```
+
+## 打印调试信息
+
+对于调试进程，你可以在脚本中使用 `console.log` 或 `log` 对象来输出调试信息。
+
+更多信息，请参阅运行时参考。 👉 **[运行时参考](references/runtime)**
+
+```bash
+yao run scripts.test.Hello 'Yao!'   # 返回 'Hello, Yao!'
+
+yao run scripts.test.Pets cat  # 返回猫类别的宠物列表
+```
+
+**scripts/hello.ts**
+
+```javascript
+import { Process, log } from "@yao/runtime";
+
+/**
+ * 向某人问好
+ */
+function Hello(name: string): string {
+  // 输出调试信息到控制台
+  console.log(`Hello, ${name}!`);
+
+  // 输出调试信息到日志
+  log.Debug(`Hello %s`, name);
+
+  return `Hello, ${name}!`;
+}
+
+/**
+ * 按类别获取宠物
+ */
+function Pets(category?: string): Record {
+  category = category || "dog";
+
+  // 执行 models.* 内部进程，按类别获取宠物
+  const pets = Process("models.tests.pet.Get", {
+    select: ["id", "name"],
+    wheres: [{ column: "category", value: category }],
+  });
+
+  // 输出调试信息到控制台
+  console.Debug(`category: ${category}, pets:`, pets);
+
+  // 输出调试信息到日志
+  log.Info(`category: %s, pets: %#v`, category, pets);
+
+  return pets;
+}
+```
+
+## 检查日志
+
+默认的应用程序日志存储在 `logs` 目录中。你可以查看日志文件以获取更详细的信息。
+
+你可以在环境变量中更改日志位置和级别。
+
+更多信息，请参阅应用程序配置部分。
+
+👉 **[应用程序配置](building-your-application/app-configuration)**

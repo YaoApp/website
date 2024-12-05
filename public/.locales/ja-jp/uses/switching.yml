@@ -1,0 +1,12 @@
+name: ja-jp
+formatter: scripts.tests.formatter
+keys:
+    trans__uses_switching_1: もっと学ぶ
+    trans__uses_switching_2: Yao に切り替え
+    trans__uses_switching_3: |-
+        Switching to Yao is easy. Yao focuses on generative programming. It may
+              take time to learn a few key concepts, but once you understand them,
+              you’ll see that Yao is a powerful tool. It helps you build applications
+              faster and offers a great development experience.
+direction: ltr
+timezone: "+9:00"

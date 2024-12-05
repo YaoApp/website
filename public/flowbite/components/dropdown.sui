@@ -1,0 +1,134 @@
+<!DOCTYPE html><html locale="en-us" class="{{ __page_theme ?? $theme }}" data-theme="{{ __page_theme ?? $theme }}" dir="{{ $direction }}"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-892B2REQYP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-892B2REQYP");
+    </script>
+
+    <meta charset="UTF-8"/>
+    <title>{{ $global.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+    <!-- SEO -->
+    <meta name="keywords" content="Yao, human-machine programming, DSL, AI-generated code, TypeScript support, V8 engine, web development, serverless, edge devices, IoT applications, AI development, cloud functions, API gateways, code generator, visual editing, seamless integration, DevOps, TypeScript execution, code modification, business needs, AI agent, app deployment, all-in-one solution, executable file, development efficiency, coding approaches, web development, AI collaboration, generative programming, open-source web application, REST APIs, Yao engine, TypeScript, JavaScript, web app builder, widgets, backend integration, frontend development, AI-powered tools, software development"/>
+    <meta name="description" content="Yao - {{ $global.title }}"/>
+    <meta property="og:title" content="Yao - {{ $global.title }}"/>
+    <meta property="og:image" content="/assets/images/icons/app.png"/>
+    <meta property="og:url" content="https://yaoapps.com"/>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/assets/fonts/google/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/google/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link rel="preload" href="/assets/fonts/icons/MaterialSymbolsOutlined-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    <link href="/assets/css/light.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/dark.css" type="text/css" rel="stylesheet"/>
+
+    <link href="/assets/css/fonts.css" type="text/css" rel="stylesheet"/>
+
+    <!-- FAV LOGO -->
+    <link rel="icon" type="image/png" href="/assets/images/icons/app.png"/>
+    <link href="/assets/css/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Production -->
+    <!--  <link href="/assets/css/tailwind.min.css" rel="stylesheet" /> -->
+    <!-- Production END-->
+
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet"/>
+  <script s:ns="" s:cn="" s:hash="script_5f50a1db8f374703" src="/assets/libsui.min.js" type="text/javascript" name="libsui"></script>
+<style s:ns="ns_fea353f465d28a14" s:cn="__page" rel="stylesheet" type="text/css">
+.dropdown-scrollbar::-webkit-scrollbar{-webkit-appearance:none;width:6px;height:6px;background:transparent}.dropdown-scrollbar::-webkit-scrollbar-track{background:transparent;border-radius:4px}.dropdown-scrollbar::-webkit-scrollbar-thumb{background:var(--color-primary-900);border-radius:4px}.dropdown-scrollbar::-webkit-scrollbar-thumb:hover{background:var(--color-primary-800)}.dark .dropdown-scrollbar::-webkit-scrollbar{-webkit-appearance:none;width:6px;height:6px;background:transparent}.dark .dropdown-scrollbar::-webkit-scrollbar-track{background:transparent;border-radius:4px}.dark .dropdown-scrollbar::-webkit-scrollbar-thumb{background:var(--color-primary-400);border-radius:4px}.dark .dropdown-scrollbar::-webkit-scrollbar-thumb:hover{background:var(--color-primary-500)}
+
+</style>
+</head>
+  <body s:ns="ns_fea353f465d28a14" s:public="/" s:assets="/assets">
+    <div class="relative bg-transparent"><root id="{{ id }}" name="{{ name }}" type="flowbite-dropdown" data:color="{{ color }}" data:size="{{ size }}" data:disabled="{{ disabled }}" data:selected="{{ selected ?? &#39;&#39;}}" json:items="{{ items }}" class="
+    flowbite-dropdown absolute z-10 w-full overflow-y-scroll dropdown-scrollbar 
+    {{ colorClass }}
+    {{ class }} {{ opened ? &#39;&#39; : &#39;hidden&#39; }}
+  ">
+  <div s:if="items == null and api == null">
+    <children></children>
+  </div>
+
+  <div else="" class="{{ sizeClass }}" s:render="items">
+    <div class="loading flex justify-center items-center h-12 {{ loading == true ? &#39;&#39; : &#39;hidden&#39; }}" loading="">
+      <i class="material outlined animate-spin">autorenew</i>
+    </div>
+
+    <div class="error flex justify-center items-center text-danger-500 h-12 {{ error != false ? &#39;&#39; : &#39;hidden&#39; }}" error="">
+      <i class="material outlined">error</i>
+      <div class="ms-2">{{ error }}</div>
+    </div>
+
+    <div class="min-h-12 {{ len(items) == 0 and loading != true ? &#39;&#39; : &#39;hidden&#39; }} text-center" empty="">
+      <empty></empty>
+    </div>
+    <div items="">
+      <div s:for="items">
+        <div s:if="True(item.divider)" class="w-full h-[1.5px] bg-gray-100 my-2 me-4 dark:bg-gray-800"></div>
+
+        <div s:else="" class="flex items-center" s:on-click="onItemClick" data:index="{{ index }}" json:item="{{ item }}" data-value="{{ item.value }}" class="
+            flex items-center justify-between cursor-pointer rounded-lg
+            transition-none hover:transition hover:duration-200 hover:ease-in-out
+            {{ itemSizeClass }} {{ itemColorClass }}
+            
+          " item="" s:event="ns_fea353f465d28a14-2" s:event-cn="__page">
+          <div class="flex justify-start items-center w-full">
+            <i s:if="item.icon != null" class="material outlined me-1 rtl:ms-1 rtl:me-0 {{ item.iconClass }}" icon="">
+              {{ item.icon }}
+            </i>
+            <div>{{ item.label }}</div>
+          </div>
+          <div class="flex items-center justify-end {{ item.selected == true ? &#39;&#39; : &#39;hidden&#39;}}" checked="">
+            <i class="material outlined font-medium me-1 text-primary-900 text-base dark:text-gray-100">
+              check
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</root>
+</div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.qrcode.min.js"></script>
+    <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
+  
+
+<script s:ns="ns_fea353f465d28a14" s:cn="comp__flowbite_components_dropdown" s:hash="script_c5230fd486312f8e" type="text/javascript">
+this.Constants = {"colors":{"warning":"bg-warning-50 dark:bg-dark-warning-50 text-warning dark:text-dark-warning","info":"bg-info-50 dark:bg-dark-info-50 text-info dark:text-dark-info","none":"","primary":"bg-white dark:bg-black text-gray-900 dark:text-gray-100","dark":"bg-white dark:bg-gray-800 text-gray-100 dark:text-gray-900","light":"bg-gray-800 dark:bg-white text-gray-900 dark:text-gray-100","danger":"bg-danger-50 dark:bg-dark-danger-50 text-danger dark:text-dark-danger","success":"bg-success-50 dark:bg-dark-success-50 text-success dark:text-dark-success"},"itemColors":{"success":"text-success dark:text-dark-success","warning":"text-warning dark:text-dark-warning","info":"text-info","none":"","primary":"\n      text-gray-900 dark:text-gray-100\n      hover:bg-primary-50 dark:hover:bg-dark-primary-500\n    ","dark":"text-gray-100 dark:text-gray-900","light":"text-gray-900 dark:text-gray-100","danger":"text-danger dark:text-dark-danger"},"defaults":{"mode":"single","size":"base","loading":false,"disabled":false,"opened":false,"api":null,"error":false,"color":"primary"},"sizes":{"xs":"text-xs px-2 py-1 min-h-8","sm":"text-sm px-2.5 py-1.5 min-h-10","base":"text-sm px-3 py-2 min-h-12","lg":"text-base px-4 py-2.5 min-h-14","xl":"text-lg px-5 py-3 min-h-16"},"itemSize":{"lg":"text-base px-5 py-2.5","xl":"text-lg px-6 py-3","none":"","xs":"text-xs px-3 py-1.5","sm":"text-sm px-3 py-1.5","base":"text-sm px-3 py-2"}}
+var p=Object.defineProperty,g=Object.defineProperties;var v=Object.getOwnPropertyDescriptors;var f=Object.getOwnPropertySymbols;var S=Object.prototype.hasOwnProperty,y=Object.prototype.propertyIsEnumerable;var h=(e,n,t)=>n in e?p(e,n,{enumerable:!0,configurable:!0,writable:!0,value:t}):e[n]=t,l=(e,n)=>{for(var t in n||(n={}))S.call(n,t)&&h(e,t,n[t]);if(f)for(var t of f(n))y.call(n,t)&&h(e,t,n[t]);return e},a=(e,n)=>g(e,v(n));var u=(e,n,t)=>new Promise((s,o)=>{var r=i=>{try{c(t.next(i))}catch(m){o(m)}},d=i=>{try{c(t.throw(i))}catch(m){o(m)}},c=i=>i.done?s(i.value):Promise.resolve(i.value).then(r,d);c((t=t.apply(e,n)).next())});this.root=document.body;const __self=this;this.store=new __sui_store(this.root),this.state=new __sui_state(this),this.props=new __sui_props(this.root),this.$root=new __Query(this.root),this.find=function(e){return new __Query(__self.root).find(e)},this.query=function(e){return __self.root.querySelector(e)},this.queryAll=function(e){return __self.root.querySelectorAll(e)},this.render=function(e,n,t){return new __Render(__self,t).Exec(e,n)},this.emit=function(e,n){const t=new CustomEvent(e,{detail:n});__self.root.dispatchEvent(t)};const self=this;self.watch={opened:e=>e?open():close(),filter:e=>filterItems(e.keywords),unselect:e=>{const n=self.store.GetJSON("items")||[];if(n.length==0){const t=getSelectedValues(),s=t.indexOf(e);t.splice(s,1),self.store.Set("selected",t.join(","));return}n.forEach(t=>{if(t.value==e){const s=self.query(`[item][data-value="${e}"]`);unselectItem(s)}})},unselectAll:()=>unselectAllItems(),items:e=>{self.store.Set("selected",""),renderItems(e)}},document["flowbite-dropdown-click-listener"]||(document["flowbite-dropdown-click-listener"]=!0,document.addEventListener("click",e=>{if(e.target.closest('[type="flowbite-dropdown"]')===null){const s=new CustomEvent("outside-click",{});document.querySelectorAll('[type="flowbite-dropdown"]').forEach(r=>{r.dispatchEvent(s)})}})),self.onItemClick=(e,n,t)=>{e.stopPropagation();const s=n.item||{};if((self.store.GetData().mode||"single")=="single"){unselectAllItems(),selectItem(t.targetElement),self.root.dispatchEvent(new CustomEvent("item-click",{detail:s}));return}if(s.selected){unselectItem(t.targetElement),self.root.dispatchEvent(new CustomEvent("item-click",{detail:a(l({},s),{selected:!1})}));return}selectItem(t.targetElement),self.root.dispatchEvent(new CustomEvent("item-click",{detail:a(l({},s),{select:!0})}))};function open(){self.store.Set("opened","true");const e=self.props.Get("api");(self.store.GetJSON("items")||[]).length==0&&e&&fetchItems(),self.$root.removeClass("hidden")}function fetchItems(e=""){const n=getSelectedItems(),t=self.props.Get("api");if(t.startsWith("@")){fetchItemsBackend(t,e,n);return}fetchItemsFromApi(t,e,n)}function filterItems(e){return u(this,null,function*(){if(self.props.Get("api")){fetchItems(e);return}const t=getSelectedValues(),s=self.store.GetJSON("items")||[],o=[];s.forEach(r=>{`${r.label||""} | ${r.value||""}`.includes(e,-1)&&(r.selected=t.includes(r.value),o.push(r))}),self.render("items",{items:o})})}function close(){self.store.Set("opened","false"),self.$root.addClass("hidden")}function toggle(){if(self.store.Get("opened")=="true"){close();return}open()}function fetchItemsBackend(e,n,t){return u(this,null,function*(){e=e.replace("@",""),e.startsWith("/")||(e=`${window.location.pathname}/${e}`);const s=e.split("/"),o=s.pop(),r=s.join("/"),c={Authorization:`Bearer ${new Yao().Token()}`};showLoading(),$Backend(r,c).Call(o,{keywords:n,selected:t}).then(i=>renderItems(i)).catch(i=>showError(i))})}function fetchItemsFromApi(e,n,t){return u(this,null,function*(){const s=new Yao,r={Authorization:`Bearer ${s.Token()}`},d=e.startsWith("/api")?e.replace(/^\/api/,""):e;console.log(d),showLoading(),s.Get(d,{keywords:n,selected:t},r).then(c=>renderItems(c)).catch(c=>showError(c))})}function renderItems(e){return u(this,null,function*(){mergeItems(e);const n=getSelectedValues();e.forEach(t=>{if(t.selected){n.push(t.value.trim());return}n.includes(t.value)&&(t.selected=!0)}),self.store.Set("selected",n.join(",")),self.render("items",{items:e}).then(t=>hideLoading()).catch(t=>showError(t))})}function mergeItems(e){const n=self.store.GetJSON("items")||[];e.forEach(t=>{typeof t.value!="string"&&(t.value=`${t.value}`);const s=n.findIndex(o=>o.value==t.value);if(s==-1){n.push(t);return}n[s]=t}),self.store.SetJSON("items",n)}function showError(e){const n=e.message||e||"An error occurred";console.error(n),self.store.Set("error","true");const t=self.find("[error]");t.html(n),t.removeClass("hidden"),hideLoading()}function showLoading(){var e,n,t,s;self.store.Set("loading","true"),(e=self.find("[loading]"))==null||e.removeClass("hidden"),(n=self.find("[empty]"))==null||n.addClass("hidden"),(t=self.find("[items]"))==null||t.addClass("hidden"),(s=self.find("[error]"))==null||s.addClass("hidden")}function hideLoading(){var n,t,s,o,r;if(self.store.Set("loading","false"),(n=self.find("[loading]"))==null||n.addClass("hidden"),(t=self.find("[items]"))==null||t.removeClass("hidden"),(s=self.find("[empty]"))==null||s.addClass("hidden"),(self.store.GetJSON("items")||[]).length==0&&self.store.Get("error")!="true"){(o=self.find("[empty]"))==null||o.removeClass("hidden");return}if(self.store.Get("error")=="true"){(r=self.find("[error]"))==null||r.removeClass("hidden");return}}function getSelectedItems(){const e=self.store.Get("selected")||"";if(e=="")return[];const n=e.split(",");return(self.store.GetJSON("items")||[]).filter(o=>n.includes(o.value))}function getSelectedValues(){return getSelectedItems().map(e=>e.value)}function selectItem(e){var o;const n=$Store(e),t=n.GetJSON("item");n.SetJSON("item",a(l({},t),{selected:!0}));const s=getSelectedValues();s.push((o=t.value)==null?void 0:o.trim()),self.store.Set("selected",s.join(",")),$Query(e).find("[checked]").removeClass("hidden")}function unselectItem(e){const n=$Store(e),t=n.GetJSON("item");n.SetJSON("item",a(l({},t),{selected:!1}));const s=getSelectedValues(),o=s.indexOf(t.value.trim());s.splice(o,1),self.store.Set("selected",s.join(",")),$Query(e).find("[checked]").addClass("hidden")}function unselectAllItems(){var e;(e=self.queryAll("[item]"))==null||e.forEach(n=>{var o;(o=$Query(n).find("[checked]"))==null||o.addClass("hidden");const t=$Store(n),s=t.GetJSON("item");t.SetJSON("item",a(l({},s),{selected:!1}))}),self.store.Set("selected","")}this.root.getAttribute("initialized")!="true"&&(__self.root.setAttribute("initialized","true"),__self.root.addEventListener("state:change",function(e){const n=this.getAttribute("s:cn"),t=e.detail.target,s=e.detail.key,o=e.detail.value,r=new window[n](this);new __sui_state(r).Set(s,o,t)}),__self.once&&__self.once());
+
+</script>
+
+
+<script name="config" type="json">
+{"title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/"}
+</script>
+
+
+
+<script name="global" type="json">
+{
+  "title": "Yao All-in-one App Engine"
+}
+
+</script>
+
+</body></html>

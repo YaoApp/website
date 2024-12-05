@@ -1,0 +1,623 @@
+---
+title: Web Page
+description: Creating web pages to display data.
+related:
+  title: Next Steps
+  description: Create an admin panel to help administrators of the pet store manage data.
+  links:
+    - admin-panel
+---
+
+In this section, we'll use the Simple User Interface (SUI) to build a dynamic web page displaying data from your application.
+
+SUI is a built-in component-based template engine using HTML, CSS, and TypeScript to create web pages. It's AI-friendly, supports Server-Side Rendering (SSR), and requires no additional build tools.
+
+- 🟢 Create and manage data in your application. 👉 [Data Model](data-model)
+- 🟢 Develop RESTful APIs to expose data. 👉 [REST API](rest-api)
+- 🟠 **Design web pages to display data.**
+- ⚪ Build an admin panel to help administrators of the pet store manage data. 👉 [Admin Panel](admin-panel)
+- ⚪ Create backend commands for task scheduling. 👉 [CLI](cli)
+- ⚪ Integrate AI for chatbots, image generation, and enhanced user input. 👉 [AI Integration](ai-integration)
+
+Ensure you have read the previous documentation, and the previous steps are completed before proceeding.
+
+👉 [Data Model](data-model)
+
+👉 [Building Your Application](../building-your-application)
+
+## Overview
+
+SUI, a new feature in Yao v0.10.4, is AI-friendly and streamlines web page creation and data integration. It supports backward compatibility, enabling developers to use HTML, CSS, and TypeScript/JavaScript while promoting code reusability with a component-based architecture.
+
+SUI requires no additional build tools and naturally supports Server-Side Rendering (SSR), enhancing SEO and making it suitable for website development.
+
+**_Note: SUI is a new feature and still experimental. For advanced frontend requirements, consider using frameworks like React or Vue. Place the built files in the `public` directory and connect them to Yao via REST API._**
+
+Access the complete tutorials here: 👉 [Website Tutorials](/docs/tutorials/website/getting-started)
+
+If you're interested in learning why we recommend SUI, read the blog post here:
+
+👉 [Why does Yao reinvent so many wheels?](/blog/Why-does-Yao-reinvent-so-many-wheels)
+
+## Step 1: Generate Web Page
+
+In this demo, we'll create two web pages: one to list pets and another for pet details.
+
+The AI-generated web pages are suitable for a simple website, and you can further customize them by editing the generated content.
+
+This step demonstrates how to write prompts to generate web pages.
+
+### 💬 Prompts for Generating Web Pages
+
+_This is an example of a conversation with an AI chatbot to generate web pages. Change the prompts according to your requirements._
+
+```yaml
+Model Samples:
+[Model Samples]
+
+Related Models:
+    pets, pet.categories
+
+- Web Page Generation Guidelines:
+
+    - File Structure:
+        - **Separate Files**: Each web page should have distinct HTML, CSS, and TypeScript files named consistently (e.g., `index.html`, `index.css`, `index.ts`).
+        - **No Frameworks**: Avoid using frameworks or libraries. If necessary, import libraries via the script tag in the JS file.
+        - **Rendering Logic**: Managed by the Template Engine, so no need to implement it. Use the JS file for animations.
+        - **CDN Links**: For third-party libraries, include the CDN link in the JS file using `import '<CDN link>';`.
+        - **HTML Structure**:
+            - Exclude `<head>` and `<body>` tags; these are added by the SUI engine.
+            - Include a root element to contain the page content, e.g., `<div>PAGE CONTENT</div>`.
+
+    - CSS Guidelines:
+        - **Common CSS**: For consistent styling, There should be a common CSS file for all pages. the other CSS files import common CSS using `@import '@assets/[name].css';`. Use `@assets/` as required.
+        - **Consistency**: Use the same CSS class names and IDs as the model fields.
+        - **Self-contained Files**: Each page should have self-contained CSS and JS files for styles and animations.
+
+    - Template Engine Rules:
+        - **Data Rendering**: Use `{{ variable }}` syntax for rendering data within HTML tags.
+        - **Looping**: Use `s:for` for iterating over data lists, e.g., `<div s:for="items" s:for-item="pet"> <span>{{ pet.name }}</span> </div>`.
+        - **Conditional Rendering**: Use `s:if`, e.g., `<span s:if="pet.name">{{ pet.name }}</span>`.
+        - **Routing**: File system routes define web page routes. E.g., `index.html` maps to '/', 'about.html' maps to '/about'.
+        - **Dynamic Routes**: Represented by `[id]`, e.g., '/pet/1', '/pet/2' is '/[id]'.
+        - **Event Binding**: Use `s:on-click`, e.g., `<button s:on-click="handleClick" s:data-id="{{ pet.id }}">Click</button>`.
+        - **Event Handlers**: Implement in the TS/JS file, e.g.:
+            import { EventData, Component, EventDetail } from "@yao/sui";
+            const self = this as Component;
+
+            self.handleClick = (event: Event, data: EventData, detail: EventDetail) => {
+                // handle the event
+                // data['id'] corresponds to s:data-id="{{ pet.id }}"
+            };
+
+    - Design Standards:
+        - **Design Standard**: Develop a standard based on user requirements (color scheme, layout, font style, size, spacing, etc.).
+        - **CSS Variables**: Use them for color, font, and spacing in common CSS files.
+
+    - Web Page Requirements:
+        - **Model Fields**: Use fields in the model to generate web page content.
+        - **Responsive Layout**: Content should be displayed in a responsive layout, centered on the page.
+
+- Pet store website requirements:
+    - **Style Guide**:
+        - Create a common CSS file for consistent styling, named `style.css`.
+        - Choose a color scheme fitting for a pet store, DO NOT use red or green, it should be friendly and inviting.
+        - Button should round corners, with smooth hover effects.
+        - Navigation items should have smooth hover effects, background color change, and text color change.
+        - Use Rounded corners for cards and buttons.
+        - Card shadow should be subtle.
+
+    - **Animations**: Use smooth animations for a polished look.
+    - **Category Name**: Display pet category name using `pet.category.category_name`.
+
+    - **Navigation Bar**:
+        - Include Company Logo, Pet List Item, link to /pet/index page, right items is signin and signup.
+        - Logo should be a link to the home page.
+        - Full-width, fixed at the top, content-centered, max-width 1200px, include a search bar.
+
+    - **Footer**:
+        - Use full-width, centered content, with company name and copyright information.
+        - Minimum height of 50px, background color as per the style guide.
+
+Create Index and Detail pages and common CSS for the website:
+
+    - **Common CSS**:
+        - Create a common CSS file named `style.css` for consistent styling.
+        - Include color scheme, font style, size, spacing, etc.
+        - Use CSS variables for color, font, and spacing.
+
+    - **Index Page**:
+        - List pets with their categories.
+        - Route is '/pet/index', source directory is '/pet/index'.
+        - Add a 'View Details' button for each pet.
+
+    - **Detail Page**:
+        - Display pet details.
+        - Route is '/pet/[id]' source directory is '/pet/[id]'.
+        - `[id]` for pet details, where 'id' is the pet's ID.
+        - With a breadcrumb to navigate back to the pet list.
+
+```
+
+### 🤖 _Reply from AI Chatbot_
+
+The AI chatbot will generate web pages for you, It should be like this:
+
+```html
+<div>
+  <nav>
+    <a href="/">Company Logo</a>
+    <a href="/pet/index">Pet List</a>
+    <input type="text" placeholder="Search..." />
+    <a href="/signin">Sign In</a>
+    <a href="/signup">Sign Up</a>
+  </nav>
+
+  <main>
+    <div s:for="pets" s:for-item="pet" class="card">
+      <h2>{{ pet.pet_name }}</h2>
+      <p>Category: {{ pet.category.category_name }}</p>
+      <button s:on-click="viewDetails" s:data-id="{{ pet.id }}">
+        View Details
+      </button>
+    </div>
+  </main>
+
+  <footer>
+    <p>Company Name &copy; 2023</p>
+  </footer>
+</div>
+```
+
+```css
+@import "@assets/style.css";
+
+/* Specific styles for the index page */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+```
+
+```typescript
+import { EventData, Component, EventDetail } from "@yao/sui";
+const self = this as Component;
+
+self.viewDetails = (event: Event, data: EventData, detail: EventDetail) => {
+  const petId = data["id"];
+  window.location.href = `/pet/${petId}`;
+};
+```
+
+## Step 2: Save Web Page
+
+Before proceeding, ensure you've reviewed the previous documentation to understand the Yao application's directory structure and have created a Yao application using the Quick Start Guide.
+
+👉 [Quickstart](../getting-started#quickstart)
+
+👉 [Yao Application](../getting-started/switching-to-yao#yao-application)
+
+### 📜 Directory Structure
+
+After following the Quick Start Guide, your project root should contain three directories: `data/templates/default`, `suis`, and `public`.
+
+Find out the `data/templates/default` directory structure below:
+
+```bash
+├── data
+│   └── templates
+│       └── default  # Template root directory
+│           ├── __assets  # Assets
+│           ├── __data.json  # Global dynamic data
+│           ├── __document.html  # Document template
+│           ├── index  # Home page
+│           │   └── index.html
+```
+
+For more information, refer to the directory structure documentation:
+
+👉 [Website Tutorials-Directory Structure](/docs/tutorials/website/getting-started/project-structure)
+
+### 💾 Save Web Pages
+
+SUI Page uses File System Routes for web page routing. Each page is a directory with HTML, CSS, and TypeScript files of the same name. Use `[name]` for dynamic routes in directory and file names.
+
+Examples:
+
+- `/index` maps to `TEMPLATE_ROOT/index`
+- `/pet/[id]` maps to `TEMPLATE_ROOT/pet/[id]`
+
+Save generated web pages in the `data/templates/default` directory.
+
+The directory structure should be:
+
+```bash
+├── data
+│   └── templates
+│       └── default # Template root directory
+│           ├── __assets
+│           │   └── style.css
+│           ├── __data.json
+│           ├── __document.html
+│           ├── index
+│           │   └── index.html
+│           └── pet
+│               ├── [id] # Dynamic route /pet/1, /pet/2 ...
+│               │   ├── [id].css
+│               │   ├── [id].html
+│               │   └── [id].ts
+│               └── index # Pet list page /pet
+│                   ├── index.css
+│                   ├── index.html
+│                   └── index.ts
+```
+
+## Step 3: Build Web Page
+
+After saving the web pages, run the `yao sui build` command to build them. This generates `.sui` files and copies assets to the `public` directory.
+
+The built-in Yao HTTP server will recognize and serve these web pages.
+
+### 📺 SUI Build Command
+
+In a new terminal, execute the following command:
+
+```bash
+# `web` is the SUI widget ID found in the `suis` directory. Each application can have multiple template engine instances.
+# `default` is the template name located in the `data/templates` directory. Each engine can have multiple templates.
+yao sui build web default
+```
+
+The correct output should be:
+
+```bash
+-----------------------
+Public Root: /public/
+   Template: /templates/default
+    Session: {}
+-----------------------
+Build succeeded for production in 9ms
+```
+
+### 📜 URL Rewrite
+
+Current Yao versions lack automatic rewrite rules. Manually add them in `app.yao`. This will be fixed in a future release.
+
+```json
+{
+  "name": "Demo Application",
+  "short": "Demo",
+  "description": "Another yao application",
+  "version": "0.10.4",
+  "adminRoot": "admin",
+  "public": {
+    // Add the http server rewrite rules here
+    "rewrite": [
+      { "^\\/assets\\/(.*)$": "/assets/$1" }, //  /assets/* -> /public/assets/*
+      { "^\\/pet/index$": "/pet/index.sui" }, //  /pet/index -> /public/pet/index.sui
+      { "^\\/pet/(.*)$": "/pet/[id].sui" }, //    /pet/xxx -> /public/pet/[id].sui
+      { "^\\/(.*)$": "/$1.sui" } // Other routes, /xxx -> /xxx.sui
+    ]
+  },
+  "optional": { "remoteCache": true }
+}
+```
+
+**Restart the server after modifying the `app.yao` file.** 👉 **[App Configuration](app-configuration)**
+
+### 🌐 Visit in Browser
+
+After building the web pages, you can view them in your browser. Before proceeding, ensure the Yao server is running.
+
+Open your browser and visit the following URLs:
+
+- [http://127.0.0.1:5099/pet/index](http://127.0.0.1:5099/pet/index) The pet list page.
+- [http://127.0.0.1:5099/pet/1](http://127.0.0.1:5099/pet/1) The pet details page.
+
+_Replace the IP address and port with your server's IP address and port._
+
+## Step 4: Integrate Data
+
+You've successfully created web pages using SUI. This step demonstrates how to integrate data into the web pages.
+
+### 📜 SUI Page Structure
+
+Each SUI page can include up to six parts: HTML, CSS, Frontend Script, Data, Backend Script, and Configuration. Only HTML is mandatory.
+
+| Part            | Extension   | Required | Description                                         |
+| --------------- | ----------- | -------- | --------------------------------------------------- |
+| HTML            | .html       | Yes      | Core HTML content.                                  |
+| CSS             | .css        | No       | Styles for the page.                                |
+| Frontend Script | .ts         | No       | Scripts for browser, compiled to JS.                |
+| Backend Script  | .backend.ts | No       | Server-side scripts, like custom processes.         |
+| Data            | .json       | No       | Data source, use `{{ key }}` in HTML for rendering. |
+| Configuration   | .config     | No       | Page settings, e.g., title, cache policy.           |
+
+### 💾 Data Integration
+
+We use the backend script to fetch data from the database and use the data source file to pass the data to the HTML file.
+
+The backend script runs on server-side, it same to `scripts` files. import the script in the `scripts` directory, or Yao Runtime APIs can be used in the backend script.
+
+**Backend Script File:**
+
+Create backend script files for pet list and pet details pages.
+
+```typescript
+// pet/index/index.backend.ts
+import { Process } from "@yao/runtime";
+
+function PetList() {
+  const pets = Process("models.pets.Get", {
+    select: ["id", "pet_name", "category_id", "age", "breed", "description"],
+    withs: { category: { query: { select: ["id", "category_name"] } } }, // Use join query get the category name directly
+  });
+  return pets;
+}
+```
+
+```typescript
+// pet/[id]/[id].backend.ts
+import { Process, SuiRequest, Exception } from "@yao/runtime";
+
+function Pet(r: SuiRequest) {
+  // Get the pet ID from the request
+  const id = r.params?.id;
+  if (!id) {
+    throw new Exception("Pet ID is required", 400);
+  }
+
+  const pets = Process("models.pets.Find", id, {
+    select: ["id", "pet_name", "category_id", "age", "breed", "description"],
+    withs: { category: { query: { select: ["id", "category_name"] } } }, // Use join query get the category name directly
+  });
+  return pets;
+}
+```
+
+**Data Source File:**
+
+```json
+// pet/index/index.json
+{
+  // Variables prefixed with $ indicate execution of a backend script function or process.
+  // Values prefixed with @ indicate data retrieval from a backend script; otherwise, a process will be executed.
+  "$pets": "@PetList", // Excute a backend script function, Get the data
+
+  "$ping": "utils.app.ping", // Execute the process, Get the data
+
+  // Static data
+  "foo": { "hello": "world" }
+}
+```
+
+```json
+// pet/[id]/[id].json
+{
+  "$pet": "@Pet" // Excute a backend script function, Get the data
+}
+```
+
+After creating the backend script and data source files, the directory structure should be:
+
+```bash
+├── data
+│   └── templates
+│       └── default
+│           ├── __assets
+│           │   └── style.css
+│           ├── __data.json
+│           ├── __document.html
+│           ├── index
+│           │   └── index.html
+│           └── pet
+│               ├── [id]
+│               │   ├── [id].backend.ts # New backend script file for pet details page
+│               │   ├── [id].css
+│               │   ├── [id].html
+│               │   ├── [id].json # New data source file for pet details page
+│               │   └── [id].ts
+│               └── index
+│                   ├── index.backend.ts # New backend script file for pet list page
+│                   ├── index.css
+│                   ├── index.html
+│                   ├── index.json # New data source file for pet list page
+│                   └── index.ts
+├── models
+│   ├── goods.mod.yao
+│   ├── pet
+│   │   └── categories.mod.yao
+│   ├── pets.mod.yao  # Modify the model DSL, add the relations
+│   └── transactions.mod.yao
+
+```
+
+**📝 Notes:**
+
+In the backend script, use the `Process` function with the `withs` option to join the category table and directly retrieve the category name.
+
+**_We should modify the Model DSL to support join queries, which ideally should have been done during the DSL file creation. It is placed here to demonstrate how to update the model DSL and maintain the application._**
+
+Open the `models/pets.mod.yao` file and modify the DSL add relations;
+
+```json
+// models/pets.mod.yao
+{
+  "name": "Pet",
+  "table": { "name": "pets", "comment": "Pets" },
+  "columns": [
+    //...
+  ],
+
+  // Add the relations here
+  "relations": {
+    // category: the relation name
+    "category": {
+      "type": "hasOne", // the relation type, hasOne or hasMany
+      "model": "pet.categories", // the relation model widget ID
+      "foreign": "category_id", // the foreign key in the current model
+      "key": "id" // the primary key in the related model
+    }
+  },
+  "option": { "timestamps": true }
+}
+```
+
+For more on the data model, check out the 👉 **[DSL References](references/dsl)**
+
+### 📺 SUI Watch Command
+
+After saving the backend script and data source files, we need to rebuild the web pages.
+
+Use the `yao sui watch` command to watch for changes and rebuild the web pages automatically.
+
+Open a new terminal and execute the following command:
+
+```bash
+# Watch for changes and rebuild the web pages
+# `web` is the SUI widget ID found in the `suis` directory. Each application can have multiple template engine instances.
+# `default` is the template name located in the `data/templates` directory. Each engine can have multiple templates.
+yao sui watch web default
+```
+
+The correct output should be:
+
+```bash
+-----------------------
+Public Root: /public/
+   Template: /templates/default
+    Session: {}
+-----------------------
+Watching...
+Press Ctrl+C to exit
+```
+
+After executing the command, the web pages will be rebuilt automatically when changes are detected.
+
+```bash
+Building...  Success (21ms)
+Building...  Success (18ms)
+```
+
+**The `yao sui watch` command generates the `.sui` files not compressed, and has debug information. It is recommended to use the `yao build` command for production.**
+
+### 🌐 Debug in Browser
+
+Before starting, ensure your Yao server is running. Then, open your browser and visit:
+
+- [http://127.0.0.1:5099/pet/index?\_\_debug](http://127.0.0.1:5099/pet/index?__debug) for the pet list.
+- [http://127.0.0.1:5099/pet/1?\_\_debug](http://127.0.0.1:5099/pet/1?__debug) for pet details.
+
+The `__debug` query string is used for debugging purposes, it ignores the page cache and data cache.
+
+Replace `127.0.0.1:5099` with your server's IP and port.
+
+Use the browser console to check data from the backend. Disable cache in developer tools to always get the latest data, which may show a warning in the terminal.
+
+```bash
+[SUI] The page /pet/index is not cached. file=/public/pet/index.sui DisableCache=true
+```
+
+## Step 5: Components (Optional)
+
+Components are reusable parts of a web page. They can be used across multiple pages, enhancing code reusability and maintainability.
+
+In SUI, each page can be a component, can be used in other pages, use the `is` attribute to include a component in another page.
+
+In this step, we'll create header and footer components to include in the pet list and pet details pages.
+
+### 💾 Header and Footer Pages
+
+Create header and footer pages in the `data/templates/default` directory.
+
+```html
+<!-- data/templates/default/pet/header/header.html -->
+<nav>
+  <a href="/">Company Logo</a>
+  <a href="/pet/index">Pet List</a>
+  <input type="text" placeholder="Search..." />
+  <a href="/signin">Sign In</a>
+  <a href="/signup">Sign Up</a>
+</nav>
+```
+
+```html
+<!-- data/templates/default/pet/footer/footer.html -->
+<!-- 
+  Use {% %} to access component props passed down from the parent component.
+-->
+<footer>
+  <p>Company Name &copy; 2023 {% name %}</p>
+</footer>
+```
+
+### 💾 Update the Index and Detail Pages
+
+```html
+<!-- data/templates/default/pet/index/index.html -->
+<div>
+  <!-- 
+    Include the header component 
+    is: the page route of the component
+  -->
+  <header is="/pet/header" active="/list"></header>
+  <main>
+    <div s:for="pets" s:for-item="pet" class="card">
+      <h2>{{ pet.pet_name }}</h2>
+      <p>Category: {{ pet.category.category_name }}</p>
+      <button s:on-click="viewDetails" s:data-id="{{ pet.id }}">
+        View Details
+      </button>
+    </div>
+  </main>
+  <footer is="/pet/footer" name="Pet List"></footer>
+</div>
+```
+
+```html
+<!-- data/templates/default/pet/[id]/[id].html -->
+<div>
+  <header is="/pet/header" active="/list"></header>
+  <main>
+    <div class="breadcrumb">
+      <a href="/pet/index">Back to Pet List</a>
+    </div>
+    <div class="card">
+      <h2>{{ pet.pet_name }}</h2>
+      <p>Category: {{ pet.category.category_name }}</p>
+      <p>Age: {{ pet.age }}</p>
+      <p>Breed: {{ pet.breed }}</p>
+      <p>Description: {{ pet.description }}</p>
+    </div>
+  </main>
+  <footer is="/pet/footer" name="Pet Details"></footer>
+</div>
+```
+
+For more details, check out the 👉 [Website Tutorials](/docs/tutorials/website/getting-started)
+
+## 🎉 Congratulations
+
+You've successfully created web pages using SUI and integrated data into them. You've also learned how to create components for code reusability.
+
+To learn more about SUI and building web pages, check out the complete tutorials: 👉 [Website Tutorials](/docs/tutorials/website/getting-started)
+
+The official Yao website was built using SUI and is an open-source project, you can find more usage examples in the repository. 👉 [Yao Official Website Repo](https://github.com/YaoApp/yao-website)
+
+In the next section, we'll build an admin panel to help administrators manage data in the pet store.
+
+- 🟢 Create and manage data in your application. 👉 [Data Model](data-model)
+- 🟢 Develop RESTful APIs to expose data. 👉 [REST API](rest-api)
+- 🟢 **Design web pages to display data.**
+- 🔵 Build an admin panel to help administrators of the pet store manage data. 👉 [Admin Panel](admin-panel)
+- ⚪ Create backend commands for task scheduling. 👉 [CLI](cli)
+- ⚪ Integrate AI for chatbots, image generation, and enhanced user input. 👉 [AI Integration](ai-integration)
+
+**💬 Use the following links to generate web pages via Chat:**
+
+👉 [Yao Playground](https://github.com/YaoApp/playground)
+
+👉 [Yao Application Generator](https://mopai.ai)

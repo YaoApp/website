@@ -1,0 +1,23 @@
+<div id="[{ $props.id }]" class="[{ $props.class }] relative">
+  <button
+    data-tooltip-target="tooltip-[{ $props.id }]"
+    class="material outlined text-sm text-gray-400 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+  >
+    [{ $props.icon }]
+  </button>
+  <div
+    id="tooltip-[{ $props.id }]"
+    role="tooltip"
+    class="absolute z-10 invisible w-[auto] inline-block px-3 py-2 text-xs text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-800"
+  >
+    <!-- auto width no break -->
+
+    <div
+      class="max-w-[200px] text-xs text-gray-100 whitespace-nowrap overflow-hidden overflow-ellipsis dark:text-gray-200"
+    >
+      [{ $props.title }]
+    </div>
+
+    <div class="tooltip-arrow" data-popper-arrow></div>
+  </div>
+</div>

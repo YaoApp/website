@@ -1,0 +1,84 @@
+---
+title: Compiling Source Code
+description: How to compile the source code and run it on your local machine.
+---
+
+This section walks you through compiling the source code and running it locally.
+
+**The guide uses Ubuntu 23.04 LTS as the reference operating system.**
+
+## Step 1: Clone the Repositories
+
+To compile the source code, you need to clone the repositories to your local machine. Here are the repositories you need to clone:
+
+```bash
+mkdir -p /your/directory && \
+git clone https://github.com/yaoapp/kun.git /your/directory/kun && \
+git clone https://github.com/yaoapp/xun.git /your/directory/xun && \
+git clone https://github.com/yaoapp/gou.git /your/directory/gou && \
+git clone https://github.com/yaoapp/v8go.git /your/directory/v8go && \
+git clone https://github.com/yaoapp/xgen.git /your/directory/xgen-v1.0 && \
+git clone https://github.com/yaoapp/yao-init.git /your/directory/yao-init && \
+git clone https://github.com/yaoapp/yao.git /your/directory/yao
+```
+
+Unzip libv8 zip
+
+```bash
+cd /your/directory
+files=$(find /app/v8go -name "libv8*.zip")
+for file in $files; do
+    dir=$(dirname "$file")  # Get the directory where the ZIP file is located
+    echo "Extracting $file to directory $dir"
+    unzip -o -d $dir $file
+    rm -rf $dir/__MACOSX
+done
+```
+
+## Step 2: Install the Dependencies
+
+```bash
+# Install dependencies for building the source code
+apt-get update && \
+apt-get install -y libc6-armel-cross libc6-dev-armel-cross binutils-arm-linux-gnueabi libncurses5-dev build-essential bison flex libssl-dev bc && \
+apt-get install -y gcc-arm-linux-gnueabi g++-arm-linux-gnueabi && \
+apt-get install -y gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf  && \
+apt-get install -y g++-aarch64-linux-gnu crossbuild-essential-arm64  && \
+apt-get install -y gcc-13-aarch64-linux-gnu  && \
+apt-get install -y g++-13-aarch64-linux-gnu  && \
+apt-get install -y wget  && \
+apt-get install -y curl  && \
+apt-get install -y git && \
+apt-get install -y unzip
+
+# Golang
+wget https://golang.org/dl/go1.21.1.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz && \
+    rm go1.21.1.linux-amd64.tar.gz
+
+# Node.js
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs
+
+# PNPM
+npm install -g pnpm
+```
+
+## Step 3: Build the Binaries
+
+After cloning the repositories, you need to build the binaries. Here's how you can do it:
+
+```bash
+cd /your/directory/yao && \
+export VERSION=$(cat share/const.go  |grep 'const VERSION' | awk '{print $4}' | sed "s/\"//g")
+
+cd /your/directory/yao && make tools && make artifacts-linux
+ls -l /your/directory/yao/dist/release
+```
+
+## Running the Source Code Locally
+
+```bash
+cd /your/directory/yao
+go run . run utils.app.Ping
+```

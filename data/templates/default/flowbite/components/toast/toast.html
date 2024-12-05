@@ -1,0 +1,51 @@
+<div
+  id="{% id  %}"
+  name="{% name  %}"
+  class="{% class %} hidden"
+  data-duration="{% duration %}"
+  data-position="{% position %}"
+>
+  <s:set name="title" value="{% title %}"></s:set>
+  <s:set name="message" value="{% message %}"></s:set>
+  <s:set name="icon" value="{% icon %}"></s:set>
+
+  <div
+    class="fixed z-[100] flex items-start justify-between backdrop-blur-md border border-gray-100/60 bg-opacity-90 w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow shadow-gray-200/80 opacity-0 transition-opacity duration-300 ease-in-out"
+    role="alert"
+  >
+    <div class="flex items-center space-x-2">
+      <!-- Icon -->
+      <div
+        class="flex items-center justify-center mr-1 w-6 h-6 rounded-full  {{ icon != null and icon != ''  ? '' : 'hidden' }}"
+        icon-bg
+      >
+        <span class="material text-white text-xl outlined" icon>
+          {{ icon }}
+        </span>
+      </div>
+
+      <div class="text-sm font-normal break-words max-w-[200px] flex flex-col">
+        <div
+          class="font-medium {{ title != null and title != ''  ? '' : 'hidden' }} min-h-6 flex items-center "
+          title
+        >
+          {{ title }}
+        </div>
+        <div
+          class="{{ message != null and message != ''  ? '' : 'hidden' }}  min-h-6 flex items-center "
+          message
+        >
+          {{ message}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Close button -->
+    <button
+      class="flex items-center justify-center text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+      close
+    >
+      <span class="material text-xl outlined">close</span>
+    </button>
+  </div>
+</div>
