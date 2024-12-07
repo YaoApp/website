@@ -1,4 +1,4 @@
-import { Process, Store, QueryWhere as Where } from "@yao/runtime";
+import { Process, Store, QueryWhere as Where, FS, log } from "@yao/runtime";
 
 /**
  * RSS Feed
@@ -127,4 +127,136 @@ function CategoryOptions(query: Record<string, any>) {
   return categories.map((category) => {
     return { value: category.name, label: category.name };
   });
+}
+
+/**
+ * Sync blog posts from filesystem to database
+ * @test yao run scripts.blog.Sync
+ */
+function Sync() {
+  const appfs = new FS("app");
+  const fs = new FS("data");
+  const blogPath = "/docs/blog";
+
+  if (!fs.Exists(blogPath)) {
+    throw new Error("Blog directory not found");
+  }
+
+  const langs = fs.ReadDir(blogPath, false);
+
+  for (const langPath of langs) {
+    const lang = langPath.split("/").pop();
+    if (!lang || !fs.IsDir(`${blogPath}/${lang}`)) continue;
+
+    const categories = fs.ReadDir(`${blogPath}/${lang}`, false);
+
+    for (const categoryPath of categories) {
+      const category = categoryPath.split("/").pop();
+
+      if (!category || !fs.IsDir(`${blogPath}/${lang}/${category}`)) continue;
+
+      const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+
+      // Read articles in the category directory
+      const articles = fs.ReadDir(`${blogPath}/${lang}/${category}`, false);
+
+      for (const articlePath of articles) {
+        if (!articlePath.endsWith(".mdx")) continue;
+
+        try {
+          // Build complete file path
+          const fullPath = `${articlePath}`;
+
+          // Check if it's a file
+          if (!fs.Exists(fullPath) || fs.IsDir(fullPath)) continue;
+
+          // Read article content
+          const content = fs.ReadFile(fullPath);
+
+          // Parse article content and metadata
+          const parsed = Process("scripts.doc.ParseContent", content);
+          if (!parsed) continue;
+
+          // Generate article slug
+          const filename = articlePath.replace(".mdx", "");
+          const slug =
+            category + "-" + fs.BaseName(filename.replace(/^\d+-/, ""));
+
+          // Copy parsed.cover
+          if (parsed.cover && parsed.cover.length > 0) {
+            const name = `/images/blog/${fs.BaseName(parsed.cover[0])}`;
+            appfs.Copy(
+              `/data/docs/${parsed.cover[0]}`,
+              `/public/assets/upload/${name}`
+            );
+            parsed.cover[0] = name;
+          }
+
+          // Copy Avstart
+          if (parsed.authors && parsed.authors.length > 0) {
+            parsed.authors.forEach((author) => {
+              if (author.avatar && author.avatar.length > 0) {
+                const name = `/images/blog/authors/${fs.BaseName(
+                  author.avatar[0]
+                )}`;
+
+                appfs.Copy(
+                  `/data/docs/${author.avatar[0]}`,
+                  `/public/assets/upload/${name}`
+                );
+                author.avatar[0] = name;
+              }
+            });
+          }
+
+          // Prepare article data
+          const articleData = {
+            title: parsed.title || slug,
+            slug: slug,
+            lang: lang,
+            content: parsed.content || "",
+            summary: parsed.description || "",
+            authors: parsed.authors || [],
+            categories: [categoryName],
+            status: parsed.status || "published",
+            published_at: parsed.published_at || new Date().toISOString(),
+            seo_title: parsed.seo_title || parsed.title,
+            seo_keywords: parsed.seo_keywords || [],
+            seo_description: parsed.description || parsed.summary,
+            share_message: parsed.share_message || "",
+            cover: parsed.cover || null,
+            background: parsed.background || null,
+            sort: parsed.sort || 9999,
+            recommend: parsed.recommend !== false,
+            sticky: parsed.sticky || false,
+            list_recommend: parsed.list_recommend !== false,
+          };
+
+          // Check if article already exists
+          const exists = Process("models.article.Get", {
+            wheres: [
+              { column: "lang", value: lang },
+              { column: "slug", value: slug },
+            ],
+            limit: 1,
+          });
+
+          if (exists && exists.length > 0) {
+            // Update existing article
+            Process("models.article.Update", exists[0].id, articleData);
+            log.Info(`Updated article: ${lang}/${slug}`);
+          } else {
+            // Create new article
+            Process("models.article.Create", articleData);
+            log.Info(`Created article: ${lang}/${slug}`);
+          }
+        } catch (error) {
+          log.Error(
+            `Error processing article ${articlePath}: ${error.message}`
+          );
+          continue;
+        }
+      }
+    }
+  }
 }

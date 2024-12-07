@@ -824,7 +824,7 @@ function comp__flowbite_components_toast( component ){
       </div>
       <div class="mb-2">
         Powered by
-        <a href="https://yaoapps.com" target="_blank" class="text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300">
+        <a href="https://github.com/yaoapp/website" target="_blank" class="text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300">
           Yao App Engine
         </a>
       </div>
@@ -902,7 +902,7 @@ var __defProp=Object.defineProperty,__defProps=Object.defineProperties;var __get
 
 
 <script name="config" type="json">
-{"dataCache":3600,"api":null,"root":"/","title":"{{ document.title }} - Documentation -{{ $global.title }}","guard":"","cacheStore":"cache","cache":3600}
+{"guard":"","cacheStore":"cache","cache":3600,"dataCache":3600,"api":null,"root":"/","title":"{{ document.title }} - Documentation -{{ $global.title }}"}
 </script>
 
 
@@ -927,7 +927,7 @@ var __defProp=Object.defineProperty,__defProps=Object.defineProperties;var __get
 
 
 <script name="imports" type="json">
-{"comp__docs__name__sidebar":"/docs/[name]/sidebar","comp__docs__name__outline":"/docs/[name]/outline","comp__footer":"/footer","comp__components_theme":"/components/theme","comp__header":"/header","comp__flowbite_components_button":"/flowbite/components/button","comp__flowbite_components_breadcrumb":"/flowbite/components/breadcrumb","comp__docs__name__article":"/docs/[name]/article","comp__footer_social":"/footer/social","comp__flowbite_components_toast":"/flowbite/components/toast","comp__components_wordmark":"/components/wordmark","comp__flowbite_components_anchor":"/flowbite/components/anchor"}
+{"comp__flowbite_components_breadcrumb":"/flowbite/components/breadcrumb","comp__footer_social":"/footer/social","comp__flowbite_components_toast":"/flowbite/components/toast","comp__components_wordmark":"/components/wordmark","comp__flowbite_components_anchor":"/flowbite/components/anchor","comp__header":"/header","comp__docs__name__outline":"/docs/[name]/outline","comp__docs__name__article":"/docs/[name]/article","comp__footer":"/footer","comp__components_theme":"/components/theme","comp__flowbite_components_button":"/flowbite/components/button","comp__docs__name__sidebar":"/docs/[name]/sidebar"}
 </script>
 
 </body></html>

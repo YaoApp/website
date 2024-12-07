@@ -68,6 +68,7 @@ jobs:
             pkill yao
             rm -rf ${{ secrets.WEBROOT }}
             mkdir -p ${{ secrets.WEBROOT }} && cd ${{ secrets.WEBROOT }} && tar xvfz /data/station/dist.tar.gz
-            cd ${{ secrets.WEBROOT }} && nohup /home/${{ secrets.WEBSITE_USER }}/.yao/bin/yao migrate --reset --force
-            cd ${{ secrets.WEBROOT }} && nohup /home/${{ secrets.WEBSITE_USER }}/.yao/bin/yao run scripts.test.Data
+            cd ${{ secrets.WEBROOT }} && /home/${{ secrets.WEBSITE_USER }}/.yao/bin/yao migrate --reset --force
+            cd ${{ secrets.WEBROOT }} && /home/${{ secrets.WEBSITE_USER }}/.yao/bin/yao run scripts.test.Data
+            cd ${{ secrets.WEBROOT }} && /home/${{ secrets.WEBSITE_USER }}/.yao/bin/yao run scripts.blog.Sync
             sh -c 'cd ${{ secrets.WEBROOT }} && nohup /home/${{ secrets.WEBSITE_USER }}/.yao/bin/yao start >> /data/logs/yaoapps.log 2>&1 &'

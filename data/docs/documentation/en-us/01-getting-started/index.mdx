@@ -68,7 +68,6 @@ cd /path/to/your/project
 # use yao start command to start application server
 # Use `Ctrl + C` to stop the server.
 yao start
-
 ```
 
 The first time run `yao start` in an **empty directory**, Yao will create a new project in the current directory.
@@ -117,7 +116,6 @@ yao run models.tests.pet.Find 1 '::{"select": ["id", "name"]}' # Returns only th
 # Command-line arguments will be passed to the TypeScript function as parameters.
 
 yao run scripts.tests.Hello 'Hello, Yao!'   # Returns 'Hello, Yao!'
-
 ```
 
 ## How to Read the Documentation

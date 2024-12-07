@@ -558,7 +558,7 @@ function comp__docs__name__article( component ){
       </div>
       <div class="mb-2">
         Powered by
-        <a href="https://yaoapps.com" target="_blank" class="text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300">
+        <a href="https://github.com/yaoapp/website" target="_blank" class="text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300">
           Yao App Engine
         </a>
       </div>
@@ -603,7 +603,7 @@ this.root=document.body;const __self=this;this.store=new __sui_store(this.root),
 
 
 <script name="config" type="json">
-{"cache":3600,"dataCache":300,"api":null,"root":"/","title":"{{ article.title }} - {{ $global.title }}","guard":"","cacheStore":"cache"}
+{"root":"/","title":"{{ article.title }} - {{ $global.title }}","guard":"","cacheStore":"cache","cache":3600,"dataCache":300,"api":null}
 </script>
 
 
@@ -627,7 +627,7 @@ this.root=document.body;const __self=this;this.store=new __sui_store(this.root),
 
 
 <script name="imports" type="json">
-{"comp__flowbite_components_button":"/flowbite/components/button","comp__header":"/header","comp__docs__name__article":"/docs/[name]/article","comp__footer_social":"/footer/social","comp__footer":"/footer","comp__components_wordmark":"/components/wordmark","comp__flowbite_components_anchor":"/flowbite/components/anchor","comp__components_theme":"/components/theme"}
+{"comp__flowbite_components_anchor":"/flowbite/components/anchor","comp__components_theme":"/components/theme","comp__flowbite_components_button":"/flowbite/components/button","comp__header":"/header","comp__docs__name__article":"/docs/[name]/article","comp__footer_social":"/footer/social","comp__footer":"/footer","comp__components_wordmark":"/components/wordmark"}
 </script>
 
 </body></html>

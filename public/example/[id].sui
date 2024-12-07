@@ -214,7 +214,7 @@ var __defProp=Object.defineProperty,__defProps=Object.defineProperties;var __get
 
 
 <script name="config" type="json">
-{"cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/","title":"{{ $param.id  | upper() | split('/') | join(' ') }} | {{ $global.title }}","guard":""}
+{"root":"/","title":"{{ $param.id  | upper() | split('/') | join(' ') }} | {{ $global.title }}","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null}
 </script>
 
 

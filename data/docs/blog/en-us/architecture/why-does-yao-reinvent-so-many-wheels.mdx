@@ -1,0 +1,62 @@
+---
+title: Why Does Yao Reinvent So Many Wheels?
+description: Why does Yao reinvent so many wheels? Learn about the philosophy behind Yao's design decisions and how they benefit developers.
+published_at: 2024-12-04 00:00:00
+cover: [/assets/images/blog-002.png]
+authors:
+  - name: Max
+    avatar: [/assets/images/max.png]
+---
+
+In the field of software development, the phrase "Don't reinvent the wheel" is a well-known adage.
+
+However, over the past three years, we have chosen a less-traveled path by "restructuring" several core aspects of web development. This has been a highly challenging endeavor, filled with unexpected difficulties and decisions.
+
+Amidst support and skepticism, we persevered. Finally, in Yao's v0.10.4 release, we realized our initial vision:
+
+A development tool that is "All-in-One";
+
+A development tool that offers an excellent "development experience" for both humans and machines;
+
+A development tool that meets the needs of most web development scenarios.
+
+This is not just a new milestone but a rebirth for Yao.
+
+## The Origin
+
+As a former Unix software engineer, I deeply experienced the efficiency bottlenecks when developing websites with C++ - from compiling to debugging, a lot of time was wasted on non-business development. Later, I switched to PHP, NodeJS, and other tech stacks, which indeed improved development efficiency. However, the separation of front-end and back-end brought new challenges: high communication costs within the team, sometimes leading to situations where "2 hours of development required 2 weeks of front-end and back-end communication."
+
+This prompted me to think: Can we create a tool that allows developers to independently complete full-stack development in specific scenarios (such as websites, admin panels, and small to medium-sized business systems) while improving efficiency through code generation? This idea eventually gave birth to Yao - initially developed in PHP for internal use, later rewritten in Golang and open-sourced.
+
+## Why Reinvent the Wheel?
+
+In fact, Yao does not reinvent the wheel but integrates and optimizes existing tech stacks. Its core philosophy is:
+
+1. **Simplify Dependencies** - Streamline the tech stack, package core functions, and achieve true out-of-the-box usability. Say goodbye to dependency hell with no cumbersome configurations.
+
+2. **Full-Stack Componentization** - Transfer the successful experience of front-end componentization to full-stack development, abstracting interactions, data, and logic into composable parts.
+
+By doing so, Yao enables developers to handle both front-end and back-end with a unified development model and supports various web development scenarios through an extension mechanism. It retains mainstream tech stacks (Golang for the back-end, TypeScript + React/Vue for the front-end), essentially providing a more efficient development paradigm rather than reinventing the wheel.
+
+## Cursor Can Handle 90% of My Work, Why Use Yao?
+
+Yao is based on mainstream tech stacks and offers a more efficient development paradigm. In fact, you can use Cursor to develop Yao applications. Currently, you only need to add a few prompts to help Cursor better understand Yao Runtime API and DSL. As large language models iterate and upgrade, these additional prompts will become fewer.
+
+Yao's value lies not only in improving coding efficiency but also in optimizing team collaboration. By unifying the development paradigm, it significantly reduces communication costs and enhances overall team efficiency.
+
+## No Ecosystem, No Future
+
+Yao adheres to the "human-machine-friendly" design philosophy, committed to providing simple and easy-to-use APIs and DSLs, allowing developers to get started quickly.
+
+Newcomers might worry: Without a complete ecosystem, will having to implement all functions ourselves reduce development efficiency?
+
+In reality, Yao not only comes with a rich set of Processes for common scenarios but also seamlessly integrates with two powerful ecosystems:
+
+- Back-end Development: Directly use the Golang ecosystem, which offers excellent performance without additional learning.
+- Front-end Development: Adopts the TypeScript + React/Vue ecosystem, allowing flexible component extension.
+
+You can easily build private Processes and component libraries based on business needs, creating tailored solutions.
+
+As outlined above, these are some answers to common questions and part of Yao's design philosophy. We believe that with Yao, you can build excellent web applications faster and enjoy the fun of development.
+
+👉 [Join us on Discord](https://discord.com/invite/BkMR2NUsjU)

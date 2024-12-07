@@ -51,7 +51,7 @@ RESTful API 是基于 REST（表述性状态转移）架构的设计标准。它
 
 你可以从 Yao 文档或其他公共仓库获取现有的 API DSL 示例。在本例中，我们将使用 Yao 网站仓库中的博客 API。
 
-👉 [博客 API DSL](https://github.com/YaoApp/yao-website/blob/main/apis/blog.http.yao)
+👉 [博客 API DSL](https://github.com/YaoApp/website/blob/main/apis/blog.http.yao)
 
 ### 💬 生成 API DSL 的提示
 
@@ -62,39 +62,39 @@ API DSL 示例：
 [API DSL 示例]
 
 API DSL 路由说明：
-    - API 路由遵循文件系统路由。
-    - 例如 /apis/v1.http.yao 根路径应为 /apis/v1，/apis/v1/pet.http.yao 根路径应为 /apis/v1/pet。
+- API 路由遵循文件系统路由。
+- 例如 /apis/v1.http.yao 根路径应为 /apis/v1，/apis/v1/pet.http.yao 根路径应为 /apis/v1/pet。
 
 API DSL paths.path 说明：
-    - API 路由应该使用小写。
-    - paths.path 是相对于根路径的路径。
-    - 例如 /apis/v1.http.yao 根路径应为 /apis/v1，/apis/v1/pet.http.yao 根路径应为 /apis/v1/pet。
-    - 在 /apis/v1.http.yao 中，paths.path 等于 /pets，端点是 GET /v1/pets。
-    - 在 /apis/v1/pet.http.yao 中，paths.path 等于 /categories，端点是 GET /v1/pet/categories。
+- API 路由应该使用小写。
+- paths.path 是相对于根路径的路径。
+- 例如 /apis/v1.http.yao 根路径应为 /apis/v1，/apis/v1/pet.http.yao 根路径应为 /apis/v1/pet。
+- 在 /apis/v1.http.yao 中，paths.path 等于 /pets，端点是 GET /v1/pets。
+- 在 /apis/v1/pet.http.yao 中，paths.path 等于 /categories，端点是 GET /v1/pet/categories。
 
 API DSL paths.in 说明：
-    - "$param.<name>" - 路径中的参数名。
-    - "$query.<name>" - 查询字符串参数名。
-    - ":query-param" - 查询参数，总是命名为 query-param。
+- "$param.<name>" - 路径中的参数名。
+- "$query.<name>" - 查询字符串参数名。
+- ":query-param" - 查询参数，总是命名为 query-param。
 
 相关模型：
-    pets, pet.categories
+pets, pet.categories
 
 相关进程详情：
-    models.<model>.Find [id] [QueryParam]
-    models.<model>.Paginate [QueryParam] [page] [pageSize]
+models.<model>.Find [id] [QueryParam]
+models.<model>.Paginate [QueryParam] [page] [pageSize]
 
 - 我想创建一个 RESTful API 来为客户端应用程序暴露宠物商店数据。
 - paths.in 应该与相关模型和进程参数匹配。例如，models.pets.Find [id] [QueryParam]，path.in 应该是 ["$params.id", ":query-param"]。
 - 页码和页面大小使用查询字符串参数，命名为 page 和 pagesize。
 - 每个 API DSL 应该用代码块包裹。
 - 我需要三个端点
-    - 1. `GET /pets` - 获取宠物列表，可选择按类别过滤。
-    - 2. `GET /pets/:id` - 通过 ID 获取宠物。
-    - 3. `GET /pet/categories` - 获取类别列表。
+- 1. `GET /pets` - 获取宠物列表，可选择按类别过滤。
+- 2. `GET /pets/:id` - 通过 ID 获取宠物。
+- 3. `GET /pet/categories` - 获取类别列表。
 - 帮我为这些端点生成两个 API DSL。
-    - 1. /apis/v1.http.yao 用于宠物，
-    - 2. /apis/v1/pet.http.yao 用于宠物类别。
+- 1. /apis/v1.http.yao 用于宠物，
+- 2. /apis/v1/pet.http.yao 用于宠物类别。
 ```
 
 ### 🤖 _AI 聊天机器人的回复_
@@ -515,4 +515,4 @@ yao run http.Get http://127.0.0.1:5099/api/v1/pet/categories/options
 
 👉 [Yao Playground](https://github.com/YaoApp/playground)
 
-👉 [Yao 应用生成器](https://mopai.ai)
+👉 [Yao 应用生成器](https://moapi.ai)

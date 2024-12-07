@@ -283,7 +283,7 @@ function comp__flowbite_components_button( component ){
 
 
 <script name="config" type="json">
-{"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null}
+{"cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/","title":"","guard":""}
 </script>
 
 
@@ -298,7 +298,7 @@ function comp__flowbite_components_button( component ){
 
 
 <script name="imports" type="json">
-{"comp__index_hero_intro":"/index/hero/intro","comp__flowbite_components_button":"/flowbite/components/button"}
+{"comp__flowbite_components_button":"/flowbite/components/button","comp__index_hero_intro":"/index/hero/intro"}
 </script>
 
 </body></html>

@@ -544,7 +544,7 @@ function comp__header( component ){
       </div>
       <div class="mb-2">
         Powered by
-        <a href="https://yaoapps.com" target="_blank" class="text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300">
+        <a href="https://github.com/yaoapp/website" target="_blank" class="text-primary hover:text-primary-900 dark:text-dark-primary-400 dark:hover:text-dark-primary-300">
           Yao App Engine
         </a>
       </div>
@@ -584,7 +584,7 @@ function comp__header( component ){
 
 
 <script name="config" type="json">
-{"cache":3600,"dataCache":3600,"api":null,"root":"/","title":"Documentation - {{ $global.title }}","guard":"","cacheStore":"cache"}
+{"title":"Documentation - {{ $global.title }}","guard":"","cacheStore":"cache","cache":3600,"dataCache":3600,"api":null,"root":"/"}
 </script>
 
 
@@ -606,7 +606,7 @@ function comp__header( component ){
 
 
 <script name="imports" type="json">
-{"comp__flowbite_components_button":"/flowbite/components/button","comp__header":"/header","comp__docs_list":"/docs/list","comp__footer_social":"/footer/social","comp__footer":"/footer","comp__components_wordmark":"/components/wordmark","comp__flowbite_components_anchor":"/flowbite/components/anchor","comp__components_theme":"/components/theme"}
+{"comp__flowbite_components_anchor":"/flowbite/components/anchor","comp__components_theme":"/components/theme","comp__flowbite_components_button":"/flowbite/components/button","comp__header":"/header","comp__docs_list":"/docs/list","comp__footer_social":"/footer/social","comp__footer":"/footer","comp__components_wordmark":"/components/wordmark"}
 </script>
 
 </body></html>

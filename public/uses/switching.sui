@@ -171,7 +171,7 @@ function comp__flowbite_components_button( component ){
 
 
 <script name="config" type="json">
-{"cache":0,"dataCache":0,"api":null,"root":"/","title":"","guard":"","cacheStore":"cache"}
+{"guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/","title":""}
 </script>
 
 

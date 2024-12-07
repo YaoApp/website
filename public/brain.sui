@@ -62,7 +62,7 @@
 
 
 <script name="config" type="json">
-{"title":"","guard":"cookie-jwt:/docs/documentation/en-us/getting-started/why-yao","cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/"}
+{"guard":"cookie-jwt:/docs/documentation/en-us/getting-started/why-yao","cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/","title":""}
 </script>
 
 

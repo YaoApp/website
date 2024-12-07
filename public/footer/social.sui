@@ -147,7 +147,7 @@
 
 
 <script name="config" type="json">
-{"guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/","title":""}
+{"api":null,"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0}
 </script>
 
 

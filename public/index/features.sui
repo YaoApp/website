@@ -85,7 +85,7 @@
 
 
 <script name="config" type="json">
-{"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null}
+{"title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/"}
 </script>
 
 

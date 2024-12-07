@@ -80,7 +80,7 @@ var __defProp=Object.defineProperty;var __getOwnPropSymbols=Object.getOwnPropert
 
 
 <script name="config" type="json">
-{"api":null,"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0}
+{"cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/","title":"","guard":""}
 </script>
 
 

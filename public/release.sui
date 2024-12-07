@@ -63,7 +63,7 @@
 
 
 <script name="config" type="json">
-{"api":null,"root":"/","title":"","guard":"cookie-jwt:/download","cacheStore":"cache","cache":0,"dataCache":0}
+{"cache":0,"dataCache":0,"api":null,"root":"/","title":"","guard":"cookie-jwt:/download","cacheStore":"cache"}
 </script>
 
 

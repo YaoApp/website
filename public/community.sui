@@ -67,7 +67,7 @@ this.root=document.body;const __self=this;this.store=new __sui_store(this.root),
 
 
 <script name="config" type="json">
-{"cacheStore":"cache","cache":0,"dataCache":0,"api":null,"root":"/","title":"","guard":""}
+{"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null}
 </script>
 
 

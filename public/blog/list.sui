@@ -382,7 +382,7 @@ var u=(t,o,e)=>new Promise((n,r)=>{var i=s=>{try{c(e.next(s))}catch(l){r(l)}},a=
 
 
 <script name="config" type="json">
-{"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0,"api":null}
+{"api":null,"root":"/","title":"","guard":"","cacheStore":"cache","cache":0,"dataCache":0}
 </script>
 
 
